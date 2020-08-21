@@ -1,19 +1,7 @@
-"# enia-virtual" 
+# ENIA VIRTUAL 
 
 <p>Este proyecto es un derivado de <a href="https://gitlab.com/ChristianPauly/fluffychat-flutter">FluffyChat</a>
 
-<p align="center">
-<a target="new" href="https://play.google.com/store/apps/details?id=chat.fluffy.fluffychat">
-  <img height="66px" src="https://christianpauly.gitlab.io/fluffychat-website/assets/images/google-play-badge.png" />
-  </a>
-  <a target="new" href="https://fluffychat.im/en/fdroid.html">
-  <img height="66px" src="https://christianpauly.gitlab.io/fluffychat-website/assets/images/fdroid_button.png " />
-  </a>
-  <br>
-  <a href="https://web.fluffychat.im" target="new">Open FluffyChat in the browser</a> - <a href="https://matrix.to/#/#fluffychat:matrix.org" target="new">Join the community</a> - <a href="https://metalhead.club/@krille" target="new">Follow me on Mastodon</a> - <a href="https://hosted.weblate.org/projects/fluffychat/" target="new">Translate FluffyChat</a> - <a href="https://gitlab.com/ChristianPauly/fluffychat-website" target="new">Translate the website</a> - <a href="https://christianpauly.gitlab.io/fluffychat-website/faq.html" target="new">FAQ</a> - <a href="https://christianpauly.gitlab.io/fluffychat-website/" target="new">Website</a>
- </p>
-<br>
-<br>
 
 # Features
  * Single and group chats
@@ -113,4 +101,3 @@ flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/l10n --n
 * Thanks to Mark for all his support and the chat background.
 
 * Also thanks to all translators and testers! With your help, fluffychat is now available in more than 12 languages.
->>>>>>> 591e55097c3e4566d9749f88d11dc77a543fcb30
