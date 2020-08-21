@@ -1,0 +1,145 @@
+image: 
+  name: registry.gitlab.com/famedly/containers/flutter-dockerimages:stable
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+- coverage
+- publish
+
+code_analyze:
+  stage: coverage
+  dependencies: []
+  script:
+    - flutter format lib/ test/ test_driver/ --set-exit-if-changed
+    - flutter analyze
+
+test:
+  stage: coverage
+  dependencies: []
+  script:
+    - flutter test
+
+build_web:
+  stage: coverage
+  image: registry.gitlab.com/famedly/containers/flutter-dockerimages:beta
+  script:
+    - sudo apt update
+    - sudo apt install curl -y
+    - rm -r assets/js/package
+    - cd assets/js/ && curl -L 'https://gitlab.com/famedly/libraries/olm/-/jobs/artifacts/master/download?job=build_js' > olm.zip && cd ../../
+    - cd assets/js/ && unzip olm.zip && cd ../../
+    - cd assets/js/ && rm olm.zip && cd ../../
+    - cd assets/js/ && mv javascript package && cd ../../
+    - cd web/ && rm sql-wasm.js sql-wasm.wasm && cd ../
+    - cd web/ && curl -L 'https://github.com/sql-js/sql.js/releases/latest/download/sqljs-wasm.zip' > sqljs-wasm.zip && cd ../
+    - cd web/ && unzip sqljs-wasm.zip && cd ../
+    - cd web/ && rm sqljs-wasm.zip && cd ../
+    - flutter pub get
+    - flutter clean
+    - flutter build web --release --verbose
+  artifacts:
+    paths:
+      - build/web/
+
+
+build_android_debug:
+  stage: coverage
+  script:
+    - truncate -s $(head -n -2 android/app/build.gradle | wc -c) android/app/build.gradle
+    - flutter build apk --debug -v
+  artifacts:
+    when: on_success
+    paths:
+      - build/app/outputs/apk/debug/app-debug.apk
+  except:
+    - master
+
+
+build_android_apk:
+  stage: coverage
+  script:
+    - cd android && echo $FDROID_KEY | base64 --decode --ignore-garbage > key.jks && cd ..
+    - cd android && echo "storePassword=${FDROID_KEY_PASS}" >> key.properties && cd ..
+    - cd android && echo "keyPassword=${FDROID_KEY_PASS}" >> key.properties && cd ..
+    - cd android && echo "keyAlias=key" >> key.properties && cd ..
+    - cd android && echo "storeFile=../key.jks" >> key.properties && cd ..
+    - cd android/app && echo $GOOGLE_SERVICES >> google-services.json && cd ../..
+    - flutter build apk --release
+  artifacts:
+    when: on_success
+    paths:
+      - build/app/outputs/apk/release/app-release.apk
+  only:
+    - master
+    - tags
+
+
+build_android_appbundle:
+  stage: coverage
+  script:
+    - cd android && echo $FDROID_KEY | base64 --decode --ignore-garbage > key.jks && cd ..
+    - cd android && echo "storePassword=${FDROID_KEY_PASS}" >> key.properties && cd ..
+    - cd android && echo "keyPassword=${FDROID_KEY_PASS}" >> key.properties && cd ..
+    - cd android && echo "keyAlias=key" >> key.properties && cd ..
+    - cd android && echo "storeFile=../key.jks" >> key.properties && cd ..
+    - cd android/app && echo $GOOGLE_SERVICES >> google-services.json && cd ../..
+    - flutter build appbundle --target-platform android-arm,android-arm64,android-x64
+  artifacts:
+    when: on_success
+    paths:
+      - build/app/outputs/bundle/release/app-release.aab
+  only:
+    - master
+
+upload_to_fdroid_repo:
+  stage: publish
+  before_script:
+    ##
+    ## Install ssh-agent if not already installed.
+    ##
+    - 'which ssh-agent || (sudo apt-get update -y && sudo apt-get install openssh-client -y )'
+    ##
+    ## Install rsync if not already installed.
+    ##
+    - 'which rsync || (sudo apt-get update -y && sudo apt-get install rsync -y )'
+    ##
+    ## Install pcregrep if not already installed.
+    ##
+    - 'which pcregrep || (sudo apt-get update -y && sudo apt-get install pcregrep -y )'
+    ##
+    ## Run ssh-agent (inside the build environment)
+    ##
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - export UPDATE_VERSION=$(pcregrep -o1 'version:\\s([0-9]*\\.[0-9]*\\.[0-9]*)\\+[0-9]*' pubspec.yaml)
+    - mv app-release.apk "${UPDATE_VERSION}.apk"
+    - cd build/app/outputs/apk/release/ && rsync -rav -e ssh ./ fluffy@fdroid.nordgedanken.dev:/fdroid/repo
+    - ssh fluffy@fdroid.nordgedanken.dev "cd fdroid && fdroid update"
+  dependencies:
+    - build_android_apk
+  only:
+    - tags
+
+pages:
+  stage: publish
+  image: ruby:2.3
+  script:
+    - rm assets -r
+    - cp _config.yml ./build/web/
+    - cp Gemfile ./build/web/
+    - cp Gemfile.lock ./build/web/
+    - cd build/web/ && bundle install && cd ../../
+    - cd build/web/ && bundle exec jekyll build -d public && cd ../../
+    - mv build/web/public ./
+  dependencies:
+    - build_web
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
