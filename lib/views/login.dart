@@ -188,12 +188,16 @@ class _LoginState extends State<Login> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: loading
-                        ? CircularProgressIndicator()
-                        : Text(
-                            L10n.of(context).login.toUpperCase(),
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
+                    child: Container(
+                      width: 160,
+                      alignment: Alignment.center,
+                      child: loading
+                          ? CircularProgressIndicator()
+                          : Text(
+                              L10n.of(context).login.toUpperCase(),
+                              style: TextStyle(color: Theme.of(context).backgroundColor, fontSize: 16),
+                            ),
+                    ),
                     onPressed: loading ? null : () => login(context),
                   ),
                 ),

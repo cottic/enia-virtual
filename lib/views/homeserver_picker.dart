@@ -83,9 +83,9 @@ class HomeserverPicker extends StatelessWidget {
                       //TODO: traducir
                       'INGRESAR',
                       //L10n.of(context).connect.toUpperCase(),
+                      
 
-                      //TODO: implementar este estilo con Theme
-                      //style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: Theme.of(context).backgroundColor),
                     ),
                     onPressed: () => _checkHomeserverAction(
                         Matrix.defaultHomeserver, context),
