@@ -4,11 +4,13 @@ import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/components/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/app_route.dart';
+import 'package:fluffychat/views/login.dart';
 import 'package:fluffychat/views/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class HomeserverPicker extends StatelessWidget {
-  Future<void> _setHomeserverAction(BuildContext context) async {
+  //Not need, because user cannot select a server
+  /*   Future<void> _setHomeserverAction(BuildContext context) async {
     final homeserver = await SimpleDialogs(context).enterText(
         titleText: L10n.of(context).enterYourHomeserver,
         hintText: Matrix.defaultHomeserver,
@@ -16,7 +18,7 @@ class HomeserverPicker extends StatelessWidget {
         keyboardType: TextInputType.url);
     if (homeserver?.isEmpty ?? true) return;
     _checkHomeserverAction(homeserver, context);
-  }
+  } */
 
   void _checkHomeserverAction(String homeserver, BuildContext context) async {
     if (!homeserver.startsWith('https://')) {
@@ -32,7 +34,7 @@ class HomeserverPicker extends StatelessWidget {
     final success = await SimpleDialogs(context).tryRequestWithLoadingDialog(
         Matrix.of(context).client.checkServer(homeserver));
     if (success != false) {
-      await Navigator.of(context).push(AppRoute(SignUp()));
+      await Navigator.of(context).push(AppRoute(Login()));
     }
   }
 
@@ -48,12 +50,18 @@ class HomeserverPicker extends StatelessWidget {
             children: <Widget>[
               Hero(
                 tag: 'loginBanner',
-                child: Image.asset('assets/fluffychat-banner.png'),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 40.0, vertical: 40.0),
+                  child: Image.asset('assets/logo_enia_1025.png'),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  L10n.of(context).welcomeText,
+                  //TODO: traducir cuando este el texto final
+                  'Mensaje de bienvendia o algun texto deseado',
+                  //L10n.of(context).welcomeText,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 22,
@@ -74,7 +82,8 @@ class HomeserverPicker extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
-                      L10n.of(context).connect.toUpperCase(),
+                      'INGRESAR',
+                      //L10n.of(context).connect.toUpperCase(),
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     onPressed: () => _checkHomeserverAction(
@@ -82,7 +91,9 @@ class HomeserverPicker extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
+              //Not need, because user cannot select a server
+
+              /* Padding(
                 padding:
                     const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                 child: Opacity(
@@ -96,8 +107,8 @@ class HomeserverPicker extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-              FlatButton(
+              ), */
+              /* FlatButton(
                 child: Text(
                   L10n.of(context).changeTheHomeserver,
                   style: TextStyle(
@@ -107,7 +118,7 @@ class HomeserverPicker extends StatelessWidget {
                   ),
                 ),
                 onPressed: () => _setHomeserverAction(context),
-              ),
+              ), */
               SizedBox(height: 16),
             ],
           ),
