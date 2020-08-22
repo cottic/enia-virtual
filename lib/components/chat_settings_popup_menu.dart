@@ -30,7 +30,7 @@ class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
     super.dispose();
   }
 
-  void startCallAction(BuildContext context) async {
+/*   void startCallAction(BuildContext context) async {
     final url =
         '${Matrix.of(context).jitsiInstance}${Uri.encodeComponent(widget.room.id.localpart)}';
     final success = await SimpleDialogs(context)
@@ -40,7 +40,7 @@ class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
     }));
     if (success == false) return;
     await launch(url);
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +62,11 @@ class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
               value: 'unmute',
               child: Text(L10n.of(context).unmuteChat),
             ),
-      PopupMenuItem<String>(
+      // Esto habilita la posibilidad de realizar videollamadas en un chat, conectando con Jitsi
+      /* PopupMenuItem<String>(
         value: 'call',
         child: Text(L10n.of(context).videoCall),
-      ),
+      ), */
       PopupMenuItem<String>(
         value: 'leave',
         child: Text(L10n.of(context).leave),
@@ -103,9 +104,9 @@ class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
             await SimpleDialogs(context).tryRequestWithLoadingDialog(
                 widget.room.setPushRuleState(PushRuleState.notify));
             break;
-          case 'call':
+          /* case 'call':
             startCallAction(context);
-            break;
+            break; */
           case 'details':
             await Navigator.of(context).push(
               AppRoute.defaultRoute(
