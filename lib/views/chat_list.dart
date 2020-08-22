@@ -123,6 +123,15 @@ class _ChatListState extends State<ChatList> {
     super.initState();
   }
 
+  void logoutAction(BuildContext context) async {
+    if (await SimpleDialogs(context).askConfirmation() == false) {
+      return;
+    }
+    var matrix = Matrix.of(context);
+    await SimpleDialogs(context)
+        .tryRequestWithLoadingDialog(matrix.client.logout());
+  }
+
   StreamSubscription _intentDataStreamSubscription;
 
   StreamSubscription _intentFileStreamSubscription;
@@ -240,13 +249,15 @@ class _ChatListState extends State<ChatList> {
                             child: ListView(
                               padding: EdgeInsets.zero,
                               children: <Widget>[
-                                ListTile(
+                                // Opcion Menu Establecer estado, no disponible en version 1
+                                /* ListTile(
                                   leading: Icon(Icons.edit),
                                   title: Text(L10n.of(context).setStatus),
                                   onTap: () => _setStatus(context),
                                 ),
-                                Divider(height: 1),
-                                ListTile(
+                                Divider(height: 1), */
+                                // Opcion Crear grupo y chat privado , no disponible en version 1
+                                /* ListTile(
                                   leading: Icon(Icons.people_outline),
                                   title: Text(L10n.of(context).createNewGroup),
                                   onTap: () => _drawerTapAction(NewGroupView()),
@@ -257,14 +268,18 @@ class _ChatListState extends State<ChatList> {
                                   onTap: () =>
                                       _drawerTapAction(NewPrivateChatView()),
                                 ),
-                                Divider(height: 1),
+                                Divider(height: 1), */
+                                SizedBox(height: 20),
                                 ListTile(
                                   leading: Icon(Icons.archive),
-                                  title: Text(L10n.of(context).archive),
+                                  //TODO: poner texto con L10n
+                                  title: Text('Historial'),
+                                  //title: Text(L10n.of(context).archive),
                                   onTap: () => _drawerTapAction(
                                     Archive(),
                                   ),
                                 ),
+                                Divider(height: 1),
                                 ListTile(
                                   leading: Icon(Icons.settings),
                                   title: Text(L10n.of(context).settings),
@@ -272,7 +287,8 @@ class _ChatListState extends State<ChatList> {
                                     SettingsView(),
                                   ),
                                 ),
-                                Divider(height: 1),
+                                // Invitar contactos, no disponible en version 1
+                                /* Divider(height: 1),
                                 ListTile(
                                   leading: Icon(Icons.share),
                                   title: Text(L10n.of(context).inviteContact),
@@ -282,6 +298,12 @@ class _ChatListState extends State<ChatList> {
                                         Matrix.of(context).client.userID,
                                         'https://matrix.to/#/${Matrix.of(context).client.userID}'));
                                   },
+                                ), */
+                                Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.exit_to_app),
+                                  title: Text(L10n.of(context).logout),
+                                  onTap: () => logoutAction(context),
                                 ),
                               ],
                             ),
@@ -323,7 +345,8 @@ class _ChatListState extends State<ChatList> {
                             ),
                           ),
                   ),
-                  floatingActionButton:
+                  //This allows to create new chats, not available on version 1
+                  /* floatingActionButton:
                       (AdaptivePageLayout.columnMode(context) ||
                               selectMode == SelectMode.share)
                           ? null
@@ -335,7 +358,7 @@ class _ChatListState extends State<ChatList> {
                                       AppRoute.defaultRoute(
                                           context, NewPrivateChatView()),
                                       (r) => r.isFirst),
-                            ),
+                            ), */
                   body: StreamBuilder(
                       stream: Matrix.of(context)
                           .client
@@ -421,6 +444,7 @@ class _ChatListState extends State<ChatList> {
                                                   selectMode ==
                                                       SelectMode.share)
                                               ? Container()
+                                              //This shows added contacts on chat
                                               : PreferredSize(
                                                   preferredSize:
                                                       Size.fromHeight(90),
