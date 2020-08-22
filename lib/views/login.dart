@@ -105,7 +105,8 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      // Delete AppBar because go back make no sense since they cannot choose a diferent server
+      /* appBar: AppBar(
         leading: loading ? Container() : null,
         elevation: 0,
         title: Text(
@@ -115,81 +116,90 @@ class _LoginState extends State<Login> {
               .toString()
               .replaceFirst('https://', '')),
         ),
-      ),
+      ), */
       body: Builder(builder: (context) {
-        return ListView(
+        return Container(
           padding: EdgeInsets.symmetric(
               horizontal:
                   max((MediaQuery.of(context).size.width - 600) / 2, 0)),
-          children: <Widget>[
-            ListTile(
-              leading: CircleAvatar(
-                child: Icon(Icons.account_box,
-                    color: Theme.of(context).primaryColor),
-              ),
-              title: TextField(
-                readOnly: loading,
-                autocorrect: false,
-                autofocus: true,
-                keyboardType: TextInputType.emailAddress,
-                onChanged: (t) => _checkWellKnownWithCoolDown(t, context),
-                controller: usernameController,
-                decoration: InputDecoration(
-                    hintText:
-                        '@${L10n.of(context).username.toLowerCase()}:domain',
-                    errorText: usernameError,
-                    labelText: L10n.of(context).username),
-              ),
-            ),
-            ListTile(
-              leading: CircleAvatar(
-                backgroundColor: Theme.of(context).brightness == Brightness.dark
-                    ? Color(0xff121212)
-                    : Colors.white,
-                child: Icon(Icons.lock, color: Theme.of(context).primaryColor),
-              ),
-              title: TextField(
-                readOnly: loading,
-                autocorrect: false,
-                controller: passwordController,
-                obscureText: !showPassword,
-                onSubmitted: (t) => login(context),
-                decoration: InputDecoration(
-                    hintText: '****',
-                    errorText: passwordError,
-                    suffixIcon: IconButton(
-                      icon: Icon(showPassword
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                      onPressed: () =>
-                          setState(() => showPassword = !showPassword),
-                    ),
-                    labelText: L10n.of(context).password),
-              ),
-            ),
-            SizedBox(height: 20),
-            Hero(
-              tag: 'loginButton',
-              child: Container(
-                height: 50,
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                child: RaisedButton(
-                  elevation: 7,
-                  color: Theme.of(context).primaryColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: loading
-                      ? CircularProgressIndicator()
-                      : Text(
-                          L10n.of(context).login.toUpperCase(),
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                  onPressed: loading ? null : () => login(context),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center ,
+            children: <Widget>[
+              //TODO: definir si va este texto u otra cosa y luego traducir
+              Text('Plan ENIA Virtual', style: Theme.of(context).textTheme.headline6,),
+
+              SizedBox(height: 20),
+              ListTile(
+                leading: CircleAvatar(
+                  child: Icon(Icons.account_box,
+                      color: Theme.of(context).primaryColor),
+                ),
+                title: TextField(
+                  readOnly: loading,
+                  autocorrect: false,
+                  autofocus: true,
+                  keyboardType: TextInputType.emailAddress,
+                  onChanged: (t) => _checkWellKnownWithCoolDown(t, context),
+                  controller: usernameController,
+                  decoration: InputDecoration(
+                      hintText:
+                          '@${L10n.of(context).username.toLowerCase()}:domain',
+                      errorText: usernameError,
+                      labelText: L10n.of(context).username),
                 ),
               ),
-            ),
-          ],
+              ListTile(
+                leading: CircleAvatar(
+                  backgroundColor:
+                      Theme.of(context).brightness == Brightness.dark
+                          ? Color(0xff121212)
+                          : Colors.white,
+                  child:
+                      Icon(Icons.lock, color: Theme.of(context).primaryColor),
+                ),
+                title: TextField(
+                  readOnly: loading,
+                  autocorrect: false,
+                  controller: passwordController,
+                  obscureText: !showPassword,
+                  onSubmitted: (t) => login(context),
+                  decoration: InputDecoration(
+                      hintText: '****',
+                      errorText: passwordError,
+                      suffixIcon: IconButton(
+                        icon: Icon(showPassword
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: () =>
+                            setState(() => showPassword = !showPassword),
+                      ),
+                      labelText: L10n.of(context).password),
+                ),
+              ),
+              SizedBox(height: 40),
+              Hero(
+                tag: 'loginButton',
+                child: Container(
+                  height: 50,
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: RaisedButton(
+                    elevation: 7,
+                    color: Theme.of(context).primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: loading
+                        ? CircularProgressIndicator()
+                        : Text(
+                            L10n.of(context).login.toUpperCase(),
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                    onPressed: loading ? null : () => login(context),
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       }),
     );

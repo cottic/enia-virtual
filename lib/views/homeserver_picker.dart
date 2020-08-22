@@ -63,9 +63,7 @@ class HomeserverPicker extends StatelessWidget {
                   'Mensaje de bienvendia o algun texto deseado',
                   //L10n.of(context).welcomeText,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 22,
-                  ),
+                  style: Theme.of(context).textTheme.headline6,
                 ),
               ),
               Spacer(),
@@ -82,9 +80,12 @@ class HomeserverPicker extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
+                      //TODO: traducir
                       'INGRESAR',
                       //L10n.of(context).connect.toUpperCase(),
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+
+                      //TODO: implementar este estilo con Theme
+                      //style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     onPressed: () => _checkHomeserverAction(
                         Matrix.defaultHomeserver, context),
