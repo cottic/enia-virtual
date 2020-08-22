@@ -43,15 +43,6 @@ class _SettingsState extends State<Settings> {
   Future<bool> megolmBackupCachedFuture;
   bool megolmBackupCached;
 
-  void logoutAction(BuildContext context) async {
-    if (await SimpleDialogs(context).askConfirmation() == false) {
-      return;
-    }
-    var matrix = Matrix.of(context);
-    await SimpleDialogs(context)
-        .tryRequestWithLoadingDialog(matrix.client.logout());
-  }
-
   void setJitsiInstanceAction(BuildContext context) async {
     var jitsi = await SimpleDialogs(context).enterText(
       titleText: L10n.of(context).editJitsiInstance,
@@ -261,7 +252,7 @@ class _SettingsState extends State<Settings> {
                   onTap: () => setWallpaperAction(context),
                 );
               }),
-            Divider(thickness: 1),
+            /*Divider(thickness: 1),
             ListTile(
               title: Text(
                 L10n.of(context).chat,
@@ -271,7 +262,7 @@ class _SettingsState extends State<Settings> {
                 ),
               ),
             ),
-            ListTile(
+             ListTile(
               title: Text(L10n.of(context).renderRichContent),
               trailing: Switch(
                 value: Matrix.of(context).renderHtml,
@@ -284,7 +275,7 @@ class _SettingsState extends State<Settings> {
                   setState(() => null);
                 },
               ),
-            ),
+            ), 
             ListTile(
               title: Text(L10n.of(context).emoteSettings),
               onTap: () async => await Navigator.of(context).push(
@@ -294,7 +285,7 @@ class _SettingsState extends State<Settings> {
                 ),
               ),
               trailing: Icon(Icons.insert_emoticon),
-            ),
+            ),*/
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -311,7 +302,7 @@ class _SettingsState extends State<Settings> {
               subtitle: Text(profile?.displayname ?? client.userID.localpart),
               onTap: () => setDisplaynameAction(context),
             ),
-            ListTile(
+            /* ListTile(
               trailing: Icon(Icons.phone),
               title: Text(L10n.of(context).editJitsiInstance),
               subtitle: Text(Matrix.of(context).jitsiInstance),
@@ -336,12 +327,8 @@ class _SettingsState extends State<Settings> {
                   AppInfoView(),
                 ),
               ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.exit_to_app),
-              title: Text(L10n.of(context).logout),
-              onTap: () => logoutAction(context),
-            ),
+            ), */
+            /* 
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -421,7 +408,8 @@ class _SettingsState extends State<Settings> {
                   await requestSSSSCache(context);
                 }
               },
-            ),
+            ), */
+            /* 
             ListTile(
               trailing: Icon(Icons.wb_cloudy),
               title: Text(client.encryption.keyManager.enabled
@@ -445,7 +433,7 @@ class _SettingsState extends State<Settings> {
                   await requestSSSSCache(context);
                 }
               },
-            ),
+            ), */
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -460,18 +448,21 @@ class _SettingsState extends State<Settings> {
               trailing: Icon(Icons.help),
               title: Text(L10n.of(context).help),
               onTap: () => launch(
+                //TODO: poner url final
                   'https://gitlab.com/ChristianPauly/fluffychat-flutter/issues'),
             ),
             ListTile(
               trailing: Icon(Icons.link),
               title: Text(L10n.of(context).license),
               onTap: () => launch(
+                //TODO: poner url final
                   'https://gitlab.com/ChristianPauly/fluffychat-flutter/raw/master/LICENSE'),
             ),
             ListTile(
               trailing: Icon(Icons.code),
               title: Text(L10n.of(context).sourceCode),
               onTap: () => launch(
+                //TODO: poner url final
                   'https://gitlab.com/ChristianPauly/fluffychat-flutter'),
             ),
           ],
