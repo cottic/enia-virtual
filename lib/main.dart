@@ -41,19 +41,22 @@ class App extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: [
+                const Locale('es'), // Spanish
+                // Only spanish is available in ENIA VIRTUAL
+                /*
                 const Locale('en'), // English
                 const Locale('de'), // German
                 const Locale('hu'), // Hungarian
                 const Locale('pl'), // Polish
                 const Locale('fr'), // French
                 const Locale('cs'), // Czech
-                const Locale('es'), // Spanish
                 const Locale('sk'), // Slovakian
                 const Locale('gl'), // Galician
                 const Locale('hr'), // Croatian
                 const Locale('ja'), // Japanese
                 const Locale('ru'), // Russian
-                const Locale('uk'), // Ukrainian
+                const Locale('uk'), // Ukrainian 
+                */
               ],
               locale: kIsWeb
                   ? Locale(html.window.navigator.language.split('-').first)
@@ -64,8 +67,35 @@ class App extends StatelessWidget {
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Scaffold(
-                      body: Center(
-                        child: CircularProgressIndicator(),
+                      backgroundColor: Theme.of(context).primaryColor,
+                      body: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.4,
+                            width: double.maxFinite,
+                            child: Hero(
+                              tag: 'loginBanner',
+                              child: Image.asset('assets/logo_enia_1025.png'),
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.16,
+                          ),
+                          //TODO: No funciona traduccion, fixear.
+                          Text(
+                            'Iniciando',
+                            //L10n.of(context).initializing,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                          ),
+                          CircularProgressIndicator(
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white)),
+                        ],
                       ),
                     );
                   }
