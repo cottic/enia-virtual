@@ -5,6 +5,8 @@ import 'dart:math';
 import 'package:famedlysdk/famedlysdk.dart';
 import 'package:fluffychat/components/adaptive_page_layout.dart';
 import 'package:fluffychat/components/avatar.dart';
+import 'package:fluffychat/components/dialogs/frequent_message_dialog.dart';
+
 import 'package:fluffychat/components/chat_settings_popup_menu.dart';
 import 'package:fluffychat/components/connection_status_header.dart';
 import 'package:fluffychat/components/dialogs/presence_dialog.dart';
@@ -240,6 +242,24 @@ class _ChatState extends State<_Chat> {
             bytes: audioFile.readAsBytesSync(), name: audioFile.path),
       ),
     );
+  }
+
+  void frequentMessageAction(BuildContext context) async {
+    String result;
+    await showDialog(
+        context: context,
+        builder: (context) => FrequentMessageDialog(
+              onFinished: (r) => result = r,
+            ));
+    if (result == null) {
+      return;
+    } else {
+      // Asigns selected texto to controller
+      sendController.text = result;
+      // Activates keyboard after text select
+      FocusScope.of(context).requestFocus(inputFocus);
+    }
+    ;
   }
 
   String _getSelectedEventString(BuildContext context) {
@@ -709,6 +729,9 @@ class _ChatState extends State<_Chat> {
                                         if (choice == 'voice') {
                                           voiceMessageAction(context);
                                         }
+                                        if (choice == 'frequent') {
+                                          frequentMessageAction(context);
+                                        }
                                       },
                                       itemBuilder: (BuildContext context) =>
                                           <PopupMenuEntry<String>>[
@@ -763,6 +786,23 @@ class _ChatState extends State<_Chat> {
                                               ),
                                               title: Text(L10n.of(context)
                                                   .voiceMessage),
+                                              contentPadding: EdgeInsets.all(0),
+                                            ),
+                                          ),
+                                        if (!kIsWeb)
+                                          PopupMenuItem<String>(
+                                            value: 'frequent',
+                                            child: ListTile(
+                                              leading: CircleAvatar(
+                                                backgroundColor: Colors.amber,
+                                                foregroundColor: Colors.white,
+                                                child: Icon(Icons.textsms),
+                                              ),
+                                              //TODO: Traducir
+                                              title:
+                                                  Text('Mensajes Frecuentes'),
+
+                                              //title: Text(L10n.of(context).voiceMessage),
                                               contentPadding: EdgeInsets.all(0),
                                             ),
                                           ),
