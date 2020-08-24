@@ -1,11 +1,11 @@
 {
-    "name": "FluffyChat",
-    "short_name": "FluffyChat",
+    "name": "Asesorias ENIA@Virtual",
+    "short_name": "ENIA@Virtual",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "The cutest messenger in the Matrix network",
+    "description": "Asesorias ENIA@Virtual",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

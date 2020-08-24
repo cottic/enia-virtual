@@ -126,7 +126,7 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.center ,
             children: <Widget>[
               //TODO: definir si va este texto u otra cosa y luego traducir
-              Text('Plan ENIA Virtual', style: Theme.of(context).textTheme.headline6,),
+              Text('Asesorias ENIA@Virtual', style: Theme.of(context).textTheme.headline6,),
 
               SizedBox(height: 20),
               ListTile(

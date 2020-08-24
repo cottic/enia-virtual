@@ -504,7 +504,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "FluffyChat": "FluffyChat",
+  "FluffyChat": "ENIA@Virtual",
   "@FluffyChat": {
     "type": "text",
     "placeholders": {}
@@ -1188,7 +1188,7 @@
       "suffix": {}
     }
   },
-  "title": "FluffyChat",
+  "title": "ENIA@Virtual",
   "@title": {
     "description": "Title for the application",
     "type": "text",
