@@ -447,23 +447,22 @@ class _SettingsState extends State<Settings> {
             ListTile(
               trailing: Icon(Icons.help),
               title: Text(L10n.of(context).help),
-              onTap: () => launch(
+              onTap: (){} 
+              //=> launch(
                 //TODO: poner url final
-                  'https://gitlab.com/ChristianPauly/fluffychat-flutter/issues'),
+                //  'https://github.com/cottic/enia-virtual/'),
             ),
             ListTile(
               trailing: Icon(Icons.link),
               title: Text(L10n.of(context).license),
               onTap: () => launch(
-                //TODO: poner url final
-                  'https://gitlab.com/ChristianPauly/fluffychat-flutter/raw/master/LICENSE'),
+                  'https://github.com/cottic/enia-virtual/blob/master/LICENSE'),
             ),
             ListTile(
               trailing: Icon(Icons.code),
               title: Text(L10n.of(context).sourceCode),
               onTap: () => launch(
-                //TODO: poner url final
-                  'https://gitlab.com/ChristianPauly/fluffychat-flutter'),
+                  'https://github.com/cottic/enia-virtual'),
             ),
           ],
         ),
