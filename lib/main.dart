@@ -25,12 +25,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Matrix(
-      clientName: 'FluffyChat $platform',
+      clientName: 'ENIA@Virtual $platform',
       child: Builder(
         builder: (BuildContext context) => ThemeSwitcherWidget(
           child: Builder(
             builder: (BuildContext context) => MaterialApp(
-              title: 'FluffyChat',
+              title: 'Asesorias ENIA@Virtual',
               builder: BotToastInit(),
               navigatorObservers: [BotToastNavigatorObserver()],
               theme: ThemeSwitcherWidget.of(context).themeData,
@@ -85,8 +85,8 @@ class App extends StatelessWidget {
                           ),
                           //TODO: No funciona traduccion, fixear.
                           Text(
-                            'Iniciando',
-                            //L10n.of(context).initializing,
+                            'Iniciando...',
+                            //L10n.of(context).loading,
                             style: TextStyle(color: Colors.white),
                           ),
                           SizedBox(
