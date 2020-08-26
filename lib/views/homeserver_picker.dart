@@ -7,6 +7,7 @@ import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/views/login.dart';
 import 'package:fluffychat/views/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 class HomeserverPicker extends StatelessWidget {
   //Not need, because user cannot select a server
@@ -50,10 +51,15 @@ class HomeserverPicker extends StatelessWidget {
             children: <Widget>[
               Hero(
                 tag: 'loginBanner',
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 40.0, vertical: 40.0),
-                  child: Image.asset('assets/logo_enia_1025.png'),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.7,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40.0),
+                    child: Image.asset('assets/logo_enia_1025.png'),
+                  ),
                 ),
               ),
               Padding(
@@ -83,9 +89,9 @@ class HomeserverPicker extends StatelessWidget {
                       //TODO: traducir
                       'INGRESAR',
                       //L10n.of(context).connect.toUpperCase(),
-                      
 
-                      style: TextStyle(color: Theme.of(context).backgroundColor),
+                      style:
+                          TextStyle(color: Theme.of(context).backgroundColor),
                     ),
                     onPressed: () => _checkHomeserverAction(
                         Matrix.defaultHomeserver, context),
@@ -120,7 +126,10 @@ class HomeserverPicker extends StatelessWidget {
                 ),
                 onPressed: () => _setHomeserverAction(context),
               ), */
-              SizedBox(height: 16),
+              SizedBox(
+                height: 16,
+                //height: !kIsWeb ? 16 : 160,
+              ),
             ],
           ),
         ),
