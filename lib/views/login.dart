@@ -142,8 +142,7 @@ class _LoginState extends State<Login> {
                   onChanged: (t) => _checkWellKnownWithCoolDown(t, context),
                   controller: usernameController,
                   decoration: InputDecoration(
-                      hintText:
-                          '@${L10n.of(context).username.toLowerCase()}:domain',
+                      //hintText:'@${L10n.of(context).username.toLowerCase()}:domain',
                       errorText: usernameError,
                       labelText: L10n.of(context).username),
                 ),
