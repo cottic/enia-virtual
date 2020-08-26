@@ -145,12 +145,12 @@ class RespuestaItem {
   String respuesta;
 
   factory RespuestaItem.fromJson(Map<String, dynamic> json) => RespuestaItem(
-        tags: json["tags"],
-        respuesta: json["respuesta"],
+        tags: json['tags'],
+        respuesta: json['respuesta'],
       );
 
   Map<String, dynamic> toJson() => {
-        "tags": tags,
-        "respuesta": respuesta,
+        'tags': tags,
+        'respuesta': respuesta,
       };
 }
