@@ -511,7 +511,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "Empty chat": "Chat vacío",
+  "Empty chat": "Nuevo chat",
   "@Empty chat": {
     "type": "text",
     "placeholders": {}
@@ -566,7 +566,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "FluffyChat": "FluffyChat",
+  "FluffyChat": "ENIA@Virtual",
   "@FluffyChat": {
     "type": "text",
     "placeholders": {}
@@ -1586,6 +1586,11 @@
   },
   "Your own username": "Tu nombre de usuario",
   "@Your own username": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "Loading...": "Iniciando...",
+  "@Loading...": {
     "type": "text",
     "placeholders": {}
   }

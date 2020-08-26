@@ -518,7 +518,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "Empty chat": "Empty chat",
+  "Empty chat": "Nuevo chat",
   "@Empty chat": {
     "type": "text",
     "placeholders": {}
