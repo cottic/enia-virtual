@@ -244,11 +244,10 @@ class _ChatState extends State<_Chat> {
     );
   }
 
-   // TODO: //fix for web
   void frequentMessageAction(BuildContext context) async {
     String result;
-    
-     await showDialog(
+
+    await showDialog(
         context: context,
         builder: (context) => FrequentMessageDialog(
               onFinished: (r) => result = r,
@@ -260,7 +259,8 @@ class _ChatState extends State<_Chat> {
       sendController.text = result;
       // Activates keyboard after text select
       FocusScope.of(context).requestFocus(inputFocus);
-    }; 
+    }
+    ;
   }
 
   String _getSelectedEventString(BuildContext context) {
@@ -731,10 +731,7 @@ class _ChatState extends State<_Chat> {
                                           voiceMessageAction(context);
                                         }
                                         if (choice == 'frequent') {
-                                          if (!kIsWeb) {
-
                                           frequentMessageAction(context);
-                                          }
                                         }
                                       },
                                       itemBuilder: (BuildContext context) =>
@@ -766,21 +763,20 @@ class _ChatState extends State<_Chat> {
                                           ),
                                         ),
                                         PopupMenuItem<String>(
-                                            value: 'frequent',
-                                            child: ListTile(
-                                              leading: CircleAvatar(
-                                                backgroundColor: Colors.amber,
-                                                foregroundColor: Colors.white,
-                                                child: Icon(Icons.textsms),
-                                              ),
-                                              //TODO: Traducir
-                                              title:
-                                                  Text('Mensajes Frecuentes'),
-
-                                              //title: Text(L10n.of(context).voiceMessage),
-                                              contentPadding: EdgeInsets.all(0),
+                                          value: 'frequent',
+                                          child: ListTile(
+                                            leading: CircleAvatar(
+                                              backgroundColor: Colors.amber,
+                                              foregroundColor: Colors.white,
+                                              child: Icon(Icons.textsms),
                                             ),
+                                            //TODO: Traducir
+                                            title: Text('Mensajes Frecuentes'),
+
+                                            //title: Text(L10n.of(context).voiceMessage),
+                                            contentPadding: EdgeInsets.all(0),
                                           ),
+                                        ),
                                         if (!kIsWeb)
                                           PopupMenuItem<String>(
                                             value: 'camera',
@@ -809,7 +805,6 @@ class _ChatState extends State<_Chat> {
                                               contentPadding: EdgeInsets.all(0),
                                             ),
                                           ),
-                                          
                                       ],
                                     ),
                                   ),

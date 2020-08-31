@@ -40,6 +40,21 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
       RespuestaItem(
         tags: '#anticonceptivos #prevencion #preservativo',
         respuesta:
+            'Lorem aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      ),
+      RespuestaItem(
+        tags: '#anticonceptivos #prevencion #preservativo',
+        respuesta:
+            'Lorem ore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      ),
+      RespuestaItem(
+        tags: '#anticonceptivos #prevencion #preservativo',
+        respuesta:
+            'Lorem aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      ),
+      RespuestaItem(
+        tags: '#anticonceptivos #prevencion #preservativo',
+        respuesta:
             'Lorem ore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       )
     ];
@@ -60,8 +75,10 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
     return AlertDialog(
       contentPadding: EdgeInsets.all(8),
       content: Container(
-        height: 400,
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: MediaQuery.of(context).size.height * 0.7,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
           children: <Widget>[
             Container(
               width: double.maxFinite,
@@ -73,8 +90,7 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
-            Container(
-              height: 310,
+            Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   if (index == 0) {
