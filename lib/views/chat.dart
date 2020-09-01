@@ -25,6 +25,7 @@ import 'package:flutter/services.dart';
 import 'package:memoryfilepicker/memoryfilepicker.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
 
 import 'chat_details.dart';
 import 'chat_list.dart';
@@ -191,6 +192,19 @@ class _ChatState extends State<_Chat> {
 
   void sendFileAction(BuildContext context) async {
     var file = await MemoryFilePicker.getFile();
+    if (file == null) return;
+    await SimpleDialogs(context).tryRequestWithLoadingDialog(
+      room.sendFileEvent(
+        MatrixFile(bytes: file.bytes, name: file.path),
+      ),
+    );
+  }
+
+  void sendVideoAction(BuildContext context) async {
+    var file = await MemoryFilePicker.getFile(
+        type: FileType.custom,
+        allowedExtensions: ['mp4', 'FLV', 'SWF', 'mov', 'WMV', '3GP']);
+        
     if (file == null) return;
     await SimpleDialogs(context).tryRequestWithLoadingDialog(
       room.sendFileEvent(
@@ -724,6 +738,9 @@ class _ChatState extends State<_Chat> {
                                         } else if (choice == 'image') {
                                           sendImageAction(context);
                                         }
+                                        if (choice == 'video') {
+                                          sendVideoAction(context);
+                                        }
                                         if (choice == 'camera') {
                                           openCameraAction(context);
                                         }
@@ -777,6 +794,20 @@ class _ChatState extends State<_Chat> {
                                             contentPadding: EdgeInsets.all(0),
                                           ),
                                         ),
+                                        if (!kIsWeb)
+                                          PopupMenuItem<String>(
+                                            value: 'video',
+                                            child: ListTile(
+                                              leading: CircleAvatar(
+                                                backgroundColor: Colors.teal,
+                                                foregroundColor: Colors.white,
+                                                child: Icon(Icons.ondemand_video),
+                                              ),
+                                              title: Text(
+                                                  'Enviar un video'),
+                                              contentPadding: EdgeInsets.all(0),
+                                            ),
+                                          ),
                                         if (!kIsWeb)
                                           PopupMenuItem<String>(
                                             value: 'camera',
