@@ -305,7 +305,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "Close": "Cerrar",
+  "Close": "No",
   "@Close": {
     "type": "text",
     "placeholders": {}
@@ -1429,7 +1429,7 @@
       "username2": {}
     }
   },
-  "Username": "Nombre de usuario",
+  "Username": "Nombre de usuaria/e/o",
   "@Username": {
     "type": "text",
     "placeholders": {}

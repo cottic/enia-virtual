@@ -204,7 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Elija una contraseña segura"),
         "Choose a username":
             MessageLookupByLibrary.simpleMessage("Elija un nombre de usuario"),
-        "Close": MessageLookupByLibrary.simpleMessage("Cerrar"),
+        "Close": MessageLookupByLibrary.simpleMessage("No"),
         "Confirm": MessageLookupByLibrary.simpleMessage("Confirmar"),
         "Connect": MessageLookupByLibrary.simpleMessage("Conectar"),
         "Connection attempt failed": MessageLookupByLibrary.simpleMessage(
@@ -438,7 +438,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dejar de silenciar el chat"),
         "Use Amoled compatible colors?": MessageLookupByLibrary.simpleMessage(
             "¿Usar colores compatibles con AMOLED?"),
-        "Username": MessageLookupByLibrary.simpleMessage("Nombre de usuario"),
+        "Username": MessageLookupByLibrary.simpleMessage("Nombre de usuaria/e/o"),
         "Verify": MessageLookupByLibrary.simpleMessage("Verificar"),
         "Verify User":
             MessageLookupByLibrary.simpleMessage("Verificar usuario"),
