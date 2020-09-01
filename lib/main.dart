@@ -30,7 +30,7 @@ class App extends StatelessWidget {
         builder: (BuildContext context) => ThemeSwitcherWidget(
           child: Builder(
             builder: (BuildContext context) => MaterialApp(
-              title: 'Asesorias ENIA@Virtual',
+              title: 'enia@virtual',
               builder: BotToastInit(),
               navigatorObservers: [BotToastNavigatorObserver()],
               theme: ThemeSwitcherWidget.of(context).themeData,

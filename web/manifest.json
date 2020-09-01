@@ -1,11 +1,11 @@
 {
-    "name": "Asesorias ENIA@Virtual",
-    "short_name": "ENIA@Virtual",
+    "name": "enia@virtual",
+    "short_name": "enia@virtual",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Asesorias ENIA@Virtual",
+    "description": "enia@virtual",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
