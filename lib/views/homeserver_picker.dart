@@ -49,6 +49,8 @@ class HomeserverPicker extends StatelessWidget {
                   max((MediaQuery.of(context).size.width - 600) / 2, 0)),
           child: Column(
             children: <Widget>[
+              Spacer(flex: 1),
+
               Hero(
                 tag: 'loginBanner',
                 child: ConstrainedBox(
@@ -56,23 +58,13 @@ class HomeserverPicker extends StatelessWidget {
                     maxHeight: MediaQuery.of(context).size.height * 0.7,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
                     child: Image.asset('assets/logo_enia_1025.png'),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  //TODO: traducir cuando este el texto final
-                  'Mensaje de bienvendia o algun texto deseado',
-                  //L10n.of(context).welcomeText,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-              ),
-              Spacer(),
+
+              Spacer(flex: 2),
               Hero(
                 tag: 'loginButton',
                 child: Container(
@@ -126,6 +118,7 @@ class HomeserverPicker extends StatelessWidget {
                 ),
                 onPressed: () => _setHomeserverAction(context),
               ), */
+
               SizedBox(
                 height: 16,
                 //height: !kIsWeb ? 16 : 160,
