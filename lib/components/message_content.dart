@@ -1,6 +1,7 @@
 import 'package:famedlysdk/famedlysdk.dart';
 import 'package:fluffychat/components/audio_player.dart';
 import 'package:fluffychat/components/image_bubble.dart';
+import 'package:fluffychat/components/message_video_content.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/event_extension.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class MessageContent extends StatelessWidget {
               color: textColor,
             );
           case MessageTypes.Video:
+            return MessageVideoContent(event, textColor);
           case MessageTypes.File:
             return MessageDownloadContent(event, textColor);
           case MessageTypes.Text:
