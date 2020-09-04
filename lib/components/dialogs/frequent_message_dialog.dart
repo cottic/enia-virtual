@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class FrequentMessageDialog extends StatefulWidget {
   final Function onFinished;
@@ -13,51 +14,14 @@ class FrequentMessageDialog extends StatefulWidget {
 }
 
 class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
-  List<RespuestaItem> respuestasFrecuentes;
 
   bool error = false;
+  Future<List<FrequentMessagesInfo>> respuestasFrecuentes;
 
   @override
   void initState() {
     super.initState();
-    //startRecording();
-    respuestasFrecuentes = [
-      RespuestaItem(
-        tags: '#anticonceptivos #prevencion #preservativo',
-        respuesta:
-            'Lorem aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      ),
-      RespuestaItem(
-        tags: '#anticonceptivos #prevencion #preservativo',
-        respuesta:
-            'Lorem ore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      ),
-      RespuestaItem(
-        tags: '#anticonceptivos #prevencion #preservativo',
-        respuesta:
-            'Lorem aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      ),
-      RespuestaItem(
-        tags: '#anticonceptivos #prevencion #preservativo',
-        respuesta:
-            'Lorem aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      ),
-      RespuestaItem(
-        tags: '#anticonceptivos #prevencion #preservativo',
-        respuesta:
-            'Lorem ore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      ),
-      RespuestaItem(
-        tags: '#anticonceptivos #prevencion #preservativo',
-        respuesta:
-            'Lorem aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      ),
-      RespuestaItem(
-        tags: '#anticonceptivos #prevencion #preservativo',
-        respuesta:
-            'Lorem ore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      )
-    ];
+    respuestasFrecuentes = getFrequentMessagesInfo();
   }
 
   @override
@@ -78,7 +42,7 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
         width: MediaQuery.of(context).size.width * 0.8,
         height: MediaQuery.of(context).size.height * 0.7,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Container(
               width: double.maxFinite,
@@ -90,23 +54,31 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return Column(
-                      children: <Widget>[
-                        _createItemRespuesta(
-                            context, respuestasFrecuentes[index]),
-                      ],
-                    );
-                  } else {
-                    return _createItemRespuesta(
-                        context, respuestasFrecuentes[index]);
-                  }
-                },
-                itemCount: respuestasFrecuentes.length,
-              ),
+            FutureBuilder<List<FrequentMessagesInfo>>(
+              future: respuestasFrecuentes,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Expanded(
+                      child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return Column(
+                          children: <Widget>[
+                            _createItemRespuesta(context, snapshot.data[index]),
+                          ],
+                        );
+                      } else {
+                        return _createItemRespuesta(
+                            context, snapshot.data[index]);
+                      }
+                    },
+                    itemCount: snapshot.data.length,
+                  ));
+                } else if (snapshot.hasError) {
+                  return Text(snapshot.error);
+                }
+                return CircularProgressIndicator();
+              },
             ),
             FlatButton(
               child: Text(
@@ -128,19 +100,20 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
   }
 
   Widget _createItemRespuesta(
-      BuildContext context, RespuestaItem respuestaItem) {
+      BuildContext context, FrequentMessagesInfo respuestaItem) {
     return Card(
-     // color: Colors.blue[200],
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        title: Text(respuestaItem.respuesta),
-        subtitle: Text(
-          respuestaItem.tags,
-          style: Theme.of(context).textTheme.caption,
-          //style:TextStyle(color: Colors.deepPurple, fontStyle: FontStyle.italic),
+        title: Text(
+            respuestaItem.tags,
+            style: Theme.of(context).textTheme.caption.copyWith(color: Theme.of(context).accentColor),
+          ),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top:8.0),
+          child: Text(respuestaItem.content),
         ),
         onTap: () {
-          final result = respuestaItem.respuesta.toString();
+          final result = respuestaItem.content.toString();
           if (widget.onFinished != null) {
             widget.onFinished(result);
           }
@@ -149,24 +122,46 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
       ),
     );
   }
+
+  Future<List<FrequentMessagesInfo>> getFrequentMessagesInfo() async {
+    final response = await http
+        .get('http://proyecto.codigoi.com.ar/appenia/mensajesfrecuentes.json');
+
+    if (response.statusCode == 200) {
+      var _source = Utf8Decoder().convert(response.bodyBytes);
+      List frequentMessageInfo = frequentMessagesInfoFromJson(_source);
+
+      return frequentMessageInfo;
+    } else {
+      throw Exception('Failed to load info');
+    }
+  }
 }
 
-class RespuestaItem {
-  RespuestaItem({
+List<FrequentMessagesInfo> frequentMessagesInfoFromJson(String str) =>
+    List<FrequentMessagesInfo>.from(
+        json.decode(str).map((x) => FrequentMessagesInfo.fromJson(x)));
+
+String frequentMessagesInfoToJson(List<FrequentMessagesInfo> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+class FrequentMessagesInfo {
+  FrequentMessagesInfo({
     this.tags,
-    this.respuesta,
+    this.content,
   });
 
   String tags;
-  String respuesta;
+  String content;
 
-  factory RespuestaItem.fromJson(Map<String, dynamic> json) => RespuestaItem(
+  factory FrequentMessagesInfo.fromJson(Map<String, dynamic> json) =>
+      FrequentMessagesInfo(
         tags: json['tags'],
-        respuesta: json['respuesta'],
+        content: json['content'],
       );
 
   Map<String, dynamic> toJson() => {
         'tags': tags,
-        'respuesta': respuesta,
+        'content': content,
       };
 }
