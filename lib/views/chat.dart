@@ -204,7 +204,7 @@ class _ChatState extends State<_Chat> {
     var file = await MemoryFilePicker.getFile(
         type: FileType.custom,
         allowedExtensions: ['mp4', 'FLV', 'SWF', 'mov', 'WMV', '3GP']);
-        
+
     if (file == null) return;
     await SimpleDialogs(context).tryRequestWithLoadingDialog(
       room.sendFileEvent(
@@ -789,25 +789,22 @@ class _ChatState extends State<_Chat> {
                                             ),
                                             //TODO: Traducir
                                             title: Text('Mensajes Frecuentes'),
-
                                             //title: Text(L10n.of(context).voiceMessage),
                                             contentPadding: EdgeInsets.all(0),
                                           ),
                                         ),
-                                        if (!kIsWeb)
-                                          PopupMenuItem<String>(
-                                            value: 'video',
-                                            child: ListTile(
-                                              leading: CircleAvatar(
-                                                backgroundColor: Colors.teal,
-                                                foregroundColor: Colors.white,
-                                                child: Icon(Icons.ondemand_video),
-                                              ),
-                                              title: Text(
-                                                  'Enviar un video'),
-                                              contentPadding: EdgeInsets.all(0),
+                                        PopupMenuItem<String>(
+                                          value: 'video',
+                                          child: ListTile(
+                                            leading: CircleAvatar(
+                                              backgroundColor: Colors.teal,
+                                              foregroundColor: Colors.white,
+                                              child: Icon(Icons.ondemand_video),
                                             ),
+                                            title: Text('Enviar un video'),
+                                            contentPadding: EdgeInsets.all(0),
                                           ),
+                                        ),
                                         if (!kIsWeb)
                                           PopupMenuItem<String>(
                                             value: 'camera',
@@ -839,11 +836,12 @@ class _ChatState extends State<_Chat> {
                                       ],
                                     ),
                                   ),
-                                Container(
+                                // ENIA dont allow to encrypt conversation in order to audit the program
+                                /* Container(
                                   height: 56,
                                   alignment: Alignment.center,
                                   child: EncryptionButton(room),
-                                ),
+                                ), */
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
