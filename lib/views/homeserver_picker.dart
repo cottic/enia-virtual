@@ -120,8 +120,8 @@ class HomeserverPicker extends StatelessWidget {
               ), */
 
               SizedBox(
-                height: 16,
-                //height: !kIsWeb ? 16 : 160,
+                //TODO: en la version web mobile, el espacio no deberia existir, solo en web desktop
+                height: kIsWeb ? 160 : 16,
               ),
             ],
           ),
