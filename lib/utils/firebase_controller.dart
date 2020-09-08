@@ -20,11 +20,12 @@ abstract class FirebaseController {
   static final FlutterLocalNotificationsPlugin
       _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   static BuildContext context;
-  static const String CHANNEL_ID = 'fluffychat_push';
-  static const String CHANNEL_NAME = 'FluffyChat push channel';
+  static const String CHANNEL_ID = 'plan-enia';
+  static const String CHANNEL_NAME = 'plan ENIA';
   static const String CHANNEL_DESCRIPTION = 'Push notifications for FluffyChat';
-  static const String APP_ID = 'chat.fluffy.fluffychat';
-  static const String GATEWAY_URL = 'https://janian.de:7023/';
+  static const String APP_ID = 'ar.org.cottic.planenia';
+  
+  static const String GATEWAY_URL = 'https://matrix.codigoi.com.ar:7023';
   static const String PUSHER_FORMAT = 'event_id_only';
 
   static Future<void> setupFirebase(
