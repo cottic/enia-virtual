@@ -14,7 +14,6 @@ class FrequentMessageDialog extends StatefulWidget {
 }
 
 class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
-
   bool error = false;
   Future<List<FrequentMessagesInfo>> respuestasFrecuentes;
 
@@ -105,11 +104,14 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         title: Text(
-            respuestaItem.tags,
-            style: Theme.of(context).textTheme.caption.copyWith(color: Theme.of(context).accentColor),
-          ),
+          respuestaItem.tags,
+          style: Theme.of(context)
+              .textTheme
+              .caption
+              .copyWith(color: Theme.of(context).accentColor),
+        ),
         subtitle: Padding(
-          padding: const EdgeInsets.only(top:8.0),
+          padding: const EdgeInsets.only(top: 8.0),
           child: Text(respuestaItem.content),
         ),
         onTap: () {
@@ -128,6 +130,7 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
         .get('http://proyecto.codigoi.com.ar/appenia/mensajesfrecuentes.json');
 
     if (response.statusCode == 200) {
+      print('TRAJO LAS RESPUESTAS ');
       var _source = Utf8Decoder().convert(response.bodyBytes);
       List frequentMessageInfo = frequentMessagesInfoFromJson(_source);
 
