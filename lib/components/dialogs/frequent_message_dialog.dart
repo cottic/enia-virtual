@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class FrequentMessageDialog extends StatefulWidget {
@@ -15,12 +14,34 @@ class FrequentMessageDialog extends StatefulWidget {
 
 class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
   bool error = false;
-  Future<List<FrequentMessagesInfo>> respuestasFrecuentes;
+  List<FrequentMessagesInfo> respuestasFrecuentes;
 
   @override
   void initState() {
     super.initState();
-    respuestasFrecuentes = getFrequentMessagesInfo();
+
+    respuestasFrecuentes = [
+      FrequentMessagesInfo(
+        tags: '#enia #video',
+        content:
+            'Si queres conocer más sobre el plan, mira https://www.youtube.com/watch?v=Gl-Temz2HKA',
+      ),
+      FrequentMessagesInfo(
+        tags: '#mac #anticoncepcion #metodosanticonceptivos',
+        content:
+            'Existen métodos anticonceptivos gratuitos. Así lo establece la ley nacional 25.673. Podés pedirlos en centros de salud y/u hospitales y también se deben entregar gratis a través de obras sociales y prepagas. Hay varias opciones. El mejor método anticonceptivo es el que vos elegís, el que mejor se adapta a tus necesidades y convicciones. El preservativo es el único método que te protege de infecciones de transmisión sexual y el VIH/SIDA.',
+      ),
+      FrequentMessagesInfo(
+        tags: '#AHE  #pastilladeldiadespues',
+        content:
+            'Es un método anticonceptivo que se utiliza después de una relación sexual sin protección: si no usaste otro método anticonceptivo o falló el que estabas usando. También se usa en caso de una violación sexual. Es de emergencia porque es la última opción para prevenir un embarazo. Es menos efectiva que los métodos de uso habitual y sólo protege en esa relación sexual. Es mejor cuanto antes la tomes. Especialmente dentro de las primeras 12 horas. Podés tomarla hasta cinco días después, pero disminuye la efectividad. La anticoncepción de emergencia retrasa la ovulación y espesa el moco cervical uterino. Así evita que se junten el óvulo y el espermatozoide. Si el ovulo y el espermatozoide ya se unieron las pastillas no tienen efecto y el embarazo continúa. Sin ningún daño para el embrión. No son abortivas. Viene en dos presentaciones: de una o dos pastillas. Las podés retirar sola/o o en pareja en hospitales públicos o centros de salud. No tenes que ser mayor de edad. No pueden exigirte ningún requisito. No tiene contraindicaciones y tenés derecho a recibirla todas las veces que la solicites. No protege del VIH/Sida ni de otras infecciones de transmisión sexual. Los anticonceptivos son gratuitos. Así lo establece la ley nacional 25.673. Pedilos en centros de salud y hospitales. También se entregan gratis a través de obras sociales y prepagas.',
+      ),
+      FrequentMessagesInfo(
+        tags: '#derechos #saludadolescentes',
+        content:
+            'Las/os/es adolescentes tienen derecho a ser atendidas/os/es, a recibir información y al respeto de su confidencialidad en el sistema de salud. A partir de los 13 años las/os adolescentes tienen derecho a recibir el método anticonceptivo que elijan aunque no estén acompañados por un mayor de edad. Las personas menores de 13 años tienen derecho a ser escuchadas. A recibir información y asesoramiento. Y acceder a preservativos de manera gratuita. A partir de los 16 años tienen capacidad plena para la toma de decisiones sobre el cuidado del propio cuerpo como personas adultas.',
+      )
+    ];
   }
 
   @override
@@ -53,31 +74,23 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
-            FutureBuilder<List<FrequentMessagesInfo>>(
-              future: respuestasFrecuentes,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Expanded(
-                      child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      if (index == 0) {
-                        return Column(
-                          children: <Widget>[
-                            _createItemRespuesta(context, snapshot.data[index]),
-                          ],
-                        );
-                      } else {
-                        return _createItemRespuesta(
-                            context, snapshot.data[index]);
-                      }
-                    },
-                    itemCount: snapshot.data.length,
-                  ));
-                } else if (snapshot.hasError) {
-                  return Text(snapshot.error);
-                }
-                return CircularProgressIndicator();
-              },
+            Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    return Column(
+                      children: <Widget>[
+                        _createItemRespuesta(
+                            context, respuestasFrecuentes[index]),
+                      ],
+                    );
+                  } else {
+                    return _createItemRespuesta(
+                        context, respuestasFrecuentes[index]);
+                  }
+                },
+                itemCount: respuestasFrecuentes.length,
+              ),
             ),
             FlatButton(
               child: Text(
@@ -123,21 +136,6 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
         },
       ),
     );
-  }
-
-  Future<List<FrequentMessagesInfo>> getFrequentMessagesInfo() async {
-    final response = await http
-        .get('http://proyecto.codigoi.com.ar/appenia/mensajesfrecuentes.json');
-
-    if (response.statusCode == 200) {
-      print('TRAJO LAS RESPUESTAS ');
-      var _source = Utf8Decoder().convert(response.bodyBytes);
-      List frequentMessageInfo = frequentMessagesInfoFromJson(_source);
-
-      return frequentMessageInfo;
-    } else {
-      throw Exception('Failed to load info');
-    }
   }
 }
 
