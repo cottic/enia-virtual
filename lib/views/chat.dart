@@ -767,6 +767,18 @@ class _ChatState extends State<_Chat> {
                                           ),
                                         ),
                                         PopupMenuItem<String>(
+                                          value: 'video',
+                                          child: ListTile(
+                                            leading: CircleAvatar(
+                                              backgroundColor: Colors.teal,
+                                              foregroundColor: Colors.white,
+                                              child: Icon(Icons.ondemand_video),
+                                            ),
+                                            title: Text('Enviar un video'),
+                                            contentPadding: EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        PopupMenuItem<String>(
                                           value: 'image',
                                           child: ListTile(
                                             leading: CircleAvatar(
@@ -793,18 +805,7 @@ class _ChatState extends State<_Chat> {
                                             contentPadding: EdgeInsets.all(0),
                                           ),
                                         ),
-                                        PopupMenuItem<String>(
-                                          value: 'video',
-                                          child: ListTile(
-                                            leading: CircleAvatar(
-                                              backgroundColor: Colors.teal,
-                                              foregroundColor: Colors.white,
-                                              child: Icon(Icons.ondemand_video),
-                                            ),
-                                            title: Text('Enviar un video'),
-                                            contentPadding: EdgeInsets.all(0),
-                                          ),
-                                        ),
+                                        
                                         if (!kIsWeb)
                                           PopupMenuItem<String>(
                                             value: 'camera',
