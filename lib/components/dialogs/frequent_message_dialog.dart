@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/utils/famedlysdk_store.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class FrequentMessageDialog extends StatefulWidget {
@@ -15,18 +15,6 @@ class FrequentMessageDialog extends StatefulWidget {
 
 class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
   bool error = false;
-  Future<List<FrequentMessagesInfo>> respuestasFrecuentes;
-
-  @override
-  void initState() {
-    super.initState();
-    respuestasFrecuentes = getFrequentMessagesInfo();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +42,13 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
               ),
             ),
             FutureBuilder<List<FrequentMessagesInfo>>(
-              future: respuestasFrecuentes,
+              future: getFrequent(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Expanded(
                       child: ListView.builder(
                     itemBuilder: (context, index) {
+                      //return Text(snapshot.data[index].toString());
                       if (index == 0) {
                         return Column(
                           children: <Widget>[
@@ -124,21 +113,6 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
       ),
     );
   }
-
-  Future<List<FrequentMessagesInfo>> getFrequentMessagesInfo() async {
-    final response = await http
-        .get('http://proyecto.codigoi.com.ar/appenia/mensajesfrecuentes.json');
-
-    if (response.statusCode == 200) {
-      print('TRAJO LAS RESPUESTAS ');
-      var _source = Utf8Decoder().convert(response.bodyBytes);
-      List frequentMessageInfo = frequentMessagesInfoFromJson(_source);
-
-      return frequentMessageInfo;
-    } else {
-      throw Exception('Failed to load info');
-    }
-  }
 }
 
 List<FrequentMessagesInfo> frequentMessagesInfoFromJson(String str) =>
@@ -167,4 +141,12 @@ class FrequentMessagesInfo {
         'tags': tags,
         'content': content,
       };
+}
+
+Future<List<FrequentMessagesInfo>> getFrequent() async {
+  String askForFrequentMessages = await Store().getItem('frequentMessagesInfo');
+  List frequentMessageInfo =
+      frequentMessagesInfoFromJson(askForFrequentMessages);
+
+  return frequentMessageInfo;
 }
