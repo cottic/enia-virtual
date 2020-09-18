@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:famedlysdk/famedlysdk.dart';
@@ -7,6 +8,9 @@ import 'package:fluffychat/components/connection_status_header.dart';
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/components/list_items/presence_list_item.dart';
 import 'package:fluffychat/components/list_items/public_room_list_item.dart';
+import 'package:fluffychat/views/enia_menu.dart';
+import 'package:fluffychat/views/files_enia_menu.dart';
+import 'package:fluffychat/views/stats.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
@@ -18,6 +22,7 @@ import '../l10n/l10n.dart';
 import '../utils/app_route.dart';
 import '../utils/url_launcher.dart';
 import 'archive.dart';
+import 'formation_enia_menu.dart';
 import 'homeserver_picker.dart';
 import 'new_group.dart';
 import 'new_private_chat.dart';
@@ -222,6 +227,25 @@ class _ChatListState extends State<ChatList> {
     super.dispose();
   }
 
+  List<Room> chatLinksEnia = [
+    Room(
+      client: Client('dsdssd'),
+      id: 'dsdsdssd',
+    ),
+    Room(
+      client: Client('dsdssd'),
+      roomAccountData: {},
+      id: 'dsdsdssd',
+    ),
+  ];
+
+
+         /*  print(directChats[i].client.accountData.toString()); 
+                                    print(directChats[i].client.clientName.toString());
+                                    print(directChats[i].client.database.toString());
+                                    print(directChats[i].client.accessToken.toString());
+                                    print(directChats[i].client.httpClient.toString());  */
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<LoginState>(
@@ -270,6 +294,47 @@ class _ChatListState extends State<ChatList> {
                                 ),
                                 Divider(height: 1), */
                                 SizedBox(height: 20),
+                                ListTile(
+                                  leading: Icon(Icons.local_library),
+                                  //TODO: poner texto con L10n
+                                  title: Text('Enia@vitual'),
+                                  //title: Text(L10n.of(context).archive),
+                                  onTap: () => _drawerTapAction(
+                                    EniaMenuView(),
+                                  ),
+                                ),
+                                Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.folder),
+                                  //TODO: poner texto con L10n
+                                  title: Text('Documentos'),
+                                  //title: Text(L10n.of(context).archive),
+                                  onTap: () => _drawerTapAction(
+                                    FilesEniaMenuView(),
+                                  ),
+                                ),
+                                Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.school),
+                                  //TODO: poner texto con L10n
+                                  title: Text('Capacitación'),
+                                  //title: Text(L10n.of(context).archive),
+                                  onTap: () => _drawerTapAction(
+                                    FormationEniaMenuView(),
+                                  ),
+                                ),
+                                Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.insert_chart),
+                                  //TODO: poner texto con L10n
+                                  title: Text('Estadisticas'),
+                                  //title: Text(L10n.of(context).archive),
+                                  onTap: () => _drawerTapAction(
+                                    Stats(),
+                                  ),
+                                ),
+                                Divider(height: 1),
+                                
                                 ListTile(
                                   leading: Icon(Icons.archive),
                                   //TODO: poner texto con L10n
@@ -400,12 +465,33 @@ class _ChatListState extends State<ChatList> {
                                   ),
                                 );
                               }
+                              /* List getDirectChatandLinks(List rooms) {
+                                chatLinksEnia =
+                                    rooms.where((r) => r.isDirectChat).toList();
+                                chatLinksEnia.addAll(chatLinksEnia);
+                                return chatLinksEnia;
+                              } */
+
                               final publicRoomsCount =
                                   (publicRoomsResponse?.chunk?.length ?? 0);
                               final totalCount =
                                   rooms.length + publicRoomsCount;
-                              final directChats =
+                                  final directChats =
                                   rooms.where((r) => r.isDirectChat).toList();
+                              /* final directChats =
+                                  rooms.where((r) => r.isDirectChat).toList() +
+                                      chatLinksEnia; */
+
+                              /* directChats.add(
+                                Room(
+                                  client: Client('dsdssd'),
+                                  id: 'dsdsdssd',
+                                ),
+                              ); */
+                               final listChatLinksENIA = chatLinksEnia;
+                             /* print('directChats');
+                              print(directChats.elementAt(0).toString()); */
+
                               final presences =
                                   Matrix.of(context).client.presences;
                               directChats.sort((a, b) =>
@@ -435,16 +521,63 @@ class _ChatListState extends State<ChatList> {
                                           : Container(),
                                   itemCount: totalCount + 1,
                                   itemBuilder: (BuildContext context, int i) {
+                                   /*  print('directChats[i]');
+                                    
+                                    print(directChats[i].client.accountData.toString()); 
+                                    print(directChats[i].roomAccountData.toString()); 
+
+                                    print(directChats[i].client.clientName.toString());
+                                    print(directChats[i].client.database.toString());
+                                    print(directChats[i].client.accessToken.toString());
+                                    print(directChats[i].client.httpClient.toString()); 
+                                    print('rooms');
+                                    print(rooms[0].client.toString()); 
+                                    print(rooms[i].id.toString()); 
+                                    print(rooms[0].roomAccountData.toString());  */
+                                    
+
+
+                                   // print(json.decode(directChats[0].toString()));
+                                    
+                                   // print(snapshot.data);
+                                    
                                     if (i == 0) {
                                       return Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           ConnectionStatusHeader(),
+                                          /* (listChatLinksENIA.isEmpty ||
+                                                  selectMode ==
+                                                      SelectMode.share)
+                                              ? Container()
+                                              //This shows added contacts on chat
+                                              // Esto muestra los contactos arriba del listado de chats
+                                              : PreferredSize(
+                                                  preferredSize:
+                                                      Size.fromHeight(90),
+                                                  child: Container(
+                                                    height: 82,
+                                                    child: ListView.builder(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemCount:
+                                                          listChatLinksENIA.length,
+                                                      itemBuilder: (BuildContext
+                                                                  context,
+                                                              int i) =>
+                                                          PresenceListItem(
+                                                              listChatLinksENIA[i]),
+                                                    ),
+                                                  ),
+                                                ),  */
+
+
                                           (directChats.isEmpty ||
                                                   selectMode ==
                                                       SelectMode.share)
                                               ? Container()
                                               //This shows added contacts on chat
+                                              // Esto muestra los contactos arriba del listado de chats
                                               : PreferredSize(
                                                   preferredSize:
                                                       Size.fromHeight(90),
@@ -463,6 +596,7 @@ class _ChatListState extends State<ChatList> {
                                                     ),
                                                   ),
                                                 ),
+                                           
                                         ],
                                       );
                                     }
