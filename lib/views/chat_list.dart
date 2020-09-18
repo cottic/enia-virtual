@@ -295,9 +295,9 @@ class _ChatListState extends State<ChatList> {
                                 Divider(height: 1), */
                                 SizedBox(height: 20),
                                 ListTile(
-                                  leading: Icon(Icons.local_library),
+                                  leading: Image.asset('assets/logoSoloFondo.png', width: 22,  ),
                                   //TODO: poner texto con L10n
-                                  title: Text('Enia@vitual'),
+                                  title: Text('enia@virtual'),
                                   //title: Text(L10n.of(context).archive),
                                   onTap: () => _drawerTapAction(
                                     EniaMenuView(),
