@@ -18,14 +18,16 @@ import 'avatar.dart';
 import '../views/key_verification.dart';
 import '../utils/app_route.dart';
 
-
 class Matrix extends StatefulWidget {
   static const String callNamespace = 'chat.fluffy.jitsi_call';
 
   // Here you set the Matrix server of the Chat
   static const String defaultHomeserver = 'matrix.codigoi.com.ar';
 
-  static const String getFrequentMessagesHttp = 'http://proyecto.codigoi.com.ar/appenia/mensajesfrecuentes.json';
+  static const String getFrequentMessagesHttp =
+      'https://proyecto.codigoi.com.ar/appenia/mensajesfrecuentes.json';
+      
+
 
   final Widget child;
 
@@ -56,6 +58,8 @@ class MatrixState extends State<Matrix> {
   @override
   BuildContext context;
 
+  
+
   Map<String, dynamic> get shareContent => _shareContent;
   set shareContent(Map<String, dynamic> content) {
     _shareContent = content;
@@ -73,8 +77,6 @@ class MatrixState extends State<Matrix> {
 
   // ENIA Variables
 
-  
-
   String jitsiInstance = 'https://meet.jit.si/';
 
   void clean() async {
@@ -90,13 +92,15 @@ class MatrixState extends State<Matrix> {
     client.database = await getDatabase(client);
 
     // Get the frequent messages for Plan ENIA
-    var frequentMessagesFromApi = await client.getFrequentMessagesInfo(Matrix.getFrequentMessagesHttp);
-    
+    var frequentMessagesFromApi =
+        await client.getFrequentMessagesInfo(Matrix.getFrequentMessagesHttp);
+
     // Store the frequent messages for Plan ENIA in Local Storage
     await Store()
         .setItem('frequentMessagesInfo', jsonEncode(frequentMessagesFromApi));
 
     client.connect();
+
     if (await initLoginState == LoginState.logged && !kIsWeb) {
       await FirebaseController.setupFirebase(
         this,
@@ -329,5 +333,3 @@ class _InheritedMatrix extends InheritedWidget {
     return update;
   }
 }
-
-
