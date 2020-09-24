@@ -485,18 +485,25 @@ class _ChatListState extends State<ChatList> {
                             if (snapshot.hasData) {
                               var rooms = List<Room>.from(
                                   Matrix.of(context).client.rooms);
+
                               rooms.removeWhere((Room room) =>
                                   room.lastEvent == null ||
                                   (searchMode &&
                                       !room.displayname.toLowerCase().contains(
                                           searchController.text.toLowerCase() ??
                                               '')));
-                              /* //This allows to search in listGrupoENia
-                              listaGrupoENia.removeWhere((user) =>
+                              //This allows to search in listGrupoENia
+                              var mainGroupContacts =
+                                  List<User>.from(mainGroupList);
+
+                              mainGroupContacts.removeWhere((User item) =>
                                   (searchMode &&
-                                      !user.displayName.toLowerCase().contains(
-                                          searchController.text.toLowerCase() ??
-                                              ''))); */
+                                      !item.displayName
+                                          .toString()
+                                          .toLowerCase()
+                                          .contains(searchController.text
+                                                  .toLowerCase() ??
+                                              '')));
 
                               if (rooms.isEmpty &&
                                   (!searchMode ||
@@ -584,7 +591,7 @@ class _ChatListState extends State<ChatList> {
                                               ),
                                             ],
                                           ),
-                                          (mainGroupList.isEmpty ||
+                                          (mainGroupContacts.isEmpty ||
                                                   selectMode ==
                                                       SelectMode.share)
                                               ? Container()
@@ -597,12 +604,14 @@ class _ChatListState extends State<ChatList> {
                                                       scrollDirection:
                                                           Axis.horizontal,
                                                       itemCount:
-                                                          mainGroupList.length,
+                                                          mainGroupContacts
+                                                              .length,
                                                       itemBuilder: (BuildContext
                                                                   context,
                                                               int i) =>
                                                           EniaPresenceListItem(
-                                                              mainGroupList[i]),
+                                                              mainGroupContacts[
+                                                                  i]),
                                                     ),
                                                   ),
                                                 ),
