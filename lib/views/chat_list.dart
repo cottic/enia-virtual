@@ -6,8 +6,9 @@ import 'package:famedlysdk/famedlysdk.dart';
 import 'package:famedlysdk/matrix_api.dart';
 import 'package:fluffychat/components/connection_status_header.dart';
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
-import 'package:fluffychat/components/list_items/presence_list_item.dart';
+import 'package:fluffychat/components/list_items/enia_presence_list_item.dart';
 import 'package:fluffychat/components/list_items/public_room_list_item.dart';
+import 'package:fluffychat/views/chat.dart';
 import 'package:fluffychat/views/enia_menu.dart';
 import 'package:fluffychat/views/files_enia_menu.dart';
 import 'package:fluffychat/views/stats.dart';
@@ -63,10 +64,21 @@ class _ChatListState extends State<ChatList> {
   bool loadingPublicRooms = false;
   String searchServer;
 
+  List<User> listaGrupoENia;
+
   final ScrollController _scrollController = ScrollController();
 
   Future<void> waitForFirstSync(BuildContext context) async {
     var client = Matrix.of(context).client;
+
+    final roomENIA = await client.getRoomById(Matrix.mainGroup);
+
+    List participantsMainGroup = await roomENIA.requestParticipants();
+
+    listaGrupoENia = participantsMainGroup
+        .where((user) => user.id != client.userID)
+        .toList();
+
     if (client.prevBatch?.isEmpty ?? true) {
       await client.onFirstSync.stream.first;
     }
@@ -217,6 +229,49 @@ class _ChatListState extends State<ChatList> {
     );
   }
 
+  void createRoomFromLink(BuildContext context, String linkRoomId) async {
+    final matrix = Matrix.of(context);
+
+    /* final user = User(
+      '@' + userToAdd + ':matrix.codigoi.com.ar',
+      room: Room(id: '', client: matrix.client),
+    );
+    final String roomID = await SimpleDialogs(context)
+        .tryRequestWithLoadingDialog(user.startDirectChat()); */
+
+    //asesor 1
+    // final roomID = '!AQrUGRshYEMcsMOysZ:matrix.codigoi.com.ar';
+
+    //ENIA
+    //final roomID = '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar';
+
+    //Eugneia Adolescente 2
+    // final roomID = '!HUkIrSJsZwSSSDUbhD:matrix.codigoi.com.ar';
+
+    //Victoria Adolescente 1
+    //final roomID = '!EJOLABjfUsFDLIEhLF:matrix.codigoi.com.ar';
+
+    //SALTA
+    //final roomID = '!hDRSwvGOzbWxSaBckL:matrix.codigoi.com.ar';
+
+    //Asesor 2
+    // final roomID = '!EFpaaQkUzRDyLmhSdM:matrix.codigoi.com.ar';
+
+    //Juanma
+    //final roomID = '!URqoQQYUfuXBSGvMaW:matrix.codigoi.com.ar';
+
+    var roomID = linkRoomId;
+
+    if (roomID != null) {
+      await Navigator.of(context).push(
+        AppRoute.defaultRoute(
+          context,
+          ChatView(roomID),
+        ),
+      );
+    }
+  }
+
   @override
   void dispose() {
     searchController.removeListener(
@@ -226,25 +281,6 @@ class _ChatListState extends State<ChatList> {
     _intentFileStreamSubscription?.cancel();
     super.dispose();
   }
-
-  List<Room> chatLinksEnia = [
-    Room(
-      client: Client('dsdssd'),
-      id: 'dsdsdssd',
-    ),
-    Room(
-      client: Client('dsdssd'),
-      roomAccountData: {},
-      id: 'dsdsdssd',
-    ),
-  ];
-
-
-         /*  print(directChats[i].client.accountData.toString()); 
-                                    print(directChats[i].client.clientName.toString());
-                                    print(directChats[i].client.database.toString());
-                                    print(directChats[i].client.accessToken.toString());
-                                    print(directChats[i].client.httpClient.toString());  */
 
   @override
   Widget build(BuildContext context) {
@@ -295,7 +331,10 @@ class _ChatListState extends State<ChatList> {
                                 Divider(height: 1), */
                                 SizedBox(height: 20),
                                 ListTile(
-                                  leading: Image.asset('assets/logoSoloFondo.png', width: 22,  ),
+                                  leading: Image.asset(
+                                    'assets/logoSoloFondo.png',
+                                    width: 22,
+                                  ),
                                   //TODO: poner texto con L10n
                                   title: Text('enia@virtual'),
                                   //title: Text(L10n.of(context).archive),
@@ -334,7 +373,7 @@ class _ChatListState extends State<ChatList> {
                                   ),
                                 ),
                                 Divider(height: 1),
-                                
+
                                 ListTile(
                                   leading: Icon(Icons.archive),
                                   //TODO: poner texto con L10n
@@ -443,6 +482,13 @@ class _ChatListState extends State<ChatList> {
                                       !room.displayname.toLowerCase().contains(
                                           searchController.text.toLowerCase() ??
                                               '')));
+                              //This allows to search in listGrupoENia
+                              listaGrupoENia.removeWhere((user) =>
+                                  (searchMode &&
+                                      !user.displayName.toLowerCase().contains(
+                                          searchController.text.toLowerCase() ??
+                                              '')));
+
                               if (rooms.isEmpty &&
                                   (!searchMode ||
                                       publicRoomsResponse == null)) {
@@ -465,32 +511,13 @@ class _ChatListState extends State<ChatList> {
                                   ),
                                 );
                               }
-                              /* List getDirectChatandLinks(List rooms) {
-                                chatLinksEnia =
-                                    rooms.where((r) => r.isDirectChat).toList();
-                                chatLinksEnia.addAll(chatLinksEnia);
-                                return chatLinksEnia;
-                              } */
 
                               final publicRoomsCount =
                                   (publicRoomsResponse?.chunk?.length ?? 0);
                               final totalCount =
                                   rooms.length + publicRoomsCount;
-                                  final directChats =
+                              final directChats =
                                   rooms.where((r) => r.isDirectChat).toList();
-                              /* final directChats =
-                                  rooms.where((r) => r.isDirectChat).toList() +
-                                      chatLinksEnia; */
-
-                              /* directChats.add(
-                                Room(
-                                  client: Client('dsdssd'),
-                                  id: 'dsdsdssd',
-                                ),
-                              ); */
-                               final listChatLinksENIA = chatLinksEnia;
-                             /* print('directChats');
-                              print(directChats.elementAt(0).toString()); */
 
                               final presences =
                                   Matrix.of(context).client.presences;
@@ -502,6 +529,7 @@ class _ChatListState extends State<ChatList> {
                                       ? 1
                                       : b.lastEvent.originServerTs.compareTo(
                                           a.lastEvent.originServerTs));
+
                               return ListView.separated(
                                   controller: _scrollController,
                                   separatorBuilder: (BuildContext context,
@@ -521,58 +549,55 @@ class _ChatListState extends State<ChatList> {
                                           : Container(),
                                   itemCount: totalCount + 1,
                                   itemBuilder: (BuildContext context, int i) {
-                                   /*  print('directChats[i]');
-                                    
-                                    print(directChats[i].client.accountData.toString()); 
-                                    print(directChats[i].roomAccountData.toString()); 
-
-                                    print(directChats[i].client.clientName.toString());
-                                    print(directChats[i].client.database.toString());
-                                    print(directChats[i].client.accessToken.toString());
-                                    print(directChats[i].client.httpClient.toString()); 
-                                    print('rooms');
-                                    print(rooms[0].client.toString()); 
-                                    print(rooms[i].id.toString()); 
-                                    print(rooms[0].roomAccountData.toString());  */
-                                    
-
-
-                                   // print(json.decode(directChats[0].toString()));
-                                    
-                                   // print(snapshot.data);
-                                    
                                     if (i == 0) {
                                       return Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          ConnectionStatusHeader(),
-                                          /* (listChatLinksENIA.isEmpty ||
-                                                  selectMode ==
-                                                      SelectMode.share)
-                                              ? Container()
-                                              //This shows added contacts on chat
-                                              // Esto muestra los contactos arriba del listado de chats
-                                              : PreferredSize(
+                                          ConnectionStatusHeader(),                                        
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              RaisedButton(
+                                                child: Text('ENIA'),
+                                                onPressed: () {
+                                                  createRoomFromLink(context,
+                                                      '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar');
+                                                },
+                                              ),
+                                              RaisedButton(
+                                                child: Text('AYUDA'),
+                                                onPressed: () {
+                                                  createRoomFromLink(context,
+                                                      '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar');
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                          listaGrupoENia != null
+                                              ? PreferredSize(
                                                   preferredSize:
                                                       Size.fromHeight(90),
                                                   child: Container(
-                                                    height: 82,
+                                                    height: 84,
                                                     child: ListView.builder(
                                                       scrollDirection:
                                                           Axis.horizontal,
                                                       itemCount:
-                                                          listChatLinksENIA.length,
+                                                          listaGrupoENia.length,
                                                       itemBuilder: (BuildContext
                                                                   context,
                                                               int i) =>
-                                                          PresenceListItem(
-                                                              listChatLinksENIA[i]),
+                                                          EniaPresenceListItem(
+                                                              listaGrupoENia[
+                                                                  i]),
                                                     ),
                                                   ),
-                                                ),  */
+                                                )
+                                              : Container(),                                     
 
-
-                                          (directChats.isEmpty ||
+                                          // Is direct is not displayed on ENIA APP
+                                          /*  (directChats.isEmpty ||
                                                   selectMode ==
                                                       SelectMode.share)
                                               ? Container()
@@ -582,7 +607,7 @@ class _ChatListState extends State<ChatList> {
                                                   preferredSize:
                                                       Size.fromHeight(90),
                                                   child: Container(
-                                                    height: 82,
+                                                    height: 84,
                                                     child: ListView.builder(
                                                       scrollDirection:
                                                           Axis.horizontal,
@@ -595,8 +620,7 @@ class _ChatListState extends State<ChatList> {
                                                               directChats[i]),
                                                     ),
                                                   ),
-                                                ),
-                                           
+                                                ), */
                                         ],
                                       );
                                     }

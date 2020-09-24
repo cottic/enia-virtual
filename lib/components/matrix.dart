@@ -27,7 +27,8 @@ class Matrix extends StatefulWidget {
   static const String getFrequentMessagesHttp =
       'https://proyecto.codigoi.com.ar/appenia/mensajesfrecuentes.json';
       
-
+  static const String mainGroup = '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar';
+  
 
   final Widget child;
 
