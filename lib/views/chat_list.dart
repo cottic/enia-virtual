@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:famedlysdk/famedlysdk.dart';
@@ -64,20 +63,16 @@ class _ChatListState extends State<ChatList> {
   bool loadingPublicRooms = false;
   String searchServer;
 
-  List<User> listaGrupoENia;
+  List<User> mainGroupList;
 
   final ScrollController _scrollController = ScrollController();
 
   Future<void> waitForFirstSync(BuildContext context) async {
     var client = Matrix.of(context).client;
 
-    final roomENIA = await client.getRoomById(Matrix.mainGroup);
-
-    List participantsMainGroup = await roomENIA.requestParticipants();
-
-    listaGrupoENia = participantsMainGroup
-        .where((user) => user.id != client.userID)
-        .toList();
+    if (mainGroupList == null || mainGroupList.isEmpty) {
+      await getMainGroup();
+    }
 
     if (client.prevBatch?.isEmpty ?? true) {
       await client.onFirstSync.stream.first;
@@ -86,6 +81,20 @@ class _ChatListState extends State<ChatList> {
   }
 
   bool _scrolledToTop = true;
+
+  Future getMainGroup() async {
+    var client = Matrix.of(context).client;
+
+    final roomENIA = await client.getRoomById(Matrix.mainGroup);
+
+    List participantsMainGroup = await roomENIA.requestParticipants();
+
+    var filteredMainGroupList = participantsMainGroup
+        .where((user) => user.id != client.userID)
+        .toList();
+
+    setState(() => mainGroupList = filteredMainGroupList);
+  }
 
   @override
   void initState() {
@@ -482,12 +491,12 @@ class _ChatListState extends State<ChatList> {
                                       !room.displayname.toLowerCase().contains(
                                           searchController.text.toLowerCase() ??
                                               '')));
-                              //This allows to search in listGrupoENia
+                              /* //This allows to search in listGrupoENia
                               listaGrupoENia.removeWhere((user) =>
                                   (searchMode &&
                                       !user.displayName.toLowerCase().contains(
                                           searchController.text.toLowerCase() ??
-                                              '')));
+                                              ''))); */
 
                               if (rooms.isEmpty &&
                                   (!searchMode ||
@@ -516,11 +525,12 @@ class _ChatListState extends State<ChatList> {
                                   (publicRoomsResponse?.chunk?.length ?? 0);
                               final totalCount =
                                   rooms.length + publicRoomsCount;
-                              final directChats =
+                              /* final directChats =
                                   rooms.where((r) => r.isDirectChat).toList();
 
                               final presences =
                                   Matrix.of(context).client.presences;
+                                  
                               directChats.sort((a, b) =>
                                   presences[b.directChatMatrixID]
                                               ?.presence
@@ -528,7 +538,7 @@ class _ChatListState extends State<ChatList> {
                                           null
                                       ? 1
                                       : b.lastEvent.originServerTs.compareTo(
-                                          a.lastEvent.originServerTs));
+                                          a.lastEvent.originServerTs)); */
 
                               return ListView.separated(
                                   controller: _scrollController,
@@ -553,7 +563,7 @@ class _ChatListState extends State<ChatList> {
                                       return Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          ConnectionStatusHeader(),                                        
+                                          ConnectionStatusHeader(),
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
@@ -574,8 +584,11 @@ class _ChatListState extends State<ChatList> {
                                               ),
                                             ],
                                           ),
-                                          listaGrupoENia != null
-                                              ? PreferredSize(
+                                          (mainGroupList.isEmpty ||
+                                                  selectMode ==
+                                                      SelectMode.share)
+                                              ? Container()
+                                              : PreferredSize(
                                                   preferredSize:
                                                       Size.fromHeight(90),
                                                   child: Container(
@@ -584,17 +597,15 @@ class _ChatListState extends State<ChatList> {
                                                       scrollDirection:
                                                           Axis.horizontal,
                                                       itemCount:
-                                                          listaGrupoENia.length,
+                                                          mainGroupList.length,
                                                       itemBuilder: (BuildContext
                                                                   context,
                                                               int i) =>
                                                           EniaPresenceListItem(
-                                                              listaGrupoENia[
-                                                                  i]),
+                                                              mainGroupList[i]),
                                                     ),
                                                   ),
-                                                )
-                                              : Container(),                                     
+                                                ),
 
                                           // Is direct is not displayed on ENIA APP
                                           /*  (directChats.isEmpty ||
