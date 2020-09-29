@@ -6,6 +6,7 @@ import 'package:famedlysdk/matrix_api.dart';
 import 'package:fluffychat/components/connection_status_header.dart';
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/components/list_items/enia_presence_list_item.dart';
+import 'package:fluffychat/components/list_items/private_room_list_item.dart';
 import 'package:fluffychat/components/list_items/public_room_list_item.dart';
 import 'package:fluffychat/views/chat.dart';
 import 'package:fluffychat/views/enia_menu.dart';
@@ -63,16 +64,19 @@ class _ChatListState extends State<ChatList> {
   bool loadingPublicRooms = false;
   String searchServer;
 
+  Room linkMainRoom;
+  Room secondLinkRoom;
+
   List<User> mainGroupList;
 
   final ScrollController _scrollController = ScrollController();
 
   Future<void> waitForFirstSync(BuildContext context) async {
-    var client = Matrix.of(context).client;
-
     if (mainGroupList == null || mainGroupList.isEmpty) {
+      //await getSecondGroup();
       await getMainGroup();
     }
+    var client = Matrix.of(context).client;
 
     if (client.prevBatch?.isEmpty ?? true) {
       await client.onFirstSync.stream.first;
@@ -82,19 +86,135 @@ class _ChatListState extends State<ChatList> {
 
   bool _scrolledToTop = true;
 
-  Future getMainGroup() async {
+  void getMainGroup() async {
     var client = Matrix.of(context).client;
 
-    final roomENIA = await client.getRoomById(Matrix.mainGroup);
+    List roomsJoined = await client.requestJoinedRooms();
 
-    List participantsMainGroup = await roomENIA.requestParticipants();
+    //print(roomsJoined.toString());
 
-    var filteredMainGroupList = participantsMainGroup
-        .where((user) => user.id != client.userID)
+    var isMainGroupOnRooms = roomsJoined.contains(Matrix.mainGroup);
+
+    //print(isMainGroupOnRooms);
+
+    if (isMainGroupOnRooms) {
+      //print('QUISO TRAER LISTA');
+      linkMainRoom = await client.getRoomById(Matrix.mainGroup);
+
+      List participantsMainGroup = await linkMainRoom.requestParticipants();
+
+      if (participantsMainGroup.isNotEmpty) {
+        var filteredMainGroupList = participantsMainGroup
+            .where((user) => user.id != client.userID)
+            .toList();
+
+        setState(() => mainGroupList = filteredMainGroupList);
+      }
+    } else {
+      //print('SET STATE NULL');
+      setState(() => mainGroupList = null);
+    }
+  }
+
+  /* Future getSecondGroup() async {
+    var client = Matrix.of(context).client;
+
+    List roomsJoined = await client.requestJoinedRooms();
+
+    var isGroupOnRooms = roomsJoined.contains(Matrix.secondGroup);
+
+    if (isGroupOnRooms) {
+      secondLinkRoom = await client.getRoomById(Matrix.secondGroup);
+
+      List participantsSecondGroup = await secondLinkRoom.requestParticipants();
+
+      if (participantsSecondGroup.isNotEmpty) {
+       /*  var filteredSecondGroupList = participantsSecondGroup
+            .where((user) => user.id == Matrix.secondGroup)
+            .toList(); */
+
+        print(participantsSecondGroup.elementAt(0).id.toString());
+
+        print('ESTA EN FILTRO');
+
+        //print(filteredSecondGroupList.elementAt(0).toString());
+        //setState(() => mainGroupList.addAll(filteredSecondGroupList));
+      }
+
+      print(secondLinkRoom.displayname.toString());
+
+      print('ESTA EN AYUDA');
+    }
+    return null;
+  } */
+
+/*   Future getFirstEniaLink() async {
+    var client = Matrix.of(context).client;
+
+    final roomSalta = await client.getRoomById(Matrix.mainGroup);
+
+    setState(() => mainGroupList.insert(0, roomSalta));
+
+  } */
+
+  /* Future getConditionalGroup() async {
+    var client = Matrix.of(context).client;
+
+    final roomMainGroup = await client.getRoomById(Matrix.mainGroup);
+
+    List participantsMainGroup = await roomMainGroup.requestParticipants();
+
+    var rooms = List<Room>.from(Matrix.of(context).client.rooms);
+
+    List<User> isInMainGruop = participantsMainGroup
+        .where((user) => user.id == client.userID)
         .toList();
 
-    setState(() => mainGroupList = filteredMainGroupList);
-  }
+    if (isInMainGruop.isNotEmpty) {
+      print('Esta en Salta');
+      print(isInMainGruop[0].displayName.toString());
+
+      // Aca tengo que poner ID de salta config
+      final roomSaltaConfig = await client.getRoomById(Matrix.mainGroup);
+
+      List participantsSaltaGroupConfig =
+          await roomSaltaConfig.requestParticipants();
+
+      List<User> configListSalta = participantsSaltaGroupConfig
+          .where((user) => user.id == client.userID)
+          .toList();
+
+      setState(() => mainGroupList.insertAll(0, configListSalta));
+    }
+
+    /* final roomMendoza = await client.getRoomById(Matrix.mainGroup);
+
+    List participantsMendozaGroup = await roomMendoza.requestParticipants();
+
+    List<User> isInMendozaGruop = participantsMendozaGroup
+        .where((user) => user.id == client.userID)
+        .toList();
+
+    if (isInMendozaGruop.isNotEmpty) {
+      print('Esta en Mendoza');
+      print(isInMendozaGruop[0].displayName.toString());
+      setState(() => mainGroupList.insertAll(0, isInMendozaGruop));
+    }
+
+    final roomTucuman = await client.getRoomById(Matrix.mainGroup);
+
+    List participantsTucumanGroup = await roomTucuman.requestParticipants();
+
+    List<User> isInTucumanGruop = participantsTucumanGroup
+        .where((user) => user.id == client.userID)
+        .toList();
+
+    if (isInTucumanGruop.isNotEmpty) {
+      print('Esta en Tucuman');
+      print(isInTucumanGruop[0].displayName.toString());
+      setState(() => mainGroupList.insertAll(0, isInTucumanGruop));
+    } */
+  } */
 
   @override
   void initState() {
@@ -238,7 +358,7 @@ class _ChatListState extends State<ChatList> {
     );
   }
 
-  void createRoomFromLink(BuildContext context, String linkRoomId) async {
+  /* void createRoomFromLink(BuildContext context, String linkRoomId) async {
     final matrix = Matrix.of(context);
 
     /* final user = User(
@@ -279,7 +399,7 @@ class _ChatListState extends State<ChatList> {
         ),
       );
     }
-  }
+  } */
 
   @override
   void dispose() {
@@ -492,18 +612,19 @@ class _ChatListState extends State<ChatList> {
                                       !room.displayname.toLowerCase().contains(
                                           searchController.text.toLowerCase() ??
                                               '')));
-                              //This allows to search in listGrupoENia
-                              var mainGroupContacts =
-                                  List<User>.from(mainGroupList);
 
-                              mainGroupContacts.removeWhere((User item) =>
-                                  (searchMode &&
-                                      !item.displayName
-                                          .toString()
-                                          .toLowerCase()
-                                          .contains(searchController.text
-                                                  .toLowerCase() ??
-                                              '')));
+                              //This allows to search in listGrupoENia
+                              if (mainGroupList != null &&
+                                  mainGroupList.isNotEmpty) {
+                                mainGroupList.removeWhere((User item) =>
+                                    (searchMode &&
+                                        !item.displayName
+                                            .toString()
+                                            .toLowerCase()
+                                            .contains(searchController.text
+                                                    .toLowerCase() ??
+                                                '')));
+                              }
 
                               if (rooms.isEmpty &&
                                   (!searchMode ||
@@ -532,12 +653,12 @@ class _ChatListState extends State<ChatList> {
                                   (publicRoomsResponse?.chunk?.length ?? 0);
                               final totalCount =
                                   rooms.length + publicRoomsCount;
-                              /* final directChats =
+                              /*  final directChats =
                                   rooms.where((r) => r.isDirectChat).toList();
 
                               final presences =
                                   Matrix.of(context).client.presences;
-                                  
+
                               directChats.sort((a, b) =>
                                   presences[b.directChatMatrixID]
                                               ?.presence
@@ -571,7 +692,7 @@ class _ChatListState extends State<ChatList> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           ConnectionStatusHeader(),
-                                          Row(
+                                          /* Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
                                             children: [
@@ -590,8 +711,8 @@ class _ChatListState extends State<ChatList> {
                                                 },
                                               ),
                                             ],
-                                          ),
-                                          (mainGroupContacts.isEmpty ||
+                                          ), */
+                                          (mainGroupList == null ||
                                                   selectMode ==
                                                       SelectMode.share)
                                               ? Container()
@@ -601,18 +722,45 @@ class _ChatListState extends State<ChatList> {
                                                   child: Container(
                                                     height: 84,
                                                     child: ListView.builder(
-                                                      scrollDirection:
-                                                          Axis.horizontal,
-                                                      itemCount:
-                                                          mainGroupContacts
-                                                              .length,
-                                                      itemBuilder: (BuildContext
-                                                                  context,
-                                                              int i) =>
-                                                          EniaPresenceListItem(
-                                                              mainGroupContacts[
-                                                                  i]),
-                                                    ),
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        itemCount: mainGroupList
+                                                            .length,
+                                                        itemBuilder:
+                                                            (BuildContext
+                                                                    context,
+                                                                int i) {
+                                                          if (i == 0) {
+                                                            return Row(
+                                                              children: <
+                                                                  Widget>[
+                                                                Container(
+                                                                  child: PrivateRoomListItem(
+                                                                      linkMainRoom),
+                                                                ),
+                                                                // Avatar(linkMainRoom.avatar, linkMainRoom.displayname),
+
+                                                                /* FlatButton(
+                                                                  child: Text(
+                                                                      'AYUDA'),
+                                                                  onPressed:
+                                                                      () {
+                                                                    createRoomFromLink(
+                                                                        context,
+                                                                        '!POwBopuroioZAsSpNy:matrix.codigoi.com.ar');
+                                                                  },
+                                                                ), */
+                                                                EniaPresenceListItem(
+                                                                    mainGroupList[
+                                                                        i]),
+                                                              ],
+                                                            );
+                                                          } else {
+                                                            return EniaPresenceListItem(
+                                                                mainGroupList[
+                                                                    i]);
+                                                          }
+                                                        }),
                                                   ),
                                                 ),
 
