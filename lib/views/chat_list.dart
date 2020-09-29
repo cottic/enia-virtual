@@ -11,7 +11,7 @@ import 'package:fluffychat/components/list_items/public_room_list_item.dart';
 import 'package:fluffychat/views/chat.dart';
 import 'package:fluffychat/views/enia_menu.dart';
 import 'package:fluffychat/views/files_enia_menu.dart';
-import 'package:fluffychat/views/stats.dart';
+import 'package:fluffychat/views/stats_enia_menu.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
@@ -66,14 +66,22 @@ class _ChatListState extends State<ChatList> {
 
   Room linkMainRoom;
   Room secondLinkRoom;
+  Room thirdLinkRoom;
+
+  List<String> roomsJoined;
 
   List<User> mainGroupList;
 
   final ScrollController _scrollController = ScrollController();
 
   Future<void> waitForFirstSync(BuildContext context) async {
+    if (secondLinkRoom == null) {
+      await getSecondLink();
+    }
+    if (thirdLinkRoom == null) {
+      await getThirdLink();
+    }
     if (mainGroupList == null || mainGroupList.isEmpty) {
-      //await getSecondGroup();
       await getMainGroup();
     }
     var client = Matrix.of(context).client;
@@ -86,10 +94,13 @@ class _ChatListState extends State<ChatList> {
 
   bool _scrolledToTop = true;
 
-  void getMainGroup() async {
+  Future getMainGroup() async {
+    print('Entro FIRST LINK');
     var client = Matrix.of(context).client;
 
-    List roomsJoined = await client.requestJoinedRooms();
+    roomsJoined == null
+        ? roomsJoined = await client.requestJoinedRooms()
+        : null;
 
     //print(roomsJoined.toString());
 
@@ -116,37 +127,47 @@ class _ChatListState extends State<ChatList> {
     }
   }
 
-  /* Future getSecondGroup() async {
+  Future getSecondLink() async {
+    print('Entro SECOND LINK');
     var client = Matrix.of(context).client;
 
-    List roomsJoined = await client.requestJoinedRooms();
+    roomsJoined == null
+        ? roomsJoined = await client.requestJoinedRooms()
+        : null;
 
     var isGroupOnRooms = roomsJoined.contains(Matrix.secondGroup);
 
     if (isGroupOnRooms) {
       secondLinkRoom = await client.getRoomById(Matrix.secondGroup);
-
-      List participantsSecondGroup = await secondLinkRoom.requestParticipants();
-
-      if (participantsSecondGroup.isNotEmpty) {
-       /*  var filteredSecondGroupList = participantsSecondGroup
-            .where((user) => user.id == Matrix.secondGroup)
-            .toList(); */
-
-        print(participantsSecondGroup.elementAt(0).id.toString());
-
-        print('ESTA EN FILTRO');
-
-        //print(filteredSecondGroupList.elementAt(0).toString());
-        //setState(() => mainGroupList.addAll(filteredSecondGroupList));
-      }
-
-      print(secondLinkRoom.displayname.toString());
-
-      print('ESTA EN AYUDA');
     }
+
     return null;
-  } */
+  }
+
+  Future getThirdLink() async {
+    print('Entro THIRD LINK');
+    var client = Matrix.of(context).client;
+
+    roomsJoined == null
+        ? roomsJoined = await client.requestJoinedRooms()
+        : null;
+
+    // List  groupsJoinedLink = await roomsJoined.any((room) => Matrix.thirdGroup.contains(room)).toList();
+
+    /*   var groupsJoinedLink2 = roomsJoined
+        .where((roomId) => Matrix.thirdGroup.contains(roomId))
+        .toList(); */
+
+    var groupsJoinedLink =
+        roomsJoined.firstWhere((roomId) => Matrix.thirdGroup.contains(roomId));
+
+    if (groupsJoinedLink != null) {
+      thirdLinkRoom = await client.getRoomById(groupsJoinedLink);
+      //print('ESTA EN GRUPO PROVINCIA');
+    }
+    
+    return null;
+  }
 
 /*   Future getFirstEniaLink() async {
     var client = Matrix.of(context).client;
@@ -498,7 +519,7 @@ class _ChatListState extends State<ChatList> {
                                   title: Text('Estadisticas'),
                                   //title: Text(L10n.of(context).archive),
                                   onTap: () => _drawerTapAction(
-                                    Stats(),
+                                    StatsEniaMenuView(),
                                   ),
                                 ),
                                 Divider(height: 1),
@@ -734,10 +755,31 @@ class _ChatListState extends State<ChatList> {
                                                             return Row(
                                                               children: <
                                                                   Widget>[
-                                                                Container(
-                                                                  child: PrivateRoomListItem(
-                                                                      linkMainRoom),
-                                                                ),
+                                                                searchMode
+                                                                    ? Container()
+                                                                    : Container(
+                                                                        child: PrivateRoomListItem(
+                                                                            linkMainRoom),
+                                                                      ),
+                                                                searchMode
+                                                                    ? Container()
+                                                                    : secondLinkRoom ==
+                                                                            null
+                                                                        ? Container()
+                                                                        : Container(
+                                                                            child:
+                                                                                PrivateRoomListItem(secondLinkRoom),
+                                                                          ),
+
+                                                                searchMode
+                                                                    ? Container()
+                                                                    : thirdLinkRoom ==
+                                                                            null
+                                                                        ? Container()
+                                                                        : Container(
+                                                                            child:
+                                                                                PrivateRoomListItem(thirdLinkRoom),
+                                                                          ),
                                                                 // Avatar(linkMainRoom.avatar, linkMainRoom.displayname),
 
                                                                 /* FlatButton(

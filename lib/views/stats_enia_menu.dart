@@ -19,31 +19,29 @@ import '../l10n/l10n.dart';
 import '../utils/app_route.dart';
 import 'settings_emotes.dart';
 
-class EniaMenuView extends StatelessWidget {
+class StatsEniaMenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptivePageLayout(
       primaryPage: FocusPage.SECOND,
       firstScaffold: ChatList(),
-      secondScaffold: EniaMenu(),
+      secondScaffold: StatsEniaMenu(),
     );
   }
 }
 
-class EniaMenu extends StatefulWidget {
+class StatsEniaMenu extends StatefulWidget {
   @override
-  _EniaMenuState createState() => _EniaMenuState();
+  _StatsEniaMenuState createState() => _StatsEniaMenuState();
 }
 
-class _EniaMenuState extends State<EniaMenu> {
+class _StatsEniaMenuState extends State<StatsEniaMenu> {
   Future<dynamic> profileFuture;
   dynamic profile;
   Future<bool> crossSigningCachedFuture;
   bool crossSigningCached;
   Future<bool> megolmBackupCachedFuture;
   bool megolmBackupCached;
-
-  
 
   Future<void> requestSSSSCache(BuildContext context) async {
     final handle = Matrix.of(context).client.encryption.ssss.open();
@@ -116,12 +114,10 @@ class _EniaMenuState extends State<EniaMenu> {
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'enia@virtual',
-                style: TextStyle(
-                    color: Theme.of(context)
-                        .backgroundColor),
+                'Estadisticas',
+                style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
-             /*  background:  
+              /*  background:  
               ContentBanner(
                 profile?.avatarUrl,
                 
@@ -135,11 +131,9 @@ class _EniaMenuState extends State<EniaMenu> {
         ],
         body: ListView(
           children: <Widget>[
-            
-            
             ListTile(
               title: Text(
-                'Objetivo general ENIA VIRTUAL',
+                'Objetivo general Estadisticas',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -147,14 +141,14 @@ class _EniaMenuState extends State<EniaMenu> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-              onTap: (){} 
-              //=> launch(
+                trailing: Icon(Icons.help),
+                title: Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                onTap: () {}
+                //=> launch(
                 //TODO: poner url final
                 //  'https://github.com/cottic/enia-virtual/'),
-            ),
-            
+                ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -166,13 +160,14 @@ class _EniaMenuState extends State<EniaMenu> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-              onTap: (){} 
-              //=> launch(
+                trailing: Icon(Icons.help),
+                title: Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                onTap: () {}
+                //=> launch(
                 //TODO: poner url final
                 //  'https://github.com/cottic/enia-virtual/'),
-            ),
+                ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -184,13 +179,13 @@ class _EniaMenuState extends State<EniaMenu> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text(L10n.of(context).help),
-              onTap: (){} 
-              //=> launch(
+                trailing: Icon(Icons.help),
+                title: Text(L10n.of(context).help),
+                onTap: () {}
+                //=> launch(
                 //TODO: poner url final
                 //  'https://github.com/cottic/enia-virtual/'),
-            ),
+                ),
             ListTile(
               trailing: Icon(Icons.link),
               title: Text(L10n.of(context).license),
@@ -200,8 +195,7 @@ class _EniaMenuState extends State<EniaMenu> {
             ListTile(
               trailing: Icon(Icons.code),
               title: Text(L10n.of(context).sourceCode),
-              onTap: () => launch(
-                  'https://github.com/cottic/enia-virtual'),
+              onTap: () => launch('https://github.com/cottic/enia-virtual'),
             ),
           ],
         ),
