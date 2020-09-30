@@ -1,23 +1,12 @@
-import 'dart:io';
-
-import 'package:famedlysdk/famedlysdk.dart';
-import 'package:fluffychat/components/settings_themes.dart';
-import 'package:fluffychat/views/settings_devices.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:memoryfilepicker/memoryfilepicker.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
-import 'app_info.dart';
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
-import '../components/content_banner.dart';
 import '../components/matrix.dart';
 import '../l10n/l10n.dart';
-import '../utils/app_route.dart';
-import 'settings_emotes.dart';
 
 class FilesEniaMenuView extends StatelessWidget {
   @override
@@ -42,8 +31,6 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
   bool crossSigningCached;
   Future<bool> megolmBackupCachedFuture;
   bool megolmBackupCached;
-
-  
 
   Future<void> requestSSSSCache(BuildContext context) async {
     final handle = Matrix.of(context).client.encryption.ssss.open();
@@ -117,11 +104,9 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 'Documentos',
-                style: TextStyle(
-                    color: Theme.of(context)
-                        .backgroundColor),
+                style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
-             /*  background:  
+              /*  background:  
               ContentBanner(
                 profile?.avatarUrl,
                 
@@ -135,11 +120,9 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
         ],
         body: ListView(
           children: <Widget>[
-            
-            
             ListTile(
               title: Text(
-                'Objetivo general Documentos',
+                'Documentos técnicos',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -147,36 +130,31 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-              onTap: (){} 
-              //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
-            ),
-            
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                'Fundamentos',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Implementación del Plan Nacional ENIA	'),
+              subtitle: Text(
+                  'Documento técnico N°2 - Julio 2018 - Modalidad de Intervención y dispositivos'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/implementacion_del_plan_nacional_enia_documento_tecnico_ndeg2_-_julio_2018_-_modalidad_de_intervencion_y_dispositivos.pdf'),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-              onTap: (){} 
-              //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Sistema de Monitoreo Plan ENIA	'),
+              subtitle: Text('Documento técnico Nº 7 - Noviembre 2019'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_i.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('El Plan ENIA y la perspectiva de la discapacidad'),
+              subtitle: Text('Documento técnico Nº 3 - Marzo 2019'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/el_plan_enia_y_la_perspectiva_de_la_discapacidad.documento_tecnico_no_3-_marzo_2019.pdf'),
             ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                L10n.of(context).about,
+                'Estudios técnicos',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -184,25 +162,22 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text(L10n.of(context).help),
-              onTap: (){} 
-              //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Consecuencias socioeconómicas del embarazo en la adolescencia en Argentina. '),
+              subtitle: Text('Resumen ejecutivo'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/estudios_tecnicos_-_consecuencias_socioeconomicas_del_embarazo_en_la_adolescencia_en_argentina.pdf'),
             ),
             ListTile(
-              trailing: Icon(Icons.link),
-              title: Text(L10n.of(context).license),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Consecuencias socioeconómicas del embarazo en la adolescencia en Argentina. '),
+              subtitle: Text('Informe final.'),
               onTap: () => launch(
-                  'https://github.com/cottic/enia-virtual/blob/master/LICENSE'),
+                  'https://www.argentina.gob.ar/sites/default/files/consecuencias_socioeconomicas_del_embarazo_en_la_adolescencia_en_argentina._informe_final.pdf'),
             ),
-            ListTile(
-              trailing: Icon(Icons.code),
-              title: Text(L10n.of(context).sourceCode),
-              onTap: () => launch(
-                  'https://github.com/cottic/enia-virtual'),
-            ),
+            
           ],
         ),
       ),

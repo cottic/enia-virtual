@@ -1,23 +1,12 @@
-import 'dart:io';
-
-import 'package:famedlysdk/famedlysdk.dart';
-import 'package:fluffychat/components/settings_themes.dart';
-import 'package:fluffychat/views/settings_devices.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:memoryfilepicker/memoryfilepicker.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
-import 'app_info.dart';
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
-import '../components/content_banner.dart';
 import '../components/matrix.dart';
 import '../l10n/l10n.dart';
-import '../utils/app_route.dart';
-import 'settings_emotes.dart';
 
 class EniaMenuView extends StatelessWidget {
   @override
@@ -42,8 +31,7 @@ class _EniaMenuState extends State<EniaMenu> {
   bool crossSigningCached;
   Future<bool> megolmBackupCachedFuture;
   bool megolmBackupCached;
-
-  
+  String bullet = '\u2022';
 
   Future<void> requestSSSSCache(BuildContext context) async {
     final handle = Matrix.of(context).client.encryption.ssss.open();
@@ -117,11 +105,9 @@ class _EniaMenuState extends State<EniaMenu> {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 'enia@virtual',
-                style: TextStyle(
-                    color: Theme.of(context)
-                        .backgroundColor),
+                style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
-             /*  background:  
+              /*  background:  
               ContentBanner(
                 profile?.avatarUrl,
                 
@@ -135,48 +121,14 @@ class _EniaMenuState extends State<EniaMenu> {
         ],
         body: ListView(
           children: <Widget>[
-            
-            
             ListTile(
               title: Text(
-                'Objetivo general ENIA VIRTUAL',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.help),
-              title: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-              onTap: (){} 
-              //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
-            ),
-            
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                'Fundamentos',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.help),
-              title: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-              onTap: (){} 
-              //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
+                  'A partir de una mirada integral e intersectorial buscamos prevenir los embarazos no intencionales en la adolescencia. Los Ministerios Nacionales de Salud, de Desarrollo Social y de Educación, trabajamos en conjunto para garantizar los derechos de los y las adolescentes al acceso gratuito de métodos anticonceptivos, la educación sexual integral y asesorías en las escuelas, la consejería en salud sexual y reproductiva y actividades de promoción comunitarias.'),
             ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                L10n.of(context).about,
+                '¿Qué nos proponemos?',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -184,24 +136,20 @@ class _EniaMenuState extends State<EniaMenu> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text(L10n.of(context).help),
-              onTap: (){} 
-              //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
+              title: Text(bullet +
+                  ' Sensibilizar sobre la importancia de prevenir el embarazo no intencional en la adolescencia.'),
             ),
             ListTile(
-              trailing: Icon(Icons.link),
-              title: Text(L10n.of(context).license),
-              onTap: () => launch(
-                  'https://github.com/cottic/enia-virtual/blob/master/LICENSE'),
+              title: Text(bullet +
+                  ' Potenciar el ejercicio de los derechos sexuales y reproductivos en la adolescencia.'),
             ),
             ListTile(
-              trailing: Icon(Icons.code),
-              title: Text(L10n.of(context).sourceCode),
-              onTap: () => launch(
-                  'https://github.com/cottic/enia-virtual'),
+              title: Text(bullet +
+                  ' Brindar información sobre salud sexual y reproductiva y métodos anticonceptivos en forma gratuita en los servicios de salud.'),
+            ),
+            ListTile(
+              title: Text(bullet +
+                  ' Fortalecer políticas para la prevención del abuso, la violencia sexual y el acceso a la interrupción legal del embarazo según el marco normativo vigente.'),
             ),
           ],
         ),

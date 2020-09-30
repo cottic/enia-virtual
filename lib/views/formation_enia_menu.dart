@@ -1,23 +1,11 @@
-import 'dart:io';
-
-import 'package:famedlysdk/famedlysdk.dart';
-import 'package:fluffychat/components/settings_themes.dart';
-import 'package:fluffychat/views/settings_devices.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:memoryfilepicker/memoryfilepicker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'app_info.dart';
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
-import '../components/content_banner.dart';
 import '../components/matrix.dart';
 import '../l10n/l10n.dart';
-import '../utils/app_route.dart';
-import 'settings_emotes.dart';
 
 class FormationEniaMenuView extends StatelessWidget {
   @override
@@ -42,8 +30,6 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
   bool crossSigningCached;
   Future<bool> megolmBackupCachedFuture;
   bool megolmBackupCached;
-
-  
 
   Future<void> requestSSSSCache(BuildContext context) async {
     final handle = Matrix.of(context).client.encryption.ssss.open();
@@ -116,12 +102,10 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'Capactiación',
-                style: TextStyle(
-                    color: Theme.of(context)
-                        .backgroundColor),
+                'MATERIALES EDUCATIVOS',
+                style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
-             /*  background:  
+              /*  background:  
               ContentBanner(
                 profile?.avatarUrl,
                 
@@ -135,11 +119,9 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
         ],
         body: ListView(
           children: <Widget>[
-            
-            
             ListTile(
               title: Text(
-                'Objetivo general',
+                'Educación sexual integral',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -147,36 +129,31 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-              onTap: (){} 
-              //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
-            ),
-            
-            Divider(thickness: 1),
-            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
               title: Text(
-                'Fundamentos',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+                  'El Embarazo No Intencional en la Adolescencia - 	Contenidos de Educación Sexual Integral '),
+              subtitle: Text('Propuestas para el aula - Nivel Secundario'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/el_embarazo_no_intencional_en_la_adolescencia.pdf'),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-              onTap: (){} 
-              //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Cuadernillo ESI para Educación Secundaria I'),
+              subtitle: Text('Contenidos y propuestas para el aula'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_i.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Cuadernillo ESI para Educación Secundaria II '),
+              subtitle: Text('Contenidos y propuestas para el aula'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_ii.pdf'),
             ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                L10n.of(context).about,
+                'Salud sexual y reproductiva',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -184,24 +161,95 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text(L10n.of(context).help),
-              onTap: (){} 
-              //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Consejerías en Salud Sexual y Salud Reproductiva '),
+              subtitle: Text(
+                  'Propuesta de Diseño, Organización e Implementación - Documento de trabajo'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/consejeriasensaludsexualyreproductiva.pdf'),
             ),
             ListTile(
-              trailing: Icon(Icons.link),
-              title: Text(L10n.of(context).license),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Talleres en Salud Sexual y Salud Reproductiva '),
+              subtitle: Text('Manual "Experiencias para armar"'),
               onTap: () => launch(
-                  'https://github.com/cottic/enia-virtual/blob/master/LICENSE'),
+                  'https://www.argentina.gob.ar/sites/default/files/experienciasparaarmar.pdf'),
             ),
             ListTile(
-              trailing: Icon(Icons.code),
-              title: Text(L10n.of(context).sourceCode),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Videos '),
+              subtitle: Text(
+                  'Campaña prevención embarazo no intencional en la adolescencia'),
               onTap: () => launch(
-                  'https://github.com/cottic/enia-virtual'),
+                  'https://www.youtube.com/watch?v=Kb_FDhmV8Io&feature=youtu.be'),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'Asesorías en las escuelas',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Asesorías en Salud Integral '),
+              subtitle: Text('Estrategias y acciones'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/plan_enia_-_asesorias_en_salud_integral_en_las_escuelas_secundarias.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title:
+                  Text('Asesorías en Salud Integral para Escuela Secundaria '),
+              subtitle: Text('Lineamientos para la implementación'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/plan_enia_-asesorias_en_salud_integral_para_escuela_secundaria-_lineamiento.pdf'),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'Derechos',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Guía sobre derechos de adolescentes para el acceso al sistema de salud '),
+              subtitle: Text('Lineamientos y normativas'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/guia_sobre_derechos_de_adolescentes_para_el_acceso_al_sistema_de_salud.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Derechos personalísimos de niñas, niños y adolescentes '),
+              subtitle: Text(
+                  'Acceso autónomo a la atención en salud integral, sexual y reproductiva'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/derechos_personalisimos_de_ninas_ninos_y_adolescentes.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Protocolo para la atención integral de las personas con derecho a la interrupción legal del embarazo (Actualización 2019) '),
+              subtitle: Text(
+                  'Derechos de las personas y obligaciones del sistema de salud, abordaje del equipo de salud, procedimiento para realizar la interrupción del embarazo y anticoncepción post interrupción del embarazo.'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/protocolo_ile_2019-2a_edicion.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Métodos Anticonceptivos'),
+              subtitle: Text('Guía práctica para profesionales de la salud'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/metodos_anticonceptivos.pdf'),
             ),
           ],
         ),
