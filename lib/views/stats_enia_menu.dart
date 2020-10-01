@@ -121,71 +121,13 @@ class _StatsEniaMenuState extends State<StatsEniaMenu> {
         body: ListView(
           children: <Widget>[
             ListTile(
-              title: Text(
-                'Objetivo general Estadisticas',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-                trailing: Icon(Icons.help),
-                title: Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-                onTap: () {}
-                //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
-                ),
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                'Fundamentos',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-                trailing: Icon(Icons.help),
-                title: Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-                onTap: () {}
-                //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
-                ),
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                L10n.of(context).about,
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-                trailing: Icon(Icons.help),
-                title: Text(L10n.of(context).help),
-                onTap: () {}
-                //=> launch(
-                //TODO: poner url final
-                //  'https://github.com/cottic/enia-virtual/'),
-                ),
-            ListTile(
               trailing: Icon(Icons.link),
-              title: Text(L10n.of(context).license),
+              title: Text('Tableros ENIA	'),
+              
               onTap: () => launch(
-                  'https://github.com/cottic/enia-virtual/blob/master/LICENSE'),
+                  'http://enia.codigoi.com.ar:5005/'),
             ),
-            ListTile(
-              trailing: Icon(Icons.code),
-              title: Text(L10n.of(context).sourceCode),
-              onTap: () => launch('https://github.com/cottic/enia-virtual'),
-            ),
+            
           ],
         ),
       ),
