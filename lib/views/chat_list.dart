@@ -8,14 +8,12 @@ import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/components/list_items/enia_presence_list_item.dart';
 import 'package:fluffychat/components/list_items/private_room_list_item.dart';
 import 'package:fluffychat/components/list_items/public_room_list_item.dart';
-import 'package:fluffychat/views/chat.dart';
 import 'package:fluffychat/views/enia_menu.dart';
 import 'package:fluffychat/views/files_enia_menu.dart';
 import 'package:fluffychat/views/stats_enia_menu.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
-import 'package:share/share.dart';
 import '../components/adaptive_page_layout.dart';
 import '../components/list_items/chat_list_item.dart';
 import '../components/matrix.dart';
@@ -25,8 +23,6 @@ import '../utils/url_launcher.dart';
 import 'archive.dart';
 import 'formation_enia_menu.dart';
 import 'homeserver_picker.dart';
-import 'new_group.dart';
-import 'new_private_chat.dart';
 import 'settings.dart';
 
 enum SelectMode { normal, share }
@@ -65,8 +61,11 @@ class _ChatListState extends State<ChatList> {
   String searchServer;
 
   Room linkMainRoom;
+  bool resultMainLink = false;
   Room secondLinkRoom;
+  bool resultSecondLink = false;
   Room thirdLinkRoom;
+  bool resultThirdLink = false;
 
   List<String> roomsJoined;
 
@@ -75,14 +74,14 @@ class _ChatListState extends State<ChatList> {
   final ScrollController _scrollController = ScrollController();
 
   Future<void> waitForFirstSync(BuildContext context) async {
-    if (secondLinkRoom == null) {
-      await getSecondLink();
+    if (!resultSecondLink) {
+      resultSecondLink = await getSecondLink();
     }
-    if (thirdLinkRoom == null) {
-      await getThirdLink();
+    if (!resultThirdLink) {
+      resultThirdLink = await getThirdLink();
     }
-    if (mainGroupList == null || mainGroupList.isEmpty) {
-      await getMainGroup();
+    if (!resultMainLink) {
+      resultMainLink = await getMainGroup();
     }
     var client = Matrix.of(context).client;
 
@@ -94,14 +93,14 @@ class _ChatListState extends State<ChatList> {
 
   bool _scrolledToTop = true;
 
-  Future getMainGroup() async {
+  Future<bool> getMainGroup() async {
     print('Entro FIRST LINK');
     var client = Matrix.of(context).client;
 
-    roomsJoined == null
-        ? roomsJoined = await client.requestJoinedRooms()
-        : null;
+    roomsJoined = await client.requestJoinedRooms();
 
+/*     print('roomsJoined');
+    print(roomsJoined); */
     //print(roomsJoined.toString());
 
     var isMainGroupOnRooms = roomsJoined.contains(Matrix.mainGroup);
@@ -125,9 +124,10 @@ class _ChatListState extends State<ChatList> {
       //print('SET STATE NULL');
       setState(() => mainGroupList = null);
     }
+    return true;
   }
 
-  Future getSecondLink() async {
+  Future<bool> getSecondLink() async {
     print('Entro SECOND LINK');
     var client = Matrix.of(context).client;
 
@@ -141,32 +141,35 @@ class _ChatListState extends State<ChatList> {
       secondLinkRoom = await client.getRoomById(Matrix.secondGroup);
     }
 
-    return null;
+    return true;
   }
 
-  Future getThirdLink() async {
+  Future<bool> getThirdLink() async {
     print('Entro THIRD LINK');
     var client = Matrix.of(context).client;
 
-    roomsJoined == null
-        ? roomsJoined = await client.requestJoinedRooms()
-        : null;
+    roomsJoined = await client.requestJoinedRooms();
 
-    // List  groupsJoinedLink = await roomsJoined.any((room) => Matrix.thirdGroup.contains(room)).toList();
+    // print('roomsJoined');
+    // print(roomsJoined);
 
-    /*   var groupsJoinedLink2 = roomsJoined
-        .where((roomId) => Matrix.thirdGroup.contains(roomId))
-        .toList(); */
+    if (roomsJoined.isNotEmpty) {
+      // print('groupsJoinedLink');
 
-    var groupsJoinedLink =
-        roomsJoined.firstWhere((roomId) => Matrix.thirdGroup.contains(roomId));
+      var groupsJoinedLink = roomsJoined.firstWhere(
+          (roomId) => Matrix.thirdGroup.contains(roomId),
+          orElse: () => null);
 
-    if (groupsJoinedLink != null) {
-      thirdLinkRoom = await client.getRoomById(groupsJoinedLink);
-      //print('ESTA EN GRUPO PROVINCIA');
+      //  print('groupsJoinedLink');
+      //   print(groupsJoinedLink);
+
+      if (groupsJoinedLink != null) {
+        thirdLinkRoom = await client.getRoomById(groupsJoinedLink);
+        // print('ESTA EN GRUPO PROVINCIA');
+      }
     }
-    
-    return null;
+
+    return true;
   }
 
 /*   Future getFirstEniaLink() async {
@@ -363,7 +366,7 @@ class _ChatListState extends State<ChatList> {
     );
   }
 
-  void _setStatus(BuildContext context) async {
+  /*  void _setStatus(BuildContext context) async {
     Navigator.of(context).pop();
     final status = await SimpleDialogs(context).enterText(
       multiLine: true,
@@ -377,7 +380,7 @@ class _ChatListState extends State<ChatList> {
           Matrix.of(context).client.userID, PresenceType.online,
           statusMsg: status),
     );
-  }
+  } */
 
   /* void createRoomFromLink(BuildContext context, String linkRoomId) async {
     final matrix = Matrix.of(context);
@@ -674,6 +677,7 @@ class _ChatListState extends State<ChatList> {
                                   (publicRoomsResponse?.chunk?.length ?? 0);
                               final totalCount =
                                   rooms.length + publicRoomsCount;
+
                               /*  final directChats =
                                   rooms.where((r) => r.isDirectChat).toList();
 
