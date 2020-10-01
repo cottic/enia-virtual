@@ -89,12 +89,20 @@ class App extends StatelessWidget {
                             //L10n.of(context).loading,
                             style: TextStyle(color: Colors.white),
                           ),
+
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.05,
                           ),
                           CircularProgressIndicator(
                               valueColor:
                                   AlwaysStoppedAnimation<Color>(Colors.white)),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                          ),
+                          Text(
+                            Matrix.versionENIA,
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
                         ],
                       ),
                     );

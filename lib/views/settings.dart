@@ -440,14 +440,15 @@ class _SettingsState extends State<Settings> {
                 ),
               ),
             ),
+           
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text(L10n.of(context).help),
-              onTap: (){} 
-              //=> launch(
+                trailing: Icon(Icons.help),
+                title: Text(L10n.of(context).help),
+                onTap: () {}
+                //=> launch(
                 //TODO: poner url final
                 //  'https://github.com/cottic/enia-virtual/'),
-            ),
+                ),
             ListTile(
               trailing: Icon(Icons.link),
               title: Text(L10n.of(context).license),
@@ -457,8 +458,8 @@ class _SettingsState extends State<Settings> {
             ListTile(
               trailing: Icon(Icons.code),
               title: Text(L10n.of(context).sourceCode),
-              onTap: () => launch(
-                  'https://github.com/cottic/enia-virtual'),
+              subtitle: Text(Matrix.versionENIA),
+              onTap: () => launch('https://github.com/cottic/enia-virtual'),
             ),
           ],
         ),

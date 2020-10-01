@@ -44,6 +44,9 @@ class Matrix extends StatefulWidget {
     '!hDRSwvGOzbWxSaBckL:matrix.codigoi.com.ar'
   ];
 
+  //ENIA VERSION
+  static const String versionENIA = 'Versión 1.6.0';
+
   final Widget child;
 
   final String clientName;
