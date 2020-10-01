@@ -24,13 +24,24 @@ class ChatSettingsPopupMenu extends StatefulWidget {
 class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
   StreamSubscription notificationChangeSub;
 
+/*   @override
+  void initState() async {
+    print('entro INIT STATE');
+    var client = Matrix.of(context).client;
+    var userOther = widget.room.id;
+    var roomWithOther = await client.getRoomById(userOther);
+    var participantsRoom = await roomWithOther.requestParticipants();
+    print(participantsRoom);
+    super.initState();
+  } */
+
   @override
   void dispose() {
     notificationChangeSub?.cancel();
     super.dispose();
   }
 
-/*   void startCallAction(BuildContext context) async {
+  void startCallAction(BuildContext context) async {
     final url =
         '${Matrix.of(context).jitsiInstance}${Uri.encodeComponent(widget.room.id.localpart)}';
     final success = await SimpleDialogs(context)
@@ -40,7 +51,7 @@ class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
     }));
     if (success == false) return;
     await launch(url);
-  } */
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +63,15 @@ class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
         .listen(
           (u) => setState(() => null),
         );
+    //TODO:
+    //Traigo al usuario
+    // Traigo al otro usuario del chat
+    // Veo si puedo pedir los participantes de esta room, ahi traigo a los dos.
+    // luego verifico si el user pertenece al grupo enia
+    // Si pertenece, pido comparo los participantes del grupo enia con la lista de usuarios de la room
+    // Si ambos usuarios estan en el grupo enia entonces muestro el boton de la llamada
+    // QUE EL OTRO USUARIO ESTE EN GRUPO ENIA< ESA ES LA CONDICION
+
     var items = <PopupMenuEntry<String>>[
       widget.room.pushRuleState == PushRuleState.notify
           ? PopupMenuItem<String>(
@@ -63,10 +83,13 @@ class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
               child: Text(L10n.of(context).unmuteChat),
             ),
       // Esto habilita la posibilidad de realizar videollamadas en un chat, conectando con Jitsi
-      /* PopupMenuItem<String>(
+
+      //TODO: que lo muestre solo si ambos pertenecen al grupo enia.
+
+      PopupMenuItem<String>(
         value: 'call',
         child: Text(L10n.of(context).videoCall),
-      ), */
+      ),
       PopupMenuItem<String>(
         value: 'leave',
         child: Text(L10n.of(context).leave),
@@ -104,9 +127,9 @@ class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
             await SimpleDialogs(context).tryRequestWithLoadingDialog(
                 widget.room.setPushRuleState(PushRuleState.notify));
             break;
-          /* case 'call':
+          case 'call':
             startCallAction(context);
-            break; */
+            break;
           case 'details':
             await Navigator.of(context).push(
               AppRoute.defaultRoute(
