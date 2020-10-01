@@ -2,22 +2,18 @@ import 'dart:io';
 
 import 'package:famedlysdk/famedlysdk.dart';
 import 'package:fluffychat/components/settings_themes.dart';
-import 'package:fluffychat/views/settings_devices.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memoryfilepicker/memoryfilepicker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'app_info.dart';
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/content_banner.dart';
 import '../components/matrix.dart';
 import '../l10n/l10n.dart';
-import '../utils/app_route.dart';
-import 'settings_emotes.dart';
 
 class SettingsView extends StatelessWidget {
   @override

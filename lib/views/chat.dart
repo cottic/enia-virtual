@@ -12,7 +12,6 @@ import 'package:fluffychat/components/connection_status_header.dart';
 import 'package:fluffychat/components/dialogs/presence_dialog.dart';
 import 'package:fluffychat/components/dialogs/recording_dialog.dart';
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
-import 'package:fluffychat/components/encryption_button.dart';
 import 'package:fluffychat/components/list_items/message.dart';
 import 'package:fluffychat/components/matrix.dart';
 import 'package:fluffychat/components/reply_content.dart';

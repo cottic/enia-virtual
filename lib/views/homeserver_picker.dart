@@ -2,10 +2,8 @@ import 'dart:math';
 
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/components/matrix.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/views/login.dart';
-import 'package:fluffychat/views/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
