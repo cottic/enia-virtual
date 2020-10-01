@@ -26,9 +26,23 @@ class Matrix extends StatefulWidget {
 
   static const String getFrequentMessagesHttp =
       'https://proyecto.codigoi.com.ar/appenia/mensajesfrecuentes.json';
-      
+
   static const String mainGroup = '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar';
-  
+
+  //in ENIA is HELP
+  static const String secondGroup = '!POwBopuroioZAsSpNy:matrix.codigoi.com.ar';
+
+  //in ENIA is HELP
+  static const List<String> thirdGroup = [
+    '!qvcYgCfhjOdyDbUYjA:matrix.codigoi.com.ar',
+    '!BaWhhGGEEUVycuxsYL:matrix.codigoi.com.ar',
+    '!QcxKXftJGUepsZXEwf:matrix.codigoi.com.ar',
+    '!IRfvYJEEISOtmKCDbl:matrix.codigoi.com.ar',
+    '!vWcuZCGgFiLgACLaaQ:matrix.codigoi.com.ar',
+    '!avrkWsLgZOqVFLCOjL:matrix.codigoi.com.ar',
+    '!EPbitqVGxzEiXJNmUP:matrix.codigoi.com.ar',
+    '!hDRSwvGOzbWxSaBckL:matrix.codigoi.com.ar'
+  ];
 
   final Widget child;
 
@@ -58,8 +72,6 @@ class MatrixState extends State<Matrix> {
   Store store;
   @override
   BuildContext context;
-
-  
 
   Map<String, dynamic> get shareContent => _shareContent;
   set shareContent(Map<String, dynamic> content) {
