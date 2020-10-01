@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:url_launcher/url_launcher.dart';
-
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';

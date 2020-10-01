@@ -6,15 +6,25 @@ import 'package:flutter/material.dart';
 import '../avatar.dart';
 import '../matrix.dart';
 
-class EniaPresenceListItem extends StatelessWidget {
+class EniaPresenceListItem extends StatefulWidget {
   final User user;
 
   const EniaPresenceListItem(this.user);
 
+  @override
+  _EniaPresenceListItemState createState() => _EniaPresenceListItemState();
+}
+
+class _EniaPresenceListItemState extends State<EniaPresenceListItem> {
+  bool botonIsUsed = true;
+
   void _startChatAction(BuildContext context, String userId) async {
+    //print('START CHAT');
+    botonIsUsed = false;
     final roomId = await User(userId,
             room: Room(client: Matrix.of(context).client, id: ''))
         .startDirectChat();
+    botonIsUsed = true;
     await Navigator.of(context).pushAndRemoveUntil(
         AppRoute.defaultRoute(
           context,
@@ -26,16 +36,17 @@ class EniaPresenceListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final user = room.getUserByMXIDSync(room.directChatMatrixID);
-    final presence = Matrix.of(context).client.presences[user];
+    final presence = Matrix.of(context).client.presences[widget.user];
+
     return InkWell(
       onTap: () => presence?.presence?.statusMsg == null
-          ? _startChatAction(context, user.id)
+          ? botonIsUsed ? _startChatAction(context, widget.user.id) : null
           : showDialog(
               context: context,
               builder: (_) => PresenceDialog(
                 presence,
-                avatarUrl: user.avatarUrl,
-                displayname: user.calcDisplayname(),
+                avatarUrl: widget.user.avatarUrl,
+                displayname: widget.user.calcDisplayname(),
               ),
             ),
       child: Container(
@@ -44,7 +55,8 @@ class EniaPresenceListItem extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: 16),
             Container(
-              child: Avatar(user.avatarUrl, user.calcDisplayname()),
+              child:
+                  Avatar(widget.user.avatarUrl, widget.user.calcDisplayname()),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1,
@@ -61,7 +73,7 @@ class EniaPresenceListItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 6.0, top: 0.0, right: 6.0),
               child: Text(
-                user.calcDisplayname().trim().split(' ').first,
+                widget.user.calcDisplayname().trim().split(' ').first,
                 overflow: TextOverflow.clip,
                 maxLines: 1,
                 style: TextStyle(

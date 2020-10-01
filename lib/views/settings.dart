@@ -440,7 +440,6 @@ class _SettingsState extends State<Settings> {
                 ),
               ),
             ),
-           
             ListTile(
                 trailing: Icon(Icons.help),
                 title: Text(L10n.of(context).help),
