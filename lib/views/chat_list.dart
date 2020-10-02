@@ -60,16 +60,15 @@ class _ChatListState extends State<ChatList> {
   bool loadingPublicRooms = false;
   String searchServer;
 
+  List<String> roomsJoined;
+  List<User> mainGroupList;
+
   Room linkMainRoom;
   bool resultMainLink = false;
   Room secondLinkRoom;
   bool resultSecondLink = false;
   Room thirdLinkRoom;
   bool resultThirdLink = false;
-
-  List<String> roomsJoined;
-
-  List<User> mainGroupList;
 
   final ScrollController _scrollController = ScrollController();
 
@@ -94,21 +93,14 @@ class _ChatListState extends State<ChatList> {
   bool _scrolledToTop = true;
 
   Future<bool> getMainGroup() async {
-    print('Entro FIRST LINK');
+    //print('Entro FIRST LINK');
     var client = Matrix.of(context).client;
 
     roomsJoined = await client.requestJoinedRooms();
 
-/*     print('roomsJoined');
-    print(roomsJoined); */
-    //print(roomsJoined.toString());
-
     var isMainGroupOnRooms = roomsJoined.contains(Matrix.mainGroup);
 
-    //print(isMainGroupOnRooms);
-
     if (isMainGroupOnRooms) {
-      //print('QUISO TRAER LISTA');
       linkMainRoom = await client.getRoomById(Matrix.mainGroup);
 
       List participantsMainGroup = await linkMainRoom.requestParticipants();
@@ -121,14 +113,13 @@ class _ChatListState extends State<ChatList> {
         setState(() => mainGroupList = filteredMainGroupList);
       }
     } else {
-      //print('SET STATE NULL');
       setState(() => mainGroupList = null);
     }
     return true;
   }
 
   Future<bool> getSecondLink() async {
-    print('Entro SECOND LINK');
+    //print('Entro SECOND LINK');
     var client = Matrix.of(context).client;
 
     roomsJoined == null
@@ -138,107 +129,34 @@ class _ChatListState extends State<ChatList> {
     var isGroupOnRooms = roomsJoined.contains(Matrix.secondGroup);
 
     if (isGroupOnRooms) {
-      secondLinkRoom = await client.getRoomById(Matrix.secondGroup);
+      var getSecondLinkRoom = await client.getRoomById(Matrix.secondGroup);
+      setState(() => secondLinkRoom = getSecondLinkRoom);
     }
 
     return true;
   }
 
   Future<bool> getThirdLink() async {
-    print('Entro THIRD LINK');
+    //print('Entro THIRD LINK');
     var client = Matrix.of(context).client;
 
-    roomsJoined = await client.requestJoinedRooms();
-
-    // print('roomsJoined');
-    // print(roomsJoined);
+    roomsJoined == null
+        ? roomsJoined = await client.requestJoinedRooms()
+        : null;
 
     if (roomsJoined.isNotEmpty) {
-      // print('groupsJoinedLink');
-
       var groupsJoinedLink = roomsJoined.firstWhere(
           (roomId) => Matrix.thirdGroup.contains(roomId),
           orElse: () => null);
 
-      //  print('groupsJoinedLink');
-      //   print(groupsJoinedLink);
-
       if (groupsJoinedLink != null) {
-        thirdLinkRoom = await client.getRoomById(groupsJoinedLink);
-        // print('ESTA EN GRUPO PROVINCIA');
+        var getThirdLinkRoom = await client.getRoomById(groupsJoinedLink);
+        setState(() => thirdLinkRoom = getThirdLinkRoom);
       }
     }
 
     return true;
   }
-
-/*   Future getFirstEniaLink() async {
-    var client = Matrix.of(context).client;
-
-    final roomSalta = await client.getRoomById(Matrix.mainGroup);
-
-    setState(() => mainGroupList.insert(0, roomSalta));
-
-  } */
-
-  /* Future getConditionalGroup() async {
-    var client = Matrix.of(context).client;
-
-    final roomMainGroup = await client.getRoomById(Matrix.mainGroup);
-
-    List participantsMainGroup = await roomMainGroup.requestParticipants();
-
-    var rooms = List<Room>.from(Matrix.of(context).client.rooms);
-
-    List<User> isInMainGruop = participantsMainGroup
-        .where((user) => user.id == client.userID)
-        .toList();
-
-    if (isInMainGruop.isNotEmpty) {
-      print('Esta en Salta');
-      print(isInMainGruop[0].displayName.toString());
-
-      // Aca tengo que poner ID de salta config
-      final roomSaltaConfig = await client.getRoomById(Matrix.mainGroup);
-
-      List participantsSaltaGroupConfig =
-          await roomSaltaConfig.requestParticipants();
-
-      List<User> configListSalta = participantsSaltaGroupConfig
-          .where((user) => user.id == client.userID)
-          .toList();
-
-      setState(() => mainGroupList.insertAll(0, configListSalta));
-    }
-
-    /* final roomMendoza = await client.getRoomById(Matrix.mainGroup);
-
-    List participantsMendozaGroup = await roomMendoza.requestParticipants();
-
-    List<User> isInMendozaGruop = participantsMendozaGroup
-        .where((user) => user.id == client.userID)
-        .toList();
-
-    if (isInMendozaGruop.isNotEmpty) {
-      print('Esta en Mendoza');
-      print(isInMendozaGruop[0].displayName.toString());
-      setState(() => mainGroupList.insertAll(0, isInMendozaGruop));
-    }
-
-    final roomTucuman = await client.getRoomById(Matrix.mainGroup);
-
-    List participantsTucumanGroup = await roomTucuman.requestParticipants();
-
-    List<User> isInTucumanGruop = participantsTucumanGroup
-        .where((user) => user.id == client.userID)
-        .toList();
-
-    if (isInTucumanGruop.isNotEmpty) {
-      print('Esta en Tucuman');
-      print(isInTucumanGruop[0].displayName.toString());
-      setState(() => mainGroupList.insertAll(0, isInTucumanGruop));
-    } */
-  } */
 
   @override
   void initState() {
@@ -380,49 +298,6 @@ class _ChatListState extends State<ChatList> {
           Matrix.of(context).client.userID, PresenceType.online,
           statusMsg: status),
     );
-  } */
-
-  /* void createRoomFromLink(BuildContext context, String linkRoomId) async {
-    final matrix = Matrix.of(context);
-
-    /* final user = User(
-      '@' + userToAdd + ':matrix.codigoi.com.ar',
-      room: Room(id: '', client: matrix.client),
-    );
-    final String roomID = await SimpleDialogs(context)
-        .tryRequestWithLoadingDialog(user.startDirectChat()); */
-
-    //asesor 1
-    // final roomID = '!AQrUGRshYEMcsMOysZ:matrix.codigoi.com.ar';
-
-    //ENIA
-    //final roomID = '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar';
-
-    //Eugneia Adolescente 2
-    // final roomID = '!HUkIrSJsZwSSSDUbhD:matrix.codigoi.com.ar';
-
-    //Victoria Adolescente 1
-    //final roomID = '!EJOLABjfUsFDLIEhLF:matrix.codigoi.com.ar';
-
-    //SALTA
-    //final roomID = '!hDRSwvGOzbWxSaBckL:matrix.codigoi.com.ar';
-
-    //Asesor 2
-    // final roomID = '!EFpaaQkUzRDyLmhSdM:matrix.codigoi.com.ar';
-
-    //Juanma
-    //final roomID = '!URqoQQYUfuXBSGvMaW:matrix.codigoi.com.ar';
-
-    var roomID = linkRoomId;
-
-    if (roomID != null) {
-      await Navigator.of(context).push(
-        AppRoute.defaultRoute(
-          context,
-          ChatView(roomID),
-        ),
-      );
-    }
   } */
 
   @override
@@ -717,26 +592,7 @@ class _ChatListState extends State<ChatList> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           ConnectionStatusHeader(),
-                                          /* Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              RaisedButton(
-                                                child: Text('ENIA'),
-                                                onPressed: () {
-                                                  createRoomFromLink(context,
-                                                      '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar');
-                                                },
-                                              ),
-                                              RaisedButton(
-                                                child: Text('AYUDA'),
-                                                onPressed: () {
-                                                  createRoomFromLink(context,
-                                                      '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar');
-                                                },
-                                              ),
-                                            ],
-                                          ), */
+
                                           (mainGroupList == null ||
                                                   selectMode ==
                                                       SelectMode.share)
@@ -774,7 +630,6 @@ class _ChatListState extends State<ChatList> {
                                                                             child:
                                                                                 PrivateRoomListItem(secondLinkRoom),
                                                                           ),
-
                                                                 searchMode
                                                                     ? Container()
                                                                     : thirdLinkRoom ==
@@ -784,18 +639,6 @@ class _ChatListState extends State<ChatList> {
                                                                             child:
                                                                                 PrivateRoomListItem(thirdLinkRoom),
                                                                           ),
-                                                                // Avatar(linkMainRoom.avatar, linkMainRoom.displayname),
-
-                                                                /* FlatButton(
-                                                                  child: Text(
-                                                                      'AYUDA'),
-                                                                  onPressed:
-                                                                      () {
-                                                                    createRoomFromLink(
-                                                                        context,
-                                                                        '!POwBopuroioZAsSpNy:matrix.codigoi.com.ar');
-                                                                  },
-                                                                ), */
                                                                 EniaPresenceListItem(
                                                                     mainGroupList[
                                                                         i]),
