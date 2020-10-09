@@ -460,6 +460,24 @@ class _SettingsState extends State<Settings> {
               subtitle: Text(Matrix.versionENIA),
               onTap: () => launch('https://github.com/cottic/enia-virtual'),
             ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'Créditos',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image.asset('assets/logoUnicef.png', width: 220,),
+                Image.asset('assets/logoMinSalud.png', width: 220,)
+
+              ],
+            ),
           ],
         ),
       ),

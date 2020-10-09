@@ -400,6 +400,7 @@ class _ChatListState extends State<ChatList> {
                                     StatsEniaMenuView(),
                                   ),
                                 ),
+
                                 Divider(height: 1),
 
                                 ListTile(
@@ -513,16 +514,20 @@ class _ChatListState extends State<ChatList> {
                                               '')));
 
                               //This allows to search in listGrupoENia
-                              if (mainGroupList != null &&
-                                  mainGroupList.isNotEmpty) {
-                                mainGroupList.removeWhere((User item) =>
-                                    (searchMode &&
-                                        !item.displayName
-                                            .toString()
-                                            .toLowerCase()
-                                            .contains(searchController.text
-                                                    .toLowerCase() ??
-                                                '')));
+                              var mainGroupListSearch =
+                                  List<User>.from(mainGroupList);
+
+                              if (mainGroupListSearch != null &&
+                                  mainGroupListSearch.isNotEmpty) {
+                                mainGroupListSearch.removeWhere(
+                                  (User item) => (searchMode &&
+                                      !item.displayName
+                                          .toString()
+                                          .toLowerCase()
+                                          .contains(searchController.text
+                                                  .toLowerCase() ??
+                                              '')),
+                                );
                               }
 
                               if (rooms.isEmpty &&
@@ -605,8 +610,9 @@ class _ChatListState extends State<ChatList> {
                                                     child: ListView.builder(
                                                         scrollDirection:
                                                             Axis.horizontal,
-                                                        itemCount: mainGroupList
-                                                            .length,
+                                                        itemCount:
+                                                            mainGroupListSearch
+                                                                .length,
                                                         itemBuilder:
                                                             (BuildContext
                                                                     context,
@@ -640,13 +646,13 @@ class _ChatListState extends State<ChatList> {
                                                                                 PrivateRoomListItem(thirdLinkRoom),
                                                                           ),
                                                                 EniaPresenceListItem(
-                                                                    mainGroupList[
+                                                                    mainGroupListSearch[
                                                                         i]),
                                                               ],
                                                             );
                                                           } else {
                                                             return EniaPresenceListItem(
-                                                                mainGroupList[
+                                                                mainGroupListSearch[
                                                                     i]);
                                                           }
                                                         }),

@@ -123,10 +123,13 @@ class _LoginState extends State<Login> {
               horizontal:
                   max((MediaQuery.of(context).size.width - 600) / 2, 0)),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center ,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               //TODO: definir si va este texto u otra cosa y luego traducir
-              Text('enia@virtual', style: Theme.of(context).textTheme.headline6,),
+              Text(
+                'enia@virtual',
+                style: Theme.of(context).textTheme.headline6,
+              ),
 
               SizedBox(height: 20),
               ListTile(
@@ -194,12 +197,29 @@ class _LoginState extends State<Login> {
                           ? CircularProgressIndicator()
                           : Text(
                               L10n.of(context).login.toUpperCase(),
-                              style: TextStyle(color: Theme.of(context).backgroundColor, fontSize: 16),
+                              style: TextStyle(
+                                  color: Theme.of(context).backgroundColor,
+                                  fontSize: 16),
                             ),
                     ),
                     onPressed: loading ? null : () => login(context),
                   ),
                 ),
+              ),
+              SizedBox(height: 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/logoUnicef.png',
+                    width: 120,
+                  ),
+                  SizedBox(width: 40),
+                  Image.asset(
+                    'assets/logoMinSalud.png',
+                    width: 120,
+                  )
+                ],
               ),
             ],
           ),
