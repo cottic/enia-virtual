@@ -114,7 +114,7 @@ class MatrixState extends State<Matrix> {
     var initLoginState = client.onLoginStateChanged.stream.first;
     try {
       client.database = await getDatabase(client);
-          // Get the frequent messages for Plan ENIA
+    // Get the frequent messages for Plan ENIA
     var frequentMessagesFromApi =
         await client.getFrequentMessagesInfo(Matrix.getFrequentMessagesHttp);
 

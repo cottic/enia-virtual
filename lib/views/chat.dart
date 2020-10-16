@@ -33,6 +33,7 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import '../components/dialogs/send_file_dialog.dart';
 import '../components/input_bar.dart';
 import '../utils/matrix_file_extension.dart';
+
 import 'chat_details.dart';
 import 'chat_list.dart';
 
@@ -226,8 +227,8 @@ class _ChatState extends State<_Chat> {
       ),
     );
   }
-
-  void sendVideoAction(BuildContext context) async {
+//TODO: Fix Send video
+/*   void sendVideoAction(BuildContext context) async {
     var file = await MemoryFilePicker.getFile(
         type: FileType.custom,
         allowedExtensions: ['mp4', 'FLV', 'SWF', 'mov', 'WMV', '3GP']);
@@ -236,6 +237,22 @@ class _ChatState extends State<_Chat> {
     await SimpleDialogs(context).tryRequestWithLoadingDialog(
       room.sendFileEvent(
         MatrixFile(bytes: file.bytes, name: file.path),
+      ),
+    );
+  } */
+
+  void sendVideoAction(BuildContext context) async {
+    final result =
+        await FilePickerCross.importFromStorage(type: FileTypeCross.any);
+    if (result == null) return;
+    await showDialog(
+      context: context,
+      builder: (context) => SendFileDialog(
+        file: MatrixFile(
+          bytes: result.toUint8List(),
+          name: result.fileName,
+        ).detectFileType,
+        room: room,
       ),
     );
   }

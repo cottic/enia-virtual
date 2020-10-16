@@ -6,7 +6,7 @@ import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
-import '../l10n/l10n.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class FilesEniaMenuView extends StatelessWidget {
   @override

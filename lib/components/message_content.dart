@@ -12,6 +12,7 @@ import '../utils/url_launcher.dart';
 import 'html_message.dart';
 import 'matrix.dart';
 import 'message_download_content.dart';
+import 'message_video_content.dart';
 
 class MessageContent extends StatelessWidget {
   final Event event;

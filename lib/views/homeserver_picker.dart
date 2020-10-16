@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'dart:io';
+
 
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/components/matrix.dart';
@@ -9,6 +11,11 @@ import 'package:fluffychat/utils/sentry_controller.dart';
 import 'package:fluffychat/views/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'login.dart';
+import 'package:flutter/foundation.dart';
+
+
 
 class HomeserverPicker extends StatelessWidget {
   //Not need, because user cannot select a server
@@ -37,6 +44,9 @@ class HomeserverPicker extends StatelessWidget {
       await Navigator.of(context).push(AppRoute(Login()));
     }
   }
+    final String platform = kIsWeb ? 'Web' : Platform.operatingSystem;
+
+
 
   @override
   Widget build(BuildContext context) {
