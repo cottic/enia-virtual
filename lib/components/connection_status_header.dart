@@ -11,7 +11,7 @@ class ConnectionStatusHeader extends StatefulWidget {
 class _ConnectionStatusHeaderState extends State<ConnectionStatusHeader> {
   StreamSubscription _onSyncSub;
   StreamSubscription _onSyncErrorSub;
-  static bool _connected = false;
+  static bool _connected = true;
 
   set connected(bool connected) {
     if (mounted) {
@@ -36,7 +36,7 @@ class _ConnectionStatusHeaderState extends State<ConnectionStatusHeader> {
         );
 
     return AnimatedContainer(
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 300),
       height: _connected ? 0 : 5,
       child: LinearProgressIndicator(),
     );

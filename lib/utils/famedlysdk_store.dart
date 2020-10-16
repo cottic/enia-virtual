@@ -1,15 +1,26 @@
 import 'dart:convert';
 
 import 'package:famedlysdk/famedlysdk.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:path_provider/path_provider.dart';
 import 'dart:async';
 import 'dart:core';
 import './database/shared.dart';
 import 'package:olm/olm.dart' as olm; // needed for migration
 import 'package:random_string/random_string.dart';
+
+Future<LocalStorage> getLocalStorage() async {
+  final directory = PlatformInfos.isBetaDesktop
+      ? await getApplicationSupportDirectory()
+      : await getApplicationDocumentsDirectory();
+  final localStorage = LocalStorage('LocalStorage', directory.path);
+  await localStorage.ready;
+  return localStorage;
+}
 
 Future<Database> getDatabase(Client client) async {
   while (_generateDatabaseLock) {
@@ -30,7 +41,10 @@ Future<Database> getDatabase(Client client) async {
       filename: 'moor.sqlite',
       password: password,
     );
+    // Check if database is open:
+    debugPrint((await _db.customSelect('SELECT 1').get()).toString());
     if (needMigration) {
+      debugPrint('[Moor] Start migration');
       await migrate(client.clientName, _db, store);
       await store.setItem('database-password', password);
     }
@@ -164,7 +178,7 @@ Future<void> migrate(String clientName, Database db, Store store) async {
           roomId,
           pickle,
           json.encode(devices),
-          DateTime.now(),
+          DateTime.now().millisecondsSinceEpoch,
           0,
         );
       }
@@ -186,23 +200,46 @@ Future<void> migrate(String clientName, Database db, Store store) async {
               entry.key,
               entry.value['inboundGroupSession'],
               json.encode(entry.value['content']),
-              json.encode(entry.value['indexes']));
+              json.encode(entry.value['indexes']),
+              null,
+              null);
         }
       }
     }
   });
 }
 
+// see https://github.com/mogol/flutter_secure_storage/issues/161#issuecomment-704578453
+class AsyncMutex {
+  Completer<void> _completer;
+
+  Future<void> lock() async {
+    while (_completer != null) {
+      await _completer.future;
+    }
+
+    _completer = Completer<void>();
+  }
+
+  void unlock() {
+    assert(_completer != null);
+    final completer = _completer;
+    _completer = null;
+    completer.complete();
+  }
+}
+
 class Store {
   final LocalStorage storage;
   final FlutterSecureStorage secureStorage;
+  static final _mutex = AsyncMutex();
 
   Store()
       : storage = LocalStorage('LocalStorage'),
-        secureStorage = kIsWeb ? null : FlutterSecureStorage();
+        secureStorage = PlatformInfos.isMobile ? FlutterSecureStorage() : null;
 
   Future<dynamic> getItem(String key) async {
-    if (kIsWeb) {
+    if (!PlatformInfos.isMobile) {
       await storage.ready;
       try {
         return await storage.getItem(key);
@@ -211,26 +248,34 @@ class Store {
       }
     }
     try {
+      await _mutex.lock();
       return await secureStorage.read(key: key);
     } catch (_) {
       return null;
+    } finally {
+      _mutex.unlock();
     }
   }
 
   Future<void> setItem(String key, String value) async {
-    if (kIsWeb) {
+    if (!PlatformInfos.isMobile) {
       await storage.ready;
       return await storage.setItem(key, value);
     }
     if (value == null) {
       return await secureStorage.delete(key: key);
     } else {
-      return await secureStorage.write(key: key, value: value);
+      try {
+        await _mutex.lock();
+        return await secureStorage.write(key: key, value: value);
+      } finally {
+        _mutex.unlock();
+      }
     }
   }
 
   Future<Map<String, dynamic>> getAllItems() async {
-    if (kIsWeb) {
+    if (!PlatformInfos.isMobile) {
       try {
         final rawStorage = await getLocalstorage('LocalStorage');
         return json.decode(rawStorage);
@@ -239,9 +284,12 @@ class Store {
       }
     }
     try {
+      await _mutex.lock();
       return await secureStorage.readAll();
     } catch (_) {
       return {};
+    } finally {
+      _mutex.unlock();
     }
   }
 }

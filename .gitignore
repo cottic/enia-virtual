@@ -3,6 +3,7 @@
 *.log
 *.pyc
 *.swp
+*.snap
 .DS_Store
 .atom/
 .buildlog/
@@ -10,6 +11,7 @@
 .svn/
 lib/generated_plugin_registrant.dart
 google-services.json
+prime
 
 # libolm package
 /assets/js/package/*
@@ -45,3 +47,5 @@ lib/generated_plugin_registrant.dart
 /key.jks
 /android/key.properties
 **/android/app/.cxx
+android/key.jks
+lib/l10n_old

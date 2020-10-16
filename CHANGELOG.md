@@ -1,4 +1,45 @@
-# Version 0.17.0 - 2020-08-??
+# Version 0.20.0 - 2020-??-??
+### Features
+- Add ability to enable / disable emotes globally
+- Add ability to manage emote packs with different state keys
+### Changes
+- Re-scale images in a separate isolate to prevent the UI from freezing
+### Fixes
+- Fix amoled / theme settings not always saving properly
+- Show device name in account information correctly
+
+# Version 0.19.0 - 2020-09-21
+### Features
+- Implemented ignore list
+- Jump to events in timeline: When tapping on a reply and when tapping a matrix.to link
+- Display messages with up to 10 emotes or emoji bigger
+- New design for the chat list and message bubbles
+- Implement reactions
+- Implement password change
+- Implement deactivate user account
+### Fixes
+- Timeline randomly resorting while more history is being fetched
+- Automatically request history if the "load more" button is on the screen
+
+# Version 0.18.0 - 2020-09-13
+### Features
+- Added translations: Armenian, Turkish, Chinese (Simplified), Estonian
+- Url-ify matrix identifiers
+- Use server-side generated thumbnails in cleartext rooms
+- Add option to send images in their original resolution
+- Add additional confirmation for sending files & share intents
+- Add option to opt-in to report issues / crashes to sentry
+- Write keys to online key backup, fully implementing online key backup
+### Changes
+- Tapping links, pills, etc. now does stuff
+- Better handling of sending messages in bad network
+- Better recovery of "keys not cached"
+### Fixes:
+- Various html rendering and url-ifying fixes
+- Added support for blurhashes
+- Image viewer now eventually displays the original image, not only the thumbnail
+
+# Version 0.17.0 - 2020-08-31
 ### Features
 - Pin and unpin chats
 - Implement event aggregations
@@ -7,11 +48,14 @@
 - Add / Remove reactions by tapping on existing reactions
 ### Fixes:
 - Don't re-render the room list nearly as often, increasing performance
+- Various fixes for sending messages on bad networks
+- Design tweeks and fixes
+- Various performance fixes and improvements
 
 # Version 0.16.0 - 2020-07-24
 ### Features
 - Implement web notifications
-- Implement a connection status header	
+- Implement a connection status header
 ### Changes
 - Switch out database engine for faster performance
 - Greatly improve startup time
