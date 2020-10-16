@@ -1,25 +1,30 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:famedlysdk/famedlysdk.dart';
 import 'package:famedlysdk/encryption.dart';
+import 'package:famedlysdk/famedlysdk.dart';
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/utils/firebase_controller.dart';
+import 'package:fluffychat/utils/matrix_locals.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/utils/user_status.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:localstorage/localstorage.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:universal_html/prefer_universal/html.dart' as html;
-import '../l10n/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../main.dart';
+import '../utils/app_route.dart';
 import '../utils/beautify_string_extension.dart';
 import '../utils/famedlysdk_store.dart';
-import 'avatar.dart';
+import '../utils/presence_extension.dart';
 import '../views/key_verification.dart';
-import '../utils/app_route.dart';
+import '../utils/platform_infos.dart';
+import 'avatar.dart';
 
 class Matrix extends StatefulWidget {
   static const String callNamespace = 'chat.fluffy.jitsi_call';
-  static const String defaultHomeserver = 'tchncs.de';
 
   final Widget child;
 
@@ -50,6 +55,8 @@ class MatrixState extends State<Matrix> {
   @override
   BuildContext context;
 
+  static const String userStatusesType = 'chat.fluffy.user_statuses';
+
   Map<String, dynamic> get shareContent => _shareContent;
   set shareContent(Map<String, dynamic> content) {
     _shareContent = content;
@@ -70,20 +77,29 @@ class MatrixState extends State<Matrix> {
   void clean() async {
     if (!kIsWeb) return;
 
-    final storage = LocalStorage('LocalStorage');
-    await storage.ready;
+    final storage = await getLocalStorage();
     await storage.deleteItem(widget.clientName);
   }
 
   void _initWithStore() async {
     var initLoginState = client.onLoginStateChanged.stream.first;
-    client.database = await getDatabase(client);
-    client.connect();
-    if (await initLoginState == LoginState.logged && !kIsWeb) {
-      await FirebaseController.setupFirebase(
-        this,
-        widget.clientName,
-      );
+    try {
+      client.database = await getDatabase(client);
+      await client.connect();
+      final firstLoginState = await initLoginState;
+      if (firstLoginState == LoginState.logged) {
+        _cleanUpUserStatus(userStatuses);
+        if (PlatformInfos.isMobile) {
+          await FirebaseController.setupFirebase(
+            this,
+            widget.clientName,
+          );
+        }
+      }
+    } catch (e, s) {
+      client.onLoginStateChanged.sink.addError(e, s);
+      captureException(e, s);
+      rethrow;
     }
   }
 
@@ -102,6 +118,9 @@ class MatrixState extends State<Matrix> {
   StreamSubscription onKeyVerificationRequestSub;
   StreamSubscription onJitsiCallSub;
   StreamSubscription onNotification;
+  StreamSubscription<html.Event> onFocusSub;
+  StreamSubscription<html.Event> onBlurSub;
+  StreamSubscription onPresenceSub;
 
   void onJitsiCall(EventUpdate eventUpdate) {
     final event = Event.fromJson(
@@ -158,12 +177,15 @@ class MatrixState extends State<Matrix> {
     return;
   }
 
+  bool webHasFocus = true;
+
   void _showWebNotification(EventUpdate eventUpdate) async {
+    if (webHasFocus && activeRoomId == eventUpdate.roomID) return;
     final room = client.getRoomById(eventUpdate.roomID);
     if (room.notificationCount == 0) return;
     final event = Event.fromJson(eventUpdate.content, room);
     final body = event.getLocalizedBody(
-      L10n.of(context),
+      MatrixLocals(L10n.of(context)),
       withSenderNamePrefix:
           !room.isDirectChat || room.lastEvent.senderId == client.userID,
     );
@@ -172,7 +194,7 @@ class MatrixState extends State<Matrix> {
       ..autoplay = true
       ..load();
     html.Notification(
-      room.getLocalizedDisplayname(L10n.of(context)),
+      room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
       body: body,
       icon: event.sender.avatarUrl?.getThumbnail(client,
               width: 64, height: 64, method: ThumbnailMethod.crop) ??
@@ -189,7 +211,7 @@ class MatrixState extends State<Matrix> {
       final Set verificationMethods = <KeyVerificationMethod>{
         KeyVerificationMethod.numbers
       };
-      if (!kIsWeb) {
+      if (PlatformInfos.isMobile) {
         // emojis don't show in web somehow
         verificationMethods.add(KeyVerificationMethod.emoji);
       }
@@ -199,6 +221,9 @@ class MatrixState extends State<Matrix> {
           importantStateEvents: <String>{
             'im.ponies.room_emotes', // we want emotes to work properly
           });
+      onPresenceSub ??= client.onPresence.stream
+          .where((p) => p.isUserStatus)
+          .listen(_storeUserStatus);
       onJitsiCallSub ??= client.onEvent.stream
           .where((e) =>
               e.type == 'timeline' &&
@@ -206,6 +231,7 @@ class MatrixState extends State<Matrix> {
               e.content['content']['msgtype'] == Matrix.callNamespace &&
               e.content['sender'] != client.userID)
           .listen(onJitsiCall);
+
       onRoomKeyRequestSub ??=
           client.onRoomKeyRequest.stream.listen((RoomKeyRequest request) async {
         final room = request.room;
@@ -261,11 +287,13 @@ class MatrixState extends State<Matrix> {
       });
     }
     if (kIsWeb) {
+      onFocusSub = html.window.onFocus.listen((_) => webHasFocus = true);
+      onBlurSub = html.window.onBlur.listen((_) => webHasFocus = false);
+
       client.onSync.stream.first.then((s) {
         html.Notification.requestPermission();
         onNotification ??= client.onEvent.stream
             .where((e) =>
-                e.roomID != activeRoomId &&
                 e.type == 'timeline' &&
                 [EventTypes.Message, EventTypes.Sticker, EventTypes.Encrypted]
                     .contains(e.eventType) &&
@@ -276,12 +304,67 @@ class MatrixState extends State<Matrix> {
     super.initState();
   }
 
+  List<UserStatus> get userStatuses {
+    try {
+      return (client.accountData[userStatusesType].content['user_statuses']
+              as List)
+          .map((json) => UserStatus.fromJson(json))
+          .toList();
+    } catch (_) {}
+    return [];
+  }
+
+  void _storeUserStatus(Presence presence) {
+    final tmpUserStatuses = List<UserStatus>.from(userStatuses);
+    final currentStatusIndex =
+        userStatuses.indexWhere((u) => u.userId == presence.senderId);
+    final newUserStatus = UserStatus()
+      ..receivedAt = DateTime.now().millisecondsSinceEpoch
+      ..statusMsg = presence.presence.statusMsg
+      ..userId = presence.senderId;
+    if (currentStatusIndex == -1) {
+      tmpUserStatuses.add(newUserStatus);
+    } else if (tmpUserStatuses[currentStatusIndex].statusMsg !=
+        presence.presence.statusMsg) {
+      if (presence.presence.statusMsg.trim().isEmpty) {
+        tmpUserStatuses.removeAt(currentStatusIndex);
+      } else {
+        tmpUserStatuses[currentStatusIndex] = newUserStatus;
+      }
+    } else {
+      return;
+    }
+    _cleanUpUserStatus(tmpUserStatuses);
+  }
+
+  void _cleanUpUserStatus(List<UserStatus> tmpUserStatuses) {
+    final now = DateTime.now().millisecondsSinceEpoch;
+    tmpUserStatuses
+        .removeWhere((u) => (now - u.receivedAt) > (1000 * 60 * 60 * 24));
+    tmpUserStatuses.sort((a, b) => b.receivedAt.compareTo(a.receivedAt));
+    if (tmpUserStatuses.length > 40) {
+      tmpUserStatuses.removeRange(40, tmpUserStatuses.length);
+    }
+    if (tmpUserStatuses != userStatuses) {
+      client.setAccountData(
+        client.userID,
+        userStatusesType,
+        {
+          'user_statuses': tmpUserStatuses.map((i) => i.toJson()).toList(),
+        },
+      );
+    }
+  }
+
   @override
   void dispose() {
     onRoomKeyRequestSub?.cancel();
     onKeyVerificationRequestSub?.cancel();
     onJitsiCallSub?.cancel();
+    onPresenceSub?.cancel();
     onNotification?.cancel();
+    onFocusSub?.cancel();
+    onBlurSub?.cancel();
     super.dispose();
   }
 
