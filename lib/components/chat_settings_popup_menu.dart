@@ -24,17 +24,6 @@ class ChatSettingsPopupMenu extends StatefulWidget {
 class _ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
   StreamSubscription notificationChangeSub;
 
-/*   @override
-  void initState() async {
-    print('entro INIT STATE');
-    var client = Matrix.of(context).client;
-    var userOther = widget.room.id;
-    var roomWithOther = await client.getRoomById(userOther);
-    var participantsRoom = await roomWithOther.requestParticipants();
-    print(participantsRoom);
-    super.initState();
-  } */
-
   @override
   void dispose() {
     notificationChangeSub?.cancel();

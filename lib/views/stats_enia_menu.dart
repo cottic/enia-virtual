@@ -1,4 +1,5 @@
-
+import 'package:fluffychat/utils/app_route.dart';
+import 'package:fluffychat/views/stats_enia_menu_02.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -7,6 +8,10 @@ import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import '../l10n/l10n.dart';
+
+import 'package:fl_chart/fl_chart.dart';
+
+import 'stats_enia_menu_01.dart';
 
 class StatsEniaMenuView extends StatelessWidget {
   @override
@@ -31,6 +36,8 @@ class _StatsEniaMenuState extends State<StatsEniaMenu> {
   bool crossSigningCached;
   Future<bool> megolmBackupCachedFuture;
   bool megolmBackupCached;
+
+  bool isShowingMainData = true;
 
   Future<void> requestSSSSCache(BuildContext context) async {
     final handle = Matrix.of(context).client.encryption.ssss.open();
@@ -73,6 +80,17 @@ class _StatsEniaMenuState extends State<StatsEniaMenu> {
         );
       }
     }
+  }
+
+  void _drawerTapAction(Widget view) {
+    Navigator.of(context).pop();
+    Navigator.of(context).pushAndRemoveUntil(
+      AppRoute.defaultRoute(
+        context,
+        view,
+      ),
+      (r) => r.isFirst,
+    );
   }
 
   @override
@@ -122,12 +140,30 @@ class _StatsEniaMenuState extends State<StatsEniaMenu> {
           children: <Widget>[
             ListTile(
               trailing: Icon(Icons.link),
-              title: Text('Tableros ENIA	'),
-              
-              onTap: () => launch(
-                  'http://enia.codigoi.com.ar:5005/'),
+              leading: Icon(Icons.bar_chart_outlined),
+              //TODO: Esta info viene del YAML
+              title: Text('SSyR: Salud Sexual y Reproductivo	'),
+              subtitle: Text(
+                  'Tablero de la direccion de Salud Sexual y Reproductiva	'),
+              onTap: () => _drawerTapAction(
+                StatsEniaMenu01View(),
+              ),
             ),
             
+            SizedBox(
+              height: 20,
+            ),
+            ListTile(
+              trailing: Icon(Icons.link),
+              leading: Icon(Icons.bar_chart_outlined),
+              //TODO: Esta info viene del YAML
+              title: Text('SSyR: Salud Sexual y Reproductivo	2'),
+              subtitle: Text(
+                  'Tablero de la direccion de Salud Sexual y Reproductiva	'),
+              onTap: () => _drawerTapAction(
+                StatsEniaMenu02View(),
+              ),
+            ),
           ],
         ),
       ),

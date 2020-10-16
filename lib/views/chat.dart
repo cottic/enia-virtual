@@ -365,6 +365,95 @@ class _ChatState extends State<_Chat> {
       );
     }
     matrix.activeRoomId = widget.id;
+/* 
+    print('entro CHECK VIDEO CALL  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+
+    // Participantes de la room actual
+    var roomPatrticipantsChat = room.getParticipants();
+
+    print('Participantes de la room actual');
+    print(roomPatrticipantsChat.toString());
+
+    print(roomPatrticipantsChat.elementAt(0).displayName.toString());
+    // print(roomPatrticipantsChat.elementAt(1).displayName.toString());
+
+    // Traer Room ENIA
+    var eniaRoom = client.getRoomById(Matrix.mainGroup);
+
+    // Participantes de la ENIA ROOM
+    var participantseniaRoom = eniaRoom.getParticipants();
+
+    print('Participantes de la ENIA ROOM');
+    print(participantseniaRoom.toString());
+
+/*     print('participantseniaRoom');
+    print(participantseniaRoom.elementAt(0).displayName.toString());
+    print(participantseniaRoom.elementAt(1).displayName.toString());
+
+    print(participantseniaRoom.elementAt(2).displayName.toString());
+    print(participantseniaRoom.elementAt(3).displayName.toString());
+
+    print(participantseniaRoom.elementAt(4).displayName.toString());
+    print(participantseniaRoom.elementAt(5).displayName.toString());
+
+    print(participantseniaRoom.elementAt(6).displayName.toString());
+    print(participantseniaRoom.elementAt(7).displayName.toString());
+
+    print(participantseniaRoom.elementAt(8).displayName.toString());
+    print(participantseniaRoom.elementAt(9).displayName.toString());
+
+    print(participantseniaRoom.elementAt(10).displayName.toString());
+    print(participantseniaRoom.elementAt(11).displayName.toString()); */
+
+    //var participantseniaRoomComparision =  participantseniaRoom.elementAt(index).id.contains(roomPatrticipantsChat.elementAt(index).id);
+
+    //print('participantseniaRoomComparision');
+    //print(participantseniaRoomComparision.toString());
+
+    var jonaChat = roomPatrticipantsChat.elementAt(0);
+    var jonaGrupoENia = participantseniaRoom.elementAt(4);
+
+    print('jonaChat');
+    print(jonaChat.displayName.toString());
+    print('jonaGrupoENia');
+    print(jonaGrupoENia.displayName.toString());
+
+    var isTheSameUser = jonaChat.id == jonaGrupoENia.id;
+
+    print('Es el mismo usuario?');
+    print(isTheSameUser.toString());
+
+/*     var estanLosIds = roomPatrticipantsChat
+        .where((User userChat) => participantseniaRoom
+            .where((User userEniaGroup) => userEniaGroup.id.contains(userChat.id))
+            ))
+        .map((obj) {
+      print('${obj.id}');
+      return obj;
+    }).toList(); */
+
+    var index;
+
+    List resultado;
+
+    for (index = 0; index <= participantseniaRoom.length - 1; index++) {
+      //print('participantseniaRoom For Loop Called $index Times');
+      //print(participantseniaRoom.elementAt(index).displayName);
+      var estanLosIds = roomPatrticipantsChat
+          .where((User userChat) =>
+              participantseniaRoom.elementAt(index).id.contains(userChat.id))
+          .map((userInBothLists) {
+        print('${userInBothLists.id}');
+        return userInBothLists;
+      });
+
+     // resultado.add(estanLosIds);
+    }
+
+    print('resultado');
+    print(resultado.toString());
+
+    print('SALIO CHECK VIDEO CALL XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'); */
 
     if (room.membership == Membership.invite) {
       SimpleDialogs(context).tryRequestWithLoadingDialog(room.join());
@@ -804,7 +893,6 @@ class _ChatState extends State<_Chat> {
                                             contentPadding: EdgeInsets.all(0),
                                           ),
                                         ),
-                                        
                                         if (!kIsWeb)
                                           PopupMenuItem<String>(
                                             value: 'camera',
