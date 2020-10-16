@@ -1,8 +1,14 @@
-image: 
+image:
   name: registry.gitlab.com/famedly/containers/flutter-dockerimages:stable
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
+
+.shared_windows_runners:
+  tags:
+  - shared-windows
+  - windows
+  - windows-1809
 
 stages:
 - coverage
@@ -36,13 +42,36 @@ build_web:
     - cd web/ && curl -L 'https://github.com/sql-js/sql.js/releases/latest/download/sqljs-wasm.zip' > sqljs-wasm.zip && cd ../
     - cd web/ && unzip sqljs-wasm.zip && cd ../
     - cd web/ && rm sqljs-wasm.zip && cd ../
-    - flutter pub get
     - flutter clean
+    - flutter pub get
     - flutter build web --release --verbose
+    # upload elsewhere, if wanted
   artifacts:
     paths:
       - build/web/
 
+build_windows:
+  extends:
+    - .shared_windows_runners
+  stage: publish
+  script:
+    # Install chocolately
+    - Set-ExecutionPolicy Bypass -Scope Process
+    - Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    - choco install git -y
+    - choco install visualstudio2019community -y --package-parameters "--add Microsoft.VisualStudio.Product.BuildTools --includeRecommended --includeOptional --passive --locale en-US"
+    - cd ..; git clone https://github.com/flutter/flutter.git -b dev; $env:path += ";C:\GitLab-Runner\builds\ChristianPauly\flutter\bin"; cd fluffychat-flutter
+    - flutter doctor
+    - flutter config --enable-windows-desktop
+    - flutter build windows
+  needs: []
+  artifacts:
+    paths:
+      - build/windows/runner/Release/
+    name: "Binairies"
+  only:
+    - main
+    - tags
 
 build_android_debug:
   stage: coverage
@@ -54,7 +83,7 @@ build_android_debug:
     paths:
       - build/app/outputs/apk/debug/app-debug.apk
   except:
-    - master
+    - main
 
 
 build_android_apk:
@@ -66,13 +95,16 @@ build_android_apk:
     - cd android && echo "keyAlias=key" >> key.properties && cd ..
     - cd android && echo "storeFile=../key.jks" >> key.properties && cd ..
     - cd android/app && echo $GOOGLE_SERVICES >> google-services.json && cd ../..
+    - flutter pub get
     - flutter build apk --release
+    - mkdir -p build/android
+    - cp build/app/outputs/apk/release/app-release.apk build/android/
   artifacts:
     when: on_success
     paths:
-      - build/app/outputs/apk/release/app-release.apk
+      - build/android/app-release.apk
   only:
-    - master
+    - main
     - tags
 
 
@@ -86,12 +118,15 @@ build_android_appbundle:
     - cd android && echo "storeFile=../key.jks" >> key.properties && cd ..
     - cd android/app && echo $GOOGLE_SERVICES >> google-services.json && cd ../..
     - flutter build appbundle --target-platform android-arm,android-arm64,android-x64
+    - mkdir -p build/android
+    - cp build/app/outputs/bundle/release/app-release.aab build/android/
   artifacts:
     when: on_success
     paths:
-      - build/app/outputs/bundle/release/app-release.aab
+      - build/android/app-release.aab
   only:
-    - master
+    - main
+
 
 upload_to_fdroid_repo:
   stage: publish
@@ -115,13 +150,15 @@ upload_to_fdroid_repo:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - ssh-keyscan -t rsa fdroid.nordgedanken.dev >> ~/.ssh/known_hosts
   script:
-    - export UPDATE_VERSION=$(pcregrep -o1 'version:\\s([0-9]*\\.[0-9]*\\.[0-9]*)\\+[0-9]*' pubspec.yaml)
-    - mv app-release.apk "${UPDATE_VERSION}.apk"
-    - cd build/app/outputs/apk/release/ && rsync -rav -e ssh ./ fluffy@fdroid.nordgedanken.dev:/fdroid/repo
-    - ssh fluffy@fdroid.nordgedanken.dev "cd fdroid && fdroid update"
-  dependencies:
-    - build_android_apk
+    - mkdir -p upload
+    - cp build/android/* upload/
+    - cd build/android/
+    - export UPDATE_VERSION=$(pcregrep -o1 'version:\\s([0-9]*\\.[0-9]*\\.[0-9]*)\\+[0-9]*' pubspec.yaml) && mv app-release.apk "${UPDATE_VERSION}.apk"
+    - rsync -rav -e ssh ./ fluffy@fdroid.nordgedanken.dev:/fdroid/repo
+    - ssh fluffy@fdroid.nordgedanken.dev "cd fdroid && mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc && fdroid update"
+  needs: ["build_android_apk"]
   only:
     - tags
 
@@ -136,10 +173,44 @@ pages:
     - cd build/web/ && bundle install && cd ../../
     - cd build/web/ && bundle exec jekyll build -d public && cd ../../
     - mv build/web/public ./
-  dependencies:
-    - build_web
+  needs: ["build_web"]
   artifacts:
     paths:
       - public
   only:
-    - master
+    - main
+
+build_linux:
+  stage: coverage
+  image: registry.gitlab.com/famedly/containers/flutter-dockerimages:dev
+  dependencies: []
+  script:
+    - sudo apt update
+    - sudo apt install clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev
+    - flutter config --enable-linux-desktop
+    - flutter pub get
+    - flutter build linux --release
+  artifacts:
+    when: on_success
+    paths:
+      - build/linux/release/bundle/
+  only:
+    - main
+  
+snap:publish:
+  stage: publish
+  image: "cibuilds/snapcraft:core18"
+  only:
+    - tags
+  script:
+    - snapcraft
+    - echo $SNAPCRAFT_LOGIN_FILE | base64 --decode --ignore-garbage > snapcraft.login
+    - snapcraft login --with snapcraft.login
+    - snapcraft push --release=stable *.snap
+    - snapcraft logout
+  artifacts:
+    paths:
+      - './*.snap'
+    when: on_success
+    expire_in: 1 week
+  needs: []

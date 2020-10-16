@@ -1,11 +1,11 @@
 import 'package:famedlysdk/famedlysdk.dart';
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import '../utils/date_time_extension.dart';
 import '../components/adaptive_page_layout.dart';
 import '../components/matrix.dart';
-import '../l10n/l10n.dart';
+import '../utils/date_time_extension.dart';
 import 'chat_list.dart';
 
 class DevicesSettingsView extends StatelessWidget {
@@ -56,6 +56,22 @@ class DevicesSettingsState extends State<DevicesSettings> {
     }
   }
 
+  void _renameDeviceAction(BuildContext context, Device device) async {
+    final displayName = await SimpleDialogs(context).enterText(
+      hintText: device.displayName,
+      labelText: L10n.of(context).changeDeviceName,
+    );
+    if (displayName == null) return;
+    final success = await SimpleDialogs(context).tryRequestWithLoadingDialog(
+      Matrix.of(context)
+          .client
+          .setDeviceMetadata(device.deviceId, displayName: displayName),
+    );
+    if (success != false) {
+      reload();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,6 +104,7 @@ class DevicesSettingsState extends State<DevicesSettings> {
               if (thisDevice != null)
                 UserDeviceListItem(
                   thisDevice,
+                  rename: (d) => _renameDeviceAction(context, d),
                   remove: (d) => _removeDevicesAction(context, [d]),
                 ),
               Divider(height: 1),
@@ -117,6 +134,7 @@ class DevicesSettingsState extends State<DevicesSettings> {
                         itemBuilder: (BuildContext context, int i) =>
                             UserDeviceListItem(
                           devices[i],
+                          rename: (d) => _renameDeviceAction(context, d),
                           remove: (d) => _removeDevicesAction(context, [d]),
                         ),
                       ),
@@ -132,23 +150,34 @@ class DevicesSettingsState extends State<DevicesSettings> {
 class UserDeviceListItem extends StatelessWidget {
   final Device userDevice;
   final Function remove;
+  final Function rename;
 
-  const UserDeviceListItem(this.userDevice, {this.remove, Key key})
+  const UserDeviceListItem(this.userDevice, {this.remove, this.rename, Key key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
       onSelected: (String action) {
-        if (action == 'remove' && remove != null) {
-          remove(userDevice);
+        switch (action) {
+          case 'remove':
+            if (remove != null) remove(userDevice);
+            break;
+          case 'rename':
+            if (rename != null) rename(userDevice);
         }
       },
       itemBuilder: (BuildContext context) => [
         PopupMenuItem<String>(
+          value: 'rename',
+          child: Text(L10n.of(context).changeDeviceName),
+        ),
+        PopupMenuItem<String>(
           value: 'remove',
-          child: Text(L10n.of(context).removeDevice,
-              style: TextStyle(color: Colors.red)),
+          child: Text(
+            L10n.of(context).removeDevice,
+            style: TextStyle(color: Colors.red),
+          ),
         ),
       ],
       child: ListTile(

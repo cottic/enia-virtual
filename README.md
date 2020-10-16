@@ -2,10 +2,10 @@
 
 <p>Este proyecto es un derivado de <a href="https://gitlab.com/ChristianPauly/fluffychat-flutter">FluffyChat</a>
 
-
 # Features
  * Single and group chats
  * Send images and files
+ * Voice messages
  * Offline chat history
  * Push Notifications
  * Account settings
@@ -19,8 +19,11 @@
  * Archived chats
  * Discover public chats on the user's homeserver
  * Registration
+ * Disable account
+ * Change password
+ * End-To-End-Encryption
 
-## How to build
+# How to build
 
 1. [Install flutter](https://flutter.dev)
 
@@ -30,29 +33,47 @@ git clone --recurse-submodules https://gitlab.com/ChristianPauly/fluffychat-flut
 cd fluffychat-flutter
 ```
 
-### Android / iOS
+3. Choose your target platform below and enable support for it.
 
-3. For Android install CMake from the SDK Manager
+4. Debug with: `flutter run`
 
-4. Install ninja:
+### Android
+
+* Install CMake from the SDK Manager
+
+* Install ninja:
 ```
 sudo apt install ninja-build
 ```
 
-5. Outcomment the Google Services plugin at the end of the file `android/app/build.gradle`:
+* Outcomment the Google Services plugin at the end of the file `android/app/build.gradle`:
 ```
 // apply plugin: "com.google.gms.google-services"
 ```
 
-6. `flutter run`
+* Build with: `flutter build apk`
+
+### iOS / iPadOS
+
+* With xcode you can't build a release version without our cert. :-/ Use `flutter run --profile` to have a working version on your iOS device.
 
 ### Web
 
-3. `flutter channel beta && flutter upgrade`
+* Enable web support in Flutter: https://flutter.dev/docs/get-started/web
 
-4. `flutter config --enable-web`
+* Build with: `flutter build web --release`
 
-5. `flutter run`
+### Desktop (Linux, Windows, macOS)
+
+* Enable Desktop support in Flutter: https://flutter.dev/desktop
+
+* Build with one of these: 
+```
+flutter build linux --release
+flutter build windows --release
+flutter build macos --release
+```
+
 
 ## How to add translations for your language
 
@@ -70,25 +91,40 @@ with a method call:
 ```
 Text(L10n.of(context).helloWorld),
 ```
-And add the method to `/lib/l10n/l10n.dart`:
+
+and add the following import if missing:
+
 ```
-String get helloWorld => Intl.message('Hello world');
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 ```
 
-2. Add the string to the .arb files with this command:
+2. Add the string to `/lib/l10n/l10n_en.arb`:
+
+(The following example need to be sorounded by the usual json `{}` and after the `@@locale` key)
+
+Example A:
 ```
-flutter pub run intl_translation:extract_to_arb --output-dir=lib/l10n lib/l10n/l10n.dart
+"helloWorld": "Hello World!",
+"@helloWorld": {
+  "description": "The conventional newborn programmer greeting"
+}
 ```
 
-3. Copy the new translation objects from `/lib/l10n/intl_message.arb` to `/lib/l10n/intl_<yourlanguage>.arb` and translate it or create a new file for your language by copying `intl_message.arb`.
-
-4. Update the translations with this command:
+Example B:
 ```
-flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/l10n --no-use-deferred-loading lib/l10n/l10n.dart lib/l10n/intl_*.arb
+"hello": "Hello {userName}",
+"@hello": {
+  "description": "A message with a single parameter",
+  "placeholders": {
+    "userName": {
+      "type": “String”,
+      “example”: “Bob”
+    }
+  }
+}
 ```
 
-5. Make sure your language is in `supportedLocales` in `/lib/main.dart` and in the List at `https://gitlab.com/ChristianPauly/fluffychat-flutter/-/blob/master/lib/l10n/l10n.dart#L11`.
-
+3. For testing just run a regular build without extras
 
 # Special thanks to
 

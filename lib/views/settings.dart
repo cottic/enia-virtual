@@ -1,19 +1,29 @@
 import 'dart:io';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:famedlysdk/famedlysdk.dart';
+import 'package:file_picker_cross/file_picker_cross.dart';
+
 import 'package:fluffychat/components/settings_themes.dart';
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/utils/sentry_controller.dart';
+import 'package:fluffychat/views/settings_devices.dart';
+import 'package:fluffychat/views/settings_ignore_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:memoryfilepicker/memoryfilepicker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
-import '../components/dialogs/simple_dialogs.dart';
 import '../components/content_banner.dart';
+import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
-import '../l10n/l10n.dart';
+import '../utils/app_route.dart';
+import 'app_info.dart';
+import 'chat_list.dart';
+import 'settings_emotes.dart';
 
 class SettingsView extends StatelessWidget {
   @override
@@ -38,6 +48,61 @@ class _SettingsState extends State<Settings> {
   bool crossSigningCached;
   Future<bool> megolmBackupCachedFuture;
   bool megolmBackupCached;
+
+  void logoutAction(BuildContext context) async {
+    if (await SimpleDialogs(context).askConfirmation() == false) {
+      return;
+    }
+    var matrix = Matrix.of(context);
+    await SimpleDialogs(context)
+        .tryRequestWithLoadingDialog(matrix.client.logout());
+  }
+
+  void _changePasswordAccountAction(BuildContext context) async {
+    final oldPassword = await SimpleDialogs(context).enterText(
+      password: true,
+      titleText: L10n.of(context).pleaseEnterYourPassword,
+    );
+    if (oldPassword == null) return;
+    final newPassword = await SimpleDialogs(context).enterText(
+      password: true,
+      titleText: L10n.of(context).chooseAStrongPassword,
+    );
+    if (newPassword == null) return;
+    await SimpleDialogs(context).tryRequestWithLoadingDialog(
+      Matrix.of(context)
+          .client
+          .changePassword(newPassword, oldPassword: oldPassword),
+    );
+    BotToast.showText(text: L10n.of(context).passwordHasBeenChanged);
+  }
+
+  void _deleteAccountAction(BuildContext context) async {
+    if (await SimpleDialogs(context).askConfirmation(
+          titleText: L10n.of(context).warning,
+          contentText: L10n.of(context).deactivateAccountWarning,
+          dangerous: true,
+        ) ==
+        false) {
+      return;
+    }
+    if (await SimpleDialogs(context).askConfirmation(dangerous: true) ==
+        false) {
+      return;
+    }
+    final password = await SimpleDialogs(context).enterText(
+      password: true,
+      titleText: L10n.of(context).pleaseEnterYourPassword,
+    );
+    if (password == null) return;
+    await SimpleDialogs(context).tryRequestWithLoadingDialog(
+      Matrix.of(context).client.deactivateAccount(auth: {
+        'type': 'm.login.password',
+        'user': Matrix.of(context).client.userID,
+        'password': password,
+      }),
+    );
+  }
 
   void setJitsiInstanceAction(BuildContext context) async {
     var jitsi = await SimpleDialogs(context).enterText(
@@ -75,20 +140,30 @@ class _SettingsState extends State<Settings> {
   }
 
   void setAvatarAction(BuildContext context) async {
-    final tempFile = await MemoryFilePicker.getImage(
-        source: ImageSource.gallery,
-        imageQuality: 50,
-        maxWidth: 1600,
-        maxHeight: 1600);
-    if (tempFile == null) return;
+    MatrixFile file;
+    if (PlatformInfos.isMobile) {
+      final result = await ImagePicker().getImage(
+          source: ImageSource.gallery,
+          imageQuality: 50,
+          maxWidth: 1600,
+          maxHeight: 1600);
+      if (result == null) return;
+      file = MatrixFile(
+        bytes: await result.readAsBytes(),
+        name: result.path,
+      );
+    } else {
+      final result =
+          await FilePickerCross.importFromStorage(type: FileTypeCross.image);
+      if (result == null) return;
+      file = MatrixFile(
+        bytes: result.toUint8List(),
+        name: result.fileName,
+      );
+    }
     final matrix = Matrix.of(context);
     final success = await SimpleDialogs(context).tryRequestWithLoadingDialog(
-      matrix.client.setAvatar(
-        MatrixFile(
-          bytes: tempFile.bytes,
-          name: tempFile.path,
-        ),
-      ),
+      matrix.client.setAvatar(file),
     );
     if (success != false) {
       setState(() {
@@ -129,11 +204,15 @@ class _SettingsState extends State<Settings> {
       try {
         handle.unlock(recoveryKey: str);
         valid = true;
-      } catch (_) {
+      } catch (e, s) {
+        debugPrint('Couldn\'t use recovery key: ' + e.toString());
+        debugPrint(s.toString());
         try {
           handle.unlock(passphrase: str);
           valid = true;
-        } catch (_) {
+        } catch (e, s) {
+          debugPrint('Couldn\'t use recovery passphrase: ' + e.toString());
+          debugPrint(s.toString());
           valid = false;
         }
       }
@@ -315,16 +394,51 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             ListTile(
+              trailing: Icon(Icons.block),
+              title: Text(L10n.of(context).ignoredUsers),
+              onTap: () async => await Navigator.of(context).push(
+                AppRoute.defaultRoute(
+                  context,
+                  SettingsIgnoreListView(),
+                ),
+              ),
+            ),
+            ListTile(
               trailing: Icon(Icons.account_circle),
-              title: Text(L10n.of(context).accountInformations),
+              title: Text(L10n.of(context).accountInformation),
               onTap: () => Navigator.of(context).push(
                 AppRoute.defaultRoute(
                   context,
                   AppInfoView(),
                 ),
               ),
-            ), */
-            /* 
+            ),
+            ListTile(
+              trailing: Icon(Icons.bug_report),
+              title: Text(L10n.of(context).sendBugReports),
+              onTap: () => SentryController.toggleSentryAction(context),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              trailing: Icon(Icons.vpn_key),
+              title: Text(
+                'Change password',
+              ),
+              onTap: () => _changePasswordAccountAction(context),
+            ),
+            ListTile(
+              trailing: Icon(Icons.exit_to_app),
+              title: Text(L10n.of(context).logout),
+              onTap: () => logoutAction(context),
+            ),
+            ListTile(
+              trailing: Icon(Icons.delete_forever),
+              title: Text(
+                L10n.of(context).deleteAccount,
+                style: TextStyle(color: Colors.red),
+              ),
+              onTap: () => _deleteAccountAction(context),
+            ),
             Divider(thickness: 1),
             ListTile(
               title: Text(

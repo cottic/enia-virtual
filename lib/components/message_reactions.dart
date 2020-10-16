@@ -1,8 +1,9 @@
 import 'package:famedlysdk/famedlysdk.dart';
-import 'package:flutter/foundation.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_networkimage/provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
+import 'dialogs/simple_dialogs.dart';
 import 'matrix.dart';
 
 class MessageReactions extends StatelessWidget {
@@ -48,10 +49,12 @@ class MessageReactions extends StatelessWidget {
                             e.content['m.relates_to']['key'] == r.key,
                         orElse: () => null);
                     if (evt != null) {
-                      evt.redact();
+                      SimpleDialogs(context)
+                          .tryRequestWithLoadingDialog(evt.redact());
                     }
                   } else {
-                    event.room.sendReaction(event.eventId, r.key);
+                    SimpleDialogs(context).tryRequestWithLoadingDialog(
+                        event.room.sendReaction(event.eventId, r.key));
                   }
                 },
               ))
@@ -70,7 +73,9 @@ class _Reaction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderColor = reacted ? Colors.red : Theme.of(context).primaryColor;
+    final borderColor = reacted
+        ? Theme.of(context).primaryColor
+        : Theme.of(context).secondaryHeaderColor;
     final textColor = Theme.of(context).brightness == Brightness.dark
         ? Colors.white
         : Colors.black;
@@ -88,13 +93,16 @@ class _Reaction extends StatelessWidget {
       content = Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Image(
-            image: AdvancedNetworkImage(
-              src,
-              useDiskCache: !kIsWeb,
-            ),
-            height: fontSize,
-          ),
+          PlatformInfos.isBetaDesktop
+              ? Image.network(
+                  src,
+                  height: fontSize,
+                )
+              : CachedNetworkImage(
+                  imageUrl: src,
+                  height: fontSize,
+                ),
+          Container(width: 4),
           Text(count.toString(),
               style: TextStyle(
                 color: textColor,
@@ -118,10 +126,10 @@ class _Reaction extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           border: Border.all(
-            width: fontSize / 20,
+            width: 1,
             color: borderColor,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(padding * 2)),
+          borderRadius: BorderRadius.circular(8),
         ),
         padding: EdgeInsets.all(padding),
         child: content,
