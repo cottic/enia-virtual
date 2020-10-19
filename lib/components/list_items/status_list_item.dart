@@ -35,23 +35,7 @@ class StatusListItem extends StatelessWidget {
                 children: <Widget>[
                   SizedBox(height: 10),
                   Container(
-                    child: Stack(
-                      children: [
-                        Avatar(profile.avatarUrl, profile.displayname),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            width: 10,
-                            height: 10,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.green,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: Avatar(profile.avatarUrl, profile.displayname),
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 1,
@@ -69,7 +53,11 @@ class StatusListItem extends StatelessWidget {
                       overflow: TextOverflow.clip,
                       maxLines: 1,
                       style: TextStyle(
-                        color: Theme.of(context).textTheme.bodyText2.color,
+                        color: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            .color
+                            .withOpacity(0.66),
                         fontSize: 13,
                       ),
                     ),

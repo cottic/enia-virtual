@@ -107,7 +107,7 @@ class _ChatListState extends State<ChatList> {
   bool _scrolledToTop = true;
 
   Future<bool> getMainGroup() async {
-    //print('Entro FIRST LINK');
+    // print('Entro FIRST LINK');
     var client = Matrix.of(context).client;
 
     roomsJoined = await client.requestJoinedRooms();
@@ -133,7 +133,7 @@ class _ChatListState extends State<ChatList> {
   }
 
   Future<bool> getSecondLink() async {
-    //print('Entro SECOND LINK');
+    // print('Entro SECOND LINK');
     var client = Matrix.of(context).client;
 
     roomsJoined == null
@@ -151,7 +151,7 @@ class _ChatListState extends State<ChatList> {
   }
 
   Future<bool> getThirdLink() async {
-    //print('Entro THIRD LINK');
+    // print('Entro THIRD LINK');
     var client = Matrix.of(context).client;
 
     roomsJoined == null
@@ -597,8 +597,8 @@ class _ChatListState extends State<ChatList> {
                                       Theme.of(context).secondaryHeaderColor,
                                   onPressed: () => _setStatus(context),
                                 ),
-                                SizedBox(height: 16.0),
-                                FloatingActionButton(
+                                // SizedBox(height: 16.0),
+                                /* FloatingActionButton(
                                   child: Icon(Icons.add),
                                   backgroundColor:
                                       Theme.of(context).primaryColor,
@@ -607,7 +607,7 @@ class _ChatListState extends State<ChatList> {
                                           AppRoute.defaultRoute(
                                               context, NewPrivateChatView()),
                                           (r) => r.isFirst),
-                                ),
+                                ), */
                               ],
                             ),
                   body: Column(
@@ -640,6 +640,24 @@ class _ChatListState extends State<ChatList> {
                                                 .contains(searchController.text
                                                         .toLowerCase() ??
                                                     '')));
+
+                                    //This allows to search in listGrupoENia
+                                    var mainGroupListSearch =
+                                        List<User>.from(mainGroupList);
+
+                                    if (mainGroupListSearch != null &&
+                                        mainGroupListSearch.isNotEmpty) {
+                                      mainGroupListSearch.removeWhere(
+                                        (User item) => (searchMode &&
+                                            !item.displayName
+                                                .toString()
+                                                .toLowerCase()
+                                                .contains(searchController.text
+                                                        .toLowerCase() ??
+                                                    '')),
+                                      );
+                                    }
+
                                     if (rooms.isEmpty &&
                                         (!searchMode ||
                                             publicRoomsResponse == null)) {
@@ -719,16 +737,49 @@ class _ChatListState extends State<ChatList> {
                                                           scrollDirection:
                                                               Axis.horizontal,
                                                           itemCount:
-                                                              Matrix.of(context)
-                                                                  .userStatuses
+                                                              mainGroupListSearch
                                                                   .length,
-                                                          itemBuilder: (BuildContext
+                                                          itemBuilder:
+                                                              (BuildContext
                                                                       context,
-                                                                  int i) =>
-                                                              StatusListItem(Matrix
-                                                                      .of(context)
-                                                                  .userStatuses[i]),
-                                                        )
+                                                                  int i) {
+                                                            if (i == 0) {
+                                                              return Row(
+                                                                children: <
+                                                                    Widget>[
+                                                                  searchMode
+                                                                      ? Container()
+                                                                      : Container(
+                                                                          child:
+                                                                              PrivateRoomListItem(linkMainRoom),
+                                                                        ),
+                                                                  searchMode
+                                                                      ? Container()
+                                                                      : secondLinkRoom ==
+                                                                              null
+                                                                          ? Container()
+                                                                          : Container(
+                                                                              child: PrivateRoomListItem(secondLinkRoom),
+                                                                            ),
+                                                                  searchMode
+                                                                      ? Container()
+                                                                      : thirdLinkRoom ==
+                                                                              null
+                                                                          ? Container()
+                                                                          : Container(
+                                                                              child: PrivateRoomListItem(thirdLinkRoom),
+                                                                            ),
+                                                                  EniaPresenceListItem(
+                                                                      mainGroupListSearch[
+                                                                          i]),
+                                                                ],
+                                                              );
+                                                            } else {
+                                                              return EniaPresenceListItem( 
+                                                                  mainGroupListSearch[
+                                                                      i]);
+                                                            }
+                                                          })
                                                       : displayShareStatus
                                                           ? ListTile(
                                                               leading:

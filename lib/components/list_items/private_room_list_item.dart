@@ -28,10 +28,10 @@ class PrivateRoomListItem extends StatelessWidget {
     return InkWell(
       onTap: () => joinAction(context),
       child: Container(
-        width: 80,
+        width: 76,
         child: Column(
           children: <Widget>[
-            SizedBox(height: 16),
+            SizedBox(height: 10),
             Container(
               child: Avatar(
                   roomEntry.avatar == null

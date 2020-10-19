@@ -40,7 +40,9 @@ class _EniaPresenceListItemState extends State<EniaPresenceListItem> {
 
     return InkWell(
       onTap: () => presence?.presence?.statusMsg == null
-          ? botonIsUsed ? _startChatAction(context, widget.user.id) : null
+          ? botonIsUsed
+              ? _startChatAction(context, widget.user.id)
+              : null
           : showDialog(
               context: context,
               builder: (_) => PresenceDialog(
@@ -50,21 +52,17 @@ class _EniaPresenceListItemState extends State<EniaPresenceListItem> {
               ),
             ),
       child: Container(
-        width: 80,
+        width: 76,
         child: Column(
           children: <Widget>[
-            SizedBox(height: 16),
+            SizedBox(height: 10),
             Container(
               child:
                   Avatar(widget.user.avatarUrl, widget.user.calcDisplayname()),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1,
-                  color: presence?.presence?.statusMsg == null
-                      ? presence?.presence?.currentlyActive == true
-                          ? Colors.blue
-                          : Theme.of(context).secondaryHeaderColor
-                      : Theme.of(context).primaryColor,
+                  color: Theme.of(context).primaryColor,
                 ),
                 borderRadius: BorderRadius.circular(80),
               ),
