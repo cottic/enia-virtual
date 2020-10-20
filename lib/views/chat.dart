@@ -227,23 +227,10 @@ class _ChatState extends State<_Chat> {
       ),
     );
   }
-//TODO: Fix Send video
-/*   void sendVideoAction(BuildContext context) async {
-    var file = await MemoryFilePicker.getFile(
-        type: FileType.custom,
-        allowedExtensions: ['mp4', 'FLV', 'SWF', 'mov', 'WMV', '3GP']);
-
-    if (file == null) return;
-    await SimpleDialogs(context).tryRequestWithLoadingDialog(
-      room.sendFileEvent(
-        MatrixFile(bytes: file.bytes, name: file.path),
-      ),
-    );
-  } */
 
   void sendVideoAction(BuildContext context) async {
     final result =
-        await FilePickerCross.importFromStorage(type: FileTypeCross.any);
+        await FilePickerCross.importFromStorage(type: FileTypeCross.video);
     if (result == null) return;
     await showDialog(
       context: context,
