@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'dart:io';
-
+import 'dart:async';
 
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/components/matrix.dart';
@@ -8,18 +8,15 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/utils/sentry_controller.dart';
-import 'package:fluffychat/views/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'login.dart';
 import 'package:flutter/foundation.dart';
 
-
-
 class HomeserverPicker extends StatelessWidget {
   //Not need, because user cannot select a server
-  /*   Future<void> _setHomeserverAction(BuildContext context) async {
+  /*     Future<void> _setHomeserverAction(BuildContext context) async {
     final homeserver = await SimpleDialogs(context).enterText(
         titleText: L10n.of(context).enterYourHomeserver,
         hintText: AppConfig.defaultHomeserver,
@@ -27,12 +24,13 @@ class HomeserverPicker extends StatelessWidget {
         keyboardType: TextInputType.url);
     if (homeserver?.isEmpty ?? true) return;
     _checkHomeserverAction(homeserver, context);
-  } */
+  }
+*/
 
   void _checkHomeserverAction(String homeserver, BuildContext context) async {
-    if (await SentryController.getSentryStatus() == null || true) {
+    /* if (await SentryController.getSentryStatus() == null || true) {
       await SentryController.toggleSentryAction(context);
-    }
+    } */
 
     if (!homeserver.startsWith('https://')) {
       homeserver = 'https://$homeserver';
@@ -44,9 +42,11 @@ class HomeserverPicker extends StatelessWidget {
       await Navigator.of(context).push(AppRoute(Login()));
     }
   }
-    final String platform = kIsWeb ? 'Web' : Platform.operatingSystem;
 
 
+
+
+  final String platform = kIsWeb ? 'Web' : Platform.operatingSystem;
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +127,7 @@ class HomeserverPicker extends StatelessWidget {
 
               SizedBox(
                 //TODO: en la version web mobile, el espacio no deberia existir, solo en web desktop
-                height: kIsWeb ? 160 : 16,
+                height: kIsWeb  ? 100 : 16,
               ),
             ],
           ),

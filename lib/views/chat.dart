@@ -1055,7 +1055,6 @@ class _ChatState extends State<_Chat> {
                                             ),
                                             //TODO: Traducir
                                             title: Text('Mensajes Frecuentes'),
-                                            //title: Text(L10n.of(context).voiceMessage),
                                             contentPadding: EdgeInsets.all(0),
                                           ),
                                         ),
