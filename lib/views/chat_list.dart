@@ -298,7 +298,7 @@ class _ChatListState extends State<ChatList> {
     );
   }
 
-  void _setStatus(BuildContext context, {bool fromDrawer = false}) async {
+ /*  void _setStatus(BuildContext context, {bool fromDrawer = false}) async {
     if (fromDrawer) Navigator.of(context).pop();
     final ownProfile = await SimpleDialogs(context)
         .tryRequestWithLoadingDialog(Matrix.of(context).client.ownProfile);
@@ -322,7 +322,7 @@ class _ChatListState extends State<ChatList> {
       );
     }
     return;
-  }
+  } */
 
   @override
   void dispose() {
@@ -578,8 +578,8 @@ class _ChatListState extends State<ChatList> {
                                 ),
                               ),
                   ),
-                  //This allows to create new chats, not available on version 1
-                  floatingActionButton:
+                  //This allows to create new chats and set Status, not available on version 1
+                   /*floatingActionButton:
                       (AdaptivePageLayout.columnMode(context) ||
                               selectMode != SelectMode.normal)
                           ? null
@@ -598,7 +598,7 @@ class _ChatListState extends State<ChatList> {
                                   onPressed: () => _setStatus(context),
                                 ),
                                 // SizedBox(height: 16.0),
-                                /* FloatingActionButton(
+                                FloatingActionButton(
                                   child: Icon(Icons.add),
                                   backgroundColor:
                                       Theme.of(context).primaryColor,
@@ -607,9 +607,9 @@ class _ChatListState extends State<ChatList> {
                                           AppRoute.defaultRoute(
                                               context, NewPrivateChatView()),
                                           (r) => r.isFirst),
-                                ), */
+                                ), 
                               ],
-                            ),
+                            ),*/
                   body: Column(
                     children: [
                       ConnectionStatusHeader(),
