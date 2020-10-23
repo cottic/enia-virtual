@@ -28,60 +28,79 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
       content: Container(
         width: MediaQuery.of(context).size.width * 0.8,
         height: MediaQuery.of(context).size.height * 0.7,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Container(
-              width: double.maxFinite,
-              padding: EdgeInsets.only(bottom: 10, left: 5, top: 6),
-              child: Text(
-                //TODO: internazionalizar texto
-                'Seleccione una respuesta:',
-                textAlign: TextAlign.start,
-                style: Theme.of(context).textTheme.headline6,
-              ),
-            ),
-            FutureBuilder<List<FrequentMessagesInfo>>(
-              future: getFrequent(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Expanded(
-                      child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      //return Text(snapshot.data[index].toString());
-                      if (index == 0) {
-                        return Column(
-                          children: <Widget>[
-                            _createItemRespuesta(context, snapshot.data[index]),
-                          ],
-                        );
-                      } else {
-                        return _createItemRespuesta(
-                            context, snapshot.data[index]);
-                      }
-                    },
-                    itemCount: snapshot.data.length,
-                  ));
-                } else if (snapshot.hasError) {
-                  return Text(snapshot.error);
-                }
+        child: FutureBuilder<List<FrequentMessagesInfo>>(
+          future: getFrequent(),
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return Center(
+                    child: Text('Please connect to inernet an try again'));
+              case ConnectionState.waiting:
                 return CircularProgressIndicator();
-              },
-            ),
-            FlatButton(
-              child: Text(
-                L10n.of(context).cancel.toUpperCase(),
-                style: TextStyle(
-                  color: Theme.of(context)
-                      .textTheme
-                      .bodyText2
-                      .color
-                      .withAlpha(150),
-                ),
-              ),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ],
+              case ConnectionState.active:
+                return CircularProgressIndicator();
+              case ConnectionState.done:
+                if (snapshot.hasError) {
+                  //TODO: internazionalizar texto
+                  return Center(child: Text('Algo salio mal //'));
+                } else {
+                  if (snapshot.data != null) {
+                    return Column(
+                      children: [
+                        Container(
+                          width: double.maxFinite,
+                          padding: EdgeInsets.only(bottom: 10, left: 5, top: 6),
+                          child: Text(
+                            //TODO: internazionalizar texto
+                            'Seleccione una respuesta:',
+                            textAlign: TextAlign.start,
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                        ),
+                        Expanded(
+                            child: ListView.builder(
+                          itemBuilder: (context, index) {
+                            if (index == 0) {
+                              return Column(
+                                children: <Widget>[
+                                  _createItemRespuesta(
+                                      context, snapshot.data[index]),
+                                ],
+                              );
+                            } else {
+                              return _createItemRespuesta(
+                                  context, snapshot.data[index]);
+                            }
+                          },
+                          itemCount: snapshot.data.length,
+                        )),
+                        ButtonCancel(),
+                      ],
+                    );
+                  } else {
+                    return Column(
+                      children: [
+                        Expanded(
+                          child: Container(),
+                        ),
+                        Icon(
+                          Icons.error,
+                          size: 50,
+                        ),
+                        SizedBox(height: 20.0),
+                        //TODO: internazionalizar texto
+                        Text('Algo salio mal, vuelva a intentarlo mas tarde'),
+                        Expanded(
+                          child: Container(),
+                        ),
+                        ButtonCancel(),
+                      ],
+                    );
+                  }
+                }
+            }
+            return Center(child: CircularProgressIndicator());
+          },
         ),
       ),
     );
@@ -111,6 +130,26 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
           Navigator.of(context).pop();
         },
       ),
+    );
+  }
+}
+
+class ButtonCancel extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      child: Text(
+        L10n.of(context).cancel.toUpperCase(),
+        style: TextStyle(
+          color: Theme.of(context)
+              .textTheme
+              .bodyText2
+              .color
+              .withAlpha(150),
+        ),
+      ),
+      onPressed: () => Navigator.of(context).pop(),
     );
   }
 }
@@ -145,8 +184,12 @@ class FrequentMessagesInfo {
 
 Future<List<FrequentMessagesInfo>> getFrequent() async {
   String askForFrequentMessages = await Store().getItem('frequentMessagesInfo');
-  List frequentMessageInfo =
-      frequentMessagesInfoFromJson(askForFrequentMessages);
 
-  return frequentMessageInfo;
+  if (askForFrequentMessages != null) {
+    List frequentMessageInfo =
+        frequentMessagesInfoFromJson(askForFrequentMessages);
+    return frequentMessageInfo;
+  } else {
+    return null;
+  }
 }

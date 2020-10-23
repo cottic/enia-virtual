@@ -9,6 +9,7 @@ import 'package:fluffychat/utils/firebase_controller.dart';
 import 'package:fluffychat/utils/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/user_status.dart';
+import 'package:fluffychat/views/stats_enia_menu_01.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -23,6 +24,7 @@ import '../utils/presence_extension.dart';
 import '../views/key_verification.dart';
 import '../utils/platform_infos.dart';
 import 'avatar.dart';
+import 'enia_client.dart';
 
 class Matrix extends StatefulWidget {
   static const String callNamespace = 'chat.fluffy.jitsi_call';
@@ -77,166 +79,54 @@ class Matrix extends StatefulWidget {
 }
 
 class MatrixState extends State<Matrix> {
-  Client client;
-  Store store;
-  @override
-  BuildContext context;
-
   static const String userStatusesType = 'chat.fluffy.user_statuses';
 
-  Map<String, dynamic> get shareContent => _shareContent;
-  set shareContent(Map<String, dynamic> content) {
-    _shareContent = content;
-    onShareContentChanged.add(_shareContent);
-  }
-
-  Map<String, dynamic> _shareContent;
-
-  final StreamController<Map<String, dynamic>> onShareContentChanged =
-      StreamController.broadcast();
-
   String activeRoomId;
-  File wallpaper;
-  bool renderHtml = false;
+  Client client;
 
-  // ENIA Variables
+  EniaClient clientEnia = EniaClient();
 
   String jitsiInstance = 'https://meet.jit.si/';
 
-  void clean() async {
-    if (!kIsWeb) return;
-
-    final storage = await getLocalStorage();
-    await storage.deleteItem(widget.clientName);
-  }
-
-  void _initWithStore() async {
-    var initLoginState = client.onLoginStateChanged.stream.first;
-    try {
-      client.database = await getDatabase(client);
-    // Get the frequent messages for Plan ENIA
-    var frequentMessagesFromApi =
-        await client.getFrequentMessagesInfo(Matrix.getFrequentMessagesHttp);
-
-    // Store the frequent messages for Plan ENIA in Local Storage
-    await Store()
-        .setItem('frequentMessagesInfo', jsonEncode(frequentMessagesFromApi));
-      await client.connect();
-      final firstLoginState = await initLoginState;
-      if (firstLoginState == LoginState.logged) {
-        _cleanUpUserStatus(userStatuses);
-        if (PlatformInfos.isMobile) {
-          await FirebaseController.setupFirebase(
-            this,
-            widget.clientName,
-          );
-        }
-      }
-    } catch (e, s) {
-      client.onLoginStateChanged.sink.addError(e, s);
-      captureException(e, s);
-      rethrow;
-    }
-  }
-
-  Map<String, dynamic> getAuthByPassword(String password, [String session]) => {
-        'type': 'm.login.password',
-        'identifier': {
-          'type': 'm.id.user',
-          'user': client.userID,
-        },
-        'user': client.userID,
-        'password': password,
-        if (session != null) 'session': session,
-      };
-
-  StreamSubscription onRoomKeyRequestSub;
-  StreamSubscription onKeyVerificationRequestSub;
-  StreamSubscription onJitsiCallSub;
-  StreamSubscription onNotification;
-  StreamSubscription<html.Event> onFocusSub;
   StreamSubscription<html.Event> onBlurSub;
+  StreamSubscription<html.Event> onFocusSub;
+  StreamSubscription onJitsiCallSub;
+  StreamSubscription onKeyVerificationRequestSub;
+  StreamSubscription onNotification;
   StreamSubscription onPresenceSub;
+  StreamSubscription onRoomKeyRequestSub;
+  final StreamController<Map<String, dynamic>> onShareContentChanged =
+      StreamController.broadcast();
 
-  void onJitsiCall(EventUpdate eventUpdate) {
-    final event = Event.fromJson(
-        eventUpdate.content, client.getRoomById(eventUpdate.roomID));
-    if (DateTime.now().millisecondsSinceEpoch -
-            event.originServerTs.millisecondsSinceEpoch >
-        1000 * 60 * 5) {
-      return;
-    }
-    final senderName = event.sender.calcDisplayname();
-    final senderAvatar = event.sender.avatarUrl;
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(L10n.of(context).videoCall),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            ListTile(
-              contentPadding: EdgeInsets.all(0),
-              leading: Avatar(senderAvatar, senderName),
-              title: Text(
-                senderName,
-                style: TextStyle(fontSize: 18),
-              ),
-              subtitle:
-                  event.room.isDirectChat ? null : Text(event.room.displayname),
-            ),
-            Divider(),
-            Row(
-              children: <Widget>[
-                Spacer(),
-                FloatingActionButton(
-                  backgroundColor: Colors.red,
-                  child: Icon(Icons.phone_missed),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                Spacer(),
-                FloatingActionButton(
-                  backgroundColor: Colors.green,
-                  child: Icon(Icons.phone),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    launch(event.body);
-                  },
-                ),
-                Spacer(),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-    return;
-  }
-
+  bool renderHtml = false;
+  Store store;
+  File wallpaper;
   bool webHasFocus = true;
 
-  void _showWebNotification(EventUpdate eventUpdate) async {
-    if (webHasFocus && activeRoomId == eventUpdate.roomID) return;
-    final room = client.getRoomById(eventUpdate.roomID);
-    if (room.notificationCount == 0) return;
-    final event = Event.fromJson(eventUpdate.content, room);
-    final body = event.getLocalizedBody(
-      MatrixLocals(L10n.of(context)),
-      withSenderNamePrefix:
-          !room.isDirectChat || room.lastEvent.senderId == client.userID,
-    );
-    html.AudioElement()
-      ..src = 'assets/assets/sounds/notification.wav'
-      ..autoplay = true
-      ..load();
-    html.Notification(
-      room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
-      body: body,
-      icon: event.sender.avatarUrl?.getThumbnail(client,
-              width: 64, height: 64, method: ThumbnailMethod.crop) ??
-          room.avatar?.getThumbnail(client,
-              width: 64, height: 64, method: ThumbnailMethod.crop),
-    );
+  // Aca creo la lista que contiene a las preguntas frecuentes.
+  // No lo guardo en memoria, ver como lee el wallpaper para impeemntarlo.
+
+  List preguntasFrecuentes;
+
+  DashboardsList listaDashboards;
+
+  var dashboardConfig;
+
+  Map<String, dynamic> _shareContent;
+
+  @override
+  BuildContext context;
+
+  @override
+  void dispose() {
+    onRoomKeyRequestSub?.cancel();
+    onKeyVerificationRequestSub?.cancel();
+    onJitsiCallSub?.cancel();
+    onPresenceSub?.cancel();
+    onNotification?.cancel();
+    onFocusSub?.cancel();
+    onBlurSub?.cancel();
+    super.dispose();
   }
 
   @override
@@ -302,11 +192,13 @@ class MatrixState extends State<Matrix> {
           await request.rejectVerification();
         }
       });
+
       _initWithStore();
     } else {
       client = widget.client;
       client.connect();
     }
+    _initEniaConfig();
     if (store != null) {
       store
           .getItem('chat.fluffy.jitsi_instance')
@@ -337,7 +229,146 @@ class MatrixState extends State<Matrix> {
             .listen(_showWebNotification);
       });
     }
+
+/*         // Get the frequent messages for Plan ENIA
+    var frequentMessagesFromApi = await client.getFrequentMessagesInfo(Matrix.getFrequentMessagesHttp);
+        
+
+    // Store the frequent messages for Plan ENIA in Local Storage
+    store.setItem('frequentMessagesInfo', jsonEncode(frequentMessagesFromApi)); */
     super.initState();
+  }
+
+  Map<String, dynamic> get shareContent => _shareContent;
+
+  set shareContent(Map<String, dynamic> content) {
+    _shareContent = content;
+    onShareContentChanged.add(_shareContent);
+  }
+
+  void clean() async {
+    if (!kIsWeb) return;
+
+    final storage = await getLocalStorage();
+    await storage.deleteItem(widget.clientName);
+  }
+
+  void _initEniaConfig() async {
+    // Get the frequent messages for Plan ENIA
+    await clientEnia.getFrequentMessagesInfo(Matrix.getFrequentMessagesHttp);
+  }
+
+  void _initWithStore() async {
+    var initLoginState = client.onLoginStateChanged.stream.first;
+    try {
+      client.database = await getDatabase(client);
+
+      await client.connect();
+      final firstLoginState = await initLoginState;
+      if (firstLoginState == LoginState.logged) {
+        _cleanUpUserStatus(userStatuses);
+        if (PlatformInfos.isMobile) {
+          await FirebaseController.setupFirebase(
+            this,
+            widget.clientName,
+          );
+        }
+      }
+    } catch (e, s) {
+      client.onLoginStateChanged.sink.addError(e, s);
+      captureException(e, s);
+      rethrow;
+    }
+  }
+
+  Map<String, dynamic> getAuthByPassword(String password, [String session]) => {
+        'type': 'm.login.password',
+        'identifier': {
+          'type': 'm.id.user',
+          'user': client.userID,
+        },
+        'user': client.userID,
+        'password': password,
+        if (session != null) 'session': session,
+      };
+
+  void onJitsiCall(EventUpdate eventUpdate) {
+    final event = Event.fromJson(
+        eventUpdate.content, client.getRoomById(eventUpdate.roomID));
+    if (DateTime.now().millisecondsSinceEpoch -
+            event.originServerTs.millisecondsSinceEpoch >
+        1000 * 60 * 5) {
+      return;
+    }
+    final senderName = event.sender.calcDisplayname();
+    final senderAvatar = event.sender.avatarUrl;
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(L10n.of(context).videoCall),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              contentPadding: EdgeInsets.all(0),
+              leading: Avatar(senderAvatar, senderName),
+              title: Text(
+                senderName,
+                style: TextStyle(fontSize: 18),
+              ),
+              subtitle:
+                  event.room.isDirectChat ? null : Text(event.room.displayname),
+            ),
+            Divider(),
+            Row(
+              children: <Widget>[
+                Spacer(),
+                FloatingActionButton(
+                  backgroundColor: Colors.red,
+                  child: Icon(Icons.phone_missed),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                Spacer(),
+                FloatingActionButton(
+                  backgroundColor: Colors.green,
+                  child: Icon(Icons.phone),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    launch(event.body);
+                  },
+                ),
+                Spacer(),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+    return;
+  }
+
+  void _showWebNotification(EventUpdate eventUpdate) async {
+    if (webHasFocus && activeRoomId == eventUpdate.roomID) return;
+    final room = client.getRoomById(eventUpdate.roomID);
+    if (room.notificationCount == 0) return;
+    final event = Event.fromJson(eventUpdate.content, room);
+    final body = event.getLocalizedBody(
+      MatrixLocals(L10n.of(context)),
+      withSenderNamePrefix:
+          !room.isDirectChat || room.lastEvent.senderId == client.userID,
+    );
+    html.AudioElement()
+      ..src = 'assets/assets/sounds/notification.wav'
+      ..autoplay = true
+      ..load();
+    html.Notification(
+      room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+      body: body,
+      icon: event.sender.avatarUrl?.getThumbnail(client,
+              width: 64, height: 64, method: ThumbnailMethod.crop) ??
+          room.avatar?.getThumbnail(client,
+              width: 64, height: 64, method: ThumbnailMethod.crop),
+    );
   }
 
   List<UserStatus> get userStatuses {
@@ -393,18 +424,6 @@ class MatrixState extends State<Matrix> {
   }
 
   @override
-  void dispose() {
-    onRoomKeyRequestSub?.cancel();
-    onKeyVerificationRequestSub?.cancel();
-    onJitsiCallSub?.cancel();
-    onPresenceSub?.cancel();
-    onNotification?.cancel();
-    onFocusSub?.cancel();
-    onBlurSub?.cancel();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return _InheritedMatrix(
       data: this,
@@ -414,10 +433,10 @@ class MatrixState extends State<Matrix> {
 }
 
 class _InheritedMatrix extends InheritedWidget {
-  final MatrixState data;
-
   _InheritedMatrix({Key key, this.data, Widget child})
       : super(key: key, child: child);
+
+  final MatrixState data;
 
   @override
   bool updateShouldNotify(_InheritedMatrix old) {
