@@ -1,6 +1,36 @@
 {
   "@@locale": "es",
   "@@last_modified": "2020-09-23 11:46:02.754339",
+  "frequentMessages": "Mensajes Frecuentes",
+  "@frequentMessages": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "statsTitle": "Estadisticas",
+  "@statsTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "formation": "Capacitación",
+  "@formation": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "documents": "Documentos",
+  "@documents": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "projectName": "enia@virtual",
+  "@projectName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "loading": "Iniciando...",
+  "@loading": {
+    "type": "text",
+    "placeholders": {}
+  },
   "about": "Acerca de",
   "@about": {
     "type": "text",
@@ -67,7 +97,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "archive": "Archivo",
+  "archive": "Historial",
   "@archive": {
     "type": "text",
     "placeholders": {}
@@ -323,8 +353,8 @@
     "type": "text",
     "placeholders": {}
   },
-  "Close": "No",
-  "@Close": {
+  "close": "No",
+  "@close": {
     "type": "text",
     "placeholders": {}
   },
@@ -343,7 +373,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "connect": "Conectar",
+  "connect": "Ingresar",
   "@connect": {
     "type": "text",
     "placeholders": {}
@@ -1670,11 +1700,6 @@
   },
   "yourOwnUsername": "Tu nombre de usuario",
   "@yourOwnUsername": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "Loading...": "Iniciando...",
-  "@Loading...": {
     "type": "text",
     "placeholders": {}
   }

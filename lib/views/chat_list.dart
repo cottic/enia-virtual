@@ -298,7 +298,7 @@ class _ChatListState extends State<ChatList> {
     );
   }
 
- /*  void _setStatus(BuildContext context, {bool fromDrawer = false}) async {
+  void _setStatus(BuildContext context, {bool fromDrawer = false}) async {
     if (fromDrawer) Navigator.of(context).pop();
     final ownProfile = await SimpleDialogs(context)
         .tryRequestWithLoadingDialog(Matrix.of(context).client.ownProfile);
@@ -322,7 +322,7 @@ class _ChatListState extends State<ChatList> {
       );
     }
     return;
-  } */
+  } 
 
   @override
   void dispose() {
@@ -426,9 +426,7 @@ class _ChatListState extends State<ChatList> {
                                     'assets/logoSoloFondo.png',
                                     width: 22,
                                   ),
-                                  //TODO: poner texto con L10n
-                                  title: Text('enia@virtual'),
-                                  //title: Text(L10n.of(context).archive),
+                                  title: Text(L10n.of(context).projectName),
                                   onTap: () => _drawerTapAction(
                                     EniaMenuView(),
                                   ),
@@ -436,9 +434,7 @@ class _ChatListState extends State<ChatList> {
                                 Divider(height: 1),
                                 ListTile(
                                   leading: Icon(Icons.folder),
-                                  //TODO: poner texto con L10n
-                                  title: Text('Documentos'),
-                                  //title: Text(L10n.of(context).archive),
+                                  title: Text(L10n.of(context).documents),
                                   onTap: () => _drawerTapAction(
                                     FilesEniaMenuView(),
                                   ),
@@ -446,9 +442,7 @@ class _ChatListState extends State<ChatList> {
                                 Divider(height: 1),
                                 ListTile(
                                   leading: Icon(Icons.school),
-                                  //TODO: poner texto con L10n
-                                  title: Text('Capacitación'),
-                                  //title: Text(L10n.of(context).archive),
+                                  title: Text(L10n.of(context).formation),
                                   onTap: () => _drawerTapAction(
                                     FormationEniaMenuView(),
                                   ),
@@ -456,9 +450,7 @@ class _ChatListState extends State<ChatList> {
                                 Divider(height: 1),
                                 ListTile(
                                   leading: Icon(Icons.insert_chart),
-                                  //TODO: poner texto con L10n
-                                  title: Text('Estadisticas'),
-                                  //title: Text(L10n.of(context).archive),
+                                  title: Text(L10n.of(context).statsTitle),
                                   onTap: () => _drawerTapAction(
                                     StatsEniaMenuView(),
                                   ),
@@ -467,10 +459,8 @@ class _ChatListState extends State<ChatList> {
                                 Divider(height: 1),
 
                                 ListTile(
-                                  leading: Icon(Icons.archive),
-                                  //TODO: poner texto con L10n
-                                  title: Text('Historial'),
-                                  //title: Text(L10n.of(context).archive),
+                                  leading: Icon(Icons.archive),                    
+                                  title: Text(L10n.of(context).archive),
                                   onTap: () => _drawerTapAction(
                                     Archive(),
                                   ),

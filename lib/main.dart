@@ -44,7 +44,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Matrix(
-      clientName: 'ENIA@Virtual $platform',
+      clientName: 'enia@Virtual $platform',
       child: Builder(
         builder: (BuildContext context) => ThemeSwitcherWidget(
           child: Builder(
@@ -80,10 +80,8 @@ class App extends StatelessWidget {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.16,
                           ),
-                          //TODO: No funciona traduccion, fixear.
                           Text(
-                            'Iniciando...',
-                            //L10n.of(context).loading,
+                            L10n.of(context).loading,
                             style: TextStyle(color: Colors.white),
                           ),
 

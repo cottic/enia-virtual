@@ -1028,7 +1028,8 @@ class _ChatState extends State<_Chat> {
                                               foregroundColor: Colors.white,
                                               child: Icon(Icons.ondemand_video),
                                             ),
-                                            title: Text('Enviar un video'),
+                                            title: Text(
+                                                L10n.of(context).sendVideo),
                                             contentPadding: EdgeInsets.all(0),
                                           ),
                                         ),
@@ -1053,8 +1054,8 @@ class _ChatState extends State<_Chat> {
                                               foregroundColor: Colors.white,
                                               child: Icon(Icons.textsms),
                                             ),
-                                            //TODO: Traducir
-                                            title: Text('Mensajes Frecuentes'),
+                                            title: Text(L10n.of(context)
+                                                .frequentMessages),
                                             contentPadding: EdgeInsets.all(0),
                                           ),
                                         ),

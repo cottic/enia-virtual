@@ -125,12 +125,10 @@ class _LoginState extends State<Login> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              //TODO: definir si va este texto u otra cosa y luego traducir
               Text(
-                'enia@virtual',
+                L10n.of(context).projectName,
                 style: Theme.of(context).textTheme.headline6,
               ),
-
               SizedBox(height: 20),
               ListTile(
                 leading: CircleAvatar(

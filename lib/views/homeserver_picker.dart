@@ -43,9 +43,6 @@ class HomeserverPicker extends StatelessWidget {
     }
   }
 
-
-
-
   final String platform = kIsWeb ? 'Web' : Platform.operatingSystem;
 
   @override
@@ -87,10 +84,7 @@ class HomeserverPicker extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
-                      //TODO: traducir
-                      'INGRESAR',
-                      //L10n.of(context).connect.toUpperCase(),
-
+                      L10n.of(context).connect.toUpperCase(),
                       style:
                           TextStyle(color: Theme.of(context).backgroundColor),
                     ),
@@ -127,7 +121,7 @@ class HomeserverPicker extends StatelessWidget {
 
               SizedBox(
                 //TODO: en la version web mobile, el espacio no deberia existir, solo en web desktop
-                height: kIsWeb  ? 100 : 16,
+                height: kIsWeb ? 100 : 16,
               ),
             ],
           ),

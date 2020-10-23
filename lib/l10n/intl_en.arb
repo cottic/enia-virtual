@@ -1,6 +1,36 @@
 {
   "@@locale": "en",
   "@@last_modified": "2020-09-23T11:45:42.519831",
+  "frequentMessages": "Frequent Messages",
+  "@frequentMessages": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "statsTitle": "Stats",
+  "@statsTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "formation": "Formation",
+  "@formation": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "documents": "Files",
+  "@documents": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "projectName": "enia@virtual",
+  "@projectName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "loading": "Loading...",
+  "@loading": {
+    "type": "text",
+    "placeholders": {}
+  },
   "about": "About",
   "@about": {
     "type": "text",
