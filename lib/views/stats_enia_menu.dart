@@ -1,7 +1,6 @@
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/views/stats_enia_menu_02.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
@@ -9,7 +8,6 @@ import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import 'package:fl_chart/fl_chart.dart';
 
 import 'stats_enia_menu_01.dart';
 

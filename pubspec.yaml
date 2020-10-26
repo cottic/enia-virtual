@@ -14,7 +14,7 @@ description: Chat with your friends.
 version: 1.6.2+51
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.10.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -75,6 +75,7 @@ dependencies:
 
   fl_chart: ^0.11.1
   yaml: ^2.2.1
+
 
 dev_dependencies:
   flutter_test:

@@ -1,8 +1,6 @@
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import 'archive.dart';
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
@@ -12,11 +10,6 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 
-import 'enia_menu.dart';
-import 'files_enia_menu.dart';
-import 'formation_enia_menu.dart';
-import 'settings.dart';
-import 'stats_enia_menu.dart';
 import 'stats_enia_menu_02.dart';
 
 class StatsEniaMenu01View extends StatelessWidget {
@@ -45,15 +38,6 @@ class _DashboardsListState extends State<DashboardsList> {
       ),
       (r) => r.isFirst,
     );
-  }
-
-  void logoutAction(BuildContext context) async {
-    if (await SimpleDialogs(context).askConfirmation() == false) {
-      return;
-    }
-    var matrix = Matrix.of(context);
-    await SimpleDialogs(context)
-        .tryRequestWithLoadingDialog(matrix.client.logout());
   }
 
   @override
@@ -101,6 +85,13 @@ class _DashboardsListState extends State<DashboardsList> {
   }
 }
 
+class ListItem {
+  int value;
+  String name;
+
+  ListItem(this.value, this.name);
+}
+
 class StatsEniaMenu01 extends StatefulWidget {
   @override
   _StatsEniaMenu01State createState() => _StatsEniaMenu01State();
@@ -116,10 +107,13 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
 
   bool isShowingMainData = true;
 
-  DateTime selectedDateNoRange;
-  DateTimeRange selectedDate =
-      DateTimeRange(start: DateTime.now(), end: DateTime.now());
-  final DateTime initialDate = DateTime.now();
+  DateTime initialSelectedDate;
+  DateTime endSelectedDate;
+
+  bool initialSelected = false;
+  bool endSelected = false;
+
+  String stateSelected;
 
   static const double barWidth = 22;
 
@@ -166,50 +160,38 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
     }
   }
 
-  _selectDate(BuildContext context) async {
-    var picked = await showDateRangePicker(
-      context: context,
-      firstDate: DateTime(2010),
-      lastDate: DateTime(2025),
-      helpText: 'Elija un rango de fechas',
-      fieldStartHintText: 'Start Booking date',
-      fieldEndHintText: 'End Booking date',
-      initialDateRange: DateTimeRange(
-        start: DateTime.now(),
-        end: DateTime.now().add(Duration(days: 10)),
-      ),
-      //initialEntryMode:  DatePickerEntryMode.input,
-      builder: (context, child) {
-        return Theme(
-          data: ThemeData.light(), // This will change to light theme.
-          child: child,
-        );
-      },
-    );
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
+  List<ListItem> _dropdownItems = [
+    ListItem(1, 'Salta'),
+    ListItem(2, 'Misiones'),
+    ListItem(3, 'Formosa'),
+    ListItem(4, 'Jujuy'),
+    ListItem(5, 'Chaco'),
+    ListItem(6, 'Buenos Aires')
+  ];
+
+  List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
+  ListItem _selectedItem;
+
+  void initState() {
+    super.initState();
+    _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
+  }
+
+  List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
+    List<DropdownMenuItem<ListItem>> items = List();
+    for (ListItem listItem in listItems) {
+      items.add(
+        DropdownMenuItem(
+          child: Text(listItem.name),
+          value: listItem,
+        ),
+      );
     }
+    return items;
   }
 
   @override
   Widget build(BuildContext context) {
-    final client = Matrix.of(context).client;
-    profileFuture ??= client.ownProfile.then((p) {
-      if (mounted) setState(() => profile = p);
-      return p;
-    });
-    crossSigningCachedFuture ??=
-        client.encryption.crossSigning.isCached().then((c) {
-      if (mounted) setState(() => crossSigningCached = c);
-      return c;
-    });
-    megolmBackupCachedFuture ??=
-        client.encryption.keyManager.isCached().then((c) {
-      if (mounted) setState(() => megolmBackupCached = c);
-      return c;
-    });
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
@@ -223,38 +205,137 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'SSyR: Salud Sexual y Reproductivo',
-                    style: TextStyle(color: Theme.of(context).backgroundColor),
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      'SSyR: Salud Sexual y Reproductivo',
+                      style:
+                          TextStyle(color: Theme.of(context).backgroundColor),
+                    ),
                   ),
-                  DropdownButton<String>(
-                    items: <String>[
-                      'Salta',
-                      'Misiones',
-                      'Formosa',
-                      'Jujuy',
-                      'Chaco',
-                      'Buenos Aires'
-                    ].map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    hint: Text('Provincia'),
-                    onChanged: (_) {},
+                  Expanded(
+                    flex: 2,
+                    child: Row(
+                      children: [
+                        Text(
+                          'Filtrar por fecha:',
+                          // "${initialSelectedDate.toLocal()}".substring(0, 7),
+                          style: TextStyle(
+                              fontSize: 12.0,
+                              color: Theme.of(context).backgroundColor),
+                        ),
+                        SizedBox(width: 10),
+                        FlatButton.icon(
+                          icon: Icon(
+                            Icons.filter_alt,
+                            size: 12,
+                          ),
+                          label: Text(
+                            initialSelected
+                                ? '${initialSelectedDate.toLocal()}'
+                                    .substring(0, 7)
+                                : 'Mes comienzo',
+                            style: TextStyle(
+                                fontSize: 12.0,
+                                color: Theme.of(context).backgroundColor),
+                          ),
+                          onPressed: () {
+                            showMonthPicker(
+                              context: context,
+                              firstDate: DateTime(2014),
+                              lastDate: endSelectedDate ?? DateTime.now(),
+                              initialDate: DateTime(2019),
+                            ).then((date) {
+                              if (date != null) {
+                                setState(() {
+                                  initialSelected = true;
+                                  initialSelectedDate = date;
+                                });
+                              }
+                            });
+                          },
+                        ),
+                        FlatButton.icon(
+                          icon: Icon(
+                            Icons.filter_alt,
+                            size: 12,
+                          ),
+                          label: Text(
+                            endSelected
+                                ? '${endSelectedDate.toLocal()}'.substring(0, 7)
+                                : 'Mes final',
+                            style: TextStyle(
+                                fontSize: 12.0,
+                                color: Theme.of(context).backgroundColor),
+                          ),
+                          onPressed: () {
+                            showMonthPicker(
+                              context: context,
+                              firstDate: initialSelectedDate ?? DateTime(2014),
+                              lastDate: DateTime.now(),
+                              initialDate: DateTime.now(),
+                            ).then((date) {
+                              if (date != null) {
+                                setState(() {
+                                  endSelected = true;
+                                  endSelectedDate = date;
+                                });
+                              }
+                            });
+                          },
+                        ),
+                        //TODO: poner background del drop en violeta
+                        DropdownButtonHideUnderline(
+                          child: DropdownButton(
+                            value: _selectedItem,
+                            style: TextStyle(
+                                fontSize: 12.0,
+                                color: Theme.of(context).backgroundColor),
+                            items: _dropdownMenuItems,
+                            hint: Text(
+                              'Filtrar por provincia',
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Theme.of(context).backgroundColor),
+                            ),
+                            onChanged: (value) {
+                              setState(() {
+                                _selectedItem = value;
+                              });
+                            },
+                          ),
+                        ),
+                        /* DropdownButton<String>(
+                          items: <String>[
+                            'Salta',
+                            'Misiones',
+                            'Formosa',
+                            'Jujuy',
+                            'Chaco',
+                            'Buenos Aires'
+                          ].map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                              ),
+                            );
+                          }).toList(),
+                          hint: Text(
+                            'Filtrar por Provincia',
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Theme.of(context).backgroundColor),
+                          ),
+                          onChanged: (value) {
+                            stateSelected = value;
+                          },
+                        ), */
+                      ],
+                    ),
                   ),
                 ],
               ),
-              /*  background:  
-              ContentBanner(
-                profile?.avatarUrl,
-                
-                height: 300,
-                //defaultIcon: Icons.account_circle,
-                loading: profile == null,
-                //onEdit: () => setAvatarAction(context),
-              ), */
             ),
           ),
         ],
@@ -266,85 +347,6 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
             ),
             SizedBox(
               height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "${selectedDate.start.toLocal()}".split(' ')[0],
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(width: 20),
-                Text(
-                  "${selectedDate.end.toLocal()}".split(' ')[0],
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(width: 20),
-                RaisedButton(
-                  onPressed: () => _selectDate(context),
-                  child: Text(
-                    'Filtrar por fecha',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  color: Colors.greenAccent,
-                ),
-                /* FlatButton.icon(
-                        icon: Icon(Icons.filter),
-                        label: Text('Filtrar por fecha'),
-                        onPressed: () {
-                          _selectDate(context);
-                          showDateRangePicker(
-                            context: context,
-                            firstDate: DateTime(2000),
-                            lastDate: DateTime(2025),
-                          );
-                        },
-                      ), */
-                SizedBox(width: 20),
-                DropdownButton<String>(
-                  items: <String>[
-                    'Salta',
-                    'Misiones',
-                    'Formosa',
-                    'Jujuy',
-                    'Chaco',
-                    'Buenos Aires'
-                  ].map((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  hint: Text('Provincia'),
-                  onChanged: (_) {},
-                ),
-                SizedBox(width: 40),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                    'Year: ${selectedDateNoRange?.year}\nMonth: ${selectedDateNoRange?.month}'),
-                SizedBox(width: 40),
-                RaisedButton(
-                  onPressed: () => showMonthPicker(
-                          context: context,
-                          firstDate: DateTime(DateTime.now().year - 1, 5),
-                          lastDate: DateTime(DateTime.now().year + 1, 9),
-                          initialDate: initialDate)
-                      .then((date) => setState(() {
-                            selectedDateNoRange = date;
-                          })),
-                  child: Text(
-                    'Filtrar por fecha (Solo selecciona un mes)',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  color: Colors.blueAccent,
-                ),
-              ],
             ),
             Row(
               children: [
