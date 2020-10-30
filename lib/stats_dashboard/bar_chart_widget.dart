@@ -1,4 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
+import 'package:fluffychat/stats_dashboard/pie_indicator_widget.dart';
 import 'package:flutter/material.dart';
 
 class BarChartWidget extends StatelessWidget {
@@ -108,111 +109,142 @@ class BarChartWidget extends StatelessWidget {
     ),
   ];
 
+  List<Indicator> indicatorList = [
+    Indicator(
+      color: Color(0xff0293ee),
+      text: '2018',
+      isSquare: false,
+    ),
+    Indicator(
+      color: Color(0xfff8b250),
+      text: '2019',
+      isSquare: true,
+    ),
+    Indicator(
+      color: Color(0xff845bef),
+      text: '2020',
+      isSquare: true,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return BarChart(
-      BarChartData(
-        alignment: BarChartAlignment.center,
-        // XXXXXX VAR GRAFICO XXXXXX
-        // El numero maximo del grafico eje Y
-        maxY: maxY,
-        // XXXXXX VAR GRAFICO XXXXXX
-        // El numero minimo del grafico eje Y
-        minY: minY,
-        // distancia entre barras
-        groupsSpace: 20,
-        barTouchData: BarTouchData(
-          enabled: true,
+    return Column(
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: indicatorList,
         ),
-        titlesData: FlTitlesData(
-          show: true,
-          // TITULO SUPERIOR
-          /* topTitles: SideTitles(
-            showTitles: true,
-            textStyle: TextStyle(color: Colors.orange, fontSize: 10),
-            margin: 10,
-            rotateAngle: 0,
-            getTitles: (double value) {
-              switch (value.toInt()) {
-                case 0:
-                  return '2018';
-                case 1:
-                  return '2019';
-                case 2:
-                  return '2020';
-                default:
+        SizedBox(
+          height: 10,
+        ),
+        BarChart(
+          BarChartData(
+            alignment: BarChartAlignment.center,
+            // XXXXXX VAR GRAFICO XXXXXX
+            // El numero maximo del grafico eje Y
+            maxY: maxY,
+            // XXXXXX VAR GRAFICO XXXXXX
+            // El numero minimo del grafico eje Y
+            minY: minY,
+            // distancia entre barras
+            groupsSpace: 20,
+            barTouchData: BarTouchData(
+              enabled: true,
+            ),
+            titlesData: FlTitlesData(
+              show: true,
+              // TITULO SUPERIOR
+              /* topTitles: SideTitles(
+                showTitles: true,
+                textStyle: TextStyle(color: Colors.orange, fontSize: 10),
+                margin: 10,
+                rotateAngle: 0,
+                getTitles: (double value) {
+                  switch (value.toInt()) {
+                    case 0:
+                      return '2018';
+                    case 1:
+                      return '2019';
+                    case 2:
+                      return '2020';
+                    default:
+                      return '';
+                  }
+                },
+              ), */
+              // TITULO INFERIOR
+              bottomTitles: SideTitles(
+                showTitles: true,
+                textStyle: TextStyle(color: Colors.red, fontSize: 10),
+                margin: 10,
+                rotateAngle: 0,
+                getTitles: (double value) {
+                  for (var i = 0; i < listTitlesX.length; i++) {
+                    return listTitlesX[value.toInt()];
+                  }
                   return '';
-              }
-            },
-          ), */
-          // TITULO INFERIOR
-          bottomTitles: SideTitles(
-            showTitles: true,
-            textStyle: TextStyle(color: Colors.red, fontSize: 10),
-            margin: 10,
-            rotateAngle: 0,
-            getTitles: (double value) {
-              for (var i = 0; i < listTitlesX.length; i++) {
-                return listTitlesX[value.toInt()];
-              }
-              return '';
-            },
-          ),
-          // TITULOS IZQUIERDA
-          leftTitles: SideTitles(
-            showTitles: false,
-            /*  textStyle: TextStyle(color: Colors.red, fontSize: 10),
-            rotateAngle: 45,
-            getTitles: (double value) {
-              //print('value');
-              //print(value);
+                },
+              ),
+              // TITULOS IZQUIERDA
+              leftTitles: SideTitles(
+                showTitles: false,
+                /*  textStyle: TextStyle(color: Colors.red, fontSize: 10),
+                rotateAngle: 45,
+                getTitles: (double value) {
+                  //print('value');
+                  //print(value);
 
-              if (value == 0) {
-                return '0';
-              }
-              return '${value.toInt()}00 LARCs';
-            },
-            interval: 1000,
-            margin: 8,
-            reservedSize: 30, */
+                  if (value == 0) {
+                    return '0';
+                  }
+                  return '${value.toInt()}00 LARCs';
+                },
+                interval: 1000,
+                margin: 8,
+                reservedSize: 30, */
+              ),
+              // TITULOS DERECHA
+              rightTitles: SideTitles(
+                showTitles: true,
+                textStyle: TextStyle(color: Colors.blue, fontSize: 10),
+                rotateAngle: 0,
+                getTitles: (double value) {
+                  if (value == 0) {
+                    return '0';
+                  }
+                  return '${value.toInt()} $titlesYright';
+                },
+                interval: intervalY,
+                margin: 8,
+                reservedSize: 30,
+              ),
+            ),
+            // DATA SOBRE LA GRID (linead de atras en el grafico)
+            gridData: FlGridData(
+              show: true,
+              checkToShowHorizontalLine: (value) =>
+                  value % backLinesDividedByValue == 0,
+              getDrawingHorizontalLine: (value) {
+                if (value == 0) {
+                  return FlLine(color: const Color(0xff363753), strokeWidth: 3);
+                }
+                return FlLine(
+                  color: const Color(0xff2a2747),
+                  strokeWidth: 0.8,
+                );
+              },
+            ),
+            // GRAFICO CON O SIN BORDE
+            borderData: FlBorderData(
+              show: true,
+            ),
+            barGroups: barData,
           ),
-          // TITULOS DERECHA
-          rightTitles: SideTitles(
-            showTitles: true,
-            textStyle: TextStyle(color: Colors.blue, fontSize: 10),
-            rotateAngle: 0,
-            getTitles: (double value) {
-              if (value == 0) {
-                return '0';
-              }
-              return '${value.toInt()} $titlesYright';
-            },
-            interval: intervalY,
-            margin: 8,
-            reservedSize: 30,
-          ),
         ),
-        // DATA SOBRE LA GRID (linead de atras en el grafico)
-        gridData: FlGridData(
-          show: true,
-          checkToShowHorizontalLine: (value) =>
-              value % backLinesDividedByValue == 0,
-          getDrawingHorizontalLine: (value) {
-            if (value == 0) {
-              return FlLine(color: const Color(0xff363753), strokeWidth: 3);
-            }
-            return FlLine(
-              color: const Color(0xff2a2747),
-              strokeWidth: 0.8,
-            );
-          },
-        ),
-        // GRAFICO CON O SIN BORDE
-        borderData: FlBorderData(
-          show: true,
-        ),
-        barGroups: barData,
-      ),
+      ],
     );
   }
 }
