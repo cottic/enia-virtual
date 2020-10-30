@@ -9,14 +9,24 @@ class LineChartWidget extends StatefulWidget {
 class _LineChartWidgetState extends State<LineChartWidget> {
   bool isShowingMainData = true;
 
+  // Las lineas del fondo del grafico
+  //  checkToShowHorizontalLine: (value) => value % backLinesDividedByValue == 0,
+  static const double backLinesDividedByValue = 100000;
+
+  // TITULOS BOTON QUE SWITCHEA LA INFO
+  static const String buttonTitle01 = 'Total LARCS';
+  static const String buttonTitle02 = 'Dispositivos de un tipo';
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Indica la info que muestra, si se presiona el boton, switchea
         LineChart(
-          isShowingMainData ? sampleData1() : sampleData2(),
+          isShowingMainData ? dataLarcsFull() : dataLarcsDesagregada(),
           swapAnimationDuration: const Duration(milliseconds: 250),
         ),
+        // Boton que switchea la info
         Container(
           margin: EdgeInsets.symmetric(horizontal: 100),
           child: RaisedButton.icon(
@@ -24,8 +34,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
               Icons.refresh,
               color: Colors.black.withOpacity(isShowingMainData ? 1.0 : 0.5),
             ),
-            label: Text(
-                isShowingMainData ? 'Total LARCS' : 'Dispositivos de un tipo'),
+            label: Text(isShowingMainData ? buttonTitle01 : buttonTitle02),
             onPressed: () {
               setState(() {
                 isShowingMainData = !isShowingMainData;
@@ -37,19 +46,96 @@ class _LineChartWidgetState extends State<LineChartWidget> {
     );
   }
 
-  LineChartData sampleData1() {
+  LineChartData dataLarcsFull() {
+    // La cantidad de items debe ser igual a max items
+    var listTitlesX = ['', '2018', '2019', '2020', '2021', '2022', '', ''];
+
+    var maxItems = 7.0;
+
     return LineChartData(
+      // DONDE COMIENZA EJE X // No puede ser menor a 0
+      minX: 0,
+      // DONDE TERMINA EJE X
+      maxX: maxItems,
+      // DONDE EMPIEZA EJE Y
+      minY: 0,
+      // DONDE TERMINA EJE Y
+      maxY: 1000000,
+      lineBarsData: [
+        LineChartBarData(
+          spots: [
+            FlSpot(1, 481600),
+            FlSpot(2, 782000),
+            FlSpot(3, 125800),
+            FlSpot(4, 481600),
+            FlSpot(5, 782000),
+            FlSpot(6, 125800),
+          ],
+          isCurved: true,
+          colors: [
+            Colors.green,
+          ],
+          barWidth: 8,
+          isStrokeCapRound: true,
+          // Mostrar puntos en la linea
+          dotData: FlDotData(
+            show: false,
+          ),
+          // Mostrar relleno debajo de la linea
+          belowBarData: BarAreaData(
+            show: false,
+          ),
+        ),
+        LineChartBarData(
+          spots: [
+     
+            FlSpot(2, 582000),
+            FlSpot(3, 425800),
+            FlSpot(4, 681600),
+            FlSpot(5, 782000),
+           
+          ],
+          isCurved: true,
+          colors: [
+            Colors.blue,
+          ],
+          barWidth: 8,
+          isStrokeCapRound: true,
+          dotData: FlDotData(
+            show: false,
+          ),
+          belowBarData: BarAreaData(
+            show: false,
+          ),
+        ),
+      ],
+      // Muestra el detalle al hacer clic sobre la linea
+      // TODO: definir estilos
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
-          tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+          tooltipBgColor: Colors.red.withOpacity(0.8),
         ),
         touchCallback: (LineTouchResponse touchResponse) {},
         handleBuiltInTouches: true,
       ),
+      // DEFINE EL GRID EN EL FONDO DEL GRAFICO
       gridData: FlGridData(
-        show: false,
+        show: true,
+        checkToShowHorizontalLine: (value) =>
+            value % backLinesDividedByValue == 0,
+        getDrawingHorizontalLine: (value) {
+          if (value == 0) {
+            return FlLine(color: const Color(0xff363753), strokeWidth: 3);
+          }
+          return FlLine(
+            color: const Color(0xff2a2747),
+            strokeWidth: 0.8,
+          );
+        },
       ),
+      // INFORMACION DE LOS TITULOS
       titlesData: FlTitlesData(
+        // TITULO INFERIOR
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 22,
@@ -59,19 +145,19 @@ class _LineChartWidgetState extends State<LineChartWidget> {
             fontSize: 16,
           ),
           margin: 10,
-          getTitles: (value) {
-            switch (value.toInt()) {
-              case 1:
-                return '2018';
-              case 2:
-                return '2019';
-              case 3:
-                return '2020';
+          getTitles: (double value) {
+            for (var i = 0; i < listTitlesX.length; i++) {
+              if (listTitlesX[value.toInt()] != null) {
+                return listTitlesX[value.toInt()];
+              }
             }
             return '';
           },
         ),
-        leftTitles: SideTitles(
+        // TITULOS IZQUIERDA
+        leftTitles: SideTitles(showTitles: false),
+        // TITULOS DERECHA
+        rightTitles: SideTitles(
           showTitles: true,
           textStyle: const TextStyle(
             color: Color(0xff75729e),
@@ -84,11 +170,12 @@ class _LineChartWidgetState extends State<LineChartWidget> {
             }
             return '${value.toInt()} LARCs';
           },
-          interval: 3000,
+          interval: 300000,
           margin: 8,
           reservedSize: 50,
         ),
       ),
+      // ESTILOS DE LOS BORDES
       borderData: FlBorderData(
         show: true,
         border: const Border(
@@ -107,41 +194,10 @@ class _LineChartWidgetState extends State<LineChartWidget> {
           ),
         ),
       ),
-      minX: 0,
-      maxX: 4,
-      maxY: 10000,
-      minY: 0,
-      lineBarsData: linesBarData1(),
     );
   }
 
-  List<LineChartBarData> linesBarData1() {
-    final lineChartBarData1 = LineChartBarData(
-      spots: [
-        FlSpot(1, 4816),
-        FlSpot(2, 7820),
-        FlSpot(3, 1258),
-      ],
-      isCurved: true,
-      colors: [
-        Colors.green,
-      ],
-      barWidth: 8,
-      isStrokeCapRound: true,
-      dotData: FlDotData(
-        show: false,
-      ),
-      belowBarData: BarAreaData(
-        show: false,
-      ),
-    );
-
-    return [
-      lineChartBarData1,
-    ];
-  }
-
-  LineChartData sampleData2() {
+  LineChartData dataLarcsDesagregada() {
     return LineChartData(
       lineTouchData: LineTouchData(
         enabled: false,
@@ -210,33 +266,27 @@ class _LineChartWidgetState extends State<LineChartWidget> {
       maxX: 4,
       maxY: 10000,
       minY: 0,
-      lineBarsData: linesBarData2(),
-    );
-  }
-
-  List<LineChartBarData> linesBarData2() {
-    final lineChartBarData1 = LineChartBarData(
-      spots: [
-        FlSpot(1, 2320),
-        FlSpot(2, 4550),
-        FlSpot(3, 855),
+      lineBarsData: [
+        LineChartBarData(
+          spots: [
+            FlSpot(1, 2320),
+            FlSpot(2, 4550),
+            FlSpot(3, 855),
+          ],
+          isCurved: true,
+          colors: [
+            Colors.amber,
+          ],
+          barWidth: 8,
+          isStrokeCapRound: true,
+          dotData: FlDotData(
+            show: false,
+          ),
+          belowBarData: BarAreaData(
+            show: false,
+          ),
+        )
       ],
-      isCurved: true,
-      colors: [
-        Colors.amber,
-      ],
-      barWidth: 8,
-      isStrokeCapRound: true,
-      dotData: FlDotData(
-        show: false,
-      ),
-      belowBarData: BarAreaData(
-        show: false,
-      ),
     );
-
-    return [
-      lineChartBarData1,
-    ];
   }
 }

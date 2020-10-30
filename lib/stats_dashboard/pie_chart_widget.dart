@@ -1,12 +1,56 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import 'pie_indicator_widget.dart';
+
 class PieChartWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => PieChartState();
 }
 
 class PieChartState extends State {
+  List<Indicator> indicatorList = [
+    Indicator(
+      color: Color(0xff0293ee),
+      text: '2018',
+      isSquare: false,
+    ),
+    Indicator(
+      color: Color(0xfff8b250),
+      text: '2019',
+      isSquare: true,
+    ),
+    Indicator(
+      color: Color(0xff845bef),
+      text: '2020',
+      isSquare: true,
+    ),
+  ];
+
+  List<PieChartSectionData> pieDataList = [
+    PieChartSectionData(
+      color: const Color(0xff0293ee),
+      value: 40,
+      title: '2320',
+      titleStyle: TextStyle(
+          fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+    ),
+    PieChartSectionData(
+      color: Colors.red,
+      value: 50,
+      title: '4550',
+      titleStyle: TextStyle(
+          fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+    ),
+    PieChartSectionData(
+      color: Colors.amber,
+      value: 10,
+      title: '855',
+      titleStyle: TextStyle(
+          fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+    )
+  ];
+
   int touchedIndex;
 
   @override
@@ -41,32 +85,7 @@ class PieChartState extends State {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
-            Indicator(
-              color: Color(0xff0293ee),
-              text: '2018',
-              isSquare: true,
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Indicator(
-              color: Color(0xfff8b250),
-              text: '2019',
-              isSquare: true,
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Indicator(
-              color: Color(0xff845bef),
-              text: '2020',
-              isSquare: true,
-            ),
-            SizedBox(
-              height: 18,
-            ),
-          ],
+          children: indicatorList,
         ),
         const SizedBox(
           width: 28,
@@ -76,90 +95,22 @@ class PieChartState extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(3, (i) {
+    List<PieChartSectionData> pieDatainter = [];
+    for (var i = 0; i < pieDataList.length; i++) {
       final isTouched = i == touchedIndex;
-      final double fontSize = isTouched ? 25 : 16;
-      final double radius = isTouched ? 100 : 80;
-      switch (i) {
-        case 0:
-          return PieChartSectionData(
-            color: const Color(0xff0293ee),
-            value: 40,
-            title: '2320',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-
-        case 1:
-          return PieChartSectionData(
-            color: const Color(0xfff8b250),
-            value: 50,
-            title: '4550',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-        case 2:
-          return PieChartSectionData(
-            color: const Color(0xff845bef),
-            value: 10,
-            title: '855',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-
-        default:
-          return null;
-      }
-    });
-  }
-}
-
-class Indicator extends StatelessWidget {
-  final Color color;
-  final String text;
-  final bool isSquare;
-  final double size;
-  final Color textColor;
-
-  const Indicator({
-    Key key,
-    this.color,
-    this.text,
-    this.isSquare,
-    this.size = 16,
-    this.textColor = const Color(0xff505050),
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
-            color: color,
-          ),
-        ),
-        const SizedBox(
-          width: 4,
-        ),
-        Text(
-          text,
-          style: TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: textColor),
-        )
-      ],
-    );
+      final fontSize = isTouched ? 25.0 : 16.0;
+      final radius = isTouched ? 100.0 : 80.0;
+      pieDatainter.add(PieChartSectionData(
+        color: pieDataList[i].color,
+        value: pieDataList[i].value,
+        title: pieDataList[i].title,
+        radius: radius,
+        titleStyle: TextStyle(
+            fontSize: fontSize,
+            fontWeight: pieDataList[i].titleStyle.fontWeight,
+            color: pieDataList[i].titleStyle.color),
+      ));
+    }
+    return pieDatainter;
   }
 }

@@ -1,19 +1,18 @@
+import 'package:fluffychat/stats_dashboard/header_dashboard_widget.dart';
 import 'package:fluffychat/stats_dashboard/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/stats_dashboard/bar_chart_widget.dart';
 import 'package:fluffychat/stats_dashboard/card_enia_stats_widget.dart';
 import 'package:fluffychat/stats_dashboard/dashboard_main_menu.dart';
-import 'package:fluffychat/stats_dashboard/filter_stats.dart';
 import 'package:fluffychat/stats_dashboard/line_chart_widget.dart';
-import 'package:fluffychat/utils/app_route.dart';
 
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import 'stats_enia_menu_02.dart';
+
 
 class StatsEniaMenu01View extends StatelessWidget {
   @override
@@ -32,84 +31,14 @@ class StatsEniaMenu01 extends StatefulWidget {
 }
 
 class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
-  Future<dynamic> profileFuture;
-  dynamic profile;
-  Future<bool> crossSigningCachedFuture;
-  bool crossSigningCached;
-  Future<bool> megolmBackupCachedFuture;
-  bool megolmBackupCached;
-
-  Future<void> requestSSSSCache(BuildContext context) async {
-    final handle = Matrix.of(context).client.encryption.ssss.open();
-    final str = await SimpleDialogs(context).enterText(
-      titleText: L10n.of(context).askSSSSCache,
-      hintText: L10n.of(context).passphraseOrKey,
-      password: true,
-    );
-    if (str != null) {
-      SimpleDialogs(context).showLoadingDialog(context);
-      // make sure the loading spinner shows before we test the keys
-      await Future.delayed(Duration(milliseconds: 100));
-      var valid = false;
-      try {
-        handle.unlock(recoveryKey: str);
-        valid = true;
-      } catch (_) {
-        try {
-          handle.unlock(passphrase: str);
-          valid = true;
-        } catch (_) {
-          valid = false;
-        }
-      }
-      await Navigator.of(context)?.pop();
-      if (valid) {
-        await handle.maybeCacheAll();
-        await SimpleDialogs(context).inform(
-          contentText: L10n.of(context).cachedKeys,
-        );
-        setState(() {
-          crossSigningCachedFuture = null;
-          crossSigningCached = null;
-          megolmBackupCachedFuture = null;
-          megolmBackupCached = null;
-        });
-      } else {
-        await SimpleDialogs(context).inform(
-          contentText: L10n.of(context).incorrectPassphraseOrKey,
-        );
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
             <Widget>[
-          SliverAppBar(
-            expandedHeight: 300.0,
-            floating: true,
-            pinned: true,
-            backgroundColor: Theme.of(context).primaryColor,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      'SSyR: Salud Sexual y Reproductivo',
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: FiltersStats(),
-                  ),
-                ],
-              ),
-            ),
+          HeaderUniqueDashboard(
+            title: 'SSyR: Salud Sexual y Reproductivo',
           ),
         ],
         body: ListView(
@@ -121,18 +50,11 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
             SizedBox(
               height: 20,
             ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: CardEniaStats(
-                    title: 'Total de LARCS',
-                    subTitle: 'Total de LARCS.',
-                    data: '8902',
-                    icon: Icons.accessibility_new,
-                  ),
-                ),
-              ],
+            CardEniaStats(
+              title: 'Total de LARCS',
+              subTitle: 'Total de LARCS.',
+              data: '8902',
+              icon: Icons.accessibility_new,
             ),
             Card(
               color: Color(0XFFF9F9F9),
@@ -173,7 +95,10 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                           SizedBox(
                             height: 40,
                           ),
-                          LineChartWidget(),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: LineChartWidget(),
+                          ),
                         ],
                       ),
                     ),
