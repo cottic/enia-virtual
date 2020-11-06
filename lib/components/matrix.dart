@@ -9,9 +9,9 @@ import 'package:fluffychat/utils/firebase_controller.dart';
 import 'package:fluffychat/utils/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/user_status.dart';
-import 'package:fluffychat/views/stats_enia_menu_01.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
@@ -108,7 +108,7 @@ class MatrixState extends State<Matrix> {
 
   List preguntasFrecuentes;
 
-  DashboardsList listaDashboards;
+  // DashboardsList listaDashboards;
 
   var dashboardConfig;
 

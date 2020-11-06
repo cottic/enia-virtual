@@ -1,11 +1,16 @@
+import 'dart:convert';
+
+import 'package:fluffychat/stats_dashboard/stats_enia_menu_01.dart';
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/views/chat_list.dart';
-import 'package:fluffychat/views/stats_enia_menu_01.dart';
-import 'package:fluffychat/views/stats_enia_menu_02.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'app_settings_model.dart';
 import 'dashboard_menu_item_widget.dart';
+import 'stats_enia_menu_02.dart';
 
 class DashboardMainMenu extends StatefulWidget {
   @override
@@ -13,6 +18,8 @@ class DashboardMainMenu extends StatefulWidget {
 }
 
 class _DashboardMainMenuState extends State<DashboardMainMenu> {
+  Dashboard dashboard = Dashboard();
+
   void _drawerTapAction(Widget view) {
     Navigator.of(context).pop();
     Navigator.of(context).pushAndRemoveUntil(
@@ -22,6 +29,16 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
       ),
       (r) => r.isFirst,
     );
+  }
+
+  Future<Dashboard> loadConfigJson() async {
+    var appSetingsJson = await rootBundle.loadString('app_settings.json');
+
+    Map appSettingsMap = await jsonDecode(appSetingsJson);
+
+    dashboard = Dashboard.fromJson(appSettingsMap);
+
+    return dashboard;
   }
 
   @override
@@ -39,169 +56,155 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
         ),
         titleSpacing: 0,
         title: Container(
-            width: double.maxFinite,
-            height: 54,
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(left: 20),
-            color: Theme.of(context).primaryColor,
-            child: Text(
-              'Estadisticas',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5
-                  .copyWith(color: Theme.of(context).backgroundColor),
-            )),
+          width: double.maxFinite,
+          height: 54,
+          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.only(left: 20),
+          color: Theme.of(context).primaryColor,
+          child: Text(
+            'Estadisticas',
+            style: Theme.of(context)
+                .textTheme
+                .headline5
+                .copyWith(color: Theme.of(context).backgroundColor),
+          ),
+        ),
       ),
       backgroundColor: Color(0XFFf5f5f5),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              children: [
-                SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    'Seleccionar Tablero:',
-                    style: Theme.of(context).textTheme.subtitle1,
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual y Reproductivo',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual y Reproductiva	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu01View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual 2',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual 2	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu02View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual y Reproductivo',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual y Reproductiva	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu01View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual 2',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual 2	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu02View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual y Reproductivo',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual y Reproductiva	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu01View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual 2',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual 2	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu02View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual y Reproductivo',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual y Reproductiva	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu01View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual 2',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual 2	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu02View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual y Reproductivo',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual y Reproductiva	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu01View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual 2',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual 2	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu02View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual y Reproductivo',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual y Reproductiva	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu01View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual 2',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual 2	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu02View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual y Reproductivo',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual y Reproductiva	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu01View(),
-                  ),
-                ),
-                DashboardMenuItem(
-                  title: 'SSyR: Salud Sexual 2',
-                  subTitle:
-                      'Tablero de la direccion de Salud Sexual 2	',
-                  onTap: () => _drawerTapAction(
-                    StatsEniaMenu02View(),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          FlatButton.icon(
-            padding: EdgeInsets.all(20),
-            label: Text(
-              'VOLVER',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  .copyWith(color: Theme.of(context).primaryColor),
-            ),
-            icon: FaIcon(
-              FontAwesomeIcons.arrowCircleLeft,
-              color: Theme.of(context).primaryColor,
-              size: 26,
-            ),
-            onPressed: () => _drawerTapAction(
-              ChatListView(),
-            ),
-          ),
-        ],
+      body: FutureBuilder(
+        future: loadConfigJson(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return Center(
+                  child: Text('Please connect to inernet an try again'));
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            case ConnectionState.active:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            case ConnectionState.done:
+              if (snapshot.hasError) {
+                //TODO: internazionalizar texto
+                return Center(child: Text('Algo salio mal //'));
+              } else {
+                if (snapshot.data != null) {
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: ListView(
+                          // itemCount: dashboard.dashborads.length,
+                          // itemBuilder: (context, index) {
+                          //   if (index == 0) {
+                          //     return Column(
+                          //       mainAxisAlignment: MainAxisAlignment.start,
+                          //       children: [
+                          //         Container(
+                          //           width: double.maxFinite,
+                          //           padding: const EdgeInsets.all(20.0),
+                          //           child: Text(
+                          //             'Seleccionar Tablero:',
+                          //             style:
+                          //                 Theme.of(context).textTheme.subtitle1,
+                          //           ),
+                          //         ),
+                          //         DashboardMenuItem(
+                          //           title: dashboard.dashborads
+                          //               .elementAt(index)
+                          //               .name,
+                          //           subTitle: dashboard.dashborads
+                          //               .elementAt(index)
+                          //               .description,
+                          //           onTap: () => _drawerTapAction(
+                          //             StatsEniaMenu01View(),
+                          //           ),
+                          //         ),
+                          //       ],
+                          //     );
+                          //   }
+                          //   return DashboardMenuItem(
+                          //     title: dashboard.dashborads.elementAt(index).name,
+                          //     subTitle: dashboard.dashborads
+                          //         .elementAt(index)
+                          //         .description,
+                          //     onTap: () => _drawerTapAction(
+                          //       // Como hago para enivarlo a la pagina correcta?
+                          //       // Saco list view builder
+                          //       StatsEniaMenu01View(),
+                          //     ),
+                          //   );
+                          // },
+
+                          children: [
+                            SizedBox(height: 10),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Text(
+                                'Seleccionar Tablero:',
+                                style: Theme.of(context).textTheme.subtitle1,
+                              ),
+                            ),
+                            DashboardMenuItem(
+                              title: dashboard.boards[0].name,
+                              subTitle: dashboard.boards[0].description,
+                              onTap: () => _drawerTapAction(
+                                StatsEniaMenu01View(),
+                              ),
+                            ),
+                            DashboardMenuItem(
+                              title: dashboard.boards[1].name,
+                              subTitle: dashboard.boards[1].description,
+                              onTap: () => _drawerTapAction(
+                                StatsEniaMenu02View(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      FlatButton.icon(
+                        padding: EdgeInsets.all(20),
+                        label: Text(
+                          'VOLVER',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              .copyWith(color: Theme.of(context).primaryColor),
+                        ),
+                        icon: FaIcon(
+                          FontAwesomeIcons.arrowCircleLeft,
+                          color: Theme.of(context).primaryColor,
+                          size: 26,
+                        ),
+                        onPressed: () => _drawerTapAction(
+                          ChatListView(),
+                        ),
+                      ),
+                    ],
+                  );
+                } else {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.error,
+                        size: 50,
+                      ),
+                      SizedBox(height: 20.0),
+                      //TODO: internazionalizar texto
+                      Text('Algo salio mal, vuelva a intentarlo mas tarde'),
+                    ],
+                  );
+                }
+              }
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
 }
-
