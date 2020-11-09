@@ -154,7 +154,9 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: LineChartWidget(),
+                                        child: LineChartWidget(
+                                          apiUrl: lineChart.apiUrl,
+                                        ),
                                       ),
                                     ],
                                   ),

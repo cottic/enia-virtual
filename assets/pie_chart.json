@@ -6,13 +6,13 @@
             "isSquare": false
         },
         {
-            "color": "#0232EE",
+            "color": "#84cbed",
             "indicatorTitle": "2019",
             "isSquare": false
         }
         ,
         {
-            "color": "#ff0605",
+            "color": "#20e630",
             "indicatorTitle": "2020",
             "isSquare": false
         }
@@ -24,12 +24,12 @@
             "title": "4320"
         },
         {
-            "color": "#0232EE",
+            "color": "#84cbed",
             "value": 40,
             "title": "4320"
         },
         {
-            "color": "#f4f4f4",
+            "color": "#20e630",
             "value": 20,
             "title": "2320"
         }

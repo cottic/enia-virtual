@@ -1,9 +1,16 @@
 import 'package:fl_chart/fl_chart.dart';
+import 'package:fluffychat/stats_dashboard/indicator_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:hexcolor/hexcolor.dart';
 
-import 'pie_indicator_widget.dart';
+import 'models/XXXline_chart_model.dart';
 
 class LineChartWidget extends StatefulWidget {
+  LineChartWidget({@required this.apiUrl});
+
+  final String apiUrl;
+
   @override
   _LineChartWidgetState createState() => _LineChartWidgetState();
 }
@@ -13,79 +20,39 @@ class _LineChartWidgetState extends State<LineChartWidget> {
   //  checkToShowHorizontalLine: (value) => value % backLinesDividedByValue == 0,
   static const double backLinesDividedByValue = 100000;
 
-  // TITULOS BOTON QUE SWITCHEA LA INFO
-  static const String buttonTitle01 = 'Total LARCS';
-  static const String buttonTitle02 = 'Dispositivos de un tipo';
+  List<IndicatorWidget> indicators = [];
 
-  List<Indicator> indicatorList = [
-    Indicator(
-      color: Color(0xff0293ee),
-      text: '2018',
-      isSquare: false,
-    ),
-    Indicator(
-      color: Color(0xfff8b250),
-      text: '2019',
-      isSquare: true,
-    ),
-    Indicator(
-      color: Color(0xff845bef),
-      text: '2020',
-      isSquare: true,
-    ),
-  ];
+  LineChartInfo lineChartInfo;
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: indicatorList,
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        // Indica la info que muestra, si se presiona el boton, switchea
-        LineChart(
-          dataLarcsFull(),
-        ),
-      ],
-    );
-  }
+  List<LineChartBarData> lines = [];
 
-  LineChartData dataLarcsFull() {
-    // La cantidad de items debe ser igual a max items
-    var listTitlesX = ['', '2018', '2019', '2020', '2021', '2022', '', ''];
+  Future<LineChartInfo> loadChartFromApi() async {
+    var lineChartInfoJson = await rootBundle.loadString(widget.apiUrl);
 
-    var maxItems = 7.0;
+    lineChartInfo = lineChartInfoFromJson(lineChartInfoJson);
 
-    return LineChartData(
-      //axisTitleData: [],
+    indicators = lineChartInfo.indicatorsList;
 
-      // DONDE COMIENZA EJE X // No puede ser menor a 0
-      minX: 0,
-      // DONDE TERMINA EJE X
-      maxX: maxItems,
-      // DONDE EMPIEZA EJE Y
-      minY: 0,
-      // DONDE TERMINA EJE Y
-      maxY: 1000000,
-      lineBarsData: [
-        LineChartBarData(
-          spots: [
-            FlSpot(1, 481600),
-            FlSpot(2, 782000),
-            FlSpot(3, 125800),
-            FlSpot(4, 481600),
-            FlSpot(5, 782000),
-            FlSpot(6, 125800),
-          ],
-          isCurved: true,
+    if (lineChartInfo.lineBarsData != null) {
+      for (var lineBarsData in lineChartInfo.lineBarsData) {
+        final isCurved = lineBarsData.isCurved;
+        final color = lineBarsData.color;
+        final List<FlSpot> spotsList = [];
+
+        for (var i = 0; i < lineBarsData.spots.length; i++) {
+          final spotsItems = lineBarsData.spots;
+          final spotItem =
+              FlSpot(spotsItems[i].spotPosition, spotsItems[i].spotNumber);
+
+          spotsList.add(spotItem);
+        }
+
+        final lineChart = LineChartBarData(
+          spots: spotsList,
+          isCurved: isCurved,
+          //TODO: aca le tengo que pasar una lista
           colors: [
-            Colors.green,
+            HexColor(color),
           ],
           barWidth: 8,
           isStrokeCapRound: true,
@@ -97,28 +64,85 @@ class _LineChartWidgetState extends State<LineChartWidget> {
           belowBarData: BarAreaData(
             show: false,
           ),
-        ),
-        LineChartBarData(
-          spots: [
-            FlSpot(2, 582000),
-            FlSpot(3, 425800),
-            FlSpot(4, 681600),
-            FlSpot(5, 782000),
-          ],
-          isCurved: true,
-          colors: [
-            Colors.blue,
-          ],
-          barWidth: 8,
-          isStrokeCapRound: true,
-          dotData: FlDotData(
-            show: false,
-          ),
-          belowBarData: BarAreaData(
-            show: false,
-          ),
-        ),
-      ],
+        );
+
+        lines.add(lineChart);
+      }
+    }
+    return lineChartInfo;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: loadChartFromApi(),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.none:
+            return Center(
+                child: Text('Please connect to inernet an try again'));
+          case ConnectionState.waiting:
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          case ConnectionState.active:
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          case ConnectionState.done:
+            if (snapshot.hasError) {
+              print(snapshot.error.toString());
+              //TODO: internazionalizar texto
+              return Center(child: Text('Algo salio mal //'));
+            } else {
+              if (snapshot.data != null) {
+                return Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: indicators,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    LineChart(
+                      dataLarcsFull(),
+                    ),
+                  ],
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            }
+        }
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+  }
+
+  LineChartData dataLarcsFull() {
+    // La cantidad de items debe ser igual a max items
+    // Define la lista que contiene los titulos inferiores del grafico
+    var listTitlesX = lineChartInfo.listTitlesX;
+
+    return LineChartData(
+      // DONDE COMIENZA EJE X // No puede ser menor a 0
+      minX: lineChartInfo.minX,
+      // DONDE TERMINA EJE X
+      maxX: lineChartInfo.maxX,
+      // DONDE EMPIEZA EJE Y
+      minY: lineChartInfo.minY,
+      // DONDE TERMINA EJE Y
+      maxY: lineChartInfo.maxY,
+      // Estas son la lista de las lineas del grafico
+      lineBarsData: lines,
+
       // Muestra el detalle al hacer clic sobre la linea
       // TODO: definir estilos
       lineTouchData: LineTouchData(

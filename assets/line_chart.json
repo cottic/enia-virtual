@@ -1,0 +1,100 @@
+{
+    "listTitlesX": [
+        "2018",
+        "2019",
+        "2020",
+        "2021"
+    ],
+    "minX": 0,
+    "maxX": 3.0,
+    "minY": 0,
+    "maxY": 1000000,
+    "titlesYright": "LARCs",
+    "intervalY": 300000,
+    "backLinesDividedByMaxNumberY": 100000,
+    "indicatorsList": [
+        {
+            "color": "#ff0100",
+            "indicatorTitle": "Larcs general",
+            "isSquare": false
+        },
+        {
+            "color": "#84cbed",
+            "indicatorTitle": "Larcs",
+            "isSquare": false
+        },
+        {
+            "color": "#20e630",
+            "indicatorTitle": "Algo",
+            "isSquare": false
+        }
+    ],
+    "lineBarsData": [
+        {
+            "isCurved": true,
+            "color": "#ff0100",
+            "spots": [
+                {
+                    "spotPosition": 0,
+                    "spotNumber": 400000
+                },
+                {
+                    "spotPosition": 1,
+                    "spotNumber": 400000
+                },
+                {
+                    "spotPosition": 2,
+                    "spotNumber": 700000
+                },
+                {
+                    "spotPosition": 3,
+                    "spotNumber": 850000
+                }
+            ]
+        },
+        {
+            "isCurved": true,
+            "color": "#84cbed",
+            "spots": [
+                {
+                    "spotPosition": 0,
+                    "spotNumber": 340000
+                },
+                {
+                    "spotPosition": 1,
+                    "spotNumber": 360000
+                },
+                {
+                    "spotPosition": 2,
+                    "spotNumber": 380000
+                },
+                {
+                    "spotPosition": 3,
+                    "spotNumber": 400000
+                }
+            ]
+        },
+        {
+            "isCurved": true,
+            "color": "#20e630",
+            "spots": [
+                {
+                    "spotPosition": 0,
+                    "spotNumber": 460000
+                },
+                {
+                    "spotPosition": 1,
+                    "spotNumber": 480000
+                },
+                {
+                    "spotPosition": 2,
+                    "spotNumber": 520000
+                },
+                {
+                    "spotPosition": 3,
+                    "spotNumber": 600000
+                }
+            ]
+        }
+    ]
+}

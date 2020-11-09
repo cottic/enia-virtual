@@ -27,7 +27,7 @@
           "title": "json Evolución mensual de la dispensa de LARCs",
           "type": "line",
           "description": "json Durante 2019, el comportamiento de la dispensa reportada se estabiliza en 2.700 LARCs promedio mensual\n",
-          "api_url": "dispensa-larcs"
+          "api_url": "line_chart.json"
         },
         {
           "title": "json Larcs estimados y dispensados por año",
