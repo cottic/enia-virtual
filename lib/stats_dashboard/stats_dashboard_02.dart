@@ -6,14 +6,13 @@ import 'package:fluffychat/stats_dashboard/charts/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/stats_dashboard/charts/bar_chart_widget.dart';
-import 'package:fluffychat/stats_dashboard/charts/card_enia_stats_widget.dart';
-import 'package:fluffychat/stats_dashboard/dashboard_main_menu.dart';
+import 'package:fluffychat/stats_dashboard/charts/card_chart_widget.dart';
+import 'package:fluffychat/stats_dashboard/dashboard_menu_items.dart';
 import 'package:fluffychat/stats_dashboard/charts/line_chart_widget.dart';
 import 'package:flutter/services.dart';
 
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
-import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class StatsEniaMenu02View extends StatelessWidget {
@@ -102,11 +101,20 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                         SizedBox(
                           height: 20,
                         ),
-                        CardEniaStats(
-                          title: cardChart.title,
-                          subTitle: cardChart.description,
-                          data: '8902',
-                          icon: Icons.accessibility_new,
+                        Card(
+                          color: Color(0XFFF9F9F9),
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            child: ListTile(
+                              title: Text(cardChart.title),
+                              subtitle: Text(cardChart.description),
+                              trailing: Icon(Icons.accessibility_new,
+                                  size: 50, color: Colors.green),
+                              leading: CardEniaStats(
+                                apiUrl: cardChart.apiUrl,
+                              ),
+                            ),
+                          ),
                         ),
                         Card(
                           color: Color(0XFFF9F9F9),

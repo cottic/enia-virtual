@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../components/adaptive_page_layout.dart';
 import '../components/dialogs/simple_dialogs.dart';
-import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:fluffychat/stats_dashboard/dashboard_main_menu.dart';
+import 'package:fluffychat/stats_dashboard/dashboard_menu_items.dart';
 
 
 class StatsEniaMenuView extends StatelessWidget {

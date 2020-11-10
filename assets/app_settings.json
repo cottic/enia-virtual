@@ -13,8 +13,8 @@
         {
           "title": "Total de LARCS json",
           "type": "card",
-          "description": "Total de de LARCs. json \n",
-          "api_url": "total-larcs",
+          "description": "Total de de LARCs. json ",
+          "api_url": "card_chart.json",
           "media_url": "larcs.svg"
         },
         {

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:fluffychat/stats_dashboard/stats_enia_menu_01.dart';
+import 'package:fluffychat/stats_dashboard/stats_dashboard_01.dart';
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/views/chat_list.dart';
 
@@ -9,8 +9,8 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'models/app_settings_model.dart';
-import 'dashboard_menu_item_widget.dart';
-import 'stats_enia_menu_02.dart';
+import 'widgets/dashboard_menu_item_widget.dart';
+import 'stats_dashboard_02.dart';
 
 class DashboardMainMenu extends StatefulWidget {
   @override
@@ -96,48 +96,6 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                     children: [
                       Expanded(
                         child: ListView(
-                          // itemCount: dashboard.dashborads.length,
-                          // itemBuilder: (context, index) {
-                          //   if (index == 0) {
-                          //     return Column(
-                          //       mainAxisAlignment: MainAxisAlignment.start,
-                          //       children: [
-                          //         Container(
-                          //           width: double.maxFinite,
-                          //           padding: const EdgeInsets.all(20.0),
-                          //           child: Text(
-                          //             'Seleccionar Tablero:',
-                          //             style:
-                          //                 Theme.of(context).textTheme.subtitle1,
-                          //           ),
-                          //         ),
-                          //         DashboardMenuItem(
-                          //           title: dashboard.dashborads
-                          //               .elementAt(index)
-                          //               .name,
-                          //           subTitle: dashboard.dashborads
-                          //               .elementAt(index)
-                          //               .description,
-                          //           onTap: () => _drawerTapAction(
-                          //             StatsEniaMenu01View(),
-                          //           ),
-                          //         ),
-                          //       ],
-                          //     );
-                          //   }
-                          //   return DashboardMenuItem(
-                          //     title: dashboard.dashborads.elementAt(index).name,
-                          //     subTitle: dashboard.dashborads
-                          //         .elementAt(index)
-                          //         .description,
-                          //     onTap: () => _drawerTapAction(
-                          //       // Como hago para enivarlo a la pagina correcta?
-                          //       // Saco list view builder
-                          //       StatsEniaMenu01View(),
-                          //     ),
-                          //   );
-                          // },
-
                           children: [
                             SizedBox(height: 10),
                             Padding(

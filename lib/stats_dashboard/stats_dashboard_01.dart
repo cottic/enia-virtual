@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:fl_chart/fl_chart.dart';
 import 'package:fluffychat/stats_dashboard/models/app_settings_model.dart';
+import 'package:fluffychat/stats_dashboard/widgets/card_chart_holder.dart';
 import 'package:fluffychat/stats_dashboard/widgets/header_dashboard_widget.dart';
 import 'package:fluffychat/stats_dashboard/charts/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/stats_dashboard/charts/bar_chart_widget.dart';
-import 'package:fluffychat/stats_dashboard/charts/card_enia_stats_widget.dart';
-import 'package:fluffychat/stats_dashboard/dashboard_main_menu.dart';
+import 'package:fluffychat/stats_dashboard/charts/card_chart_widget.dart';
+import 'package:fluffychat/stats_dashboard/dashboard_menu_items.dart';
 import 'package:fluffychat/stats_dashboard/charts/line_chart_widget.dart';
 import 'package:flutter/services.dart';
 
@@ -54,8 +54,6 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
     Map appSettingsMap = await jsonDecode(appSetingsJson);
 
     var dashboard = await Dashboard.fromJson(appSettingsMap);
-
-    // await Future.delayed(Duration(seconds: 3));
 
     board = dashboard.boards[0];
     cardChart = dashboard.boards[0].charts[0];
@@ -110,11 +108,13 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                         SizedBox(
                           height: 20,
                         ),
-                        CardEniaStats(
+                        CardChartHolder(
                           title: cardChart.title,
-                          subTitle: cardChart.description,
-                          data: '8902',
+                          description: cardChart.description,
                           icon: Icons.accessibility_new,
+                          dataWidget: CardEniaStats(
+                            apiUrl: cardChart.apiUrl,
+                          ),
                         ),
                         Card(
                           color: Color(0XFFF9F9F9),
