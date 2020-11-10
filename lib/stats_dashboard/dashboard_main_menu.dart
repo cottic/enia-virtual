@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'app_settings_model.dart';
+import 'models/app_settings_model.dart';
 import 'dashboard_menu_item_widget.dart';
 import 'stats_enia_menu_02.dart';
 

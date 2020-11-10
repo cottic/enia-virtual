@@ -1,5 +1,6 @@
 import 'dart:convert';
-import '../indicator_widget.dart';
+
+import '../widgets/indicator_widget.dart';
 
 PieChartInfo pieChartInfoFromJson(String str) =>
     PieChartInfo.fromJson(json.decode(str));

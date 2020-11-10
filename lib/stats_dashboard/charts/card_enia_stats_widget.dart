@@ -15,12 +15,11 @@ class CardEniaStats extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10),
         child: ListTile(
-          title: Text('Total de LARCS'),
-          subtitle: Text('Total de LARCS.'),
-          trailing:
-              Icon(Icons.accessibility_new, size: 50, color: Colors.green),
+          title: Text(title),
+          subtitle: Text(subTitle),
+          trailing: Icon(icon, size: 50, color: Colors.green),
           leading: Text(
-            '8902',
+            data,
             overflow: TextOverflow.visible,
             style: Theme.of(context)
                 .textTheme

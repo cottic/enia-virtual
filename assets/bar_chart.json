@@ -1,0 +1,146 @@
+{
+    "maxNumberY": 1000000,
+    "minNumberY": 0,
+    "titlesYright": "LARCs",
+    "intervalY": 300000,
+    "backLinesDividedByMaxNumberY": 100000,
+    "indicators": [
+        {
+            "color": "#ff0100",
+            "indicatorTitle": "Larcs",
+            "isSquare": false
+        },
+        {
+            "color": "#84cbed",
+            "indicatorTitle": "DIU",
+            "isSquare": false
+        },
+        {
+            "color": "#20e630",
+            "indicatorTitle": "Ejemplo",
+            "isSquare": false
+        }
+    ],
+    "listTitlesX": [
+        "2018",
+        "2019",
+        "2020"
+    ],
+    "barChartList": [
+        {
+            "x": 0,
+            "barRods": [
+                {
+                    "totalY": 581600,
+                    "barChartRoddData": [
+                        {
+                            "start": 0,
+                            "end": 300000,
+                            "color": "#ff0100"
+                        },
+                        {
+                            "start": 300000,
+                            "end": 581600,
+                            "color": "#84cbed"
+                        }
+                    ]
+                },
+                {
+                    "totalY": 781600,
+                    "barChartRoddData": [
+                        {
+                            "start": 0,
+                            "end": 410000,
+                            "color": "#ff0100"
+                        },
+                        {
+                            "start": 410000,
+                            "end": 781600,
+                            "color": "#84cbed"
+                        }
+                    ]
+                },
+                {
+                    "totalY": 881600,
+                    "barChartRoddData": [
+                        {
+                            "start": 0,
+                            "end": 510000,
+                            "color": "#ff0100"
+                        },
+                        {
+                            "start": 510000,
+                            "end": 881600,
+                            "color": "#84cbed"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "x": 1,
+            "barRods": [
+                {
+                    "totalY": 381600,
+                    "barChartRoddData": [
+                        {
+                            "start": 0,
+                            "end": 210000,
+                            "color": "#ff0100"
+                        },
+                        {
+                            "start": 210000,
+                            "end": 381600,
+                            "color": "#84cbed"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "x": 2,
+            "barRods": [
+                {
+                    "totalY": 651600,
+                    "barChartRoddData": [
+                        {
+                            "start": 0,
+                            "end": 340000,
+                            "color": "#ff0100"
+                        },
+                        {
+                            "start": 340000,
+                            "end": 551600,
+                            "color": "#84cbed"
+                        },
+                        {
+                            "start": 551600,
+                            "end": 651600,
+                            "color": "#20e630"
+                        }
+                    ]
+                },
+                {
+                    "totalY": 411600,
+                    "barChartRoddData": [
+                        {
+                            "start": 0,
+                            "end": 140000,
+                            "color": "#ff0100"
+                        },
+                        {
+                            "start": 140000,
+                            "end": 311600,
+                            "color": "#84cbed"
+                        },
+                        {
+                            "start": 311600,
+                            "end": 411600,
+                            "color": "#20e630"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

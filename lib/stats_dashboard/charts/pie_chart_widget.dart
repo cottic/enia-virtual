@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import 'indicator_widget.dart';
-import 'models/pie_chart_model.dart';
+import '../widgets/indicator_widget.dart';
+import '../models/pie_chart_model.dart';
 
 class PieChartWidget extends StatefulWidget {
   PieChartWidget({@required this.apiUrl});

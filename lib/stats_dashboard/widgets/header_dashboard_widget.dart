@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'filter_stats.dart';
+import 'filter_stats_widget.dart';
 
 class HeaderUniqueDashboard extends StatelessWidget {
   const HeaderUniqueDashboard({@required this.title});

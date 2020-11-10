@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../indicator_widget.dart';
+import '../widgets/indicator_widget.dart';
 
 LineChartInfo lineChartInfoFromJson(String str) =>
     LineChartInfo.fromJson(json.decode(str));

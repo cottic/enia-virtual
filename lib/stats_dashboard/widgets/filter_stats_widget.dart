@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'drop_down_item_model.dart';
+import '../models/drop_down_item_model.dart';
 
 class FiltersStats extends StatefulWidget {
   @override

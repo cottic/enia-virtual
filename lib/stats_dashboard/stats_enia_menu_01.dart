@@ -1,15 +1,15 @@
 import 'dart:convert';
 
 import 'package:fl_chart/fl_chart.dart';
-import 'package:fluffychat/stats_dashboard/app_settings_model.dart';
-import 'package:fluffychat/stats_dashboard/header_dashboard_widget.dart';
-import 'package:fluffychat/stats_dashboard/pie_chart_widget.dart';
+import 'package:fluffychat/stats_dashboard/models/app_settings_model.dart';
+import 'package:fluffychat/stats_dashboard/widgets/header_dashboard_widget.dart';
+import 'package:fluffychat/stats_dashboard/charts/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/stats_dashboard/bar_chart_widget.dart';
-import 'package:fluffychat/stats_dashboard/card_enia_stats_widget.dart';
+import 'package:fluffychat/stats_dashboard/charts/bar_chart_widget.dart';
+import 'package:fluffychat/stats_dashboard/charts/card_enia_stats_widget.dart';
 import 'package:fluffychat/stats_dashboard/dashboard_main_menu.dart';
-import 'package:fluffychat/stats_dashboard/line_chart_widget.dart';
+import 'package:fluffychat/stats_dashboard/charts/line_chart_widget.dart';
 import 'package:flutter/services.dart';
 
 import '../components/adaptive_page_layout.dart';
@@ -129,9 +129,9 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                 SizedBox(
                                   height: 40,
                                 ),
-                                /* BarChartWidget(
+                                BarChartWidget(
                                   apiUrl: barChart.apiUrl,
-                                ), */
+                                ),
                               ],
                             ),
                           ),

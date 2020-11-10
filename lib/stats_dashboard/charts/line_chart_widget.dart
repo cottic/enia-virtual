@@ -1,10 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:fluffychat/stats_dashboard/indicator_widget.dart';
+import 'package:fluffychat/stats_dashboard/widgets/indicator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import 'models/XXXline_chart_model.dart';
+import '../models/line_chart_model.dart';
 
 class LineChartWidget extends StatefulWidget {
   LineChartWidget({@required this.apiUrl});
@@ -100,7 +100,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
                   children: <Widget>[
                     Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: indicators,
                     ),
