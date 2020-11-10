@@ -10,9 +10,9 @@ import 'package:fluffychat/components/list_items/status_list_item.dart';
 import 'package:fluffychat/components/list_items/public_room_list_item.dart';
 import 'package:fluffychat/components/list_items/enia_presence_list_item.dart';
 import 'package:fluffychat/components/list_items/private_room_list_item.dart';
+import 'package:fluffychat/stats_dashboard/dashboard_menu.dart';
 import 'package:fluffychat/views/enia_menu.dart';
 import 'package:fluffychat/views/files_enia_menu.dart';
-import 'package:fluffychat/views/stats_enia_menu.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/views/status_view.dart';
 import 'package:flutter/foundation.dart';
@@ -322,7 +322,7 @@ class _ChatListState extends State<ChatList> {
       );
     }
     return;
-  } 
+  }
 
   @override
   void dispose() {
@@ -459,7 +459,7 @@ class _ChatListState extends State<ChatList> {
                                 Divider(height: 1),
 
                                 ListTile(
-                                  leading: Icon(Icons.archive),                    
+                                  leading: Icon(Icons.archive),
                                   title: Text(L10n.of(context).archive),
                                   onTap: () => _drawerTapAction(
                                     Archive(),
@@ -569,7 +569,7 @@ class _ChatListState extends State<ChatList> {
                               ),
                   ),
                   //This allows to create new chats and set Status, not available on version 1
-                   /*floatingActionButton:
+                  /*floatingActionButton:
                       (AdaptivePageLayout.columnMode(context) ||
                               selectMode != SelectMode.normal)
                           ? null
@@ -765,7 +765,7 @@ class _ChatListState extends State<ChatList> {
                                                                 ],
                                                               );
                                                             } else {
-                                                              return EniaPresenceListItem( 
+                                                              return EniaPresenceListItem(
                                                                   mainGroupListSearch[
                                                                       i]);
                                                             }
