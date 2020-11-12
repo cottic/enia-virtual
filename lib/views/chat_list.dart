@@ -10,7 +10,7 @@ import 'package:fluffychat/components/list_items/status_list_item.dart';
 import 'package:fluffychat/components/list_items/public_room_list_item.dart';
 import 'package:fluffychat/components/list_items/enia_presence_list_item.dart';
 import 'package:fluffychat/components/list_items/private_room_list_item.dart';
-import 'package:fluffychat/stats_dashboard/dashboard_menu.dart';
+import 'package:fluffychat/stats_dashboard/dashboard_menu_screen.dart';
 import 'package:fluffychat/views/enia_menu.dart';
 import 'package:fluffychat/views/files_enia_menu.dart';
 import 'package:fluffychat/utils/platform_infos.dart';

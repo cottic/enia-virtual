@@ -40,7 +40,7 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
   Chart pieChart = Chart();
 
   Future<Board> loadConfigJson() async {
-    var appSetingsJson = await rootBundle.loadString('app_settings.json');
+    var appSetingsJson = await rootBundle.loadString('assets/app_settings.json');
 
     Map appSettingsMap = await jsonDecode(appSetingsJson);
 

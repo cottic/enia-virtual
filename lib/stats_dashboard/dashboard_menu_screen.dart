@@ -11,7 +11,7 @@ class StatsEniaMenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptivePageLayout(
-      primaryPage: FocusPage.SECOND,
+      primaryPage: FocusPage.FIRST,
       firstScaffold: DashboardMainMenu(),
       secondScaffold: Scaffold(
         body: Column(

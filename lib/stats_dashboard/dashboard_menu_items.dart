@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:fluffychat/stats_dashboard/stats_dashboard_01.dart';
+import 'package:fluffychat/stats_dashboard/dashboard_01.dart';
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/views/chat_list.dart';
 
@@ -10,7 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'models/app_settings_model.dart';
 import 'widgets/dashboard_menu_item_widget.dart';
-import 'stats_dashboard_02.dart';
+import 'dashboard_02.dart';
 
 class DashboardMainMenu extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
   }
 
   Future<Dashboard> loadConfigJson() async {
-    var appSetingsJson = await rootBundle.loadString('app_settings.json');
+    var appSetingsJson = await rootBundle.loadString('assets/app_settings.json');
 
     Map appSettingsMap = await jsonDecode(appSetingsJson);
 
@@ -89,7 +89,13 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
             case ConnectionState.done:
               if (snapshot.hasError) {
                 //TODO: internazionalizar texto
-                return Center(child: Text('Algo salio mal //'));
+                return Center(
+                    child: Column(
+                  children: [
+                    Text('Algo salio mal //'),
+                    Text(snapshot.error),
+                  ],
+                ));
               } else {
                 if (snapshot.data != null) {
                   return Column(

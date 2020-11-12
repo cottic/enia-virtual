@@ -49,7 +49,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
   List indicators;
 
   Future<Board> loadConfigJson() async {
-    var appSetingsJson = await rootBundle.loadString('app_settings.json');
+    var appSetingsJson = await rootBundle.loadString('assets/app_settings.json');
 
     Map appSettingsMap = await jsonDecode(appSetingsJson);
 
