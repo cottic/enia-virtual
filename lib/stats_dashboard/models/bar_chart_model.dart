@@ -29,26 +29,26 @@ class BarChartInfo {
   List<BarChartList> barChartList;
 
   factory BarChartInfo.fromJson(Map<String, dynamic> json) => BarChartInfo(
-        maxNumberY: json["maxNumberY"],
-        minNumberY: json["minNumberY"],
-        listTitlesX: List<String>.from(json["listTitlesX"].map((x) => x)),
-        titlesYright: json["titlesYright"],
-        intervalY: json["intervalY"],
-        backLinesDividedByMaxNumberY: json["backLinesDividedByMaxNumberY"],
+        maxNumberY: json['maxNumberY'],
+        minNumberY: json['minNumberY'],
+        listTitlesX: List<String>.from(json['listTitlesX'].map((x) => x)),
+        titlesYright: json['titlesYright'],
+        intervalY: json['intervalY'],
+        backLinesDividedByMaxNumberY: json['backLinesDividedByMaxNumberY'],
         indicators: List<IndicatorWidget>.from(
-            json["indicators"].map((x) => IndicatorWidget.fromJson(x))),
+            json['indicators'].map((x) => IndicatorWidget.fromJson(x))),
         barChartList: List<BarChartList>.from(
-            json["barChartList"].map((x) => BarChartList.fromJson(x))),
+            json['barChartList'].map((x) => BarChartList.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "maxNumberY": maxNumberY,
-        "minNumberY": minNumberY,
-        "listTitlesX": List<dynamic>.from(listTitlesX.map((x) => x)),
-        "titlesYright": titlesYright,
-        "intervalY": intervalY,
-        "backLinesDividedByMaxNumberY": backLinesDividedByMaxNumberY,
-        "barChartList": List<dynamic>.from(barChartList.map((x) => x.toJson())),
+        'maxNumberY': maxNumberY,
+        'minNumberY': minNumberY,
+        'listTitlesX': List<dynamic>.from(listTitlesX.map((x) => x)),
+        'titlesYright': titlesYright,
+        'intervalY': intervalY,
+        'backLinesDividedByMaxNumberY': backLinesDividedByMaxNumberY,
+        'barChartList': List<dynamic>.from(barChartList.map((x) => x.toJson())),
       };
 }
 
@@ -62,14 +62,14 @@ class BarChartList {
   List<BarRod> barRods;
 
   factory BarChartList.fromJson(Map<String, dynamic> json) => BarChartList(
-        x: json["x"],
+        x: json['x'],
         barRods:
-            List<BarRod>.from(json["barRods"].map((x) => BarRod.fromJson(x))),
+            List<BarRod>.from(json['barRods'].map((x) => BarRod.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "x": x,
-        "barRods": List<dynamic>.from(barRods.map((x) => x.toJson())),
+        'x': x,
+        'barRods': List<dynamic>.from(barRods.map((x) => x.toJson())),
       };
 }
 
@@ -83,14 +83,14 @@ class BarRod {
   List<BarChartRoddDatum> barChartRoddData;
 
   factory BarRod.fromJson(Map<String, dynamic> json) => BarRod(
-        totalY: json["totalY"],
+        totalY: json['totalY'],
         barChartRoddData: List<BarChartRoddDatum>.from(
-            json["barChartRoddData"].map((x) => BarChartRoddDatum.fromJson(x))),
+            json['barChartRoddData'].map((x) => BarChartRoddDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "totalY": totalY,
-        "barChartRoddData":
+        'totalY': totalY,
+        'barChartRoddData':
             List<dynamic>.from(barChartRoddData.map((x) => x.toJson())),
       };
 }
@@ -108,14 +108,14 @@ class BarChartRoddDatum {
 
   factory BarChartRoddDatum.fromJson(Map<String, dynamic> json) =>
       BarChartRoddDatum(
-        start: json["start"],
-        end: json["end"],
-        color: json["color"],
+        start: json['start'],
+        end: json['end'],
+        color: json['color'],
       );
 
   Map<String, dynamic> toJson() => {
-        "start": start,
-        "end": end,
-        "color": color,
+        'start': start,
+        'end': end,
+        'color': color,
       };
 }

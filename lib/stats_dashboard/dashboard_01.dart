@@ -13,8 +13,6 @@ import 'package:fluffychat/stats_dashboard/charts/line_chart_widget.dart';
 import 'package:flutter/services.dart';
 
 import '../components/adaptive_page_layout.dart';
-import '../components/dialogs/simple_dialogs.dart';
-import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'models/bar_chart_model.dart';
@@ -49,7 +47,8 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
   List indicators;
 
   Future<Board> loadConfigJson() async {
-    var appSetingsJson = await rootBundle.loadString('assets/app_settings.json');
+    var appSetingsJson =
+        await rootBundle.loadString('assets/app_settings.json');
 
     Map appSettingsMap = await jsonDecode(appSetingsJson);
 
@@ -73,7 +72,8 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
               return Center(
-                  child: Text('Please connect to inernet an try again'));
+                child: Text(L10n.of(context).noInternet),
+              );
             case ConnectionState.waiting:
               return Center(
                 child: Center(
@@ -88,8 +88,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
               );
             case ConnectionState.done:
               if (snapshot.hasError) {
-                //TODO: internazionalizar texto
-                return Center(child: Text('Algo salio mal //'));
+                return Center(child:Text(L10n.of(context).somethingWrong),);
               } else {
                 if (snapshot.data != null) {
                   return NestedScrollView(
@@ -200,8 +199,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                             size: 50,
                           ),
                           SizedBox(height: 20.0),
-                          //TODO: internazionalizar texto
-                          Text('Algo salio mal, vuelva a intentarlo mas tarde'),
+                          Text(L10n.of(context).somethingWrong),
                         ],
                       ),
                     ),

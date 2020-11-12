@@ -6,6 +6,51 @@
     "type": "text",
     "placeholders": {}
   },
+  "selectDashboard": "Seleccionar Tablero:",
+  "@selectDashboard": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "statsCentralTitle": "DASHBOARD ESTADISTICAS",
+  "@statsCentralTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "stats": "Estadisticas",
+  "@stats": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "credits": "Créditos",
+  "@credits": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "goBack": "VOLVER",
+  "@goBack": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "changePass": "Cambiar contraseña",
+  "@changePass": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pickAnswer": "Seleccione una respuesta:",
+  "@pickAnswer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "somethingWrong": "Algo salio mal, vuelva a intentarlo mas tarde.",
+  "@somethingWrong": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInternet": "Por favor conecte su dispositivo a internet y vuelva a intentarlo.",
+  "@noInternet": {
+    "type": "text",
+    "placeholders": {}
+  },
   "statsTitle": "Estadisticas",
   "@statsTitle": {
     "type": "text",

@@ -3,6 +3,7 @@ import 'package:fluffychat/stats_dashboard/widgets/indicator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import '../models/line_chart_model.dart';
 
@@ -50,7 +51,6 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         final lineChart = LineChartBarData(
           spots: spotsList,
           isCurved: isCurved,
-          //TODO: aca le tengo que pasar una lista
           colors: [
             HexColor(color),
           ],
@@ -80,7 +80,8 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
             return Center(
-                child: Text('Please connect to inernet an try again'));
+              child: Text(L10n.of(context).noInternet),
+            );
           case ConnectionState.waiting:
             return Center(
               child: CircularProgressIndicator(),
@@ -91,9 +92,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
             );
           case ConnectionState.done:
             if (snapshot.hasError) {
-              print(snapshot.error.toString());
-              //TODO: internazionalizar texto
-              return Center(child: Text('Algo salio mal //'));
+              return Center(child: Text(L10n.of(context).somethingWrong),);
             } else {
               if (snapshot.data != null) {
                 return Column(

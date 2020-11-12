@@ -13,10 +13,10 @@ class CardChartInfo {
     String cardData;
 
     factory CardChartInfo.fromJson(Map<String, dynamic> json) => CardChartInfo(
-        cardData: json["cardData"],
+        cardData: json['cardData'],
     );
 
     Map<String, dynamic> toJson() => {
-        "cardData": cardData,
+        'cardData': cardData,
     };
 }

@@ -6,6 +6,51 @@
     "type": "text",
     "placeholders": {}
   },
+  "selectDashboard": "Seleccionar Tablero:",
+  "@selectDashboard": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "statsCentralTitle": "DASHBOARD STATS",
+  "@statsCentralTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "stats": "Stats",
+  "@stats": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "credits": "Credits",
+  "@credits": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "goBack": "GO BACK",
+  "@goBack": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "changePass": "Change password",
+  "@changePass": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pickAnswer": "Pick an answer:",
+  "@pickAnswer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "somethingWrong": "Something went wrong, try again later.",
+  "@somethingWrong": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInternet": "Please connect to inernet an try again",
+  "@noInternet": {
+    "type": "text",
+    "placeholders": {}
+  },
   "statsTitle": "Stats",
   "@statsTitle": {
     "type": "text",

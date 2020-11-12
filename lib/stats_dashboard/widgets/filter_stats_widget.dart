@@ -63,6 +63,7 @@ class _FiltersStatsState extends State<FiltersStats> {
             initialSelected ? Icons.filter_alt : Icons.filter_list,
             size: 12,
           ),
+          //TODO: poner textos con LN10
           label: Text(
             initialSelected
                 ? '${initialSelectedDate.toLocal()}'.substring(0, 7)
@@ -90,6 +91,7 @@ class _FiltersStatsState extends State<FiltersStats> {
             endSelected ? Icons.filter_alt : Icons.filter_list,
             size: 12,
           ),
+          //TODO: poner textos con LN10
           label: Text(
             endSelected
                 ? '${endSelectedDate.toLocal()}'.substring(0, 7)
@@ -113,6 +115,7 @@ class _FiltersStatsState extends State<FiltersStats> {
           },
         ),
         FlatButton(
+          //TODO: poner textos con LN10
           child: Text(
             'FILTRAR',
             style: titlesSliver,
@@ -126,6 +129,7 @@ class _FiltersStatsState extends State<FiltersStats> {
             value: _selectedItem,
             style: titlesSliver,
             items: _dropdownMenuItems,
+            //TODO: poner textos con LN10
             hint: Text(
               'Filtrar por provincia',
               style: titlesSliver,

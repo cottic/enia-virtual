@@ -24,19 +24,19 @@ class Dashboard {
   List<Board> boards;
 
   factory Dashboard.fromJson(Map<String, dynamic> json) => Dashboard(
-        name: json["name"],
-        apiBaseUrl: json["api_base_url"],
-        mediaBaseUrl: json["media_base_url"],
-        version: json["version"],
-        boards: List<Board>.from(json["boards"].map((x) => Board.fromJson(x))),
+        name: json['name'],
+        apiBaseUrl: json['api_base_url'],
+        mediaBaseUrl: json['media_base_url'],
+        version: json['version'],
+        boards: List<Board>.from(json['boards'].map((x) => Board.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "api_base_url": apiBaseUrl,
-        "media_base_url": mediaBaseUrl,
-        "version": version,
-        "boards": List<dynamic>.from(boards.map((x) => x.toJson())),
+        'name': name,
+        'api_base_url': apiBaseUrl,
+        'media_base_url': mediaBaseUrl,
+        'version': version,
+        'boards': List<dynamic>.from(boards.map((x) => x.toJson())),
       };
 }
 
@@ -56,19 +56,19 @@ class Board {
   List<Chart> charts;
 
   factory Board.fromJson(Map<String, dynamic> json) => Board(
-        name: json["name"],
-        description: json["description"],
-        template: json["template"],
-        filter: json["filter"],
-        charts: List<Chart>.from(json["charts"].map((x) => Chart.fromJson(x))),
+        name: json['name'],
+        description: json['description'],
+        template: json['template'],
+        filter: json['filter'],
+        charts: List<Chart>.from(json['charts'].map((x) => Chart.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "description": description,
-        "template": template,
-        "filter": filter,
-        "charts": List<dynamic>.from(charts.map((x) => x.toJson())),
+        'name': name,
+        'description': description,
+        'template': template,
+        'filter': filter,
+        'charts': List<dynamic>.from(charts.map((x) => x.toJson())),
       };
 }
 
@@ -88,18 +88,18 @@ class Chart {
   String mediaUrl;
 
   factory Chart.fromJson(Map<String, dynamic> json) => Chart(
-        title: json["title"],
-        type: json["type"],
-        description: json["description"],
-        apiUrl: json["api_url"],
-        mediaUrl: json["media_url"] == null ? null : json["media_url"],
+        title: json['title'],
+        type: json['type'],
+        description: json['description'],
+        apiUrl: json['api_url'],
+        mediaUrl: json['media_url'] == null ? null : json['media_url'],
       );
 
   Map<String, dynamic> toJson() => {
-        "title": title,
-        "type": type,
-        "description": description,
-        "api_url": apiUrl,
-        "media_url": mediaUrl == null ? null : mediaUrl,
+        'title': title,
+        'type': type,
+        'description': description,
+        'api_url': apiUrl,
+        'media_url': mediaUrl == null ? null : mediaUrl,
       };
 }

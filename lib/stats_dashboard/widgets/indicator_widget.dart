@@ -20,9 +20,9 @@ class IndicatorWidget extends StatelessWidget {
 
   factory IndicatorWidget.fromJson(Map<String, dynamic> json) =>
       IndicatorWidget(
-        color: json["color"],
-        text: json["indicatorTitle"],
-        isSquare: json["isSquare"],
+        color: json['color'],
+        text: json['indicatorTitle'],
+        isSquare: json['isSquare'],
       );
 
   @override

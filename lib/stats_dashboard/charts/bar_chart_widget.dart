@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import '../models/bar_chart_model.dart';
 
@@ -82,7 +83,8 @@ class _BarChartWidgetState extends State<BarChartWidget> {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
             return Center(
-                child: Text('Please connect to inernet an try again'));
+              child: Text(L10n.of(context).noInternet),
+            );
           case ConnectionState.waiting:
             return Center(
               child: CircularProgressIndicator(),
@@ -93,9 +95,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
             );
           case ConnectionState.done:
             if (snapshot.hasError) {
-              print(snapshot.error.toString());
-              //TODO: internazionalizar texto
-              return Center(child: Text('Algo salio mal //'));
+              return Center(child: Text(L10n.of(context).somethingWrong),);
             } else {
               if (snapshot.data != null) {
                 return Column(
@@ -190,7 +190,6 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                         borderData: FlBorderData(
                           show: true,
                         ),
-                        //TODO: implementar esto
                         barGroups: barGroupsList,
                       ),
                     ),

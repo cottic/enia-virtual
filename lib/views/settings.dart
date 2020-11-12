@@ -381,7 +381,7 @@ class _SettingsState extends State<Settings> {
             ListTile(
               trailing: Icon(Icons.vpn_key),
               title: Text(
-                'Change password',
+                L10n.of(context).changePass,
               ),
               onTap: () => _changePasswordAccountAction(context),
             ),
@@ -585,7 +585,7 @@ class _SettingsState extends State<Settings> {
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                'Créditos',
+                L10n.of(context).credits,
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,

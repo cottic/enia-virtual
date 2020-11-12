@@ -34,15 +34,17 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
                 return Center(
-                    child: Text('Please connect to inernet an try again'));
+                  child: Text(L10n.of(context).noInternet),
+                );
               case ConnectionState.waiting:
                 return CircularProgressIndicator();
               case ConnectionState.active:
                 return CircularProgressIndicator();
               case ConnectionState.done:
                 if (snapshot.hasError) {
-                  //TODO: internazionalizar texto
-                  return Center(child: Text('Algo salio mal //'));
+                  return Center(
+                    child: Text(L10n.of(context).somethingWrong),
+                  );
                 } else {
                   if (snapshot.data != null) {
                     return Column(
@@ -51,8 +53,7 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
                           width: double.maxFinite,
                           padding: EdgeInsets.only(bottom: 10, left: 5, top: 6),
                           child: Text(
-                            //TODO: internazionalizar texto
-                            'Seleccione una respuesta:',
+                            L10n.of(context).pickAnswer,
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.headline6,
                           ),
@@ -88,8 +89,7 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
                           size: 50,
                         ),
                         SizedBox(height: 20.0),
-                        //TODO: internazionalizar texto
-                        Text('Algo salio mal, vuelva a intentarlo mas tarde'),
+                        Text(L10n.of(context).somethingWrong),
                         Expanded(
                           child: Container(),
                         ),
@@ -135,18 +135,13 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
 }
 
 class ButtonCancel extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       child: Text(
         L10n.of(context).cancel.toUpperCase(),
         style: TextStyle(
-          color: Theme.of(context)
-              .textTheme
-              .bodyText2
-              .color
-              .withAlpha(150),
+          color: Theme.of(context).textTheme.bodyText2.color.withAlpha(150),
         ),
       ),
       onPressed: () => Navigator.of(context).pop(),

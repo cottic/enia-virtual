@@ -16,9 +16,9 @@ class PieChartInfo {
 
   factory PieChartInfo.fromJson(Map<String, dynamic> json) => PieChartInfo(
         indicatorsList: List<IndicatorWidget>.from(
-            json["indicatorsList"].map((x) => IndicatorWidget.fromJson(x))),
+            json['indicatorsList'].map((x) => IndicatorWidget.fromJson(x))),
         pieChartSections: List<PieChartSection>.from(
-            json["pieChartSections"].map((x) => PieChartSection.fromJson(x))),
+            json['pieChartSections'].map((x) => PieChartSection.fromJson(x))),
       );
 }
 
@@ -35,14 +35,14 @@ class PieChartSection {
 
   factory PieChartSection.fromJson(Map<String, dynamic> json) =>
       PieChartSection(
-        color: json["color"],
-        value: json["value"],
-        title: json["title"],
+        color: json['color'],
+        value: json['value'],
+        title: json['title'],
       );
 
   Map<String, dynamic> toJson() => {
-        "color": color,
-        "value": value,
-        "title": title,
+        'color': color,
+        'value': value,
+        'title': title,
       };
 }

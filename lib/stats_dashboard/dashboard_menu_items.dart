@@ -7,6 +7,7 @@ import 'package:fluffychat/views/chat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'models/app_settings_model.dart';
 import 'widgets/dashboard_menu_item_widget.dart';
@@ -32,7 +33,8 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
   }
 
   Future<Dashboard> loadConfigJson() async {
-    var appSetingsJson = await rootBundle.loadString('assets/app_settings.json');
+    var appSetingsJson =
+        await rootBundle.loadString('assets/app_settings.json');
 
     Map appSettingsMap = await jsonDecode(appSetingsJson);
 
@@ -62,7 +64,7 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
           padding: EdgeInsets.only(left: 20),
           color: Theme.of(context).primaryColor,
           child: Text(
-            'Estadisticas',
+            L10n.of(context).stats,
             style: Theme.of(context)
                 .textTheme
                 .headline5
@@ -77,7 +79,8 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
               return Center(
-                  child: Text('Please connect to inernet an try again'));
+                child: Text(L10n.of(context).noInternet),
+              );
             case ConnectionState.waiting:
               return Center(
                 child: CircularProgressIndicator(),
@@ -88,14 +91,9 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
               );
             case ConnectionState.done:
               if (snapshot.hasError) {
-                //TODO: internazionalizar texto
                 return Center(
-                    child: Column(
-                  children: [
-                    Text('Algo salio mal //'),
-                    Text(snapshot.error),
-                  ],
-                ));
+                  child: Text(L10n.of(context).somethingWrong),
+                );
               } else {
                 if (snapshot.data != null) {
                   return Column(
@@ -107,7 +105,7 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                             Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: Text(
-                                'Seleccionar Tablero:',
+                                L10n.of(context).selectDashboard,
                                 style: Theme.of(context).textTheme.subtitle1,
                               ),
                             ),
@@ -131,7 +129,7 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                       FlatButton.icon(
                         padding: EdgeInsets.all(20),
                         label: Text(
-                          'VOLVER',
+                          L10n.of(context).goBack,
                           style: Theme.of(context)
                               .textTheme
                               .headline6
@@ -157,8 +155,7 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                         size: 50,
                       ),
                       SizedBox(height: 20.0),
-                      //TODO: internazionalizar texto
-                      Text('Algo salio mal, vuelva a intentarlo mas tarde'),
+                      Text(L10n.of(context).somethingWrong),
                     ],
                   );
                 }

@@ -33,30 +33,30 @@ class LineChartInfo {
   List<LineBarsDatum> lineBarsData;
 
   factory LineChartInfo.fromJson(Map<String, dynamic> json) => LineChartInfo(
-        listTitlesX: List<String>.from(json["listTitlesX"].map((x) => x)),
-        minX: json["minX"],
-        maxX: json["maxX"],
-        minY: json["minY"],
-        maxY: json["maxY"],
-        titlesYright: json["titlesYright"],
-        intervalY: json["intervalY"],
-        backLinesDividedByMaxNumberY: json["backLinesDividedByMaxNumberY"],
+        listTitlesX: List<String>.from(json['listTitlesX'].map((x) => x)),
+        minX: json['minX'],
+        maxX: json['maxX'],
+        minY: json['minY'],
+        maxY: json['maxY'],
+        titlesYright: json['titlesYright'],
+        intervalY: json['intervalY'],
+        backLinesDividedByMaxNumberY: json['backLinesDividedByMaxNumberY'],
         indicatorsList: List<IndicatorWidget>.from(
-            json["indicatorsList"].map((x) => IndicatorWidget.fromJson(x))),
+            json['indicatorsList'].map((x) => IndicatorWidget.fromJson(x))),
         lineBarsData: List<LineBarsDatum>.from(
-            json["lineBarsData"].map((x) => LineBarsDatum.fromJson(x))),
+            json['lineBarsData'].map((x) => LineBarsDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "listTitlesX": List<dynamic>.from(listTitlesX.map((x) => x)),
-        "minX": minX,
-        "maxX": maxX,
-        "minY": minY,
-        "maxY": maxY,
-        "titlesYright": titlesYright,
-        "intervalY": intervalY,
-        "backLinesDividedByMaxNumberY": backLinesDividedByMaxNumberY,
-        "lineBarsData": List<dynamic>.from(lineBarsData.map((x) => x.toJson())),
+        'listTitlesX': List<dynamic>.from(listTitlesX.map((x) => x)),
+        'minX': minX,
+        'maxX': maxX,
+        'minY': minY,
+        'maxY': maxY,
+        'titlesYright': titlesYright,
+        'intervalY': intervalY,
+        'backLinesDividedByMaxNumberY': backLinesDividedByMaxNumberY,
+        'lineBarsData': List<dynamic>.from(lineBarsData.map((x) => x.toJson())),
       };
 }
 
@@ -72,15 +72,15 @@ class LineBarsDatum {
   List<Spot> spots;
 
   factory LineBarsDatum.fromJson(Map<String, dynamic> json) => LineBarsDatum(
-        isCurved: json["isCurved"],
-        color: json["color"],
-        spots: List<Spot>.from(json["spots"].map((x) => Spot.fromJson(x))),
+        isCurved: json['isCurved'],
+        color: json['color'],
+        spots: List<Spot>.from(json['spots'].map((x) => Spot.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "isCurved": isCurved,
-        "color": color,
-        "spots": List<dynamic>.from(spots.map((x) => x.toJson())),
+        'isCurved': isCurved,
+        'color': color,
+        'spots': List<dynamic>.from(spots.map((x) => x.toJson())),
       };
 }
 
@@ -94,12 +94,12 @@ class Spot {
   double spotNumber;
 
   factory Spot.fromJson(Map<String, dynamic> json) => Spot(
-        spotPosition: json["spotPosition"],
-        spotNumber: json["spotNumber"],
+        spotPosition: json['spotPosition'],
+        spotNumber: json['spotNumber'],
       );
 
   Map<String, dynamic> toJson() => {
-        "spotPosition": spotPosition,
-        "spotNumber": spotNumber,
+        'spotPosition': spotPosition,
+        'spotNumber': spotNumber,
       };
 }
