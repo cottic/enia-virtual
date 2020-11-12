@@ -377,6 +377,14 @@ class _SettingsState extends State<Settings> {
               subtitle: Text(profile?.displayname ?? client.userID.localpart),
               onTap: () => setDisplaynameAction(context),
             ),
+            Divider(thickness: 1),
+            ListTile(
+              trailing: Icon(Icons.vpn_key),
+              title: Text(
+                'Change password',
+              ),
+              onTap: () => _changePasswordAccountAction(context),
+            ),
             /* ListTile(
               trailing: Icon(Icons.phone),
               title: Text(L10n.of(context).editJitsiInstance),
