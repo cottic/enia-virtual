@@ -5,13 +5,13 @@
         "2020",
         "2021"
     ],
-    "minX": 0,
+    "minX": 0.0,
     "maxX": 3.0,
-    "minY": 0,
-    "maxY": 1000000,
+    "minY": 0.0,
+    "maxY": 1000000.0,
     "titlesYright": "LARCs",
-    "intervalY": 300000,
-    "backLinesDividedByMaxNumberY": 100000,
+    "intervalY": 300000.0,
+    "backLinesDividedByMaxNumberY": 100000.0,
     "indicatorsList": [
         {
             "color": "#ff0100",
@@ -35,20 +35,20 @@
             "color": "#ff0100",
             "spots": [
                 {
-                    "spotPosition": 0,
-                    "spotNumber": 400000
+                    "spotPosition": 0.0,
+                    "spotNumber": 400000.0
                 },
                 {
-                    "spotPosition": 1,
-                    "spotNumber": 400000
+                    "spotPosition": 1.0,
+                    "spotNumber": 400000.0
                 },
                 {
-                    "spotPosition": 2,
-                    "spotNumber": 700000
+                    "spotPosition": 2.0,
+                    "spotNumber": 700000.0
                 },
                 {
-                    "spotPosition": 3,
-                    "spotNumber": 850000
+                    "spotPosition": 3.0,
+                    "spotNumber": 850000.0
                 }
             ]
         },
@@ -57,20 +57,20 @@
             "color": "#84cbed",
             "spots": [
                 {
-                    "spotPosition": 0,
-                    "spotNumber": 340000
+                    "spotPosition": 0.0,
+                    "spotNumber": 340000.0
                 },
                 {
-                    "spotPosition": 1,
-                    "spotNumber": 360000
+                    "spotPosition": 1.0,
+                    "spotNumber": 360000.0
                 },
                 {
-                    "spotPosition": 2,
-                    "spotNumber": 380000
+                    "spotPosition": 2.0,
+                    "spotNumber": 380000.0
                 },
                 {
-                    "spotPosition": 3,
-                    "spotNumber": 400000
+                    "spotPosition": 3.0,
+                    "spotNumber": 400000.0
                 }
             ]
         },
@@ -79,20 +79,20 @@
             "color": "#20e630",
             "spots": [
                 {
-                    "spotPosition": 0,
-                    "spotNumber": 460000
+                    "spotPosition": 0.0,
+                    "spotNumber": 460000.0
                 },
                 {
-                    "spotPosition": 1,
-                    "spotNumber": 480000
+                    "spotPosition": 1.0,
+                    "spotNumber": 480000.0
                 },
                 {
-                    "spotPosition": 2,
-                    "spotNumber": 520000
+                    "spotPosition": 2.0,
+                    "spotNumber": 520000.0
                 },
                 {
-                    "spotPosition": 3,
-                    "spotNumber": 600000
+                    "spotPosition": 3.0,
+                    "spotNumber": 600000.0
                 }
             ]
         }

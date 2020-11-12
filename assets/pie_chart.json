@@ -20,17 +20,17 @@
     "pieChartSections": [
         {
             "color": "#ff0605",
-            "value": 40,
+            "value": 40.0,
             "title": "4320"
         },
         {
             "color": "#84cbed",
-            "value": 40,
+            "value": 40.0,
             "title": "4320"
         },
         {
             "color": "#20e630",
-            "value": 20,
+            "value": 20.0,
             "title": "2320"
         }
 

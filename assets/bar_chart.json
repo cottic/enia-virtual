@@ -1,9 +1,9 @@
 {
-    "maxNumberY": 1000000,
-    "minNumberY": 0,
+    "maxNumberY": 1000000.0,
+    "minNumberY": 0.0,
     "titlesYright": "LARCs",
-    "intervalY": 300000,
-    "backLinesDividedByMaxNumberY": 100000,
+    "intervalY": 300000.0,
+    "backLinesDividedByMaxNumberY": 100000.0,
     "indicators": [
         {
             "color": "#ff0100",
@@ -31,46 +31,46 @@
             "x": 0,
             "barRods": [
                 {
-                    "totalY": 581600,
+                    "totalY": 581600.0,
                     "barChartRoddData": [
                         {
-                            "start": 0,
-                            "end": 300000,
+                            "start": 0.0,
+                            "end": 300000.0,
                             "color": "#ff0100"
                         },
                         {
-                            "start": 300000,
-                            "end": 581600,
+                            "start": 300000.0,
+                            "end": 581600.0,
                             "color": "#84cbed"
                         }
                     ]
                 },
                 {
-                    "totalY": 781600,
+                    "totalY": 781600.0,
                     "barChartRoddData": [
                         {
-                            "start": 0,
-                            "end": 410000,
+                            "start": 0.0,
+                            "end": 410000.0,
                             "color": "#ff0100"
                         },
                         {
-                            "start": 410000,
-                            "end": 781600,
+                            "start": 410000.0,
+                            "end": 781600.0,
                             "color": "#84cbed"
                         }
                     ]
                 },
                 {
-                    "totalY": 881600,
+                    "totalY": 881600.0,
                     "barChartRoddData": [
                         {
-                            "start": 0,
-                            "end": 510000,
+                            "start": 0.0,
+                            "end": 510000.0,
                             "color": "#ff0100"
                         },
                         {
-                            "start": 510000,
-                            "end": 881600,
+                            "start": 510000.0,
+                            "end": 881600.0,
                             "color": "#84cbed"
                         }
                     ]
@@ -81,16 +81,16 @@
             "x": 1,
             "barRods": [
                 {
-                    "totalY": 381600,
+                    "totalY": 381600.0,
                     "barChartRoddData": [
                         {
-                            "start": 0,
-                            "end": 210000,
+                            "start": 0.0,
+                            "end": 210000.0,
                             "color": "#ff0100"
                         },
                         {
-                            "start": 210000,
-                            "end": 381600,
+                            "start": 210000.0,
+                            "end": 381600.0,
                             "color": "#84cbed"
                         }
                     ]
@@ -101,41 +101,41 @@
             "x": 2,
             "barRods": [
                 {
-                    "totalY": 651600,
+                    "totalY": 651600.0,
                     "barChartRoddData": [
                         {
-                            "start": 0,
-                            "end": 340000,
+                            "start": 0.0,
+                            "end": 340000.0,
                             "color": "#ff0100"
                         },
                         {
-                            "start": 340000,
-                            "end": 551600,
+                            "start": 340000.0,
+                            "end": 551600.0,
                             "color": "#84cbed"
                         },
                         {
-                            "start": 551600,
-                            "end": 651600,
+                            "start": 551600.0,
+                            "end": 651600.0,
                             "color": "#20e630"
                         }
                     ]
                 },
                 {
-                    "totalY": 411600,
+                    "totalY": 411600.0,
                     "barChartRoddData": [
                         {
-                            "start": 0,
-                            "end": 140000,
+                            "start": 0.0,
+                            "end": 140000.0,
                             "color": "#ff0100"
                         },
                         {
-                            "start": 140000,
-                            "end": 311600,
+                            "start": 140000.0,
+                            "end": 311600.0,
                             "color": "#84cbed"
                         },
                         {
-                            "start": 311600,
-                            "end": 411600,
+                            "start": 311600.0,
+                            "end": 411600.0,
                             "color": "#20e630"
                         }
                     ]
