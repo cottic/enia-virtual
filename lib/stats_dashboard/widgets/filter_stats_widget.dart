@@ -19,6 +19,7 @@ class _FiltersStatsState extends State<FiltersStats> {
   bool endSelected = false;
   final TextStyle titlesSliver = TextStyle(
     fontSize: 12.0,
+    color: Colors.white,
   );
 
   final List<DropDownItemsModel> _dropdownItems = [
@@ -56,12 +57,14 @@ class _FiltersStatsState extends State<FiltersStats> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         FlatButton.icon(
           icon: Icon(
             initialSelected ? Icons.filter_alt : Icons.filter_list,
             size: 12,
+            color: Colors.white,
           ),
           //TODO: poner textos con LN10
           label: Text(
@@ -90,6 +93,7 @@ class _FiltersStatsState extends State<FiltersStats> {
           icon: Icon(
             endSelected ? Icons.filter_alt : Icons.filter_list,
             size: 12,
+            color: Colors.white,
           ),
           //TODO: poner textos con LN10
           label: Text(
@@ -124,21 +128,30 @@ class _FiltersStatsState extends State<FiltersStats> {
             print('hizo tap en filtrar');
           },
         ),
-        DropdownButtonHideUnderline(
-          child: DropdownButton(
-            value: _selectedItem,
-            style: titlesSliver,
-            items: _dropdownMenuItems,
-            //TODO: poner textos con LN10
-            hint: Text(
-              'Filtrar por provincia',
-              style: titlesSliver,
+        SizedBox(
+          width: 20.0,
+        ),
+        Container(
+          height: 27,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton(
+                value: _selectedItem,
+                style: titlesSliver,
+                items: _dropdownMenuItems,
+                //TODO: poner textos con LN10
+                hint: Text(
+                  'Todas',
+                  style: titlesSliver,
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedItem = value;
+                  });
+                },
+              ),
             ),
-            onChanged: (value) {
-              setState(() {
-                _selectedItem = value;
-              });
-            },
           ),
         ),
       ],

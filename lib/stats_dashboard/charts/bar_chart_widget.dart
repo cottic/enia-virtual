@@ -8,9 +8,10 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import '../models/bar_chart_model.dart';
 
 class BarChartWidget extends StatefulWidget {
-  BarChartWidget({@required this.apiUrl});
+  BarChartWidget({@required this.apiUrl, this.height});
 
   final String apiUrl;
+  final double height;
 
   @override
   _BarChartWidgetState createState() => _BarChartWidgetState();
@@ -95,103 +96,109 @@ class _BarChartWidgetState extends State<BarChartWidget> {
             );
           case ConnectionState.done:
             if (snapshot.hasError) {
-              return Center(child: Text(L10n.of(context).somethingWrong),);
+              return Center(
+                child: Text(L10n.of(context).somethingWrong),
+              );
             } else {
               if (snapshot.data != null) {
                 return Column(
                   children: [
+                    /* SizedBox(
+                      height: 10,
+                    ), */
+                    Container(
+                      height: widget.height,
+                      child: BarChart(
+                        BarChartData(
+                          alignment: BarChartAlignment.spaceAround,
+                          // XXXXXX VAR GRAFICO XXXXXX
+                          // El numero maximo del grafico eje Y
+                          maxY: barChartInfo.maxNumberY,
+                          // XXXXXX VAR GRAFICO XXXXXX
+                          // El numero minimo del grafico eje Y
+                          minY: barChartInfo.minNumberY,
+                          // distancia entre barras
+                          groupsSpace: 20,
+                          barTouchData: BarTouchData(
+                            enabled: true,
+                          ),
+                          titlesData: FlTitlesData(
+                            show: true,
+                            // TITULO SUPERIOR
+                            topTitles: SideTitles(
+                              showTitles: false,
+                            ),
+                            // TITULOS IZQUIERDA
+                            rightTitles: SideTitles(
+                              showTitles: false,
+                            ),
+                            // TITULO INFERIOR
+                            bottomTitles: SideTitles(
+                              showTitles: true,
+                              textStyle:
+                                  TextStyle(color: Colors.grey, fontSize: 10),
+                              margin: 10,
+                              rotateAngle: 0,
+                              getTitles: (double value) {
+                                for (var i = 0;
+                                    i < barChartInfo.listTitlesX.length;
+                                    i++) {
+                                  return barChartInfo
+                                      .listTitlesX[value.toInt()];
+                                }
+                                return '';
+                              },
+                            ),
+
+                            // TITULOS DERECHA
+                            leftTitles: SideTitles(
+                              showTitles: true,
+                              textStyle:
+                                  TextStyle(color: Colors.grey, fontSize: 10),
+                              rotateAngle: 0,
+                              getTitles: (double value) {
+                                if (value == 0) {
+                                  return '0';
+                                }
+                                return '${value.toInt()} ${barChartInfo.titlesYright.toString()}';
+                              },
+                              interval: barChartInfo.intervalY,
+                              margin: 8,
+                              reservedSize: 30,
+                            ),
+                          ),
+                          // DATA SOBRE LA GRID (linead de atras en el grafico)
+                          gridData: FlGridData(
+                            show: false,
+                            checkToShowHorizontalLine: (value) =>
+                                value %
+                                    barChartInfo.backLinesDividedByMaxNumberY ==
+                                0,
+                            getDrawingHorizontalLine: (value) {
+                              if (value == 0) {
+                                return FlLine(
+                                    color: const Color(0xff363753),
+                                    strokeWidth: 3);
+                              }
+                              return FlLine(
+                                color: const Color(0xff2a2747),
+                                strokeWidth: 0.8,
+                              );
+                            },
+                          ),
+                          // GRAFICO CON O SIN BORDE
+                          borderData: FlBorderData(
+                            show: false,
+                          ),
+                          barGroups: barGroupsList,
+                        ),
+                      ),
+                    ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: indicators,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    BarChart(
-                      BarChartData(
-                        alignment: BarChartAlignment.center,
-                        // XXXXXX VAR GRAFICO XXXXXX
-                        // El numero maximo del grafico eje Y
-                        maxY: barChartInfo.maxNumberY,
-                        // XXXXXX VAR GRAFICO XXXXXX
-                        // El numero minimo del grafico eje Y
-                        minY: barChartInfo.minNumberY,
-                        // distancia entre barras
-                        groupsSpace: 20,
-                        barTouchData: BarTouchData(
-                          enabled: true,
-                        ),
-                        titlesData: FlTitlesData(
-                          show: true,
-                          // TITULO SUPERIOR
-                          topTitles: SideTitles(
-                            showTitles: false,
-                          ),
-                          // TITULOS IZQUIERDA
-                          leftTitles: SideTitles(
-                            showTitles: false,
-                          ),
-                          // TITULO INFERIOR
-                          bottomTitles: SideTitles(
-                            showTitles: true,
-                            textStyle:
-                                TextStyle(color: Colors.black, fontSize: 10),
-                            margin: 10,
-                            rotateAngle: 0,
-                            getTitles: (double value) {
-                              for (var i = 0;
-                                  i < barChartInfo.listTitlesX.length;
-                                  i++) {
-                                return barChartInfo.listTitlesX[value.toInt()];
-                              }
-                              return '';
-                            },
-                          ),
-
-                          // TITULOS DERECHA
-                          rightTitles: SideTitles(
-                            showTitles: true,
-                            textStyle:
-                                TextStyle(color: Colors.black, fontSize: 10),
-                            rotateAngle: 0,
-                            getTitles: (double value) {
-                              if (value == 0) {
-                                return '0';
-                              }
-                              return '${value.toInt()} ${barChartInfo.titlesYright.toString()}';
-                            },
-                            interval: barChartInfo.intervalY,
-                            margin: 8,
-                            reservedSize: 30,
-                          ),
-                        ),
-                        // DATA SOBRE LA GRID (linead de atras en el grafico)
-                        gridData: FlGridData(
-                          show: true,
-                          checkToShowHorizontalLine: (value) =>
-                              value %
-                                  barChartInfo.backLinesDividedByMaxNumberY ==
-                              0,
-                          getDrawingHorizontalLine: (value) {
-                            if (value == 0) {
-                              return FlLine(
-                                  color: const Color(0xff363753),
-                                  strokeWidth: 3);
-                            }
-                            return FlLine(
-                              color: const Color(0xff2a2747),
-                              strokeWidth: 0.8,
-                            );
-                          },
-                        ),
-                        // GRAFICO CON O SIN BORDE
-                        borderData: FlBorderData(
-                          show: true,
-                        ),
-                        barGroups: barGroupsList,
-                      ),
                     ),
                   ],
                 );

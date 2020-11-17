@@ -24,6 +24,7 @@ class HeaderUniqueDashboard extends StatelessWidget {
               flex: 1,
               child: Text(
                 title,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             Expanded(
@@ -33,6 +34,7 @@ class HeaderUniqueDashboard extends StatelessWidget {
           ],
         ),
       ),
+
     );
   }
 }

@@ -7,7 +7,6 @@ import 'package:fluffychat/stats_dashboard/charts/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/stats_dashboard/charts/bar_chart_widget.dart';
-import 'package:fluffychat/stats_dashboard/charts/card_chart_widget.dart';
 import 'package:fluffychat/stats_dashboard/dashboard_menu_items.dart';
 import 'package:fluffychat/stats_dashboard/charts/line_chart_widget.dart';
 import 'package:flutter/services.dart';
@@ -45,6 +44,11 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
 
   List barCharts;
   List indicators;
+
+  TextStyle titleCharts =
+      TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600);
+
+  TextStyle descriptionCharts = TextStyle(fontSize: 10.0, color: Colors.grey);
 
   Future<Board> loadConfigJson() async {
     var appSetingsJson =
@@ -88,7 +92,9 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
               );
             case ConnectionState.done:
               if (snapshot.hasError) {
-                return Center(child:Text(L10n.of(context).somethingWrong),);
+                return Center(
+                  child: Text(L10n.of(context).somethingWrong),
+                );
               } else {
                 if (snapshot.data != null) {
                   return NestedScrollView(
@@ -100,91 +106,201 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                       ),
                     ],
                     body: ListView(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
                       children: <Widget>[
-                        ListTile(
-                          title: Text(board.description),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        CardChartHolder(
-                          title: cardChart.title,
-                          description: cardChart.description,
-                          icon: Icons.accessibility_new,
-                          dataWidget: CardEniaStats(
-                            apiUrl: cardChart.apiUrl,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 10.0,
+                            horizontal: 50.0,
                           ),
+                          child: Text(board.description),
                         ),
-                        Card(
-                          color: Color(0XFFF9F9F9),
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            child: Column(
-                              children: [
-                                ListTile(
-                                  title: Text(barChart.title),
-                                  subtitle: Text(barChart.description),
-                                ),
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                BarChartWidget(
-                                  apiUrl: barChart.apiUrl,
-                                ),
-                              ],
+                        Row(
+                          children: [
+                            CardChartHolder(
+                              title: cardChart.title,
+                              description: cardChart.description,
+                              icon: Icons.accessibility_new,
+                              chartUrl: cardChart.apiUrl,
+                              color: true,
                             ),
-                          ),
+                            CardChartHolder(
+                              title: cardChart.title,
+                              description: cardChart.description,
+                              icon: Icons.accessibility_new,
+                              chartUrl: cardChart.apiUrl,
+                              color: false,
+                            ),
+                            CardChartHolder(
+                              title: cardChart.title,
+                              description: cardChart.description,
+                              icon: Icons.accessibility_new,
+                              chartUrl: cardChart.apiUrl,
+                              color: true,
+                            ),
+                            CardChartHolder(
+                              title: cardChart.title,
+                              description: cardChart.description,
+                              icon: Icons.accessibility_new,
+                              chartUrl: cardChart.apiUrl,
+                              color: true,
+                            ),
+                          ],
                         ),
                         Row(
                           children: [
                             Expanded(
-                              child: Card(
-                                color: Color(0XFFF9F9F9),
-                                child: Container(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Column(
-                                    children: [
-                                      ListTile(
-                                        title: Text(lineChart.title),
-                                        subtitle: Text(lineChart.description),
-                                      ),
-                                      SizedBox(
-                                        height: 40,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: LineChartWidget(
-                                          apiUrl: lineChart.apiUrl,
+                              flex: 3,
+                              child: Container(
+                                height: 400,
+                                child: Card(
+                                  margin: EdgeInsets.all(10.0),
+                                  elevation: 3.0,
+                                  color: Color(0XFFF9F9F9),
+                                  child: Container(
+                                    padding: EdgeInsets.all(20.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          height: 40,
+                                          child: Text(
+                                            barChart.title,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: titleCharts,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        BarChartWidget(
+                                          apiUrl: barChart.apiUrl,
+                                          height: 240.0,
+                                        ),
+                                        Text(
+                                          barChart.description,
+                                          style: descriptionCharts,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                             Expanded(
-                              child: Card(
-                                color: Color(0XFFF9F9F9),
-                                child: Container(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Column(
-                                    children: [
-                                      ListTile(
-                                        title: Text(pieChart.title),
-                                        subtitle: Text(pieChart.description),
-                                      ),
-                                      SizedBox(
-                                        height: 40,
-                                      ),
-                                      PieChartWidget(
-                                        apiUrl: pieChart.apiUrl,
-                                      ),
-                                    ],
+                              flex: 1,
+                              child: Container(
+                                height: 400,
+                                child: Card(
+                                  margin: EdgeInsets.all(10.0),
+                                  elevation: 3.0,
+                                  color: Color(0XFFF9F9F9),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          pieChart.title,
+                                          style: titleCharts,
+                                        ),
+                                        PieChartWidget(
+                                          apiUrl: pieChart.apiUrl,
+                                        ),
+                                        Text(
+                                          pieChart.description,
+                                          style: descriptionCharts,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 400,
+                                child: Card(
+                                  margin: EdgeInsets.all(10.0),
+                                  elevation: 3.0,
+                                  color: Color(0XFFF9F9F9),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          pieChart.title,
+                                          style: titleCharts,
+                                        ),
+                                        PieChartWidget(
+                                          apiUrl: pieChart.apiUrl,
+                                        ),
+                                        Text(
+                                          pieChart.description,
+                                          style: descriptionCharts,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Container(
+                                height: 400,
+                                child: Card(
+                                  margin: EdgeInsets.all(10.0),
+                                  elevation: 3.0,
+                                  color: Color(0XFFF9F9F9),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          lineChart.title,
+                                          style: titleCharts,
+                                        ),
+                                        Center(
+                                          child: LineChartWidget(
+                                            apiUrl: lineChart.apiUrl,
+                                          ),
+                                        ),
+                                        Text(
+                                          lineChart.description,
+                                          style: descriptionCharts,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20.0,
                         ),
                       ],
                     ),

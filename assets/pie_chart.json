@@ -1,35 +1,35 @@
 {
     "indicatorsList": [
         {
-            "color": "#ff0100",
+            "color": "#FF3A93",
             "indicatorTitle": "2018",
             "isSquare": false
         },
         {
-            "color": "#84cbed",
+            "color": "#D5E000",
             "indicatorTitle": "2019",
             "isSquare": false
         }
         ,
         {
-            "color": "#20e630",
+            "color": "#9984C1",
             "indicatorTitle": "2020",
             "isSquare": false
         }
     ],
     "pieChartSections": [
         {
-            "color": "#ff0605",
+            "color": "#FF3A93",
             "value": 40.0,
             "title": "4320"
         },
         {
-            "color": "#84cbed",
+            "color": "#D5E000",
             "value": 40.0,
             "title": "4320"
         },
         {
-            "color": "#20e630",
+            "color": "#9984C1",
             "value": 20.0,
             "title": "2320"
         }

@@ -54,7 +54,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
           colors: [
             HexColor(color),
           ],
-          barWidth: 8,
+          barWidth: 6,
           isStrokeCapRound: true,
           // Mostrar puntos en la linea
           dotData: FlDotData(
@@ -92,22 +92,24 @@ class _LineChartWidgetState extends State<LineChartWidget> {
             );
           case ConnectionState.done:
             if (snapshot.hasError) {
-              return Center(child: Text(L10n.of(context).somethingWrong),);
+              return Center(
+                child: Text(L10n.of(context).somethingWrong),
+              );
             } else {
               if (snapshot.data != null) {
                 return Column(
                   children: <Widget>[
+                    Container(
+                      height: 240,
+                      child: LineChart(
+                        dataLarcsFull(),
+                      ),
+                    ),
                     Row(
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: indicators,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    LineChart(
-                      dataLarcsFull(),
                     ),
                   ],
                 );
@@ -153,7 +155,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
       ),
       // DEFINE EL GRID EN EL FONDO DEL GRAFICO
       gridData: FlGridData(
-        show: true,
+        show: false,
         checkToShowHorizontalLine: (value) =>
             value % backLinesDividedByValue == 0,
         getDrawingHorizontalLine: (value) {
@@ -173,9 +175,8 @@ class _LineChartWidgetState extends State<LineChartWidget> {
           showTitles: true,
           reservedSize: 22,
           textStyle: const TextStyle(
-            color: Color(0xff72719b),
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
+            color: Colors.grey,
+            fontSize: 10,
           ),
           margin: 10,
           getTitles: (double value) {
@@ -187,15 +188,12 @@ class _LineChartWidgetState extends State<LineChartWidget> {
             return '';
           },
         ),
-        // TITULOS IZQUIERDA
-        leftTitles: SideTitles(showTitles: false),
-        // TITULOS DERECHA
-        rightTitles: SideTitles(
+        rightTitles: SideTitles(showTitles: false),
+        leftTitles: SideTitles(
           showTitles: true,
           textStyle: const TextStyle(
-            color: Color(0xff75729e),
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
+            color: Colors.grey,
+            fontSize: 10,
           ),
           getTitles: (double value) {
             if (value == 0) {
@@ -212,9 +210,12 @@ class _LineChartWidgetState extends State<LineChartWidget> {
       borderData: FlBorderData(
         show: true,
         border: const Border(
-          bottom: BorderSide(
+          /* bottom: BorderSide(
             color: Color(0xff4e4965),
             width: 4,
+          ), */
+          bottom: BorderSide(
+            color: Colors.transparent,
           ),
           left: BorderSide(
             color: Colors.transparent,

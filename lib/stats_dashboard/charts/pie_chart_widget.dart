@@ -50,7 +50,7 @@ class PieChartState extends State<PieChartWidget> {
     for (var i = 0; i < pieDataList.length; i++) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 25.0 : 16.0;
-      final radius = isTouched ? 100.0 : 80.0;
+      final radius = isTouched ? 130.0 : 80.0;
       pieDatainter.add(
         PieChartSectionData(
           color: pieDataList[i].color,
@@ -93,36 +93,40 @@ class PieChartState extends State<PieChartWidget> {
             } else {
               if (snapshot.data != null) {
                 return Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
+                    Container(
+                      height: 190.0,
+                      child: PieChart(
+                        PieChartData(
+                          pieTouchData: PieTouchData(
+                            touchCallback: (pieTouchResponse) {
+                              setState(() {
+                                if (pieTouchResponse.touchInput
+                                        is FlLongPressEnd ||
+                                    pieTouchResponse.touchInput is FlPanEnd) {
+                                  touchedIndex = -1;
+                                } else {
+                                  touchedIndex =
+                                      pieTouchResponse.touchedSectionIndex;
+                                }
+                              });
+                            },
+                          ),
+                          borderData: FlBorderData(
+                            show: false,
+                          ),
+                          sectionsSpace: 20,
+                          centerSpaceRadius: 16,
+                          sections: showingSections(),
+                        ),
+                      ),
+                    ),
                     Row(
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: indicators,
-                    ),
-                    PieChart(
-                      PieChartData(
-                        pieTouchData: PieTouchData(
-                          touchCallback: (pieTouchResponse) {
-                            setState(() {
-                              if (pieTouchResponse.touchInput
-                                      is FlLongPressEnd ||
-                                  pieTouchResponse.touchInput is FlPanEnd) {
-                                touchedIndex = -1;
-                              } else {
-                                touchedIndex =
-                                    pieTouchResponse.touchedSectionIndex;
-                              }
-                            });
-                          },
-                        ),
-                        borderData: FlBorderData(
-                          show: false,
-                        ),
-                        sectionsSpace: 100,
-                        centerSpaceRadius: 16,
-                        sections: showingSections(),
-                      ),
                     ),
                   ],
                 );

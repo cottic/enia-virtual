@@ -14,17 +14,17 @@
     "backLinesDividedByMaxNumberY": 100000.0,
     "indicatorsList": [
         {
-            "color": "#ff0100",
+            "color": "#FF3A93",
             "indicatorTitle": "Larcs general",
             "isSquare": false
         },
         {
-            "color": "#84cbed",
+            "color": "#D5E000",
             "indicatorTitle": "Larcs",
             "isSquare": false
         },
         {
-            "color": "#20e630",
+            "color": "#9984C1",
             "indicatorTitle": "Algo",
             "isSquare": false
         }
@@ -32,7 +32,7 @@
     "lineBarsData": [
         {
             "isCurved": true,
-            "color": "#ff0100",
+            "color": "#FF3A93",
             "spots": [
                 {
                     "spotPosition": 0.0,
@@ -54,7 +54,7 @@
         },
         {
             "isCurved": true,
-            "color": "#84cbed",
+            "color": "#D5E000",
             "spots": [
                 {
                     "spotPosition": 0.0,
@@ -76,7 +76,7 @@
         },
         {
             "isCurved": true,
-            "color": "#20e630",
+            "color": "#9984C1",
             "spots": [
                 {
                     "spotPosition": 0.0,

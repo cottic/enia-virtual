@@ -6,17 +6,17 @@
     "backLinesDividedByMaxNumberY": 100000.0,
     "indicators": [
         {
-            "color": "#ff0100",
+            "color": "#FF3A93",
             "indicatorTitle": "Larcs",
             "isSquare": false
         },
         {
-            "color": "#84cbed",
+            "color": "#D5E000",
             "indicatorTitle": "DIU",
             "isSquare": false
         },
         {
-            "color": "#20e630",
+            "color": "#9984C1",
             "indicatorTitle": "Ejemplo",
             "isSquare": false
         }
@@ -24,7 +24,10 @@
     "listTitlesX": [
         "2018",
         "2019",
-        "2020"
+        "2020",
+        "2021",
+        "2022",
+        "2023"
     ],
     "barChartList": [
         {
@@ -36,12 +39,12 @@
                         {
                             "start": 0.0,
                             "end": 300000.0,
-                            "color": "#ff0100"
+                            "color": "#FF3A93"
                         },
                         {
                             "start": 300000.0,
                             "end": 581600.0,
-                            "color": "#84cbed"
+                            "color": "#9984C1"
                         }
                     ]
                 },
@@ -51,12 +54,12 @@
                         {
                             "start": 0.0,
                             "end": 410000.0,
-                            "color": "#ff0100"
+                            "color": "#FF3A93"
                         },
                         {
                             "start": 410000.0,
                             "end": 781600.0,
-                            "color": "#84cbed"
+                            "color": "#9984C1"
                         }
                     ]
                 },
@@ -66,12 +69,12 @@
                         {
                             "start": 0.0,
                             "end": 510000.0,
-                            "color": "#ff0100"
+                            "color": "#FF3A93"
                         },
                         {
                             "start": 510000.0,
                             "end": 881600.0,
-                            "color": "#84cbed"
+                            "color": "#9984C1"
                         }
                     ]
                 }
@@ -86,12 +89,12 @@
                         {
                             "start": 0.0,
                             "end": 210000.0,
-                            "color": "#ff0100"
+                            "color": "#FF3A93"
                         },
                         {
                             "start": 210000.0,
                             "end": 381600.0,
-                            "color": "#84cbed"
+                            "color": "#9984C1"
                         }
                     ]
                 }
@@ -106,17 +109,17 @@
                         {
                             "start": 0.0,
                             "end": 340000.0,
-                            "color": "#ff0100"
+                            "color": "#FF3A93"
                         },
                         {
                             "start": 340000.0,
                             "end": 551600.0,
-                            "color": "#84cbed"
+                            "color": "#D5E000"
                         },
                         {
                             "start": 551600.0,
                             "end": 651600.0,
-                            "color": "#20e630"
+                            "color": "#9984C1"
                         }
                     ]
                 },
@@ -126,17 +129,77 @@
                         {
                             "start": 0.0,
                             "end": 140000.0,
-                            "color": "#ff0100"
+                            "color": "#FF3A93"
                         },
                         {
                             "start": 140000.0,
                             "end": 311600.0,
-                            "color": "#84cbed"
+                            "color": "#D5E000"
                         },
                         {
                             "start": 311600.0,
                             "end": 411600.0,
-                            "color": "#20e630"
+                            "color": "#9984C1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "x": 3,
+            "barRods": [
+                {
+                    "totalY": 381600.0,
+                    "barChartRoddData": [
+                        {
+                            "start": 0.0,
+                            "end": 210000.0,
+                            "color": "#FF3A93"
+                        },
+                        {
+                            "start": 210000.0,
+                            "end": 381600.0,
+                            "color": "#9984C1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "x": 4,
+            "barRods": [
+                {
+                    "totalY": 381600.0,
+                    "barChartRoddData": [
+                        {
+                            "start": 0.0,
+                            "end": 210000.0,
+                            "color": "#FF3A93"
+                        },
+                        {
+                            "start": 210000.0,
+                            "end": 381600.0,
+                            "color": "#9984C1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "x": 5,
+            "barRods": [
+                {
+                    "totalY": 381600.0,
+                    "barChartRoddData": [
+                        {
+                            "start": 0.0,
+                            "end": 210000.0,
+                            "color": "#FF3A93"
+                        },
+                        {
+                            "start": 210000.0,
+                            "end": 381600.0,
+                            "color": "#9984C1"
                         }
                     ]
                 }
