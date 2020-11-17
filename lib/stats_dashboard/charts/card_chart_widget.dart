@@ -1,11 +1,12 @@
 import 'package:fluffychat/stats_dashboard/models/card_chart_model.dart';
+import 'package:fluffychat/stats_dashboard/services/dashboard_services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-
 class CardEniaStats extends StatefulWidget {
-  CardEniaStats({@required this.apiUrl});
+  CardEniaStats({@required this.apiUrl, this.color});
+
+  final Color color;
 
   final String apiUrl;
 
@@ -18,8 +19,10 @@ class _CardEniaStatsState extends State<CardEniaStats> {
 
   String cardData;
 
-  Future<CardChartInfo> loadChartFromApi() async {
-    var cardChartInfoJson = await rootBundle.loadString(widget.apiUrl);
+  DashboardService service = DashboardService();
+
+  Future<CardChartInfo> loadChart() async {
+    var cardChartInfoJson = await service.loadChartFromApi(widget.apiUrl);
 
     cardChartInfo = await cardChartInfoFromJson(cardChartInfoJson);
 
@@ -28,10 +31,20 @@ class _CardEniaStatsState extends State<CardEniaStats> {
     return cardChartInfo;
   }
 
+/*   Future<CardChartInfo> loadChartFromApi() async {
+    var cardChartInfoJson = await rootBundle.loadString(widget.apiUrl);
+
+    cardChartInfo = await cardChartInfoFromJson(cardChartInfoJson);
+
+    cardData = cardChartInfo.cardData;
+
+    return cardChartInfo;
+  } */
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: loadChartFromApi(),
+      future: loadChart(),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
@@ -48,16 +61,19 @@ class _CardEniaStatsState extends State<CardEniaStats> {
             );
           case ConnectionState.done:
             if (snapshot.hasError) {
-              return Center(child: Text(L10n.of(context).somethingWrong),);
+              return Center(
+                child: Text(L10n.of(context).somethingWrong),
+              );
             } else {
               if (snapshot.data != null) {
                 return Text(
                   cardData,
-                  overflow: TextOverflow.visible,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline4
-                      .copyWith(color: Colors.green),
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.headline4.copyWith(
+                        color: widget.color,
+                        fontSize: 38,
+                        fontWeight: FontWeight.w700,
+                      ),
                 );
               } else {
                 return Center(
