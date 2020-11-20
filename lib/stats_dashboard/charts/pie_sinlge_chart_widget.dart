@@ -49,7 +49,7 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
           case 1:
             return PieChartSectionData(
               color: HexColor('#f9f9f9'),
-              value: 24,
+              value: 100 - pieSingleChartInfo.pieSinglePorcentage,
               title: '',
               radius: radius,
               titleStyle: TextStyle(
