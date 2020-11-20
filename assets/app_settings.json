@@ -5,8 +5,8 @@
   "version": 1,
   "boards": [
     {
-      "name": "SSyR: Salud Sexual y Reproductivo DESDE SETTINGS",
-      "description": "Tablero de la direccion de Salud JSON y Reproductiva",
+      "name": "SSyR: Salud Sexual y Reproductivo",
+      "description": "Tablero de la direccion de Salud y Reproductiva",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -34,12 +34,18 @@
           "type": "pie",
           "description": "Considerando la población estimada a cubrir con LARCs para el 2020, a abril  202",
           "api_url": "assets/pie_chart.json"
+        },
+        {
+          "title": "Larcs estimados año",
+          "type": "pieSingle",
+          "description": "Considerando la población estimada a cubrir con LARCs para el 2020, a abris",
+          "api_url": "assets/pie_single_chart.json"
         }
       ]
     },
     {
-      "name": "SSyR: Segundo panel DESDE JSON",
-      "description": "Tablero de la direccion de Salud segu desde json",
+      "name": "SSyR: Segundo panel",
+      "description": "Tablero de la direccion de Salud",
       "template": "normal",
       "filter": true,
       "charts": [

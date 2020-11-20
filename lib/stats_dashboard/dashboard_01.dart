@@ -14,6 +14,8 @@ import 'package:flutter/services.dart';
 import '../components/adaptive_page_layout.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
+import 'charts/pie_sinlge_chart_widget.dart';
+import 'constants_dashboard.dart';
 import 'models/bar_chart_model.dart';
 
 class StatsEniaMenu01View extends StatelessWidget {
@@ -39,16 +41,12 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
   Chart barChart = Chart();
   Chart lineChart = Chart();
   Chart pieChart = Chart();
+  Chart pieSingleChart = Chart();
 
   BarChartInfo barChartInfo = BarChartInfo();
 
   List barCharts;
   List indicators;
-
-  TextStyle titleCharts =
-      TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600);
-
-  TextStyle descriptionCharts = TextStyle(fontSize: 10.0, color: Colors.grey);
 
   Future<Board> loadConfigJson() async {
     var appSetingsJson =
@@ -63,6 +61,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
     barChart = dashboard.boards[0].charts[1];
     lineChart = dashboard.boards[0].charts[2];
     pieChart = dashboard.boards[0].charts[3];
+    pieSingleChart = dashboard.boards[0].charts[4];
 
     return board;
   }
@@ -171,7 +170,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                           child: Text(
                                             barChart.title,
                                             overflow: TextOverflow.ellipsis,
-                                            style: titleCharts,
+                                            style: mainTitleCharts,
                                           ),
                                         ),
                                         BarChartWidget(
@@ -206,14 +205,14 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          pieChart.title,
-                                          style: titleCharts,
+                                          pieSingleChart.title,
+                                          style: mainTitleCharts,
                                         ),
-                                        PieChartWidget(
-                                          apiUrl: pieChart.apiUrl,
+                                        PieSingleChartWidget(
+                                          apiUrl: pieSingleChart.apiUrl,
                                         ),
                                         Text(
-                                          pieChart.description,
+                                          pieSingleChart.description,
                                           style: descriptionCharts,
                                         ),
                                       ],
@@ -247,7 +246,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                       children: [
                                         Text(
                                           pieChart.title,
-                                          style: titleCharts,
+                                          style: mainTitleCharts,
                                         ),
                                         PieChartWidget(
                                           apiUrl: pieChart.apiUrl,
@@ -280,7 +279,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                       children: [
                                         Text(
                                           lineChart.title,
-                                          style: titleCharts,
+                                          style: mainTitleCharts,
                                         ),
                                         Center(
                                           child: LineChartWidget(
