@@ -5,6 +5,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
+import '../constants_dashboard.dart';
 import '../models/bar_chart_model.dart';
 
 class BarChartWidget extends StatefulWidget {
@@ -135,8 +136,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                             // TITULO INFERIOR
                             bottomTitles: SideTitles(
                               showTitles: true,
-                              textStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 10),
+                              textStyle: bottomTitlesChart,
                               margin: 10,
                               rotateAngle: 0,
                               getTitles: (double value) {
@@ -149,12 +149,9 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                                 return '';
                               },
                             ),
-
-                            // TITULOS DERECHA
                             leftTitles: SideTitles(
                               showTitles: true,
-                              textStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 10),
+                              textStyle: leftTitlesChart,
                               rotateAngle: 0,
                               getTitles: (double value) {
                                 if (value == 0) {

@@ -46,6 +46,91 @@ class PieChartState extends State<PieChartWidget> {
   }
 
   List<PieChartSectionData> showingSections() {
+    // print('pieDataList.length');
+    // print(pieDataList.length);
+
+    return List.generate(
+      // Porque no me deja poner la variable?
+      // pieDataList.length,
+      // Probar que sea una constanste
+     3,
+      (i) {
+        final isTouched = i == touchedIndex;
+        final double fontSize = isTouched ? 25 : 16;
+        final double radius = isTouched ? 60 : 50;
+        switch (i) {
+          case 0:
+            return PieChartSectionData(
+              color: pieDataList[0].color,
+              value: pieDataList[0].value,
+              title: pieDataList[0].title,
+              radius: radius,
+              titleStyle: TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: pieDataList[0].titleStyle.fontWeight,
+                  color: pieDataList[0].titleStyle.color),
+            );
+          case 1:
+            return PieChartSectionData(
+              color: pieDataList[1].color,
+              value: pieDataList[1].value,
+              title: pieDataList[1].title,
+              radius: radius,
+              titleStyle: TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: pieDataList[1].titleStyle.fontWeight,
+                  color: pieDataList[1].titleStyle.color),
+            );
+          case 2:
+            if (pieDataList.length > 2) {
+              return PieChartSectionData(
+                color: pieDataList[2].color,
+                value: pieDataList[2].value,
+                title: pieDataList[2].title,
+                radius: radius,
+                titleStyle: TextStyle(
+                    fontSize: fontSize,
+                    fontWeight: pieDataList[2].titleStyle.fontWeight,
+                    color: pieDataList[2].titleStyle.color),
+              );
+            }
+            return null;
+          case 3:
+            if (pieDataList.length > 3) {
+              return PieChartSectionData(
+                color: pieDataList[3].color,
+                value: pieDataList[3].value,
+                title: pieDataList[3].title,
+                radius: radius,
+                titleStyle: TextStyle(
+                    fontSize: fontSize,
+                    fontWeight: pieDataList[3].titleStyle.fontWeight,
+                    color: pieDataList[3].titleStyle.color),
+              );
+            }
+            return null;
+
+          /* case 4:
+            return PieChartSectionData(
+              color: pieDataList[4].color,
+              value: pieDataList[4].value,
+              title: pieDataList[4].title,
+              radius: radius,
+              titleStyle: TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: pieDataList[4].titleStyle.fontWeight,
+                  color: pieDataList[4].titleStyle.color),
+            ); */
+          default:
+            return null;
+        }
+      },
+    );
+  }
+
+/*   List<PieChartSectionData> showingSections() {
+
+
     List<PieChartSectionData> pieDatainter = [];
     for (var i = 0; i < pieDataList.length; i++) {
       final isTouched = i == touchedIndex;
@@ -65,7 +150,7 @@ class PieChartState extends State<PieChartWidget> {
       );
     }
     return pieDatainter;
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -99,20 +184,21 @@ class PieChartState extends State<PieChartWidget> {
                       height: 190.0,
                       child: PieChart(
                         PieChartData(
-                          pieTouchData: PieTouchData(
-                            touchCallback: (pieTouchResponse) {
-                              setState(() {
-                                if (pieTouchResponse.touchInput
-                                        is FlLongPressEnd ||
-                                    pieTouchResponse.touchInput is FlPanEnd) {
-                                  touchedIndex = -1;
-                                } else {
-                                  touchedIndex =
-                                      pieTouchResponse.touchedSectionIndex;
-                                }
-                              });
-                            },
-                          ),
+                          pieTouchData:
+                              PieTouchData(touchCallback: (pieTouchResponse) {
+                            setState(() {
+                              touchedIndex =
+                                    pieTouchResponse.touchedSectionIndex;
+                              /* if (pieTouchResponse.touchInput
+                                      is FlLongPressEnd ||
+                                  pieTouchResponse.touchInput is FlPanEnd) {
+                                touchedIndex = -1;
+                              } else {
+                                touchedIndex =
+                                    pieTouchResponse.touchedSectionIndex;
+                              } */
+                            });
+                          }),
                           borderData: FlBorderData(
                             show: false,
                           ),

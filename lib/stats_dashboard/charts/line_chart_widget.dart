@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
+import '../constants_dashboard.dart';
 import '../models/line_chart_model.dart';
 
 class LineChartWidget extends StatefulWidget {
@@ -174,10 +175,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 22,
-          textStyle: const TextStyle(
-            color: Colors.grey,
-            fontSize: 10,
-          ),
+          textStyle: bottomTitlesChart,
           margin: 10,
           getTitles: (double value) {
             for (var i = 0; i < listTitlesX.length; i++) {
@@ -191,10 +189,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         rightTitles: SideTitles(showTitles: false),
         leftTitles: SideTitles(
           showTitles: true,
-          textStyle: const TextStyle(
-            color: Colors.grey,
-            fontSize: 10,
-          ),
+          textStyle: leftTitlesChart,
           getTitles: (double value) {
             if (value == 0) {
               return '0';
