@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 
 import '../models/drop_down_item_model.dart';
@@ -19,7 +20,7 @@ class _FiltersStatsState extends State<FiltersStats> {
   bool endSelected = false;
   final TextStyle titlesSliver = TextStyle(
     fontSize: 12.0,
-    color: Colors.white,
+    color: Colors.black54,
   );
 
   final List<DropDownItemsModel> _dropdownItems = [
@@ -57,99 +58,137 @@ class _FiltersStatsState extends State<FiltersStats> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        FlatButton.icon(
-          icon: Icon(
-            initialSelected ? Icons.filter_alt : Icons.filter_list,
-            size: 12,
-            color: Colors.white,
-          ),
-          //TODO: poner textos con LN10
-          label: Text(
-            initialSelected
-                ? '${initialSelectedDate.toLocal()}'.substring(0, 7)
-                : 'Mes comienzo',
-            style: titlesSliver,
-          ),
-          onPressed: () {
-            showMonthPicker(
-              context: context,
-              firstDate: DateTime(2014),
-              lastDate: endSelectedDate ?? DateTime.now(),
-              initialDate: DateTime(2019),
-            ).then((date) {
-              if (date != null) {
-                setState(() {
-                  initialSelected = true;
-                  initialSelectedDate = date;
+        Expanded(
+          child: Card(
+            margin: EdgeInsets.symmetric(horizontal: 5.0),
+            child: FlatButton(
+              color: Colors.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    initialSelected
+                        ? '${initialSelectedDate.toLocal()}'.substring(0, 7)
+                        : 'Desde',
+                    style: titlesSliver,
+                  ),
+                  Icon(
+                    initialSelected
+                        ? Icons.filter_alt
+                        : Icons.keyboard_arrow_right,
+                    size: 12,
+                    color: Colors.black54,
+                  ),
+                ],
+              ),
+              onPressed: () {
+                showMonthPicker(
+                  context: context,
+                  firstDate: DateTime(2014),
+                  lastDate: endSelectedDate ?? DateTime.now(),
+                  initialDate: DateTime(2019),
+                ).then((date) {
+                  if (date != null) {
+                    setState(() {
+                      initialSelected = true;
+                      initialSelectedDate = date;
+                    });
+                  }
                 });
-              }
-            });
-          },
+              },
+            ),
+          ),
         ),
-        FlatButton.icon(
-          icon: Icon(
-            endSelected ? Icons.filter_alt : Icons.filter_list,
-            size: 12,
-            color: Colors.white,
-          ),
-          //TODO: poner textos con LN10
-          label: Text(
-            endSelected
-                ? '${endSelectedDate.toLocal()}'.substring(0, 7)
-                : 'Mes final',
-            style: titlesSliver,
-          ),
-          onPressed: () {
-            showMonthPicker(
-              context: context,
-              firstDate: initialSelectedDate ?? DateTime(2014),
-              lastDate: DateTime.now(),
-              initialDate: DateTime.now(),
-            ).then((date) {
-              if (date != null) {
-                setState(() {
-                  endSelected = true;
-                  endSelectedDate = date;
+        Expanded(
+          child: Card(
+            margin: EdgeInsets.symmetric(horizontal: 5.0),
+            child: FlatButton(
+              color: Colors.white,
+
+              //TODO: poner textos con LN10
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    endSelected
+                        ? '${endSelectedDate.toLocal()}'.substring(0, 7)
+                        : 'Hasta',
+                    style: titlesSliver,
+                  ),
+                  Icon(
+                    endSelected ? Icons.filter_alt : Icons.keyboard_arrow_right,
+                    size: 12,
+                    color: Colors.black54,
+                  ),
+                ],
+              ),
+
+              onPressed: () {
+                showMonthPicker(
+                  context: context,
+                  firstDate: initialSelectedDate ?? DateTime(2014),
+                  lastDate: DateTime.now(),
+                  initialDate: DateTime.now(),
+                ).then((date) {
+                  if (date != null) {
+                    setState(() {
+                      endSelected = true;
+                      endSelectedDate = date;
+                    });
+                  }
                 });
-              }
-            });
-          },
-        ),
-        FlatButton(
-          //TODO: poner textos con LN10
-          child: Text(
-            'FILTRAR',
-            style: titlesSliver,
+              },
+            ),
           ),
-          onPressed: () {
-            print('hizo tap en filtrar');
-          },
         ),
-        SizedBox(
-          width: 20.0,
+        Expanded(
+          child: Card(
+            margin: EdgeInsets.symmetric(horizontal: 5.0),
+            child: FlatButton(
+              color: HexColor('#7861A3'),
+              //TODO: poner textos con LN10
+              child: Text(
+                'FILTRAR',
+                style: titlesSliver.copyWith(color: Colors.white),
+              ),
+              onPressed: () {
+                print('hizo tap en filtrar');
+              },
+            ),
+          ),
         ),
-        Container(
-          height: 27,
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton(
-                value: _selectedItem,
-                style: titlesSliver,
-                items: _dropdownMenuItems,
-                //TODO: poner textos con LN10
-                hint: Text(
-                  'Todas',
-                  style: titlesSliver,
+        Expanded(
+          child: Container(
+            height: 27.0,
+            child: Card(
+              margin: EdgeInsets.symmetric(horizontal: 5.0),
+              color: Colors.white,
+              child: Container(
+                padding: EdgeInsets.only(left: 5.0),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      isExpanded: true,
+                      value: _selectedItem,
+                      style: titlesSliver,
+                      items: _dropdownMenuItems,
+                      //TODO: poner textos con LN10
+                      hint: Text(
+                        'Todas',
+                        style: titlesSliver,
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedItem = value;
+                        });
+                      },
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  setState(() {
-                    _selectedItem = value;
-                  });
-                },
               ),
             ),
           ),

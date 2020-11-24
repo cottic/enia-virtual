@@ -110,9 +110,12 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                         Padding(
                           padding: const EdgeInsets.symmetric(
                             vertical: 10.0,
-                            horizontal: 50.0,
+                            horizontal: 20.0,
                           ),
-                          child: Text(board.description),
+                          child: Text(
+                            board.description,
+                            style: headerMain.copyWith(fontSize: 16.0),
+                          ),
                         ),
                         Row(
                           children: [
