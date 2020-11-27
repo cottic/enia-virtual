@@ -21,6 +21,7 @@ class PieChartState extends State<PieChartWidget> {
   List<IndicatorWidget> indicators = [];
   List<PieChartSectionData> pieDataList = [];
   int touchedIndex;
+  int dataLeng;
 
   Future<PieChartInfo> loadChartFromApi() async {
     var barChartInfoJson = await rootBundle.loadString(widget.apiUrl);
@@ -28,6 +29,8 @@ class PieChartState extends State<PieChartWidget> {
     pieChartInfo = pieChartInfoFromJson(barChartInfoJson);
 
     indicators = pieChartInfo.indicatorsList;
+
+    dataLeng = pieChartInfo.pieChartSections.length;
 
     for (var pieChartSection in pieChartInfo.pieChartSections) {
       final title = pieChartSection.title;
@@ -41,19 +44,12 @@ class PieChartState extends State<PieChartWidget> {
       );
       pieDataList.add(pieChartSectionWidget);
     }
-    // await Future.delayed(Duration(seconds: 3));
     return pieChartInfo;
   }
 
   List<PieChartSectionData> showingSections() {
-    // print('pieDataList.length');
-    // print(pieDataList.length);
-
     return List.generate(
-      // Porque no me deja poner la variable?
-      // pieDataList.length,
-      // Probar que sea una constanste
-     3,
+      dataLeng,
       (i) {
         final isTouched = i == touchedIndex;
         final double fontSize = isTouched ? 25 : 16;
@@ -63,8 +59,13 @@ class PieChartState extends State<PieChartWidget> {
             return PieChartSectionData(
               color: pieDataList[0].color,
               value: pieDataList[0].value,
-              title: pieDataList[0].title,
+              title: pieDataList[0].value.toString() + '%',
               radius: radius,
+              badgeWidget: _Badge(
+                value: pieDataList[0].title,
+                borderColor: pieDataList[0].color,
+              ),
+              badgePositionPercentageOffset: 1.4,
               titleStyle: TextStyle(
                   fontSize: fontSize,
                   fontWeight: pieDataList[0].titleStyle.fontWeight,
@@ -74,8 +75,13 @@ class PieChartState extends State<PieChartWidget> {
             return PieChartSectionData(
               color: pieDataList[1].color,
               value: pieDataList[1].value,
-              title: pieDataList[1].title,
+              title: pieDataList[1].value.toString() + '%',
               radius: radius,
+              badgeWidget: _Badge(
+                value: pieDataList[1].title,
+                borderColor: pieDataList[1].color,
+              ),
+              badgePositionPercentageOffset: 1.4,
               titleStyle: TextStyle(
                   fontSize: fontSize,
                   fontWeight: pieDataList[1].titleStyle.fontWeight,
@@ -86,8 +92,13 @@ class PieChartState extends State<PieChartWidget> {
               return PieChartSectionData(
                 color: pieDataList[2].color,
                 value: pieDataList[2].value,
-                title: pieDataList[2].title,
+                title: pieDataList[2].value.toString() + '%',
                 radius: radius,
+                badgeWidget: _Badge(
+                  value: pieDataList[2].title,
+                  borderColor: pieDataList[2].color,
+                ),
+                badgePositionPercentageOffset: 1.4,
                 titleStyle: TextStyle(
                     fontSize: fontSize,
                     fontWeight: pieDataList[2].titleStyle.fontWeight,
@@ -100,8 +111,13 @@ class PieChartState extends State<PieChartWidget> {
               return PieChartSectionData(
                 color: pieDataList[3].color,
                 value: pieDataList[3].value,
-                title: pieDataList[3].title,
+                title: pieDataList[3].value.toString() + '%',
                 radius: radius,
+                badgeWidget: _Badge(
+                  value: pieDataList[3].title,
+                  borderColor: pieDataList[3].color,
+                ),
+                badgePositionPercentageOffset: 1.4,
                 titleStyle: TextStyle(
                     fontSize: fontSize,
                     fontWeight: pieDataList[3].titleStyle.fontWeight,
@@ -110,17 +126,63 @@ class PieChartState extends State<PieChartWidget> {
             }
             return null;
 
-          /* case 4:
-            return PieChartSectionData(
-              color: pieDataList[4].color,
-              value: pieDataList[4].value,
-              title: pieDataList[4].title,
-              radius: radius,
-              titleStyle: TextStyle(
-                  fontSize: fontSize,
-                  fontWeight: pieDataList[4].titleStyle.fontWeight,
-                  color: pieDataList[4].titleStyle.color),
-            ); */
+          case 4:
+            if (pieDataList.length > 4) {
+              return PieChartSectionData(
+                color: pieDataList[4].color,
+                value: pieDataList[4].value,
+                title: pieDataList[4].value.toString() + '%',
+                radius: radius,
+                badgeWidget: _Badge(
+                  value: pieDataList[4].title,
+                  borderColor: pieDataList[4].color,
+                ),
+                badgePositionPercentageOffset: 1.4,
+                titleStyle: TextStyle(
+                    fontSize: fontSize,
+                    fontWeight: pieDataList[4].titleStyle.fontWeight,
+                    color: pieDataList[4].titleStyle.color),
+              );
+            }
+            return null;
+          case 5:
+            if (pieDataList.length > 5) {
+              return PieChartSectionData(
+                color: pieDataList[5].color,
+                value: pieDataList[5].value,
+                title: pieDataList[5].value.toString() + '%',
+                radius: radius,
+                badgeWidget: _Badge(
+                  value: pieDataList[5].title,
+                  borderColor: pieDataList[5].color,
+                ),
+                badgePositionPercentageOffset: 1.4,
+                titleStyle: TextStyle(
+                    fontSize: fontSize,
+                    fontWeight: pieDataList[5].titleStyle.fontWeight,
+                    color: pieDataList[5].titleStyle.color),
+              );
+            }
+            return null;
+          case 6:
+            if (pieDataList.length > 6) {
+              return PieChartSectionData(
+                color: pieDataList[6].color,
+                value: pieDataList[6].value,
+                title: pieDataList[6].value.toString() + '%',
+                radius: radius,
+                badgeWidget: _Badge(
+                  value: pieDataList[6].title,
+                  borderColor: pieDataList[6].color,
+                ),
+                badgePositionPercentageOffset: 1.4,
+                titleStyle: TextStyle(
+                    fontSize: fontSize,
+                    fontWeight: pieDataList[6].titleStyle.fontWeight,
+                    color: pieDataList[6].titleStyle.color),
+              );
+            }
+            return null;
           default:
             return null;
         }
@@ -128,7 +190,8 @@ class PieChartState extends State<PieChartWidget> {
     );
   }
 
-/*   List<PieChartSectionData> showingSections() {
+//TODO: probar reemplazar switch por FOR
+  /*   List<PieChartSectionData> showingSections() {
 
 
     List<PieChartSectionData> pieDatainter = [];
@@ -188,7 +251,7 @@ class PieChartState extends State<PieChartWidget> {
                               PieTouchData(touchCallback: (pieTouchResponse) {
                             setState(() {
                               touchedIndex =
-                                    pieTouchResponse.touchedSectionIndex;
+                                  pieTouchResponse.touchedSectionIndex;
                               /* if (pieTouchResponse.touchInput
                                       is FlLongPressEnd ||
                                   pieTouchResponse.touchInput is FlPanEnd) {
@@ -208,11 +271,14 @@ class PieChartState extends State<PieChartWidget> {
                         ),
                       ),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: indicators,
+                    Container(
+                      width: double.maxFinite,
+                      height: 30,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        children: indicators,
+                      ),
                     ),
                   ],
                 );
@@ -227,6 +293,44 @@ class PieChartState extends State<PieChartWidget> {
           child: CircularProgressIndicator(),
         );
       },
+    );
+  }
+}
+
+class _Badge extends StatelessWidget {
+  final String value;
+  final Color borderColor;
+
+  const _Badge({@required this.borderColor, this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: PieChart.defaultDuration,
+      constraints: BoxConstraints(
+        maxHeight: 26,
+        maxWidth: 60,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.rectangle,
+        border: Border.all(
+          color: borderColor,
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(6.0),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black.withOpacity(.5),
+            offset: const Offset(3, 3),
+            blurRadius: 3,
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(0),
+      child: Center(
+        child: Text(value),
+      ),
     );
   }
 }

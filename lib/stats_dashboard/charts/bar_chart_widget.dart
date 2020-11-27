@@ -5,7 +5,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import '../constants_dashboard.dart';
 import '../models/bar_chart_model.dart';
 
 class BarChartWidget extends StatefulWidget {
@@ -122,6 +121,8 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                           groupsSpace: 20,
                           barTouchData: BarTouchData(
                             enabled: true,
+                            //No le puedo asignar borde al tooltip
+                            // touchTooltipData: BarTouchTooltipData(),
                           ),
                           titlesData: FlTitlesData(
                             show: true,
@@ -136,7 +137,9 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                             // TITULO INFERIOR
                             bottomTitles: SideTitles(
                               showTitles: true,
-                              textStyle: bottomTitlesChart,
+                              //TODO: se actualizo el paquete, ver como implementar text style
+                              // textStyle: leftTitlesChart,
+
                               margin: 10,
                               rotateAngle: 0,
                               getTitles: (double value) {
@@ -151,7 +154,8 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                             ),
                             leftTitles: SideTitles(
                               showTitles: true,
-                              textStyle: leftTitlesChart,
+                              //TODO: se actualizo el paquete, ver como implementar text style
+                              // textStyle: leftTitlesChart,
                               rotateAngle: 0,
                               getTitles: (double value) {
                                 if (value == 0) {

@@ -9,30 +9,58 @@
             "color": "#D5E000",
             "indicatorTitle": "2019",
             "isSquare": false
-        }
-        ,
+        },
         {
             "color": "#9984C1",
             "indicatorTitle": "2020",
+            "isSquare": false
+        },
+        {
+            "color": "#3484C1",
+            "indicatorTitle": "2021",
+            "isSquare": false
+        },
+        {
+            "color": "#5422D1",
+            "indicatorTitle": "2022",
+            "isSquare": false
+        },
+        {
+            "color": "#9322B1",
+            "indicatorTitle": "2023",
             "isSquare": false
         }
     ],
     "pieChartSections": [
         {
             "color": "#FF3A93",
-            "value": 40.0,
-            "title": "4320"
+            "value": 20.0,
+            "title": "2000"
         },
         {
             "color": "#D5E000",
-            "value": 40.0,
-            "title": "4320"
+            "value": 27.0,
+            "title": "2700"
         },
         {
             "color": "#9984C1",
-            "value": 20.0,
-            "title": "2320"
+            "value": 15.0,
+            "title": "2500"
+        },
+        {
+            "color": "#3484C1",
+            "value": 13.0,
+            "title": "2300"
+        },
+        {
+            "color": "#5422D1",
+            "value": 13.0,
+            "title": "1300"
+        },
+        {
+            "color": "#9322B1",
+            "value": 12.0,
+            "title": "1200"
         }
-
     ]
 }

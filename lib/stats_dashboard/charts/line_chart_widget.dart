@@ -56,10 +56,18 @@ class _LineChartWidgetState extends State<LineChartWidget> {
             HexColor(color),
           ],
           barWidth: 6,
+
           isStrokeCapRound: true,
           // Mostrar puntos en la linea
           dotData: FlDotData(
-            show: false,
+            show: true,
+            getDotPainter: (spot, percent, barData, index) =>
+                FlDotCirclePainter(
+              radius: 5,
+              color: HexColor(color),
+              strokeWidth: 1,
+              strokeColor: Colors.white,
+            ),
           ),
           // Mostrar relleno debajo de la linea
           belowBarData: BarAreaData(
@@ -146,13 +154,14 @@ class _LineChartWidgetState extends State<LineChartWidget> {
       lineBarsData: lines,
 
       // Muestra el detalle al hacer clic sobre la linea
-      // TODO: definir estilos
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
-          tooltipBgColor: Colors.red.withOpacity(0.8),
+          tooltipBgColor: Colors.white,
         ),
         touchCallback: (LineTouchResponse touchResponse) {},
         handleBuiltInTouches: true,
+        fullHeightTouchLine: false,
+        enabled: true,
       ),
       // DEFINE EL GRID EN EL FONDO DEL GRAFICO
       gridData: FlGridData(
@@ -175,7 +184,8 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 22,
-          textStyle: bottomTitlesChart,
+          //TODO: se actualizo el paquete, ver como implementar text style
+          // textStyle: bottomTitlesChart,
           margin: 10,
           getTitles: (double value) {
             for (var i = 0; i < listTitlesX.length; i++) {
@@ -189,7 +199,8 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         rightTitles: SideTitles(showTitles: false),
         leftTitles: SideTitles(
           showTitles: true,
-          textStyle: leftTitlesChart,
+          //TODO: se actualizo el paquete, ver como implementar text style
+          // textStyle: leftTitlesChart,
           getTitles: (double value) {
             if (value == 0) {
               return '0';
