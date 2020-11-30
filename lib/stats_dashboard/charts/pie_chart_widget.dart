@@ -52,8 +52,8 @@ class PieChartState extends State<PieChartWidget> {
       dataLeng,
       (i) {
         final isTouched = i == touchedIndex;
-        final double fontSize = isTouched ? 25 : 16;
-        final double radius = isTouched ? 60 : 50;
+        final double fontSize = isTouched ? 18 : 16;
+        final double radius = isTouched ? 58 : 50;
         switch (i) {
           case 0:
             return PieChartSectionData(
@@ -61,10 +61,12 @@ class PieChartState extends State<PieChartWidget> {
               value: pieDataList[0].value,
               title: pieDataList[0].value.toString() + '%',
               radius: radius,
-              badgeWidget: _Badge(
-                value: pieDataList[0].title,
-                borderColor: pieDataList[0].color,
-              ),
+              badgeWidget: isTouched
+                  ? PieBadge(
+                      value: pieDataList[0].title,
+                      borderColor: pieDataList[0].color,
+                    )
+                  : Container(),
               badgePositionPercentageOffset: 1.4,
               titleStyle: TextStyle(
                   fontSize: fontSize,
@@ -77,10 +79,12 @@ class PieChartState extends State<PieChartWidget> {
               value: pieDataList[1].value,
               title: pieDataList[1].value.toString() + '%',
               radius: radius,
-              badgeWidget: _Badge(
-                value: pieDataList[1].title,
-                borderColor: pieDataList[1].color,
-              ),
+              badgeWidget: isTouched
+                  ? PieBadge(
+                      value: pieDataList[1].title,
+                      borderColor: pieDataList[1].color,
+                    )
+                  : Container(),
               badgePositionPercentageOffset: 1.4,
               titleStyle: TextStyle(
                   fontSize: fontSize,
@@ -94,10 +98,12 @@ class PieChartState extends State<PieChartWidget> {
                 value: pieDataList[2].value,
                 title: pieDataList[2].value.toString() + '%',
                 radius: radius,
-                badgeWidget: _Badge(
-                  value: pieDataList[2].title,
-                  borderColor: pieDataList[2].color,
-                ),
+                badgeWidget: isTouched
+                    ? PieBadge(
+                        value: pieDataList[2].title,
+                        borderColor: pieDataList[2].color,
+                      )
+                    : Container(),
                 badgePositionPercentageOffset: 1.4,
                 titleStyle: TextStyle(
                     fontSize: fontSize,
@@ -113,10 +119,12 @@ class PieChartState extends State<PieChartWidget> {
                 value: pieDataList[3].value,
                 title: pieDataList[3].value.toString() + '%',
                 radius: radius,
-                badgeWidget: _Badge(
-                  value: pieDataList[3].title,
-                  borderColor: pieDataList[3].color,
-                ),
+                badgeWidget: isTouched
+                    ? PieBadge(
+                        value: pieDataList[3].title,
+                        borderColor: pieDataList[3].color,
+                      )
+                    : Container(),
                 badgePositionPercentageOffset: 1.4,
                 titleStyle: TextStyle(
                     fontSize: fontSize,
@@ -133,10 +141,12 @@ class PieChartState extends State<PieChartWidget> {
                 value: pieDataList[4].value,
                 title: pieDataList[4].value.toString() + '%',
                 radius: radius,
-                badgeWidget: _Badge(
-                  value: pieDataList[4].title,
-                  borderColor: pieDataList[4].color,
-                ),
+                badgeWidget: isTouched
+                    ? PieBadge(
+                        value: pieDataList[4].title,
+                        borderColor: pieDataList[4].color,
+                      )
+                    : Container(),
                 badgePositionPercentageOffset: 1.4,
                 titleStyle: TextStyle(
                     fontSize: fontSize,
@@ -152,10 +162,12 @@ class PieChartState extends State<PieChartWidget> {
                 value: pieDataList[5].value,
                 title: pieDataList[5].value.toString() + '%',
                 radius: radius,
-                badgeWidget: _Badge(
-                  value: pieDataList[5].title,
-                  borderColor: pieDataList[5].color,
-                ),
+                badgeWidget: isTouched
+                    ? PieBadge(
+                        value: pieDataList[5].title,
+                        borderColor: pieDataList[5].color,
+                      )
+                    : Container(),
                 badgePositionPercentageOffset: 1.4,
                 titleStyle: TextStyle(
                     fontSize: fontSize,
@@ -171,10 +183,12 @@ class PieChartState extends State<PieChartWidget> {
                 value: pieDataList[6].value,
                 title: pieDataList[6].value.toString() + '%',
                 radius: radius,
-                badgeWidget: _Badge(
-                  value: pieDataList[6].title,
-                  borderColor: pieDataList[6].color,
-                ),
+                badgeWidget: isTouched
+                    ? PieBadge(
+                        value: pieDataList[6].title,
+                        borderColor: pieDataList[6].color,
+                      )
+                    : Container(),
                 badgePositionPercentageOffset: 1.4,
                 titleStyle: TextStyle(
                     fontSize: fontSize,
@@ -297,11 +311,11 @@ class PieChartState extends State<PieChartWidget> {
   }
 }
 
-class _Badge extends StatelessWidget {
+class PieBadge extends StatelessWidget {
   final String value;
   final Color borderColor;
 
-  const _Badge({@required this.borderColor, this.value});
+  const PieBadge({@required this.borderColor, this.value});
 
   @override
   Widget build(BuildContext context) {
