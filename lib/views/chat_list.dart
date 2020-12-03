@@ -694,107 +694,65 @@ class _ChatListState extends State<ChatList> {
                                                     ),
                                                   )
                                                 : Container(),
-                                        itemCount: totalCount + 1,
+                                        itemCount: totalCount,
                                         itemBuilder:
                                             (BuildContext context, int i) {
                                           if (i == 0) {
-                                            final displayPresences =
-                                                Matrix.of(context)
-                                                        .userStatuses
-                                                        .isNotEmpty &&
-                                                    selectMode ==
-                                                        SelectMode.normal;
-                                            final displayShareStatus =
-                                                selectMode ==
-                                                        SelectMode.share &&
-                                                    Matrix.of(context)
-                                                                .shareContent[
-                                                            'msgtype'] ==
-                                                        'm.text';
                                             return Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 AnimatedContainer(
                                                   duration: Duration(
                                                       milliseconds: 300),
-                                                  height: displayPresences
-                                                      ? 78
-                                                      : displayShareStatus
-                                                          ? 56
-                                                          : 0,
-                                                  child: displayPresences
-                                                      ? ListView.builder(
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          itemCount:
-                                                              mainGroupListSearch
-                                                                  .length,
-                                                          itemBuilder:
-                                                              (BuildContext
-                                                                      context,
-                                                                  int i) {
-                                                            if (i == 0) {
-                                                              return Row(
-                                                                children: <
-                                                                    Widget>[
-                                                                  searchMode
-                                                                      ? Container()
-                                                                      : Container(
-                                                                          child:
-                                                                              PrivateRoomListItem(linkMainRoom),
-                                                                        ),
-                                                                  searchMode
-                                                                      ? Container()
-                                                                      : secondLinkRoom ==
-                                                                              null
-                                                                          ? Container()
-                                                                          : Container(
-                                                                              child: PrivateRoomListItem(secondLinkRoom),
-                                                                            ),
-                                                                  searchMode
-                                                                      ? Container()
-                                                                      : thirdLinkRoom ==
-                                                                              null
-                                                                          ? Container()
-                                                                          : Container(
-                                                                              child: PrivateRoomListItem(thirdLinkRoom),
-                                                                            ),
-                                                                  EniaPresenceListItem(
-                                                                      mainGroupListSearch[
-                                                                          i]),
-                                                                ],
-                                                              );
-                                                            } else {
-                                                              return EniaPresenceListItem(
-                                                                  mainGroupListSearch[
-                                                                      i]);
-                                                            }
-                                                          })
-                                                      : displayShareStatus
-                                                          ? ListTile(
-                                                              leading:
-                                                                  CircleAvatar(
-                                                                radius: Avatar
-                                                                        .defaultSize /
-                                                                    2,
-                                                                backgroundColor:
-                                                                    Theme.of(
-                                                                            context)
-                                                                        .secondaryHeaderColor,
-                                                                child: Icon(
-                                                                  Icons.edit,
-                                                                  color: Theme.of(
-                                                                          context)
-                                                                      .primaryColor,
-                                                                ),
-                                                              ),
-                                                              title: Text(L10n.of(
-                                                                      context)
-                                                                  .setStatus),
-                                                              onTap: () =>
-                                                                  _setStatus(
-                                                                      context))
-                                                          : null,
+                                                  height: 78,
+                                                  child: ListView.builder(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    itemCount:
+                                                        mainGroupListSearch
+                                                            .length,
+                                                    itemBuilder:
+                                                        (BuildContext context,
+                                                            int i) {
+                                                      if (i == 0) {
+                                                        return Row(
+                                                          children: <Widget>[
+                                                            searchMode
+                                                                ? Container()
+                                                                : Container(
+                                                                    child: PrivateRoomListItem(
+                                                                        linkMainRoom),
+                                                                  ),
+                                                            searchMode
+                                                                ? Container()
+                                                                : secondLinkRoom ==
+                                                                        null
+                                                                    ? Container()
+                                                                    : Container(
+                                                                        child: PrivateRoomListItem(
+                                                                            secondLinkRoom),
+                                                                      ),
+                                                            searchMode
+                                                                ? Container()
+                                                                : thirdLinkRoom ==
+                                                                        null
+                                                                    ? Container()
+                                                                    : Container(
+                                                                        child: PrivateRoomListItem(
+                                                                            thirdLinkRoom),
+                                                                      ),
+                                                            EniaPresenceListItem(
+                                                                mainGroupListSearch[
+                                                                    i]),
+                                                          ],
+                                                        );
+                                                      } else {
+                                                        return EniaPresenceListItem(
+                                                            mainGroupListSearch[
+                                                                i]);
+                                                      }
+                                                    },
+                                                  ),
                                                 ),
                                               ],
                                             );
