@@ -1,10 +1,11 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import 'package:fl_chart/fl_chart.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import '../widgets/indicator_widget.dart';
+import 'package:fluffychat/stats_dashboard/services/dashboard_services.dart';
 import '../models/pie_chart_model.dart';
 
 class PieChartWidget extends StatefulWidget {
@@ -22,11 +23,12 @@ class PieChartState extends State<PieChartWidget> {
   List<PieChartSectionData> pieDataList = [];
   int touchedIndex;
   int dataLeng;
+  DashboardService service = DashboardService();
 
   Future<PieChartInfo> loadChartFromApi() async {
-    var barChartInfoJson = await rootBundle.loadString(widget.apiUrl);
+    var pieChartInfoJson = await service.loadChartFromApi(widget.apiUrl);
 
-    pieChartInfo = pieChartInfoFromJson(barChartInfoJson);
+    pieChartInfo = pieChartInfoFromJson(pieChartInfoJson);
 
     indicators = pieChartInfo.indicatorsList;
 
