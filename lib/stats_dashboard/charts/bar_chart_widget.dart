@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import '../models/bar_chart_model.dart';
+import '../constants_dashboard.dart';
+import 'package:fluffychat/stats_dashboard/services/dashboard_services.dart';
 
 class BarChartWidget extends StatefulWidget {
   BarChartWidget({@required this.apiUrl, this.height});
@@ -18,8 +19,6 @@ class BarChartWidget extends StatefulWidget {
 }
 
 class _BarChartWidgetState extends State<BarChartWidget> {
-  static const double barWidth = 22;
-
   BarChartInfo barChartInfo;
 
   List indicators;
@@ -29,7 +28,8 @@ class _BarChartWidgetState extends State<BarChartWidget> {
   List<BarChartGroupData> barGroupsList = [];
 
   Future<BarChartInfo> loadChartFromApi() async {
-    var barChartInfoJson = await rootBundle.loadString(widget.apiUrl);
+    var barChartInfoJson =
+        await DashboardService().loadChartFromApi(widget.apiUrl);
 
     barChartInfo = barChartInfoFromJson(barChartInfoJson);
 
@@ -52,7 +52,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
 
           final barItem = BarChartRodData(
             y: barRodItem.totalY,
-            width: barWidth,
+            width: MediaQuery.of(context).size.width * 0.007,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(6), topRight: Radius.circular(6)),
             rodStackItems: barSegmentsList,
@@ -101,13 +101,12 @@ class _BarChartWidgetState extends State<BarChartWidget> {
               );
             } else {
               if (snapshot.data != null) {
-                return Column(
-                  children: [
-                    /* SizedBox(
-                      height: 10,
-                    ), */
+                return Stack(
+                  children: [               
                     Container(
                       height: widget.height,
+                      width: double.maxFinite,
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
                       child: BarChart(
                         BarChartData(
                           alignment: BarChartAlignment.spaceAround,
@@ -118,7 +117,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                           // El numero minimo del grafico eje Y
                           minY: barChartInfo.minNumberY,
                           // distancia entre barras
-                          groupsSpace: 20,
+                          groupsSpace: 10,
                           barTouchData: BarTouchData(
                             enabled: true,
                             //No le puedo asignar borde al tooltip
@@ -126,6 +125,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                           ),
                           titlesData: FlTitlesData(
                             show: true,
+
                             // TITULO SUPERIOR
                             topTitles: SideTitles(
                               showTitles: false,
@@ -138,10 +138,10 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                             bottomTitles: SideTitles(
                               showTitles: true,
                               //TODO: se actualizo el paquete, ver como implementar text style
-                              // textStyle: leftTitlesChart,
-
-                              margin: 10,
-                              rotateAngle: 0,
+                              getTextStyles: (value) => bottomTitlesChart,
+                              margin: 30,
+                              // reservedSize: 100,
+                              rotateAngle: 20,
                               getTitles: (double value) {
                                 for (var i = 0;
                                     i < barChartInfo.listTitlesX.length;
@@ -154,8 +154,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                             ),
                             leftTitles: SideTitles(
                               showTitles: true,
-                              //TODO: se actualizo el paquete, ver como implementar text style
-                              // textStyle: leftTitlesChart,
+                              getTextStyles: (value) => leftTitlesChart,
                               rotateAngle: 0,
                               getTitles: (double value) {
                                 if (value == 0) {
