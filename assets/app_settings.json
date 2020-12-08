@@ -21,25 +21,25 @@
           "title": "Dispensa de LARCs - Población objetivo",
           "type": "bar",
           "description": "El modelo de estimación de metas de impacto o MEMI establece como población objetivo un 75% de mujeres",
-          "api_url": "assets/bar_chart.json"
+          "api_url": "13"
         },
         {
           "title": "Evolución mensual de la dispensa de LARCs",
           "type": "line",
           "description": "Durante 2019, el comportamiento de la dispensa reportada se estabiliza en 2.700 LARCs promedio mensual\n",
-          "api_url": "assets/line_chart.json"
+          "api_url": "12"
         },
         {
           "title": "Larcs estimados año",
           "type": "pie",
           "description": "Considerando la población estimada a cubrir con LARCs para el 2020, a abril  202",
-          "api_url": "assets/pie_chart.json"
+          "api_url": "11"
         },
         {
           "title": "Larcs estimados año",
           "type": "pieSingle",
           "description": "Considerando la población estimada a cubrir con LARCs para el 2020, a abris",
-          "api_url": "assets/pie_single_chart.json"
+          "api_url": "10"
         }
       ]
     },
