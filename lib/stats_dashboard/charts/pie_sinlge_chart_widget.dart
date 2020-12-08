@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:fluffychat/stats_dashboard/services/dashboard_services.dart';
 
 class PieSingleChartWidget extends StatefulWidget {
   PieSingleChartWidget({@required this.apiUrl});
@@ -20,7 +21,8 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
   PieSingleChartInfo pieSingleChartInfo = PieSingleChartInfo();
 
   Future<PieSingleChartInfo> loadChartFromApi() async {
-    var pieSingleChartInfoJson = await rootBundle.loadString(widget.apiUrl);
+    
+    var pieSingleChartInfoJson = await DashboardService().loadChartFromApi(widget.apiUrl);
 
     pieSingleChartInfo = pieSingleChartInfoFromJson(pieSingleChartInfoJson);
 
