@@ -1,10 +1,11 @@
-import 'package:fl_chart/fl_chart.dart';
-import 'package:fluffychat/stats_dashboard/widgets/indicator_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import 'package:fl_chart/fl_chart.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
+import 'package:fluffychat/stats_dashboard/widgets/indicator_widget.dart';
+import 'package:fluffychat/stats_dashboard/services/dashboard_services.dart';
 import '../constants_dashboard.dart';
 import '../models/line_chart_model.dart';
 
@@ -29,7 +30,8 @@ class _LineChartWidgetState extends State<LineChartWidget> {
   List<LineChartBarData> lines = [];
 
   Future<LineChartInfo> loadChartFromApi() async {
-    var lineChartInfoJson = await rootBundle.loadString(widget.apiUrl);
+    var lineChartInfoJson =
+        await DashboardService().loadChartFromApi(widget.apiUrl);
 
     lineChartInfo = lineChartInfoFromJson(lineChartInfoJson);
 
@@ -55,7 +57,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
           colors: [
             HexColor(color),
           ],
-          barWidth: 6,
+          barWidth: 3,
 
           isStrokeCapRound: true,
           // Mostrar puntos en la linea
@@ -63,7 +65,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
             show: true,
             getDotPainter: (spot, percent, barData, index) =>
                 FlDotCirclePainter(
-              radius: 5,
+              radius: 4,
               color: HexColor(color),
               strokeWidth: 1,
               strokeColor: Colors.white,
@@ -106,10 +108,11 @@ class _LineChartWidgetState extends State<LineChartWidget> {
               );
             } else {
               if (snapshot.data != null) {
-                return Column(
+                return Stack(
                   children: <Widget>[
                     Container(
                       height: 240,
+                      width: double.maxFinite,
                       child: LineChart(
                         dataLarcsFull(),
                       ),
@@ -184,9 +187,9 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 22,
-          //TODO: se actualizo el paquete, ver como implementar text style
-          // textStyle: bottomTitlesChart,
+          getTextStyles: (value) => bottomTitlesChart,
           margin: 10,
+          rotateAngle: 45,
           getTitles: (double value) {
             for (var i = 0; i < listTitlesX.length; i++) {
               if (listTitlesX[value.toInt()] != null) {
@@ -199,8 +202,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         rightTitles: SideTitles(showTitles: false),
         leftTitles: SideTitles(
           showTitles: true,
-          //TODO: se actualizo el paquete, ver como implementar text style
-          // textStyle: leftTitlesChart,
+          getTextStyles: (value) => leftTitlesChart,
           getTitles: (double value) {
             if (value == 0) {
               return '0';
@@ -216,10 +218,6 @@ class _LineChartWidgetState extends State<LineChartWidget> {
       borderData: FlBorderData(
         show: true,
         border: const Border(
-          /* bottom: BorderSide(
-            color: Color(0xff4e4965),
-            width: 4,
-          ), */
           bottom: BorderSide(
             color: Colors.transparent,
           ),
