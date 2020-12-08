@@ -41,7 +41,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "somethingWrong": "Something went wrong, try again later.",
+  "somethingWrong": "Something went wrong.",
   "@somethingWrong": {
     "type": "text",
     "placeholders": {}

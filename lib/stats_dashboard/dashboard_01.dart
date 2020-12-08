@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:fluffychat/stats_dashboard/models/app_settings_model.dart';
 import 'package:fluffychat/stats_dashboard/widgets/card_chart_holder.dart';
+import 'package:fluffychat/stats_dashboard/widgets/drop_down_filter_list.dart';
 import 'package:fluffychat/stats_dashboard/widgets/header_dashboard_widget.dart';
 import 'package:fluffychat/stats_dashboard/charts/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'charts/pie_sinlge_chart_widget.dart';
 import 'constants_dashboard.dart';
 import 'models/bar_chart_model.dart';
+import 'models/drop_down_item_model.dart';
+import 'widgets/filter_stats_widget.dart';
 
 class StatsEniaMenu01View extends StatelessWidget {
   @override
@@ -48,6 +51,18 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
   List barCharts;
   List indicators;
 
+  String initialDateFilter = '';
+  DateTime initialSelectedDate;
+  bool initialSelected = false;
+
+  String endDateFilter = '';
+  DateTime endSelectedDate;
+  bool endSelected = false;
+
+  String provinciaFilter = '';
+
+  DropDownItemsModel _selectedItem;
+
   Future<Board> loadConfigJson() async {
     var appSetingsJson =
         await rootBundle.loadString('assets/app_settings.json');
@@ -64,6 +79,14 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
     pieSingleChart = dashboard.boards[0].charts[4];
 
     return board;
+  }
+
+  List<DropdownMenuItem<DropDownItemsModel>> _dropdownMenuItems;
+
+  @override
+  void initState() {
+    super.initState();
+    _dropdownMenuItems = buildDropDownMenuItems(dropdownItems);
   }
 
   @override
@@ -102,6 +125,63 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                             <Widget>[
                       HeaderUniqueDashboard(
                         title: board.name,
+                        dateFromString: initialSelected
+                            ? '${initialSelectedDate.toLocal()}'.substring(0, 7)
+                            : 'Desde',
+                        onPressDateFrom: () {
+                          showMonthPicker(
+                            context: context,
+                            firstDate: DateTime(2014),
+                            lastDate: endSelectedDate ?? DateTime.now(),
+                            initialDate: DateTime(2019),
+                          ).then((date) {
+                            if (date != null) {
+                              setState(() {
+                                initialSelected = true;
+                                initialSelectedDate = date;
+                                initialDateFilter = '&desde=${date.year}';
+                              });
+                            }
+                          });
+                        },
+                        dateToString: endSelected
+                            ? '${endSelectedDate.toLocal()}'.substring(0, 7)
+                            : 'Hasta',
+                        onPressDateTo: () {
+                          showMonthPicker(
+                            context: context,
+                            firstDate: initialSelectedDate ?? DateTime(2014),
+                            lastDate: DateTime.now(),
+                            initialDate: DateTime.now(),
+                          ).then((date) {
+                            if (date != null) {
+                              setState(() {
+                                endSelected = true;
+                                endSelectedDate = date;
+                                endDateFilter =
+                                    '&hasta=' '${date.month}' '${date.year}';
+                              });
+                            }
+                          });
+                        },
+                        filterDropDown: DropdownButton(
+                          isExpanded: true,
+                          value: _selectedItem,
+                          style: dropDownitem,
+                          items: _dropdownMenuItems,
+                          //TODO: poner textos con LN10
+                          hint: Text(
+                            'Todas',
+                            style: dropDownitem,
+                          ),
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedItem = value;
+                              provinciaFilter =
+                                  getProvinciaValue(_selectedItem.value);
+                            });
+                          },
+                        ),
                       ),
                     ],
                     body: ListView(
@@ -123,28 +203,40 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                               title: cardChart.title,
                               description: cardChart.description,
                               icon: Icons.accessibility_new,
-                              chartUrl: cardChart.apiUrl,
+                              chartUrl: cardChart.apiUrl +
+                                  initialDateFilter +
+                                  endDateFilter +
+                                  provinciaFilter,
                               color: true,
                             ),
                             CardChartHolder(
                               title: cardChart.title,
                               description: cardChart.description,
                               icon: Icons.accessibility_new,
-                              chartUrl: cardChart.apiUrl,
+                              chartUrl: cardChart.apiUrl +
+                                  initialDateFilter +
+                                  endDateFilter +
+                                  provinciaFilter,
                               color: false,
                             ),
                             CardChartHolder(
                               title: cardChart.title,
                               description: cardChart.description,
                               icon: Icons.accessibility_new,
-                              chartUrl: cardChart.apiUrl,
+                              chartUrl: cardChart.apiUrl +
+                                  initialDateFilter +
+                                  endDateFilter +
+                                  provinciaFilter,
                               color: true,
                             ),
                             CardChartHolder(
                               title: cardChart.title,
                               description: cardChart.description,
                               icon: Icons.accessibility_new,
-                              chartUrl: cardChart.apiUrl,
+                              chartUrl: cardChart.apiUrl +
+                                  initialDateFilter +
+                                  endDateFilter +
+                                  provinciaFilter,
                               color: true,
                             ),
                           ],
@@ -177,7 +269,10 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                           ),
                                         ),
                                         BarChartWidget(
-                                          apiUrl: barChart.apiUrl,
+                                          apiUrl: barChart.apiUrl +
+                                              initialDateFilter +
+                                              endDateFilter +
+                                              provinciaFilter,
                                           height: 240.0,
                                         ),
                                         Text(
@@ -212,7 +307,10 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                           style: mainTitleCharts,
                                         ),
                                         PieSingleChartWidget(
-                                          apiUrl: pieSingleChart.apiUrl,
+                                          apiUrl: pieSingleChart.apiUrl +
+                                              initialDateFilter +
+                                              endDateFilter +
+                                              provinciaFilter,
                                         ),
                                         Text(
                                           pieSingleChart.description,
@@ -252,7 +350,10 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                           style: mainTitleCharts,
                                         ),
                                         PieChartWidget(
-                                          apiUrl: pieChart.apiUrl,
+                                          apiUrl: pieChart.apiUrl +
+                                              initialDateFilter +
+                                              endDateFilter +
+                                              provinciaFilter,
                                         ),
                                         Text(
                                           pieChart.description,
@@ -286,7 +387,10 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                         ),
                                         Center(
                                           child: LineChartWidget(
-                                            apiUrl: lineChart.apiUrl,
+                                            apiUrl: lineChart.apiUrl +
+                                                initialDateFilter +
+                                                endDateFilter +
+                                                provinciaFilter,
                                           ),
                                         ),
                                         Text(

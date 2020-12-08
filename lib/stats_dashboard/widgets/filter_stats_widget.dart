@@ -2,58 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 
+import '../constants_dashboard.dart';
 import '../models/drop_down_item_model.dart';
 
 class FiltersStats extends StatefulWidget {
+  FiltersStats(
+      {this.onPressDateFrom,
+      this.dateFromString,
+      this.onPressDateTo,
+      this.dateToString,
+      this.filterDropDown});
+
+  final Function onPressDateFrom;
+  final String dateFromString;
+  final Function onPressDateTo;
+  final String dateToString;
+
+  final DropdownButton filterDropDown;
+
   @override
   _FiltersStatsState createState() => _FiltersStatsState();
 }
 
 class _FiltersStatsState extends State<FiltersStats> {
-  DateTime initialSelectedDate;
-
-  DateTime endSelectedDate;
-
   String stateSelected;
-
-  bool initialSelected = false;
-  bool endSelected = false;
-  final TextStyle titlesSliver = TextStyle(
-    fontSize: 12.0,
-    color: Colors.black54,
-  );
-
-  final List<DropDownItemsModel> _dropdownItems = [
-    DropDownItemsModel(1, 'Salta'),
-    DropDownItemsModel(2, 'Misiones'),
-    DropDownItemsModel(3, 'Formosa'),
-    DropDownItemsModel(4, 'Jujuy'),
-    DropDownItemsModel(5, 'Chaco'),
-    DropDownItemsModel(6, 'Buenos Aires')
-  ];
-
-  List<DropdownMenuItem<DropDownItemsModel>> buildDropDownMenuItems(
-      List listItems) {
-    List<DropdownMenuItem<DropDownItemsModel>> items = List();
-    for (DropDownItemsModel listItem in listItems) {
-      items.add(
-        DropdownMenuItem(
-          child: Text(listItem.name),
-          value: listItem,
-        ),
-      );
-    }
-    return items;
-  }
-
-  List<DropdownMenuItem<DropDownItemsModel>> _dropdownMenuItems;
-  DropDownItemsModel _selectedItem;
-
-  @override
-  void initState() {
-    super.initState();
-    _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,35 +42,17 @@ class _FiltersStatsState extends State<FiltersStats> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    initialSelected
-                        ? '${initialSelectedDate.toLocal()}'.substring(0, 7)
-                        : 'Desde',
-                    style: titlesSliver,
+                    widget.dateFromString,
+                    style: dropDownitem,
                   ),
                   Icon(
-                    initialSelected
-                        ? Icons.filter_alt
-                        : Icons.keyboard_arrow_right,
+                    Icons.keyboard_arrow_right,
                     size: 12,
                     color: Colors.black54,
                   ),
                 ],
               ),
-              onPressed: () {
-                showMonthPicker(
-                  context: context,
-                  firstDate: DateTime(2014),
-                  lastDate: endSelectedDate ?? DateTime.now(),
-                  initialDate: DateTime(2019),
-                ).then((date) {
-                  if (date != null) {
-                    setState(() {
-                      initialSelected = true;
-                      initialSelectedDate = date;
-                    });
-                  }
-                });
-              },
+              onPressed: widget.onPressDateFrom,
             ),
           ),
         ),
@@ -113,38 +67,22 @@ class _FiltersStatsState extends State<FiltersStats> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    endSelected
-                        ? '${endSelectedDate.toLocal()}'.substring(0, 7)
-                        : 'Hasta',
-                    style: titlesSliver,
+                    widget.dateToString,
+                    style: dropDownitem,
                   ),
                   Icon(
-                    endSelected ? Icons.filter_alt : Icons.keyboard_arrow_right,
+                    Icons.keyboard_arrow_right,
                     size: 12,
                     color: Colors.black54,
                   ),
                 ],
               ),
 
-              onPressed: () {
-                showMonthPicker(
-                  context: context,
-                  firstDate: initialSelectedDate ?? DateTime(2014),
-                  lastDate: DateTime.now(),
-                  initialDate: DateTime.now(),
-                ).then((date) {
-                  if (date != null) {
-                    setState(() {
-                      endSelected = true;
-                      endSelectedDate = date;
-                    });
-                  }
-                });
-              },
+              onPressed: widget.onPressDateTo,
             ),
           ),
         ),
-        Expanded(
+        /* Expanded(
           child: Card(
             margin: EdgeInsets.symmetric(horizontal: 5.0),
             child: FlatButton(
@@ -152,14 +90,14 @@ class _FiltersStatsState extends State<FiltersStats> {
               //TODO: poner textos con LN10
               child: Text(
                 'FILTRAR',
-                style: titlesSliver.copyWith(color: Colors.white),
+                style: dropDownitem.copyWith(color: Colors.white),
               ),
               onPressed: () {
                 print('hizo tap en filtrar');
               },
             ),
           ),
-        ),
+        ), */
         Expanded(
           child: Container(
             height: 27.0,
@@ -171,22 +109,7 @@ class _FiltersStatsState extends State<FiltersStats> {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: DropdownButtonHideUnderline(
-                    child: DropdownButton(
-                      isExpanded: true,
-                      value: _selectedItem,
-                      style: titlesSliver,
-                      items: _dropdownMenuItems,
-                      //TODO: poner textos con LN10
-                      hint: Text(
-                        'Todas',
-                        style: titlesSliver,
-                      ),
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedItem = value;
-                        });
-                      },
-                    ),
+                    child: widget.filterDropDown,
                   ),
                 ),
               ),

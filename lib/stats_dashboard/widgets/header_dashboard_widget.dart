@@ -4,7 +4,21 @@ import '../constants_dashboard.dart';
 import 'filter_stats_widget.dart';
 
 class HeaderUniqueDashboard extends StatelessWidget {
-  const HeaderUniqueDashboard({@required this.title});
+  const HeaderUniqueDashboard(
+      {@required this.title,
+      this.onPressDateFrom,
+      this.dateFromString,
+      this.onPressDateTo,
+      this.dateToString,
+      this.filterDropDown});
+
+  final Function onPressDateFrom;
+  final String dateFromString;
+
+  final Function onPressDateTo;
+  final String dateToString;
+
+  final DropdownButton filterDropDown;
 
   final String title;
 
@@ -21,10 +35,10 @@ class HeaderUniqueDashboard extends StatelessWidget {
         titlePadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         title: Row(
           // mainAxisAlignment: MainAxisAlignment.end,
-           crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Flexible(
-              flex: 1,
+            Expanded(
+              flex: 2,
               child: Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Text(
@@ -37,7 +51,16 @@ class HeaderUniqueDashboard extends StatelessWidget {
             /* SizedBox(
               height: 10,
             ), */
-            Flexible(flex: 2, child: FiltersStats()),
+            Expanded(
+              flex: 2,
+              child: FiltersStats(
+                onPressDateFrom: onPressDateFrom,
+                dateFromString: dateFromString,
+                dateToString: dateToString,
+                onPressDateTo: onPressDateTo,
+                filterDropDown: filterDropDown,
+              ),
+            ),
           ],
         ),
       ),

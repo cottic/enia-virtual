@@ -26,3 +26,10 @@ TextStyle leftTitlesChart = GoogleFonts.encodeSans(
 TextStyle bottomTitlesChart = GoogleFonts.encodeSans(
   textStyle: TextStyle(fontSize: 10.0, color: Colors.grey),
 );
+
+TextStyle dropDownitem = GoogleFonts.encodeSans(
+  textStyle: TextStyle(
+    fontSize: 12.0,
+    color: Colors.black54,
+  ),
+);
