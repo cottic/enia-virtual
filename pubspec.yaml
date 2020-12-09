@@ -50,7 +50,7 @@ dependencies:
   flutter_sound: ^2.1.1
   open_file: ^3.0.1
   mime_type: ^0.3.0
-  bot_toast: ^3.0.0
+  bot_toast: ^3.0.5
   flutter_matrix_html: ^0.1.7
   moor: ^3.3.1
   sqlite3_flutter_libs: ^0.2.0

@@ -5,23 +5,44 @@
   "version": 1,
   "boards": [
     {
-      "name": "SSyR: Salud Sexual y Reproductivo",
-      "description": "Tablero de la direccion de Salud y Reproductiva",
+      "name": "SSyR: Dispensa de Anticopceptivos (LARCs)",
+      "description": "LARCs (Long Acting Reversible Contraception, por sus siglas en inglés)",
       "template": "normal",
       "filter": true,
       "charts": [
         {
-          "title": "Total de Larcs",
+          "title": "Total dispensados",
           "type": "card",
-          "description": "Total de de LARCs ",
-          "api_url": "1",
+          "description": "Total dispensados",
+          "api_url": "7",
           "media_url": "larcs.svg"
         },
         {
-          "title": "Dispensa de LARCs - Población objetivo",
+          "title": "Subdermicos",
+          "type": "card",
+          "description": "Subdermicos",
+          "api_url": "8",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "DIU",
+          "type": "card",
+          "description": "DIU",
+          "api_url": "9",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "Efectores involucrados",
+          "type": "card",
+          "description": "Efectores involucrados",
+          "api_url": "15",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "Dispensa de LARCs",
           "type": "bar",
           "description": "El modelo de estimación de metas de impacto o MEMI establece como población objetivo un 75% de mujeres",
-          "api_url": "13"
+          "api_url": "14"
         },
         {
           "title": "Evolución mensual de la dispensa de LARCs",
@@ -30,15 +51,15 @@
           "api_url": "12"
         },
         {
-          "title": "Larcs estimados año",
+          "title": "Dispensados por tipo de servicio",
           "type": "pie",
           "description": "Considerando la población estimada a cubrir con LARCs para el 2020, a abril  202",
           "api_url": "11"
         },
         {
-          "title": "Larcs estimados año",
+          "title": "Dispensados sobre estimados",
           "type": "pieSingle",
-          "description": "Considerando la población estimada a cubrir con LARCs para el 2020, a abris",
+          "description": "Considerando la población estimada a cubrir con LARCs para el 2020",
           "api_url": "10"
         }
       ]
