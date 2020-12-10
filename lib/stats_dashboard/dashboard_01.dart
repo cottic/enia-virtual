@@ -40,11 +40,7 @@ class StatsEniaMenu01 extends StatefulWidget {
 class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
   Board board = Board();
 
-  Chart cardChart0 = Chart();
-  Chart cardChart1 = Chart();
-  Chart cardChart2 = Chart();
-  Chart cardChart3 = Chart();
-
+  Chart cardChart = Chart();
   Chart barChart = Chart();
   Chart lineChart = Chart();
   Chart pieChart = Chart();
@@ -76,14 +72,11 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
     var dashboard = await Dashboard.fromJson(appSettingsMap);
 
     board = dashboard.boards[0];
-    cardChart0 = dashboard.boards[0].charts[0];
-    cardChart1 = dashboard.boards[0].charts[1];
-    cardChart2 = dashboard.boards[0].charts[2];
-    cardChart3 = dashboard.boards[0].charts[3];
-    barChart = dashboard.boards[0].charts[4];
-    lineChart = dashboard.boards[0].charts[5];
-    pieChart = dashboard.boards[0].charts[6];
-    pieSingleChart = dashboard.boards[0].charts[7];
+    cardChart = dashboard.boards[0].charts[0];
+    barChart = dashboard.boards[0].charts[1];
+    lineChart = dashboard.boards[0].charts[2];
+    pieChart = dashboard.boards[0].charts[3];
+    pieSingleChart = dashboard.boards[0].charts[4];
 
     return board;
   }
@@ -207,40 +200,40 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                         Row(
                           children: [
                             CardChartHolder(
-                              title: cardChart0.title,
-                              description: cardChart0.description,
+                              title: cardChart.title,
+                              description: cardChart.description,
                               icon: Icons.accessibility_new,
-                              chartUrl: cardChart0.apiUrl +
+                              chartUrl: cardChart.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
                                   provinciaFilter,
                               color: true,
                             ),
                             CardChartHolder(
-                              title: cardChart1.title,
-                              description: cardChart1.description,
+                              title: cardChart.title,
+                              description: cardChart.description,
                               icon: Icons.accessibility_new,
-                              chartUrl: cardChart1.apiUrl +
+                              chartUrl: cardChart.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
                                   provinciaFilter,
                               color: false,
                             ),
                             CardChartHolder(
-                              title: cardChart2.title,
-                              description: cardChart2.description,
+                              title: cardChart.title,
+                              description: cardChart.description,
                               icon: Icons.accessibility_new,
-                              chartUrl: cardChart2.apiUrl +
+                              chartUrl: cardChart.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
                                   provinciaFilter,
                               color: true,
                             ),
                             CardChartHolder(
-                              title: cardChart3.title,
-                              description: cardChart3.description,
+                              title: cardChart.title,
+                              description: cardChart.description,
                               icon: Icons.accessibility_new,
-                              chartUrl: cardChart3.apiUrl +
+                              chartUrl: cardChart.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
                                   provinciaFilter,
