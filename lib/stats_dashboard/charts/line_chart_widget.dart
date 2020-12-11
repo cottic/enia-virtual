@@ -112,13 +112,14 @@ class _LineChartWidgetState extends State<LineChartWidget> {
                   children: <Widget>[
                     Container(
                       height: 240,
-                      width: double.maxFinite,
+                      margin: EdgeInsets.only(top: 26.0, right: 20.0),
+                      width: double.infinity,
                       child: LineChart(
                         dataLarcsFull(),
                       ),
                     ),
                     Row(
-                      mainAxisSize: MainAxisSize.min,
+                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: indicators,
@@ -140,9 +141,6 @@ class _LineChartWidgetState extends State<LineChartWidget> {
   }
 
   LineChartData dataLarcsFull() {
-    // La cantidad de items debe ser igual a max items
-    // Define la lista que contiene los titulos inferiores del grafico
-    var listTitlesX = lineChartInfo.listTitlesX;
 
     return LineChartData(
       // DONDE COMIENZA EJE X // No puede ser menor a 0
@@ -186,15 +184,13 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         // TITULO INFERIOR
         bottomTitles: SideTitles(
           showTitles: true,
-          reservedSize: 22,
+          reservedSize: 30,
           getTextStyles: (value) => bottomTitlesChart,
           margin: 10,
           rotateAngle: 45,
-          getTitles: (double value) {
-            for (var i = 0; i < listTitlesX.length; i++) {
-              if (listTitlesX[value.toInt()] != null) {
-                return listTitlesX[value.toInt()];
-              }
+          getTitles: (value) {
+            for (var i = 0; i < lineChartInfo.listTitlesX.length; i++) {
+              return lineChartInfo.listTitlesX[i];
             }
             return '';
           },
@@ -209,7 +205,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
             }
             return '${value.toInt()} LARCs';
           },
-          interval: 300000,
+          interval: lineChartInfo.intervalY,
           margin: 8,
           reservedSize: 50,
         ),

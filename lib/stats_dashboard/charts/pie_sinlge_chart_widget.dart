@@ -35,7 +35,7 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
       (i) {
         final isTouched = i == touchedIndex;
         final double fontSize = 16;
-        final double radius = 60;
+        final double radius = 50;
         switch (i) {
           case 0:
             return PieChartSectionData(

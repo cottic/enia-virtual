@@ -272,6 +272,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                           child: Text(
                                             barChart.title,
                                             overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
                                             style: mainTitleCharts,
                                           ),
                                         ),
@@ -304,14 +305,18 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                     padding: const EdgeInsets.all(20.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          pieSingleChart.title,
-                                          style: mainTitleCharts,
+                                        Container(
+                                          //height: 50,
+                                          width: double.infinity,
+                                          child: Text(
+                                            pieSingleChart.title,
+                                            style: mainTitleCharts,
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                          ),
                                         ),
                                         PieSingleChartWidget(
                                           apiUrl: pieSingleChart.apiUrl +
@@ -347,14 +352,17 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                     padding: const EdgeInsets.all(20.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          pieChart.title,
-                                          style: mainTitleCharts,
+                                        Container(
+                                          width: double.infinity,
+                                          child: Text(
+                                            pieChart.title,
+                                            style: mainTitleCharts,
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                          ),
                                         ),
                                         PieChartWidget(
                                           apiUrl: pieChart.apiUrl +
@@ -391,14 +399,14 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                                         Text(
                                           lineChart.title,
                                           style: mainTitleCharts,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
                                         ),
-                                        Center(
-                                          child: LineChartWidget(
-                                            apiUrl: lineChart.apiUrl +
-                                                initialDateFilter +
-                                                endDateFilter +
-                                                provinciaFilter,
-                                          ),
+                                        LineChartWidget(
+                                          apiUrl: lineChart.apiUrl +
+                                              initialDateFilter +
+                                              endDateFilter +
+                                              provinciaFilter,
                                         ),
                                         Text(
                                           lineChart.description,
