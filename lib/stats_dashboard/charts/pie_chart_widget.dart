@@ -55,7 +55,7 @@ class PieChartState extends State<PieChartWidget> {
       (i) {
         final isTouched = i == touchedIndex;
         final double fontSize = isTouched ? 18 : 16;
-        final double radius = isTouched ? 58 : 50;
+        final double radius = isTouched ? 96 : 90;
         switch (i) {
           case 0:
             return PieChartSectionData(
@@ -282,7 +282,7 @@ class PieChartState extends State<PieChartWidget> {
                             show: false,
                           ),
                           sectionsSpace: 20,
-                          centerSpaceRadius: 16,
+                          centerSpaceRadius: 0,
                           sections: showingSections(),
                         ),
                       ),

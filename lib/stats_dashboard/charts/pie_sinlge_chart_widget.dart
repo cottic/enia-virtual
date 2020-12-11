@@ -21,8 +21,8 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
   PieSingleChartInfo pieSingleChartInfo = PieSingleChartInfo();
 
   Future<PieSingleChartInfo> loadChartFromApi() async {
-    
-    var pieSingleChartInfoJson = await DashboardService().loadChartFromApi(widget.apiUrl);
+    var pieSingleChartInfoJson =
+        await DashboardService().loadChartFromApi(widget.apiUrl);
 
     pieSingleChartInfo = pieSingleChartInfoFromJson(pieSingleChartInfoJson);
 
@@ -35,7 +35,7 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
       (i) {
         final isTouched = i == touchedIndex;
         final double fontSize = 16;
-        final double radius = 40;
+        final double radius = 60;
         switch (i) {
           case 0:
             return PieChartSectionData(
@@ -46,11 +46,18 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
               titleStyle: TextStyle(
                   fontSize: fontSize,
                   fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black,
+                      blurRadius: 3,
+                      offset: Offset(0, 0),
+                    )
+                  ],
                   color: Colors.white),
             );
           case 1:
             return PieChartSectionData(
-              color: HexColor('#f9f9f9'),
+              color: HexColor('#dbd0c9'),
               value: 100 - pieSingleChartInfo.pieSinglePorcentage,
               title: '',
               radius: radius,
@@ -121,7 +128,7 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
                                 show: false,
                               ),
                               sectionsSpace: 0,
-                              centerSpaceRadius: 60,
+                              centerSpaceRadius: 55,
                               sections: showingSections(),
                             ),
                           ),
