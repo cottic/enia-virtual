@@ -33,7 +33,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
 
     barChartInfo = barChartInfoFromJson(barChartInfoJson);
 
-    if (barChartInfo.barChartList != null) {
+    if (barChartInfo.barChartList != null && barChartInfo.maxNumberY > 1) {
       for (var barCharItem in barChartInfo.barChartList) {
         List<BarChartRodData> barGroupBars = [];
 
@@ -68,6 +68,8 @@ class _BarChartWidgetState extends State<BarChartWidget> {
 
         barGroupsList.add(barGroupItem);
       }
+    } else {
+      return barChartInfo = null;
     }
 
     indicators = barChartInfo.indicators;
@@ -102,7 +104,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
             } else {
               if (snapshot.data != null) {
                 return Stack(
-                  children: [               
+                  children: [
                     Container(
                       height: widget.height,
                       width: double.maxFinite,
@@ -204,7 +206,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                 );
               } else {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: Text('No hay informacion disponible'),
                 );
               }
             }

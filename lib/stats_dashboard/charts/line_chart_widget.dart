@@ -37,7 +37,8 @@ class _LineChartWidgetState extends State<LineChartWidget> {
 
     indicators = lineChartInfo.indicatorsList;
 
-    if (lineChartInfo.lineBarsData != null) {
+    if (lineChartInfo.lineBarsData != null &&
+        lineChartInfo.maxX > 1) {
       for (var lineBarsData in lineChartInfo.lineBarsData) {
         final isCurved = lineBarsData.isCurved;
         final color = lineBarsData.color;
@@ -79,6 +80,8 @@ class _LineChartWidgetState extends State<LineChartWidget> {
 
         lines.add(lineChart);
       }
+    } else {
+      return lineChartInfo = null;
     }
     return lineChartInfo;
   }
@@ -128,7 +131,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
                 );
               } else {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: Text('No hay informacion disponible'),
                 );
               }
             }
@@ -141,7 +144,6 @@ class _LineChartWidgetState extends State<LineChartWidget> {
   }
 
   LineChartData dataLarcsFull() {
-
     return LineChartData(
       // DONDE COMIENZA EJE X // No puede ser menor a 0
       minX: lineChartInfo.minX,
