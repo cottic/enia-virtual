@@ -138,119 +138,75 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
                   'https://google.com/maps/d/u/2/edit?mid=17D_NffBP-k32zyu0w3EjSYGfPtv-W-VF&usp=sharing'),
             ),
             ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Cuadernillo ESI para Educación Secundaria I'),
-              subtitle: Text('Contenidos y propuestas para el aula'),
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Nacidos vivos (de niñas y adolescentes menores de 20 años). Total país y departamentos ENIA. Año 2018'),
+              subtitle: Text(
+                  'Actualización: Trimestral. Fuente: DEIS (Ministerio de Salud) - Equipo Monitoreo ENIA'),
               onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_i.pdf'),
+                  'https://google.com/maps/d/u/1/edit?mid=1L3vZDKegEGgFbvP9qjiQxwv4GqHvJOp0&usp=sharing'),
             ),
             ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Cuadernillo ESI para Educación Secundaria II '),
-              subtitle: Text('Contenidos y propuestas para el aula'),
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Servicios de salud públicos que entregan y/o colocan métodos anticonceptivos. Total país'),
+              subtitle: Text(
+                  'Actualización: Trimestral. Fuente: Equipo Monitoreo ENIA'),
               onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_ii.pdf'),
+                  'https://google.com/maps/d/edit?mid=1WCPiiNCItZDG32R4A2das-sIvZXS-W6t&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Efectores de salud según tipo de servicio. Departamentos ENIA'),
+              subtitle: Text('Actualización: Trimestral. Fuente: DNSSR'),
+              onTap: () => launch(
+                  'https://google.com/maps/d/u/2/edit?mid=1o6iUDUXldZwGRNjKeEN1fDsZZ4QQ2gl5&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Efectores de salud públicos que dispensaron LARCs a menores de 20 años. Departamentos ENIA'),
+              subtitle: Text('Actualización: Trimestral. Fuente: DNSSR'),
+              onTap: () => launch(
+                  'https://google.com/maps/d/u/2/edit?mid=1bOHC-GNYgm7hMrwW8xDsngv8aOgSWD0D&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Dispensa de LARCs en departamentos ENIA. Total acumulado a abril 2020'),
+              subtitle: Text(
+                  'Actualización: Trimestral. Fuente: Equipo Monitoreo ENIA'),
+              onTap: () => launch(
+                  'https://google.com/maps/d/edit?mid=1JQpFr8IkPCGgH4NRxwfFKvNMbHjW1zQs&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Servicios de salud públicos con personal capacitado bajo Plan, según temática'),
+              subtitle: Text(
+                  'Actualización: Trimestral. Fuente: Equipo Monitoreo ENIA'),
+              onTap: () => launch(
+                  'https://google.com/maps/d/edit?mid=1yuoVS7n0Cw_DCDnbg1yBMGlvALU5J1eT&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Caracterización de los servicios de salud públicos. Entrenamiento, consultas mensuales, personal e infraestructura'),
+              subtitle: Text(
+                  'Actualización: Trimestral. Fuente: Equipo Monitoreo ENIA'),
+              onTap: () => launch(
+                  'https://google.com/maps/d/u/1/edit?mid=1z41QAfyZ4vzJCr0o3O2WnftwhC2s0h_w&usp=sharing'),
             ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                'Salud sexual y reproductiva',
+                'Dispositivo para el fortalecimiento de la Educación Sexual integral (ESI)',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Consejerías en Salud Sexual y Salud Reproductiva '),
-              subtitle: Text(
-                  'Propuesta de Diseño, Organización e Implementación - Documento de trabajo'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/consejeriasensaludsexualyreproductiva.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Talleres en Salud Sexual y Salud Reproductiva '),
-              subtitle: Text('Manual "Experiencias para armar"'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/experienciasparaarmar.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Videos '),
-              subtitle: Text(
-                  'Campaña prevención embarazo no intencional en la adolescencia'),
-              onTap: () => launch(
-                  'https://www.youtube.com/watch?v=Kb_FDhmV8Io&feature=youtu.be'),
-            ),
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                'Asesorías en las escuelas',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Asesorías en Salud Integral '),
-              subtitle: Text('Estrategias y acciones'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/plan_enia_-_asesorias_en_salud_integral_en_las_escuelas_secundarias.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title:
-                  Text('Asesorías en Salud Integral para Escuela Secundaria '),
-              subtitle: Text('Lineamientos para la implementación'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/plan_enia_-asesorias_en_salud_integral_para_escuela_secundaria-_lineamiento.pdf'),
-            ),
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                'Derechos',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Guía sobre derechos de adolescentes para el acceso al sistema de salud '),
-              subtitle: Text('Lineamientos y normativas'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/guia_sobre_derechos_de_adolescentes_para_el_acceso_al_sistema_de_salud.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Derechos personalísimos de niñas, niños y adolescentes '),
-              subtitle: Text(
-                  'Acceso autónomo a la atención en salud integral, sexual y reproductiva'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/derechos_personalisimos_de_ninas_ninos_y_adolescentes.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Protocolo para la atención integral de las personas con derecho a la interrupción legal del embarazo (Actualización 2019) '),
-              subtitle: Text(
-                  'Derechos de las personas y obligaciones del sistema de salud, abordaje del equipo de salud, procedimiento para realizar la interrupción del embarazo y anticoncepción post interrupción del embarazo.'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/protocolo_ile_2019-2a_edicion.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Métodos Anticonceptivos'),
-              subtitle: Text('Guía práctica para profesionales de la salud'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/metodos_anticonceptivos.pdf'),
             ),
           ],
         ),
