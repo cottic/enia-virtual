@@ -56,6 +56,11 @@
     "type": "text",
     "placeholders": {}
   },
+  "mapsTitle": "Mapas",
+  "@mapsTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
   "formation": "Capacitación",
   "@formation": {
     "type": "text",
