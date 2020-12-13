@@ -21,23 +21,23 @@ import 'models/bar_chart_model.dart';
 import 'models/drop_down_item_model.dart';
 import 'widgets/filter_stats_widget.dart';
 
-class StatsEniaMenu01View extends StatelessWidget {
+class StatsEniaMenu07View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptivePageLayout(
       primaryPage: FocusPage.SECOND,
       firstScaffold: DashboardMainMenu(),
-      secondScaffold: StatsEniaMenu01(),
+      secondScaffold: StatsEniaMenu07(),
     );
   }
 }
 
-class StatsEniaMenu01 extends StatefulWidget {
+class StatsEniaMenu07 extends StatefulWidget {
   @override
-  _StatsEniaMenu01State createState() => _StatsEniaMenu01State();
+  _StatsEniaMenu07State createState() => _StatsEniaMenu07State();
 }
 
-class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
+class _StatsEniaMenu07State extends State<StatsEniaMenu07> {
   Board board = Board();
 
   Chart cardChart0 = Chart();
