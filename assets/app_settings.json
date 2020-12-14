@@ -41,25 +41,25 @@
         {
           "title": "Dispensa de LARCs",
           "type": "bar",
-          "description": "El modelo de estimación de metas de impacto o MEMI establece como población objetivo un 75% de mujeres",
+          "description": "",
           "api_url": "d0c4"
         },
         {
           "title": "Dispensados sobre estimados",
           "type": "pieSingle",
-          "description": "Considerando la población estimada a cubrir con LARCs para el 2020",
+          "description": "",
           "api_url": "d0c5"
         },
         {
           "title": "Dispensados por tipo de servicio",
           "type": "pie",
-          "description": "Considerando la población estimada a cubrir con LARCs para el 2020, a abril  202",
+          "description": "",
           "api_url": "d0c6"
         },
         {
           "title": "Evolución mensual de la dispensa de LARCs",
           "type": "line",
-          "description": "Durante 2019, el comportamiento de la dispensa reportada se estabiliza en 2.700 LARCs promedio mensual\n",
+          "description": "",
           "api_url": "d0c7"
         }
       ]
@@ -71,29 +71,56 @@
       "filter": true,
       "charts": [
         {
-          "title": "2 json Total de LARCS",
+          "title": "Total dispensados",
           "type": "card",
-          "description": "2 json Total de de LARCs.\n",
-          "api_url": "total-larcs",
+          "description": "Total dispensados",
+          "api_url": "d1c0",
           "media_url": "larcs.svg"
         },
         {
-          "title": "2 json Dispensa de LARCs - Población objetivo plan",
+          "title": "Subdermicos",
+          "type": "card",
+          "description": "Subdermicos",
+          "api_url": "d1c1",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "DIU",
+          "type": "card",
+          "description": "DIU",
+          "api_url": "d1c2",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "Efectores involucrados",
+          "type": "card",
+          "description": "Efectores involucrados",
+          "api_url": "d1c3",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "Dispensa de LARCs",
           "type": "bar",
-          "description": "2 json El modelo de estimación de metas de impacto o MEMI establece como población objetivo un 75% de mujeres \nsexualmente activas de 10 a 19 años en los 36 departamentos. \n\nDe este total, un 75% se estima cubrir con LARCs (70% con implantes, 5% con DIU); \nun total de 176.335 adolescentes a cubrir con LARCs en el período 2018-2019.\n",
-          "api_url": "larcs"
+          "description": "",
+          "api_url": "d1c4"
         },
         {
-          "title": "2 json Evolución mensual de la dispensa de LARCs",
-          "type": "line",
-          "description": "2 json Durante 2019, el comportamiento de la dispensa reportada se estabiliza en 2.700 LARCs promedio mensual\n",
-          "api_url": "dispensa-larcs"
+          "title": "Dispensados sobre estimados",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d1c5"
         },
         {
-          "title": "2 json Larcs estimados y dispensados por año",
+          "title": "Dispensados por tipo de servicio",
           "type": "pie",
-          "description": "2 json Considerando la población estimada a cubrir con LARCs para el 2020, a abril  2020 se alcanza un 10%\nde lo esperado. El desempeño para 2018 y 2019 estuvo en torno al 33% y 39%\nrespectivamente. \n",
-          "api_url": "estimacion-larcs"
+          "description": "",
+          "api_url": "d1c6"
+        },
+        {
+          "title": "Evolución mensual de la dispensa de LARCs",
+          "type": "line",
+          "description": "",
+          "api_url": "d1c7"
         }
       ]
     },
@@ -104,29 +131,56 @@
       "filter": true,
       "charts": [
         {
-          "title": "2 json Total de LARCS",
+          "title": "Total dispensados",
           "type": "card",
-          "description": "2 json Total de de LARCs.\n",
-          "api_url": "total-larcs",
+          "description": "Total dispensados",
+          "api_url": "d2c0",
           "media_url": "larcs.svg"
         },
         {
-          "title": "2 json Dispensa de LARCs - Población objetivo plan",
+          "title": "10 a 14 años",
+          "type": "card",
+          "description": "10 a 14 años",
+          "api_url": "d2c1",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "15 a 19 años",
+          "type": "card",
+          "description": "15 a 19 años",
+          "api_url": "d2c2",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "Mayores de 20 años",
+          "type": "card",
+          "description": "Mayores de 20 años",
+          "api_url": "d2c3",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "Dispensa de LARCs en población objetivo",
           "type": "bar",
-          "description": "2 json El modelo de estimación de metas de impacto o MEMI establece como población objetivo un 75% de mujeres \nsexualmente activas de 10 a 19 años en los 36 departamentos. \n\nDe este total, un 75% se estima cubrir con LARCs (70% con implantes, 5% con DIU); \nun total de 176.335 adolescentes a cubrir con LARCs en el período 2018-2019.\n",
-          "api_url": "larcs"
+          "description": "",
+          "api_url": "d2c4"
         },
         {
-          "title": "2 json Evolución mensual de la dispensa de LARCs",
-          "type": "line",
-          "description": "2 json Durante 2019, el comportamiento de la dispensa reportada se estabiliza en 2.700 LARCs promedio mensual\n",
-          "api_url": "dispensa-larcs"
+          "title": "Dispensados en población objetivo sobre estimados",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d2c5"
         },
         {
-          "title": "2 json Larcs estimados y dispensados por año",
+          "title": "Dispensados por tipo de servicio",
           "type": "pie",
-          "description": "2 json Considerando la población estimada a cubrir con LARCs para el 2020, a abril  2020 se alcanza un 10%\nde lo esperado. El desempeño para 2018 y 2019 estuvo en torno al 33% y 39%\nrespectivamente. \n",
-          "api_url": "estimacion-larcs"
+          "description": "",
+          "api_url": "d2c6"
+        },
+        {
+          "title": "Evolución mensual de la dispensa en población objetivo",
+          "type": "line",
+          "description": "",
+          "api_url": "d2c7"
         }
       ]
     },
@@ -137,29 +191,56 @@
       "filter": true,
       "charts": [
         {
-          "title": "2 json Total de LARCS",
+          "title": "A depositos provinciales",
           "type": "card",
-          "description": "2 json Total de de LARCs.\n",
-          "api_url": "total-larcs",
+          "description": "A depositos provinciales",
+          "api_url": "d3c0",
           "media_url": "larcs.svg"
         },
         {
-          "title": "2 json Dispensa de LARCs - Población objetivo plan",
+          "title": "A servicios de Salud",
+          "type": "card",
+          "description": "A servicios de Salud",
+          "api_url": "d3c1",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "Dispensados",
+          "type": "card",
+          "description": "Dispensados",
+          "api_url": "d3c2",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "Efectores involucrados",
+          "type": "card",
+          "description": "Efectores involucrados",
+          "api_url": "d3c3",
+          "media_url": "larcs.svg"
+        },
+        {
+          "title": "Distribucion de LARCs",
           "type": "bar",
-          "description": "2 json El modelo de estimación de metas de impacto o MEMI establece como población objetivo un 75% de mujeres \nsexualmente activas de 10 a 19 años en los 36 departamentos. \n\nDe este total, un 75% se estima cubrir con LARCs (70% con implantes, 5% con DIU); \nun total de 176.335 adolescentes a cubrir con LARCs en el período 2018-2019.\n",
-          "api_url": "larcs"
+          "description": "",
+          "api_url": "d3c4"
         },
         {
-          "title": "2 json Evolución mensual de la dispensa de LARCs",
-          "type": "line",
-          "description": "2 json Durante 2019, el comportamiento de la dispensa reportada se estabiliza en 2.700 LARCs promedio mensual\n",
-          "api_url": "dispensa-larcs"
+          "title": "LARCS distribuido sobre dispensados",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d3c5"
         },
         {
-          "title": "2 json Larcs estimados y dispensados por año",
+          "title": "LARCs distribuidos segun tipo de metodo",
           "type": "pie",
-          "description": "2 json Considerando la población estimada a cubrir con LARCs para el 2020, a abril  2020 se alcanza un 10%\nde lo esperado. El desempeño para 2018 y 2019 estuvo en torno al 33% y 39%\nrespectivamente. \n",
-          "api_url": "estimacion-larcs"
+          "description": "",
+          "api_url": "d3c6"
+        },
+        {
+          "title": "Evolución anual de la distribución",
+          "type": "line",
+          "description": "",
+          "api_url": "d3c7"
         }
       ]
     },
