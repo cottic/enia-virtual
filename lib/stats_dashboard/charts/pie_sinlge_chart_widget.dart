@@ -26,6 +26,10 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
 
     pieSingleChartInfo = pieSingleChartInfoFromJson(pieSingleChartInfoJson);
 
+    if (pieSingleChartInfo.pieSingleValue == '0'){
+      pieSingleChartInfo = null;
+    }
+
     return pieSingleChartInfo;
   }
 
@@ -149,7 +153,7 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
                 );
               } else {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: Text('No hay informacion disponible'),
                 );
               }
             }
