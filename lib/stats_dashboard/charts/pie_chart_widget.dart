@@ -34,17 +34,21 @@ class PieChartState extends State<PieChartWidget> {
 
     dataLeng = pieChartInfo.pieChartSections.length;
 
-    for (var pieChartSection in pieChartInfo.pieChartSections) {
-      final title = pieChartSection.title;
-      final value = pieChartSection.value;
-      final color = pieChartSection.color;
+    if (indicators.isEmpty) {
+      pieChartInfo = null;
+    } else {
+      for (var pieChartSection in pieChartInfo.pieChartSections) {
+        final title = pieChartSection.title;
+        final value = pieChartSection.value;
+        final color = pieChartSection.color;
 
-      final pieChartSectionWidget = PieChartSectionData(
-        color: HexColor(color),
-        value: value,
-        title: title,
-      );
-      pieDataList.add(pieChartSectionWidget);
+        final pieChartSectionWidget = PieChartSectionData(
+          color: HexColor(color),
+          value: value,
+          title: title,
+        );
+        pieDataList.add(pieChartSectionWidget);
+      }
     }
     return pieChartInfo;
   }
@@ -300,7 +304,7 @@ class PieChartState extends State<PieChartWidget> {
                 );
               } else {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: Text('No hay informacion disponible'),
                 );
               }
             }
