@@ -209,7 +209,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                             CardChartHolder(
                               title: cardChart0.title,
                               description: cardChart0.description,
-                              icon: Icons.accessibility_new,
+                              icon: cardChart0.mediaUrl,
                               chartUrl: cardChart0.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
@@ -219,7 +219,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                             CardChartHolder(
                               title: cardChart1.title,
                               description: cardChart1.description,
-                              icon: Icons.accessibility_new,
+                              icon: cardChart1.mediaUrl,
                               chartUrl: cardChart1.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
@@ -229,7 +229,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                             CardChartHolder(
                               title: cardChart2.title,
                               description: cardChart2.description,
-                              icon: Icons.accessibility_new,
+                              icon: cardChart2.mediaUrl,
                               chartUrl: cardChart2.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
@@ -239,7 +239,7 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
                             CardChartHolder(
                               title: cardChart3.title,
                               description: cardChart3.description,
-                              icon: Icons.accessibility_new,
+                              icon: cardChart3.mediaUrl,
                               chartUrl: cardChart3.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +

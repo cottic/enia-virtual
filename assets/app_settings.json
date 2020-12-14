@@ -15,34 +15,34 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d0c0",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "Subdermicos",
           "type": "card",
           "description": "Subdermicos",
           "api_url": "d0c1",
-          "media_url": "larcs.svg"
+          "media_url": "ninios"
         },
         {
           "title": "DIU",
           "type": "card",
           "description": "DIU",
           "api_url": "d0c2",
-          "media_url": "larcs.svg"
+          "media_url": "diu"
         },
         {
           "title": "Efectores involucrados",
           "type": "card",
           "description": "Efectores involucrados",
           "api_url": "d0c3",
-          "media_url": "larcs.svg"
+          "media_url": "implante"
         },
         {
           "title": "Dispensa de LARCs",
           "type": "bar",
           "description": "",
-          "api_url": "d0c4"
+          "api_url": "adolescente"
         },
         {
           "title": "Dispensados sobre estimados",
@@ -75,28 +75,28 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d1c0",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "Subdermicos",
           "type": "card",
           "description": "Subdermicos",
           "api_url": "d1c1",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "DIU",
           "type": "card",
           "description": "DIU",
           "api_url": "d1c2",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "Efectores involucrados",
           "type": "card",
           "description": "Efectores involucrados",
           "api_url": "d1c3",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "Dispensa de LARCs",
@@ -135,28 +135,28 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d2c0",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "10 a 14 años",
           "type": "card",
           "description": "10 a 14 años",
           "api_url": "d2c1",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "15 a 19 años",
           "type": "card",
           "description": "15 a 19 años",
           "api_url": "d2c2",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "Mayores de 20 años",
           "type": "card",
           "description": "Mayores de 20 años",
           "api_url": "d2c3",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "Dispensa de LARCs en población objetivo",
@@ -195,28 +195,28 @@
           "type": "card",
           "description": "A depositos provinciales",
           "api_url": "d3c0",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "A servicios de Salud",
           "type": "card",
           "description": "A servicios de Salud",
           "api_url": "d3c1",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "Dispensados",
           "type": "card",
           "description": "Dispensados",
           "api_url": "d3c2",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "Efectores involucrados",
           "type": "card",
           "description": "Efectores involucrados",
           "api_url": "d3c3",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "Distribucion de LARCs",
@@ -255,7 +255,7 @@
           "type": "card",
           "description": "2 json Total de de LARCs.\n",
           "api_url": "total-larcs",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "2 json Dispensa de LARCs - Población objetivo plan",
@@ -288,7 +288,7 @@
           "type": "card",
           "description": "2 json Total de de LARCs.\n",
           "api_url": "total-larcs",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "2 json Dispensa de LARCs - Población objetivo plan",
@@ -321,7 +321,7 @@
           "type": "card",
           "description": "2 json Total de de LARCs.\n",
           "api_url": "total-larcs",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "2 json Dispensa de LARCs - Población objetivo plan",
@@ -354,7 +354,7 @@
           "type": "card",
           "description": "2 json Total de de LARCs.\n",
           "api_url": "total-larcs",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "2 json Dispensa de LARCs - Población objetivo plan",
@@ -387,7 +387,7 @@
           "type": "card",
           "description": "2 json Total de de LARCs.\n",
           "api_url": "total-larcs",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "2 json Dispensa de LARCs - Población objetivo plan",
@@ -420,7 +420,7 @@
           "type": "card",
           "description": "2 json Total de de LARCs.\n",
           "api_url": "total-larcs",
-          "media_url": "larcs.svg"
+          "media_url": "accessibility_new"
         },
         {
           "title": "2 json Dispensa de LARCs - Población objetivo plan",

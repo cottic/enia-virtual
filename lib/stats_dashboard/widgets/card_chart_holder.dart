@@ -1,13 +1,15 @@
 import 'package:fluffychat/stats_dashboard/charts/card_chart_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'enia_icons_icons.dart';
+
 class CardChartHolder extends StatelessWidget {
   const CardChartHolder(
       {this.title, this.description, this.icon, this.chartUrl, this.color});
 
   final String title;
   final String description;
-  final IconData icon;
+  final String icon;
   final String chartUrl;
   final bool color;
 
@@ -34,7 +36,16 @@ class CardChartHolder extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon,
+              Icon(
+                  icon == 'accessibility_new'
+                      ? EniaIcons.adolescente
+                      : icon == 'ninios'
+                          ? EniaIcons.ninios
+                          : icon == 'diu'
+                              ? EniaIcons.diu
+                              : icon == 'implante'
+                                  ? EniaIcons.implante
+                                  : EniaIcons.adolescente,
                   size: screenSize ? 40 : 60,
                   color: color
                       ? Theme.of(context).primaryColor
