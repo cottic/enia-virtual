@@ -29,7 +29,7 @@ class CardChartHolder extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(10.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(getIcon(icon),
@@ -52,7 +52,7 @@ class CardChartHolder extends StatelessWidget {
                   Flexible(
                     child: Text(
                       title ?? '',
-                      overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.clip,
                       style:
                           TextStyle(color: Color(0XFFA6A6A6), fontSize: 12.0),
                     ),
