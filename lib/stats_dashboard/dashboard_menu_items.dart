@@ -53,6 +53,12 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = false;
+    if (MediaQuery.of(context).size.width <= 1000) {
+      screenSize = false;
+    } else {
+      screenSize = true;
+    }
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -106,90 +112,97 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                 if (snapshot.data != null) {
                   return Column(
                     children: [
-                      Expanded(
-                        child: ListView(
-                          children: [
-                            SizedBox(height: 10),
-                            Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Text(
-                                L10n.of(context).selectDashboard,
-                                style: Theme.of(context).textTheme.subtitle1,
+                      screenSize
+                          ? Expanded(
+                              child: ListView(
+                                children: [
+                                  SizedBox(height: 10),
+                                  Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Text(
+                                      L10n.of(context).selectDashboard,
+                                      style:
+                                          Theme.of(context).textTheme.subtitle1,
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[0].name,
+                                    subTitle: dashboard.boards[0].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu01View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[1].name,
+                                    subTitle: dashboard.boards[1].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu02View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[2].name,
+                                    subTitle: dashboard.boards[2].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu03View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[3].name,
+                                    subTitle: dashboard.boards[3].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu04View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[4].name,
+                                    subTitle: dashboard.boards[4].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu05View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[5].name,
+                                    subTitle: dashboard.boards[5].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu06View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[6].name,
+                                    subTitle: dashboard.boards[6].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu07View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[7].name,
+                                    subTitle: dashboard.boards[7].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu08View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[8].name,
+                                    subTitle: dashboard.boards[8].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu09View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[9].name,
+                                    subTitle: dashboard.boards[9].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu10View(),
+                                    ),
+                                  ),
+                                ],
                               ),
+                            )
+                          : Expanded(
+                              child: Center(
+                                  child: Text(
+                                      'La acceso a las estadisticas de Monitoreo no es compatible con dispotivos móviles o pantallas de baja resolución. Se recomienda la versión web en https://plan-enia.web.app')),
                             ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[0].name,
-                              subTitle: dashboard.boards[0].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu01View(),
-                              ),
-                            ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[1].name,
-                              subTitle: dashboard.boards[1].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu02View(),
-                              ),
-                            ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[2].name,
-                              subTitle: dashboard.boards[2].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu03View(),
-                              ),
-                            ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[3].name,
-                              subTitle: dashboard.boards[3].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu04View(),
-                              ),
-                            ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[4].name,
-                              subTitle: dashboard.boards[4].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu05View(),
-                              ),
-                            ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[5].name,
-                              subTitle: dashboard.boards[5].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu06View(),
-                              ),
-                            ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[6].name,
-                              subTitle: dashboard.boards[6].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu07View(),
-                              ),
-                            ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[7].name,
-                              subTitle: dashboard.boards[7].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu08View(),
-                              ),
-                            ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[8].name,
-                              subTitle: dashboard.boards[8].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu09View(),
-                              ),
-                            ),
-                            DashboardMenuItem(
-                              title: dashboard.boards[9].name,
-                              subTitle: dashboard.boards[9].description,
-                              onTap: () => _drawerTapAction(
-                                StatsEniaMenu10View(),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                       FlatButton.icon(
                         padding: EdgeInsets.all(20),
                         label: Text(
