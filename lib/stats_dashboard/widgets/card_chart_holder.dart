@@ -15,17 +15,13 @@ class CardChartHolder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool screenSize = false;
-    // print(MediaQuery.of(context).size.width);
+    var screenSize = false;
     if (MediaQuery.of(context).size.width <= 1160) {
       screenSize = true;
     } else {
       screenSize = false;
     }
     return Expanded(
-      // width: MediaQuery.of(context).size.width * 0.17,
-      // height: 100,
-
       child: Card(
         elevation: 3.0,
         margin: EdgeInsets.all(10.0),
@@ -36,16 +32,7 @@ class CardChartHolder extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(
-                  icon == 'accessibility_new'
-                      ? EniaIcons.adolescente
-                      : icon == 'ninios'
-                          ? EniaIcons.ninios
-                          : icon == 'diu'
-                              ? EniaIcons.diu
-                              : icon == 'implante'
-                                  ? EniaIcons.implante
-                                  : EniaIcons.adolescente,
+              Icon(getIcon(icon),
                   size: screenSize ? 40 : 60,
                   color: color
                       ? Theme.of(context).primaryColor
@@ -75,20 +62,63 @@ class CardChartHolder extends StatelessWidget {
             ],
           ),
         ),
-
-        /* ListTile(
-          contentPadding: EdgeInsets.all(10.0),
-          visualDensity: VisualDensity(horizontal: 0.5, vertical: 1),
-          title: dataWidget,
-          subtitle: Text(
-            title ?? '',
-            overflow: TextOverflow.ellipsis,
-          ),
-          leading: Icon(icon,
-              size: screenSize ? 20 : 60,
-              color: Theme.of(context).primaryColor),
-        ), */
       ),
     );
+  }
+}
+
+IconData getIcon(String iconSelected) {
+  switch (iconSelected) {
+    case 'embarazada':
+      return Icons.pregnant_woman;
+      break;
+    case 'edifico':
+      return Icons.domain;
+      break;
+    case 'familia':
+      return Icons.family_restroom;
+      break;
+    case 'madreHijo':
+      return Icons.escalator_warning;
+      break;
+    case 'ayuda':
+      return Icons.support_agent;
+      break;
+    case 'medico':
+      return Icons.medical_services;
+      break;
+    case 'hospital':
+      return Icons.local_hospital;
+      break;
+    case 'distribucion':
+      return Icons.local_shipping;
+      break;
+    case 'telefono':
+      return Icons.phone_iphone;
+      break;
+    case 'casa':
+      return Icons.home;
+      break;
+    case 'evento':
+      return Icons.event;
+      break;
+    case 'escuela':
+      return Icons.school;
+      break;
+    case 'adolescente':
+      return EniaIcons.adolescente;
+      break;
+    case 'ninios':
+      return EniaIcons.ninios;
+      break;
+    case 'diu':
+      return EniaIcons.diu;
+      break;
+    case 'implante':
+      return EniaIcons.implante;
+      break;
+    default:
+      return EniaIcons.implante;
+      break;
   }
 }

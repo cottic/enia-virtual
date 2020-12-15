@@ -15,28 +15,28 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d0c0",
-          "media_url": "accessibility_new"
+          "media_url": "embarazada"
         },
         {
           "title": "Subdermicos",
           "type": "card",
           "description": "Subdermicos",
           "api_url": "d0c1",
-          "media_url": "ninios"
+          "media_url": "edifico"
         },
         {
           "title": "DIU",
           "type": "card",
           "description": "DIU",
           "api_url": "d0c2",
-          "media_url": "diu"
+          "media_url": "familia"
         },
         {
           "title": "Efectores involucrados",
           "type": "card",
           "description": "Efectores involucrados",
           "api_url": "d0c3",
-          "media_url": "implante"
+          "media_url": "madreHijo"
         },
         {
           "title": "Dispensa de LARCs",
@@ -75,28 +75,28 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d1c0",
-          "media_url": "accessibility_new"
+          "media_url": "ayuda"
         },
         {
           "title": "Subdermicos",
           "type": "card",
           "description": "Subdermicos",
           "api_url": "d1c1",
-          "media_url": "accessibility_new"
+          "media_url": "medico"
         },
         {
           "title": "DIU",
           "type": "card",
           "description": "DIU",
           "api_url": "d1c2",
-          "media_url": "accessibility_new"
+          "media_url": "hospital"
         },
         {
           "title": "Efectores involucrados",
           "type": "card",
           "description": "Efectores involucrados",
           "api_url": "d1c3",
-          "media_url": "accessibility_new"
+          "media_url": "distribucion"
         },
         {
           "title": "Dispensa de LARCs",
@@ -135,28 +135,28 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d2c0",
-          "media_url": "accessibility_new"
+          "media_url": "telefono"
         },
         {
           "title": "10 a 14 años",
           "type": "card",
           "description": "10 a 14 años",
           "api_url": "d2c1",
-          "media_url": "accessibility_new"
+          "media_url": "casa"
         },
         {
           "title": "15 a 19 años",
           "type": "card",
           "description": "15 a 19 años",
           "api_url": "d2c2",
-          "media_url": "accessibility_new"
+          "media_url": "evento"
         },
         {
           "title": "Mayores de 20 años",
           "type": "card",
           "description": "Mayores de 20 años",
           "api_url": "d2c3",
-          "media_url": "accessibility_new"
+          "media_url": "escuela"
         },
         {
           "title": "Dispensa de LARCs en población objetivo",
@@ -195,28 +195,28 @@
           "type": "card",
           "description": "A depositos provinciales",
           "api_url": "d3c0",
-          "media_url": "accessibility_new"
+          "media_url": "adolescente"
         },
         {
           "title": "A servicios de Salud",
           "type": "card",
           "description": "A servicios de Salud",
           "api_url": "d3c1",
-          "media_url": "accessibility_new"
+          "media_url": "ninios"
         },
         {
           "title": "Dispensados",
           "type": "card",
           "description": "Dispensados",
           "api_url": "d3c2",
-          "media_url": "accessibility_new"
+          "media_url": "diu"
         },
         {
           "title": "Efectores involucrados",
           "type": "card",
           "description": "Efectores involucrados",
           "api_url": "d3c3",
-          "media_url": "accessibility_new"
+          "media_url": "implante"
         },
         {
           "title": "Distribucion de LARCs",
