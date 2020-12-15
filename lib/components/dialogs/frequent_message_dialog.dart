@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:fluffychat/utils/famedlysdk_store.dart';
 import 'package:flutter/material.dart';
@@ -178,13 +179,12 @@ class FrequentMessagesInfo {
 }
 
 Future<List<FrequentMessagesInfo>> getFrequent() async {
-  String askForFrequentMessages = await Store().getItem('frequentMessagesInfo');
+  // cambiar esto por llamada local
+  var askForFrequentMessages =
+      await rootBundle.loadString('assets/frequentMessagesInfo.json');
 
-  if (askForFrequentMessages != null) {
-    List frequentMessageInfo =
-        frequentMessagesInfoFromJson(askForFrequentMessages);
-    return frequentMessageInfo;
-  } else {
-    return null;
-  }
+  List frequentMessageInfo =
+      frequentMessagesInfoFromJson(askForFrequentMessages);
+
+  return frequentMessageInfo;
 }
