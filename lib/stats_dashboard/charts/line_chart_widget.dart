@@ -37,8 +37,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
 
     indicators = lineChartInfo.indicatorsList;
 
-    if (lineChartInfo.lineBarsData != null &&
-        lineChartInfo.maxX > 1) {
+    if (lineChartInfo.lineBarsData != null && lineChartInfo.maxX > 1) {
       for (var lineBarsData in lineChartInfo.lineBarsData) {
         final isCurved = lineBarsData.isCurved;
         final color = lineBarsData.color;
@@ -192,9 +191,9 @@ class _LineChartWidgetState extends State<LineChartWidget> {
           getTextStyles: (value) => bottomTitlesChart,
           margin: 10,
           rotateAngle: 45,
-          getTitles: (value) {
+          getTitles: (double value) {
             for (var i = 0; i < lineChartInfo.listTitlesX.length; i++) {
-              return lineChartInfo.listTitlesX[i];
+              return lineChartInfo.listTitlesX[value.toInt()];
             }
             return '';
           },
