@@ -72,7 +72,7 @@ IconData getIcon(String iconSelected) {
     case 'embarazada':
       return Icons.pregnant_woman;
       break;
-    case 'edifico':
+    case 'edificio':
       return Icons.domain;
       break;
     case 'familia':
@@ -118,7 +118,7 @@ IconData getIcon(String iconSelected) {
       return EniaIcons.implante;
       break;
     default:
-      return EniaIcons.implante;
+      return Icons.local_hospital;
       break;
   }
 }

@@ -75,15 +75,15 @@ class _StatsEniaMenu07State extends State<StatsEniaMenu07> {
 
     var dashboard = await Dashboard.fromJson(appSettingsMap);
 
-    board = dashboard.boards[0];
-    cardChart0 = dashboard.boards[0].charts[0];
-    cardChart1 = dashboard.boards[0].charts[1];
-    cardChart2 = dashboard.boards[0].charts[2];
-    cardChart3 = dashboard.boards[0].charts[3];
-    barChart = dashboard.boards[0].charts[4];
-    pieSingleChart = dashboard.boards[0].charts[5];
-    pieChart = dashboard.boards[0].charts[6];
-    lineChart = dashboard.boards[0].charts[7];
+    board = dashboard.boards[6];
+    cardChart0 = dashboard.boards[6].charts[0];
+    cardChart1 = dashboard.boards[6].charts[1];
+    cardChart2 = dashboard.boards[6].charts[2];
+    cardChart3 = dashboard.boards[6].charts[3];
+    barChart = dashboard.boards[6].charts[4];
+    pieSingleChart = dashboard.boards[6].charts[5];
+    pieChart = dashboard.boards[6].charts[6];
+    lineChart = dashboard.boards[6].charts[7];
 
     return board;
   }
