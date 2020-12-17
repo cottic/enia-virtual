@@ -1,7 +1,7 @@
 import 'package:fluffychat/stats_dashboard/charts/card_chart_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'enia_icons_icons.dart';
+import 'enia_icons.dart';
 
 class CardChartHolder extends StatelessWidget {
   const CardChartHolder(
