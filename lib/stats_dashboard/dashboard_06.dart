@@ -176,7 +176,6 @@ class _StatsEniaMenu06State extends State<StatsEniaMenu06> {
                           value: _selectedItem,
                           style: dropDownitem,
                           items: _dropdownMenuItems,
-                          //TODO: poner textos con LN10
                           hint: Text(
                             'Todas',
                             style: dropDownitem,

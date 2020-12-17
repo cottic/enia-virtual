@@ -1,23 +1,17 @@
 import 'dart:convert';
 
 import 'package:fluffychat/stats_dashboard/models/app_settings_model.dart';
-import 'package:fluffychat/stats_dashboard/widgets/card_chart_holder.dart';
 import 'package:fluffychat/stats_dashboard/widgets/drop_down_filter_list.dart';
 import 'package:fluffychat/stats_dashboard/widgets/filter_stats_widget.dart';
 import 'package:fluffychat/stats_dashboard/widgets/header_dashboard_widget.dart';
-import 'package:fluffychat/stats_dashboard/charts/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/stats_dashboard/charts/bar_chart_widget.dart';
-import 'package:fluffychat/stats_dashboard/charts/card_chart_widget.dart';
 import 'package:fluffychat/stats_dashboard/dashboard_menu_items.dart';
-import 'package:fluffychat/stats_dashboard/charts/line_chart_widget.dart';
 import 'package:flutter/services.dart';
 
 import '../components/adaptive_page_layout.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import 'charts/pie_sinlge_chart_widget.dart';
 import 'constants_dashboard.dart';
 import 'models/drop_down_item_model.dart';
 
@@ -166,7 +160,6 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                           value: _selectedItem,
                           style: dropDownitem,
                           items: _dropdownMenuItems,
-                          //TODO: poner textos con LN10
                           hint: Text(
                             'Todas',
                             style: dropDownitem,

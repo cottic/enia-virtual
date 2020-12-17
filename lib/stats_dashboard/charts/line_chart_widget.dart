@@ -42,7 +42,9 @@ class _LineChartWidgetState extends State<LineChartWidget> {
       for (var lineBarsData in lineChartInfo.lineBarsData) {
         final isCurved = lineBarsData.isCurved;
         final color = lineBarsData.color;
+        // ignore: omit_local_variable_types
         final List<FlSpot> spotsList = [];
+        // if you dont declare, it fails
 
         for (var i = 0; i < lineBarsData.spots.length; i++) {
           final spotsItems = lineBarsData.spots;
@@ -131,7 +133,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
                 );
               } else {
                 return Center(
-                  child: Text('No hay informacion disponible'),
+                  child: Text(L10n.of(context).noInfoAvailable),
                 );
               }
             }

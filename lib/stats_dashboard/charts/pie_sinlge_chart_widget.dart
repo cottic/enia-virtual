@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:fluffychat/stats_dashboard/models/pie_single_chart_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:fluffychat/stats_dashboard/services/dashboard_services.dart';
@@ -26,7 +25,7 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
 
     pieSingleChartInfo = pieSingleChartInfoFromJson(pieSingleChartInfoJson);
 
-    if (pieSingleChartInfo.pieSingleValue == '0'){
+    if (pieSingleChartInfo.pieSingleValue == '0') {
       pieSingleChartInfo = null;
     }
 
@@ -37,9 +36,12 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
     return List.generate(
       2,
       (i) {
-        final isTouched = i == touchedIndex;
+        // ignore: omit_local_variable_types
         final double fontSize = 16;
+        // if you dont declare, it fails
+        // ignore: omit_local_variable_types
         final double radius = 50;
+        // if you dont declare, it fails
         switch (i) {
           case 0:
             return PieChartSectionData(
@@ -153,7 +155,7 @@ class PieSingleChartState extends State<PieSingleChartWidget> {
                 );
               } else {
                 return Center(
-                  child: Text('No hay informacion disponible'),
+                  child: Text(L10n.of(context).noInfoAvailable),
                 );
               }
             }

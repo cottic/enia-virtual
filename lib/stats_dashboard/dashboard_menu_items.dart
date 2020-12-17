@@ -200,8 +200,7 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                             )
                           : Expanded(
                               child: Center(
-                                  child: Text(
-                                      'La acceso a las estadisticas de Monitoreo no es compatible con dispotivos móviles o pantallas de baja resolución. Se recomienda la versión web en https://plan-enia.web.app')),
+                                  child: Text(L10n.of(context).resolutionIncompatible)),
                             ),
                       FlatButton.icon(
                         padding: EdgeInsets.all(20),

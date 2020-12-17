@@ -1,12 +1,22 @@
 {
   "@@locale": "en",
   "@@last_modified": "2020-09-23T11:45:42.519831",
+  "resolutionIncompatible": "Access to Monitoring statistics is not compatible with mobile devices or low resolution displays. The web version is recommended at https://plan-enia.web.app",
+  "@resolutionIncompatible": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInfoAvailable": "No information available",
+  "@noInfoAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
   "frequentMessages": "Frequent Messages",
   "@frequentMessages": {
     "type": "text",
     "placeholders": {}
   },
-  "selectDashboard": "Seleccionar Tablero:",
+  "selectDashboard": "Select Dashboard:",
   "@selectDashboard": {
     "type": "text",
     "placeholders": {}

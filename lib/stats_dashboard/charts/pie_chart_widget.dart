@@ -58,8 +58,12 @@ class PieChartState extends State<PieChartWidget> {
       dataLeng,
       (i) {
         final isTouched = i == touchedIndex;
+        // ignore: omit_local_variable_types
         final double fontSize = isTouched ? 18 : 16;
+        // if you dont declare, it fails
+        // ignore: omit_local_variable_types
         final double radius = isTouched ? 96 : 90;
+        // if you dont declare, it fails
         switch (i) {
           case 0:
             return PieChartSectionData(
@@ -210,7 +214,6 @@ class PieChartState extends State<PieChartWidget> {
     );
   }
 
-//TODO: probar reemplazar switch por FOR
   /*   List<PieChartSectionData> showingSections() {
 
 
@@ -304,7 +307,7 @@ class PieChartState extends State<PieChartWidget> {
                 );
               } else {
                 return Center(
-                  child: Text('No hay informacion disponible'),
+                  child: Text(L10n.of(context).noInfoAvailable),
                 );
               }
             }

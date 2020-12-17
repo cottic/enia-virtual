@@ -17,12 +17,12 @@ class PieSingleChartInfo {
 
   factory PieSingleChartInfo.fromJson(Map<String, dynamic> json) =>
       PieSingleChartInfo(
-        pieSinglePorcentage: json["pieSinglePorcentage"].toDouble(),
-        pieSingleValue: json["pieSingleValue"],
+        pieSinglePorcentage: json['pieSinglePorcentage'].toDouble(),
+        pieSingleValue: json['pieSingleValue'],
       );
 
   Map<String, dynamic> toJson() => {
-        "pieSinglePorcentage": pieSinglePorcentage,
-        "pieSingleValue": pieSingleValue,
+        'pieSinglePorcentage': pieSinglePorcentage,
+        'pieSingleValue': pieSingleValue,
       };
 }

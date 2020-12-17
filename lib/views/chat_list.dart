@@ -3,10 +3,10 @@ import 'dart:io';
 
 import 'package:famedlysdk/famedlysdk.dart';
 import 'package:famedlysdk/matrix_api.dart';
-import 'package:fluffychat/components/avatar.dart';
+// import 'package:fluffychat/components/avatar.dart';
 import 'package:fluffychat/components/connection_status_header.dart';
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
-import 'package:fluffychat/components/list_items/status_list_item.dart';
+// import 'package:fluffychat/components/list_items/status_list_item.dart';
 import 'package:fluffychat/components/list_items/public_room_list_item.dart';
 import 'package:fluffychat/components/list_items/enia_presence_list_item.dart';
 import 'package:fluffychat/components/list_items/private_room_list_item.dart';
@@ -14,12 +14,12 @@ import 'package:fluffychat/stats_dashboard/dashboard_menu_screen.dart';
 import 'package:fluffychat/views/enia_menu.dart';
 import 'package:fluffychat/views/files_enia_menu.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/views/status_view.dart';
+// import 'package:fluffychat/views/status_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
-import 'package:share/share.dart';
+// import 'package:share/share.dart';
 
 import '../components/adaptive_page_layout.dart';
 import '../components/list_items/chat_list_item.dart';
@@ -31,7 +31,7 @@ import 'archive.dart';
 import 'formation_enia_menu.dart';
 import 'maps_enia_menu.dart';
 import 'homeserver_picker.dart';
-import 'new_private_chat.dart';
+// import 'new_private_chat.dart';
 import 'settings.dart';
 
 enum SelectMode { normal, share, select }
@@ -299,7 +299,7 @@ class _ChatListState extends State<ChatList> {
     );
   }
 
-  void _setStatus(BuildContext context, {bool fromDrawer = false}) async {
+  /* void _setStatus(BuildContext context, {bool fromDrawer = false}) async {
     if (fromDrawer) Navigator.of(context).pop();
     final ownProfile = await SimpleDialogs(context)
         .tryRequestWithLoadingDialog(Matrix.of(context).client.ownProfile);
@@ -323,7 +323,7 @@ class _ChatListState extends State<ChatList> {
       );
     }
     return;
-  }
+  } */
 
   @override
   void dispose() {

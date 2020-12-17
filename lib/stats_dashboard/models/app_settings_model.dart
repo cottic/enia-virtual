@@ -92,6 +92,7 @@ class Chart {
         type: json['type'],
         description: json['description'],
         apiUrl: json['api_url'],
+        // ignore: prefer_if_null_operators
         mediaUrl: json['media_url'] == null ? null : json['media_url'],
       );
 
@@ -100,6 +101,7 @@ class Chart {
         'type': type,
         'description': description,
         'api_url': apiUrl,
+        // ignore: prefer_if_null_operators
         'media_url': mediaUrl == null ? null : mediaUrl,
       };
 }

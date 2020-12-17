@@ -1,15 +1,14 @@
 import 'dart:math';
 import 'dart:io';
-import 'dart:async';
 
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/components/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:fluffychat/utils/app_route.dart';
-import 'package:fluffychat/utils/sentry_controller.dart';
+// import 'package:fluffychat/utils/sentry_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
 import 'login.dart';
 import 'package:flutter/foundation.dart';

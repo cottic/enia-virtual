@@ -35,10 +35,14 @@ class _BarChartWidgetState extends State<BarChartWidget> {
 
     if (barChartInfo.barChartList != null && barChartInfo.maxNumberY > 1) {
       for (var barCharItem in barChartInfo.barChartList) {
+        // ignore: omit_local_variable_types
         List<BarChartRodData> barGroupBars = [];
+        // if you dont declare, it fails
 
         for (var barRodItem in barCharItem.barRods) {
+          // ignore: omit_local_variable_types
           List<BarChartRodStackItem> barSegmentsList = [];
+          // if you dont declare, it fails
 
           for (var barSegments in barRodItem.barChartRoddData) {
             final barSegment = BarChartRodStackItem(
@@ -139,7 +143,6 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                             // TITULO INFERIOR
                             bottomTitles: SideTitles(
                               showTitles: true,
-                              //TODO: se actualizo el paquete, ver como implementar text style
                               getTextStyles: (value) => bottomTitlesChart,
                               margin: 30,
                               // reservedSize: 100,
@@ -206,7 +209,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                 );
               } else {
                 return Center(
-                  child: Text('No hay informacion disponible'),
+                  child: Text(L10n.of(context).noInfoAvailable),
                 );
               }
             }

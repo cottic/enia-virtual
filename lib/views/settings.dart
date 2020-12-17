@@ -5,11 +5,11 @@ import 'package:famedlysdk/famedlysdk.dart';
 import 'package:file_picker_cross/file_picker_cross.dart';
 
 import 'package:fluffychat/components/settings_themes.dart';
-import 'package:fluffychat/config/app_config.dart';
+// import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/utils/sentry_controller.dart';
-import 'package:fluffychat/views/settings_devices.dart';
-import 'package:fluffychat/views/settings_ignore_list.dart';
+// import 'package:fluffychat/utils/sentry_controller.dart';
+// import 'package:fluffychat/views/settings_devices.dart';
+// import 'package:fluffychat/views/settings_ignore_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -20,10 +20,10 @@ import '../components/adaptive_page_layout.dart';
 import '../components/content_banner.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
-import '../utils/app_route.dart';
-import 'app_info.dart';
+// import '../utils/app_route.dart';
+// import 'app_info.dart';
 import 'chat_list.dart';
-import 'settings_emotes.dart';
+// import 'settings_emotes.dart';
 
 class SettingsView extends StatelessWidget {
   @override
@@ -77,7 +77,7 @@ class _SettingsState extends State<Settings> {
     BotToast.showText(text: L10n.of(context).passwordHasBeenChanged);
   }
 
-  void _deleteAccountAction(BuildContext context) async {
+  /* void _deleteAccountAction(BuildContext context) async {
     if (await SimpleDialogs(context).askConfirmation(
           titleText: L10n.of(context).warning,
           contentText: L10n.of(context).deactivateAccountWarning,
@@ -102,7 +102,7 @@ class _SettingsState extends State<Settings> {
         'password': password,
       }),
     );
-  }
+  } */
 
   void setJitsiInstanceAction(BuildContext context) async {
     var jitsi = await SimpleDialogs(context).enterText(
