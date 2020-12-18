@@ -37,9 +37,13 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
                   child: Text(L10n.of(context).noInternet),
                 );
               case ConnectionState.waiting:
-                return CircularProgressIndicator();
+                return Center(
+                  child:CircularProgressIndicator(),
+                );
               case ConnectionState.active:
-                return CircularProgressIndicator();
+                return Center(
+                  child:CircularProgressIndicator(),
+                );
               case ConnectionState.done:
                 if (snapshot.hasError) {
                   return Center(
