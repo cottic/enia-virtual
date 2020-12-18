@@ -280,7 +280,6 @@ class _StatsEniaMenu10State extends State<StatsEniaMenu10> {
                                               initialDateFilter +
                                               endDateFilter +
                                               provinciaFilter,
-                                          height: 240.0,
                                         ),
                                         Text(
                                           barChart.description,
