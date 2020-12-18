@@ -32,6 +32,9 @@ class _BarChartWidgetState extends State<BarChartWidget> {
 
     barChartInfo = barChartInfoFromJson(barChartInfoJson);
 
+    // ignore: omit_local_variable_types
+    List<BarChartGroupData> barGroupsListInter = [];
+    // if you dont declare, it fails
     if (barChartInfo.barChartList != null && barChartInfo.maxNumberY > 1) {
       for (var barCharItem in barChartInfo.barChartList) {
         // ignore: omit_local_variable_types
@@ -68,8 +71,9 @@ class _BarChartWidgetState extends State<BarChartWidget> {
           barRods: barGroupBars,
         );
 
-        barGroupsList.add(barGroupItem);
+        barGroupsListInter.add(barGroupItem);
       }
+      barGroupsList = barGroupsListInter;
     } else {
       return barChartInfo = null;
     }
