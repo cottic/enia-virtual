@@ -1,5 +1,3 @@
-// file from https://gist.github.com/simolus3/5097bbd80ce59f9b957961fe851fd95a#file-cipher_db-dart
-
 import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';

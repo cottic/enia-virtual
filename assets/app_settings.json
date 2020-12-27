@@ -1,0 +1,609 @@
+{
+  "name": "Estadisticas enia@virtual",
+  "api_base_url": "enia.codigoi.com.ar:8000/api",
+  "media_base_url": "enia.codigoi.com.ar:8000/media",
+  "version": 1,
+  "boards": [
+    {
+      "name": "SSyR: Dispensa de Anticonceptivos (LARCs)",
+      "description": "LARCs (Long Acting Reversible Contraception, por sus siglas en inglés)",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "Total dispensados",
+          "type": "card",
+          "description": "Total dispensados",
+          "api_url": "d0c0",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "Subdermicos",
+          "type": "card",
+          "description": "Subdermicos",
+          "api_url": "d0c1",
+          "media_url": "implante"
+        },
+        {
+          "title": "DIU",
+          "type": "card",
+          "description": "DIU",
+          "api_url": "d0c2",
+          "media_url": "diu"
+        },
+        {
+          "title": "Efectores involucrados",
+          "type": "card",
+          "description": "Efectores involucrados",
+          "api_url": "d0c3",
+          "media_url": "hospital"
+        },
+        {
+          "title": "Dispensa de LARCs",
+          "type": "bar",
+          "description": "",
+          "api_url": "d0c4"
+        },
+        {
+          "title": "Dispensados sobre estimados",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d0c5"
+        },
+        {
+          "title": "Dispensados por tipo de servicio",
+          "type": "pie",
+          "description": "",
+          "api_url": "d0c6"
+        },
+        {
+          "title": "Evolución mensual de la dispensa de LARCs",
+          "type": "line",
+          "description": "",
+          "api_url": "d0c7"
+        }
+      ]
+    },
+    {
+      "name": "SSyR: Dispensa en estrategia AIPE",
+      "description": "AIPE (Anticoncepción Inmediata Post Evento obstétrico)",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "Total dispensados",
+          "type": "card",
+          "description": "Total dispensados",
+          "api_url": "d1c0",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "Subdermicos",
+          "type": "card",
+          "description": "Subdermicos",
+          "api_url": "d1c1",
+          "media_url": "implante"
+        },
+        {
+          "title": "DIU",
+          "type": "card",
+          "description": "DIU",
+          "api_url": "d1c2",
+          "media_url": "diu"
+        },
+        {
+          "title": "Efectores involucrados",
+          "type": "card",
+          "description": "Efectores involucrados",
+          "api_url": "d1c3",
+          "media_url": "hospital"
+        },
+        {
+          "title": "Dispensa de LARCs",
+          "type": "bar",
+          "description": "",
+          "api_url": "d1c4"
+        },
+        {
+          "title": "Dispensados sobre estimados",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d1c5"
+        },
+        {
+          "title": "Dispensados por tipo de servicio",
+          "type": "pie",
+          "description": "",
+          "api_url": "d1c6"
+        },
+        {
+          "title": "Evolución mensual de la dispensa de LARCs",
+          "type": "line",
+          "description": "",
+          "api_url": "d1c7"
+        }
+      ]
+    },
+    {
+      "name": "SSyR: Dispensa por grupos etarios",
+      "description": "Grupos de edad: 10-14 años, 15 a 19 años, 20 años o más",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "Total dispensados",
+          "type": "card",
+          "description": "Total dispensados",
+          "api_url": "d2c0",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "10 a 14 años",
+          "type": "card",
+          "description": "10 a 14 años",
+          "api_url": "d2c1",
+          "media_url": "ninios"
+        },
+        {
+          "title": "15 a 19 años",
+          "type": "card",
+          "description": "15 a 19 años",
+          "api_url": "d2c2",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "20 años o más",
+          "type": "card",
+          "description": "20 años o más",
+          "api_url": "d2c3",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "Dispensa de LARCs en población objetivo",
+          "type": "bar",
+          "description": "",
+          "api_url": "d2c4"
+        },
+        {
+          "title": "Dispensados en población objetivo sobre estimados",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d2c5"
+        },
+        {
+          "title": "Dispensados por tipo de servicio",
+          "type": "pie",
+          "description": "",
+          "api_url": "d2c6"
+        },
+        {
+          "title": "Evolución mensual de la dispensa en población objetivo",
+          "type": "line",
+          "description": "",
+          "api_url": "d2c7"
+        }
+      ]
+    },
+    {
+      "name": "SSyR: Distribución de insumos",
+      "description": "Desde Nación a depositos provinciales. Desde depositos provinciales a centros de salud",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "A depositos provinciales",
+          "type": "card",
+          "description": "A depositos provinciales",
+          "api_url": "d3c0",
+          "media_url": "distribucion"
+        },
+        {
+          "title": "A servicios de Salud",
+          "type": "card",
+          "description": "A servicios de Salud",
+          "api_url": "d3c1",
+          "media_url": "distribucion"
+        },
+        {
+          "title": "Dispensados",
+          "type": "card",
+          "description": "Dispensados",
+          "api_url": "d3c2",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "Efectores involucrados",
+          "type": "card",
+          "description": "Efectores involucrados",
+          "api_url": "d3c3",
+          "media_url": "hospital"
+        },
+        {
+          "title": "Distribucion de LARCs",
+          "type": "bar",
+          "description": "",
+          "api_url": "d3c4"
+        },
+        {
+          "title": "LARCS distribuido sobre dispensados",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d3c5"
+        },
+        {
+          "title": "LARCs distribuidos segun tipo de metodo",
+          "type": "pie",
+          "description": "",
+          "api_url": "d3c6"
+        },
+        {
+          "title": "Evolución anual de la distribución",
+          "type": "line",
+          "description": "",
+          "api_url": "d3c7"
+        }
+      ]
+    },
+    {
+      "name": "SSyR: Metas",
+      "description": "",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "A depositos provinciales",
+          "type": "card",
+          "description": "A depositos provinciales",
+          "api_url": "d4c0",
+          "media_url": "distribucion"
+        },
+        {
+          "title": "A servicios de Salud",
+          "type": "card",
+          "description": "A servicios de Salud",
+          "api_url": "d4c1",
+          "media_url": "distribucion"
+        },
+        {
+          "title": "Dispensados",
+          "type": "card",
+          "description": "Dispensados",
+          "api_url": "d4c2",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "Efectores involucrados",
+          "type": "card",
+          "description": "Efectores involucrados",
+          "api_url": "d4c3",
+          "media_url": "hospital"
+        },
+        {
+          "title": "Distribucion de LARCs",
+          "type": "bar",
+          "description": "",
+          "api_url": "d4c4"
+        },
+        {
+          "title": "LARCS distribuido sobre dispensados",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d4c5"
+        },
+        {
+          "title": "LARCs distribuidos segun tipo de metodo",
+          "type": "pie",
+          "description": "",
+          "api_url": "d4c6"
+        },
+        {
+          "title": "Evolución anual de la distribución",
+          "type": "line",
+          "description": "",
+          "api_url": "d4c7"
+        }
+      ]
+      
+    },
+    {
+      "name": "ESI: Estudiantes que realizaron Actividades ESI-ENIA",
+      "description": "Educación Sexual Integral. ESI-MEDUC, Plan ENIA",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "Estudiantes capacitados/as",
+          "type": "card",
+          "description": "Estudiantes capacitados/as",
+          "api_url": "d5c0",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "En ciclo basico",
+          "type": "card",
+          "description": "En ciclo basico",
+          "api_url": "d5c1",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "En ciclo orientado",
+          "type": "card",
+          "description": "En ciclo orientado",
+          "api_url": "d5c2",
+          "media_url": "adolescente"
+        },
+        {
+          "title": "Escuelas con adolescentes capacitados",
+          "type": "card",
+          "description": "Escuelas con adolescentes capacitados",
+          "api_url": "d5c3",
+          "media_url": "escuela"
+        },
+        {
+          "title": "Adolescentes que realizaron Actividades por provincia",
+          "type": "bar",
+          "description": "",
+          "api_url": "d5c4"
+        },
+        {
+          "title": "A DEFINIR",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d5c5"
+        },
+        {
+          "title": "Tipos de ciclos",
+          "type": "pie",
+          "description": "",
+          "api_url": "d5c6"
+        },
+        {
+          "title": "Evolución Adolescentes que realizaron Actividades",
+          "type": "line",
+          "description": "",
+          "api_url": "d5c7"
+        }
+      ]
+    },
+    {
+      "name": "ESI: Docentes capacitados/as ESI-ENIA",
+      "description": "Educación Sexual Integral. ESI-MEDUC, Plan ENIA",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "Docentes capacitados/as",
+          "type": "card",
+          "description": "Docentes capacitados/as",
+          "api_url": "d6c0",
+          "media_url": "medico"
+        },
+        {
+          "title": "Total docentes en escuelas ENIA",
+          "type": "card",
+          "description": "Total docentes en escuelas ENIA",
+          "api_url": "d6c1",
+          "media_url": "medico"
+        },
+        {
+          "title": "Escuelas con docentes capacitados",
+          "type": "card",
+          "description": "Escueles con docentes capacitados",
+          "api_url": "d6c2",
+          "media_url": "escuela"
+        },
+        {
+          "title": "Total escuelas ENIA",
+          "type": "card",
+          "description": "Total escuelas ENIA",
+          "api_url": "d6c3",
+          "media_url": "escuela"
+        },
+        {
+          "title": "Adolescentes que realizaron Actividades por provincia",
+          "type": "bar",
+          "description": "",
+          "api_url": "d6c4"
+        },
+        {
+          "title": "% Escuelas con Cumplimiento de Metas",
+          "type": "pieSingle",
+          "description": "10% de su plantilla docente",
+          "api_url": "d6c5"
+        },
+        {
+          "title": "Escuelas con al menos 1 docente capacitado",
+          "type": "pie",
+          "description": "",
+          "api_url": "d6c6"
+        },
+        {
+          "title": "Evolución Docentes capacitados",
+          "type": "line",
+          "description": "",
+          "api_url": "d6c7"
+        }
+      ]
+    },
+    {
+      "name": "DIAJU: Dispositivos de Asesorías en Salud Integral en la Adolescencia",
+      "description": "Dirección de Adolescencias y juventudes, DIAJU-MSAL",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "Total asesorias",
+          "type": "card",
+          "description": "Total asesorias",
+          "api_url": "d7c0",
+          "media_url": "ayuda"
+        },
+        {
+          "title": "Escuelas",
+          "type": "card",
+          "description": "Escuelas",
+          "api_url": "d7c1",
+          "media_url": "escuela"
+        },
+        {
+          "title": "Servicios de Salud",
+          "type": "card",
+          "description": "Servicios de Salud",
+          "api_url": "d7c2",
+          "media_url": "hospital"
+        },
+        {
+          "title": "Espacios comunitarios",
+          "type": "card",
+          "description": "Espacios comunitarios",
+          "api_url": "d7c3",
+          "media_url": "edificio"
+        },
+        {
+          "title": "Dispositivos por provincia",
+          "type": "bar",
+          "description": "",
+          "api_url": "d7c4"
+        },
+        {
+          "title": "% DEFINIR",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d7c5"
+        },
+        {
+          "title": "Dispositivo segun tipo de espacio",
+          "type": "pie",
+          "description": "",
+          "api_url": "d7c6"
+        },
+        {
+          "title": "Evolucion dispositivos por año",
+          "type": "line",
+          "description": "",
+          "api_url": "d7c7"
+        }
+      ]
+    },
+    {
+      "name": "DIAJU: Asesoramientos y Adolescentes Asesorados/as en Salud Integral",
+      "description": "Dirección de Adolescencias y juventudes, DIAJU-MSAL",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "Adolescentes asesorados/as",
+          "type": "card",
+          "description": "Adolescentes asesorados/as",
+          "api_url": "d8c0",
+          "media_url": "adolescentes"
+        },
+        {
+          "title": "% Referenciados/as",
+          "type": "card",
+          "description": "% Referenciados/as",
+          "api_url": "d8c1",
+          "media_url": "adolescentes"
+        },
+        {
+          "title": "Asesoramientos individuales",
+          "type": "card",
+          "description": "Asesoramientos individuales",
+          "api_url": "d8c2",
+          "media_url": "ayuda"
+        },
+        {
+          "title": "Asesoramientos grupales",
+          "type": "card",
+          "description": "Asesoramientos grupales",
+          "api_url": "d8c3",
+          "media_url": "ayuda"
+        },
+        {
+          "title": "Asesoramientos por provincia",
+          "type": "bar",
+          "description": "",
+          "api_url": "d8c4"
+        },
+        {
+          "title": "% adolescentes asesorados sin escolarizacion",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d8c5"
+        },
+        {
+          "title": "Adolescentes segun genero autopercibido",
+          "type": "pie",
+          "description": "",
+          "api_url": "d8c6"
+        },
+        {
+          "title": "Evolución adolescentes asesorados/as",
+          "type": "line",
+          "description": "",
+          "api_url": "d8c7"
+        }
+      ]
+    },
+    {
+      "name": "DIAJU: Motivos de Asesoramiento Adolescentes en Salud Integral",
+      "description": "Dirección de Adolescencias y juventudes, DIAJU-MSAL",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "A DEFINIR",
+          "type": "card",
+          "description": "A DEFINIR",
+          "api_url": "d9c0",
+          "media_url": "adolescentes"
+        },
+        {
+          "title": "A DEFINIR",
+          "type": "card",
+          "description": "A DEFINIR",
+          "api_url": "d9c1",
+          "media_url": "adolescentes"
+        },
+        {
+          "title": "A DEFINIR",
+          "type": "card",
+          "description": "A DEFINIR",
+          "api_url": "d9c2",
+          "media_url": "ayuda"
+        },
+        {
+          "title": "A DEFINIR",
+          "type": "card",
+          "description": "A DEFINIR",
+          "api_url": "d9c3",
+          "media_url": "ayuda"
+        },
+        {
+          "title": "Principales motivos del asesoramiento",
+          "type": "bar",
+          "description": "",
+          "api_url": "d9c4"
+        },
+        {
+          "title": "A DEFINIR",
+          "type": "pieSingle",
+          "description": "",
+          "api_url": "d9c5"
+        },
+        {
+          "title": "A DEFINIR",
+          "type": "pie",
+          "description": "",
+          "api_url": "d9c6"
+        },
+        {
+          "title": "A DEFINIR",
+          "type": "line",
+          "description": "",
+          "api_url": "d9c7"
+        }
+      ]
+    }
+  ]
+}

@@ -5,11 +5,11 @@ import 'package:famedlysdk/famedlysdk.dart';
 import 'package:file_picker_cross/file_picker_cross.dart';
 
 import 'package:fluffychat/components/settings_themes.dart';
-import 'package:fluffychat/config/app_config.dart';
+// import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/utils/sentry_controller.dart';
-import 'package:fluffychat/views/settings_devices.dart';
-import 'package:fluffychat/views/settings_ignore_list.dart';
+// import 'package:fluffychat/utils/sentry_controller.dart';
+// import 'package:fluffychat/views/settings_devices.dart';
+// import 'package:fluffychat/views/settings_ignore_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -20,10 +20,10 @@ import '../components/adaptive_page_layout.dart';
 import '../components/content_banner.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
-import '../utils/app_route.dart';
-import 'app_info.dart';
+// import '../utils/app_route.dart';
+// import 'app_info.dart';
 import 'chat_list.dart';
-import 'settings_emotes.dart';
+// import 'settings_emotes.dart';
 
 class SettingsView extends StatelessWidget {
   @override
@@ -77,7 +77,7 @@ class _SettingsState extends State<Settings> {
     BotToast.showText(text: L10n.of(context).passwordHasBeenChanged);
   }
 
-  void _deleteAccountAction(BuildContext context) async {
+  /* void _deleteAccountAction(BuildContext context) async {
     if (await SimpleDialogs(context).askConfirmation(
           titleText: L10n.of(context).warning,
           contentText: L10n.of(context).deactivateAccountWarning,
@@ -102,7 +102,7 @@ class _SettingsState extends State<Settings> {
         'password': password,
       }),
     );
-  }
+  } */
 
   void setJitsiInstanceAction(BuildContext context) async {
     var jitsi = await SimpleDialogs(context).enterText(
@@ -327,7 +327,7 @@ class _SettingsState extends State<Settings> {
                   onTap: () => setWallpaperAction(context),
                 );
               }),
-            Divider(thickness: 1),
+            /*Divider(thickness: 1),
             ListTile(
               title: Text(
                 L10n.of(context).chat,
@@ -337,7 +337,7 @@ class _SettingsState extends State<Settings> {
                 ),
               ),
             ),
-            ListTile(
+             ListTile(
               title: Text(L10n.of(context).renderRichContent),
               trailing: Switch(
                 value: Matrix.of(context).renderHtml,
@@ -350,7 +350,7 @@ class _SettingsState extends State<Settings> {
                   setState(() => null);
                 },
               ),
-            ),
+            ), 
             ListTile(
               title: Text(L10n.of(context).emoteSettings),
               onTap: () async => await Navigator.of(context).push(
@@ -360,7 +360,7 @@ class _SettingsState extends State<Settings> {
                 ),
               ),
               trailing: Icon(Icons.insert_emoticon),
-            ),
+            ),*/
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -377,7 +377,15 @@ class _SettingsState extends State<Settings> {
               subtitle: Text(profile?.displayname ?? client.userID.localpart),
               onTap: () => setDisplaynameAction(context),
             ),
+            Divider(thickness: 1),
             ListTile(
+              trailing: Icon(Icons.vpn_key),
+              title: Text(
+                L10n.of(context).changePass,
+              ),
+              onTap: () => _changePasswordAccountAction(context),
+            ),
+            /* ListTile(
               trailing: Icon(Icons.phone),
               title: Text(L10n.of(context).editJitsiInstance),
               subtitle: Text(Matrix.of(context).jitsiInstance),
@@ -518,7 +526,8 @@ class _SettingsState extends State<Settings> {
                   await requestSSSSCache(context);
                 }
               },
-            ),
+            ), */
+            /* 
             ListTile(
               trailing: Icon(Icons.wb_cloudy),
               title: Text(client.encryption.keyManager.enabled
@@ -542,7 +551,7 @@ class _SettingsState extends State<Settings> {
                   await requestSSSSCache(context);
                 }
               },
-            ),
+            ), */
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -554,29 +563,42 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.help),
-              title: Text(L10n.of(context).help),
-              onTap: () => launch(AppConfig.supportUrl),
-            ),
-            ListTile(
-              trailing: Icon(Icons.privacy_tip_rounded),
-              title: Text(L10n.of(context).privacy),
-              onTap: () => launch(AppConfig.privacyUrl),
-            ),
+                trailing: Icon(Icons.help),
+                title: Text(L10n.of(context).help),
+                onTap: () {}
+                //=> launch(
+                //TODO: poner url final
+                //  'https://github.com/cottic/enia-virtual/'),
+                ),
             ListTile(
               trailing: Icon(Icons.link),
               title: Text(L10n.of(context).license),
-              onTap: () => showLicensePage(
-                context: context,
-                applicationIcon:
-                    Image.asset('assets/logo.png', width: 100, height: 100),
-                applicationName: AppConfig.applicationName,
-              ),
+              onTap: () => launch(
+                  'https://github.com/cottic/enia-virtual/blob/master/LICENSE'),
             ),
             ListTile(
               trailing: Icon(Icons.code),
               title: Text(L10n.of(context).sourceCode),
-              onTap: () => launch(AppConfig.sourceCodeUrl),
+              subtitle: Text(Matrix.versionENIA),
+              onTap: () => launch('https://github.com/cottic/enia-virtual'),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                L10n.of(context).credits,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image.asset('assets/logoUnicef.png', width: 220,),
+                Image.asset('assets/logoMinSalud.png', width: 220,)
+
+              ],
             ),
           ],
         ),

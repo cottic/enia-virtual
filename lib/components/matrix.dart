@@ -26,6 +26,30 @@ import 'avatar.dart';
 class Matrix extends StatefulWidget {
   static const String callNamespace = 'chat.fluffy.jitsi_call';
 
+  // Here you set the Matrix server of the Chat
+  static const String defaultHomeserver = 'matrix.codigoi.com.ar';
+
+
+  static const String mainGroup = '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar';
+
+  //in ENIA is HELP
+  static const String secondGroup = '!POwBopuroioZAsSpNy:matrix.codigoi.com.ar';
+
+  //in ENIA is HELP
+  static const List<String> thirdGroup = [
+    '!qvcYgCfhjOdyDbUYjA:matrix.codigoi.com.ar',
+    '!BaWhhGGEEUVycuxsYL:matrix.codigoi.com.ar',
+    '!QcxKXftJGUepsZXEwf:matrix.codigoi.com.ar',
+    '!IRfvYJEEISOtmKCDbl:matrix.codigoi.com.ar',
+    '!vWcuZCGgFiLgACLaaQ:matrix.codigoi.com.ar',
+    '!avrkWsLgZOqVFLCOjL:matrix.codigoi.com.ar',
+    '!EPbitqVGxzEiXJNmUP:matrix.codigoi.com.ar',
+    '!hDRSwvGOzbWxSaBckL:matrix.codigoi.com.ar'
+  ];
+
+  //ENIA VERSION
+  static const String versionENIA = 'Versión 1.8.0';
+
   final Widget child;
 
   final String clientName;
@@ -50,157 +74,51 @@ class Matrix extends StatefulWidget {
 }
 
 class MatrixState extends State<Matrix> {
-  Client client;
-  Store store;
-  @override
-  BuildContext context;
-
   static const String userStatusesType = 'chat.fluffy.user_statuses';
 
-  Map<String, dynamic> get shareContent => _shareContent;
-  set shareContent(Map<String, dynamic> content) {
-    _shareContent = content;
-    onShareContentChanged.add(_shareContent);
-  }
+  String activeRoomId;
+  Client client;
+  String jitsiInstance = 'https://meet.jit.si/';
 
-  Map<String, dynamic> _shareContent;
-
+  StreamSubscription<html.Event> onBlurSub;
+  StreamSubscription<html.Event> onFocusSub;
+  StreamSubscription onJitsiCallSub;
+  StreamSubscription onKeyVerificationRequestSub;
+  StreamSubscription onNotification;
+  StreamSubscription onPresenceSub;
+  StreamSubscription onRoomKeyRequestSub;
   final StreamController<Map<String, dynamic>> onShareContentChanged =
       StreamController.broadcast();
 
-  String activeRoomId;
-  File wallpaper;
   bool renderHtml = false;
-
-  String jitsiInstance = 'https://meet.jit.si/';
-
-  void clean() async {
-    if (!kIsWeb) return;
-
-    final storage = await getLocalStorage();
-    await storage.deleteItem(widget.clientName);
-  }
-
-  void _initWithStore() async {
-    var initLoginState = client.onLoginStateChanged.stream.first;
-    try {
-      client.database = await getDatabase(client);
-      await client.connect();
-      final firstLoginState = await initLoginState;
-      if (firstLoginState == LoginState.logged) {
-        _cleanUpUserStatus(userStatuses);
-        if (PlatformInfos.isMobile) {
-          await FirebaseController.setupFirebase(
-            this,
-            widget.clientName,
-          );
-        }
-      }
-    } catch (e, s) {
-      client.onLoginStateChanged.sink.addError(e, s);
-      captureException(e, s);
-      rethrow;
-    }
-  }
-
-  Map<String, dynamic> getAuthByPassword(String password, [String session]) => {
-        'type': 'm.login.password',
-        'identifier': {
-          'type': 'm.id.user',
-          'user': client.userID,
-        },
-        'user': client.userID,
-        'password': password,
-        if (session != null) 'session': session,
-      };
-
-  StreamSubscription onRoomKeyRequestSub;
-  StreamSubscription onKeyVerificationRequestSub;
-  StreamSubscription onJitsiCallSub;
-  StreamSubscription onNotification;
-  StreamSubscription<html.Event> onFocusSub;
-  StreamSubscription<html.Event> onBlurSub;
-  StreamSubscription onPresenceSub;
-
-  void onJitsiCall(EventUpdate eventUpdate) {
-    final event = Event.fromJson(
-        eventUpdate.content, client.getRoomById(eventUpdate.roomID));
-    if (DateTime.now().millisecondsSinceEpoch -
-            event.originServerTs.millisecondsSinceEpoch >
-        1000 * 60 * 5) {
-      return;
-    }
-    final senderName = event.sender.calcDisplayname();
-    final senderAvatar = event.sender.avatarUrl;
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(L10n.of(context).videoCall),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            ListTile(
-              contentPadding: EdgeInsets.all(0),
-              leading: Avatar(senderAvatar, senderName),
-              title: Text(
-                senderName,
-                style: TextStyle(fontSize: 18),
-              ),
-              subtitle:
-                  event.room.isDirectChat ? null : Text(event.room.displayname),
-            ),
-            Divider(),
-            Row(
-              children: <Widget>[
-                Spacer(),
-                FloatingActionButton(
-                  backgroundColor: Colors.red,
-                  child: Icon(Icons.phone_missed),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                Spacer(),
-                FloatingActionButton(
-                  backgroundColor: Colors.green,
-                  child: Icon(Icons.phone),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    launch(event.body);
-                  },
-                ),
-                Spacer(),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-    return;
-  }
-
+  Store store;
+  File wallpaper;
   bool webHasFocus = true;
 
-  void _showWebNotification(EventUpdate eventUpdate) async {
-    if (webHasFocus && activeRoomId == eventUpdate.roomID) return;
-    final room = client.getRoomById(eventUpdate.roomID);
-    if (room.notificationCount == 0) return;
-    final event = Event.fromJson(eventUpdate.content, room);
-    final body = event.getLocalizedBody(
-      MatrixLocals(L10n.of(context)),
-      withSenderNamePrefix:
-          !room.isDirectChat || room.lastEvent.senderId == client.userID,
-    );
-    html.AudioElement()
-      ..src = 'assets/assets/sounds/notification.wav'
-      ..autoplay = true
-      ..load();
-    html.Notification(
-      room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
-      body: body,
-      icon: event.sender.avatarUrl?.getThumbnail(client,
-              width: 64, height: 64, method: ThumbnailMethod.crop) ??
-          room.avatar?.getThumbnail(client,
-              width: 64, height: 64, method: ThumbnailMethod.crop),
-    );
+  // Aca creo la lista que contiene a las preguntas frecuentes.
+  // No lo guardo en memoria, ver como lee el wallpaper para impeemntarlo.
+
+  List preguntasFrecuentes;
+
+  // DashboardsList listaDashboards;
+
+  var dashboardConfig;
+
+  Map<String, dynamic> _shareContent;
+
+  @override
+  BuildContext context;
+
+  @override
+  void dispose() {
+    onRoomKeyRequestSub?.cancel();
+    onKeyVerificationRequestSub?.cancel();
+    onJitsiCallSub?.cancel();
+    onPresenceSub?.cancel();
+    onNotification?.cancel();
+    onFocusSub?.cancel();
+    onBlurSub?.cancel();
+    super.dispose();
   }
 
   @override
@@ -266,6 +184,7 @@ class MatrixState extends State<Matrix> {
           await request.rejectVerification();
         }
       });
+
       _initWithStore();
     } else {
       client = widget.client;
@@ -301,7 +220,137 @@ class MatrixState extends State<Matrix> {
             .listen(_showWebNotification);
       });
     }
+
     super.initState();
+  }
+
+  Map<String, dynamic> get shareContent => _shareContent;
+
+  set shareContent(Map<String, dynamic> content) {
+    _shareContent = content;
+    onShareContentChanged.add(_shareContent);
+  }
+
+  void clean() async {
+    if (!kIsWeb) return;
+
+    final storage = await getLocalStorage();
+    await storage.deleteItem(widget.clientName);
+  }
+
+
+
+  void _initWithStore() async {
+    var initLoginState = client.onLoginStateChanged.stream.first;
+    try {
+      client.database = await getDatabase(client);
+
+      await client.connect();
+      final firstLoginState = await initLoginState;
+      if (firstLoginState == LoginState.logged) {
+        _cleanUpUserStatus(userStatuses);
+        if (PlatformInfos.isMobile) {
+          await FirebaseController.setupFirebase(
+            this,
+            widget.clientName,
+          );
+        }
+      }
+    } catch (e, s) {
+      client.onLoginStateChanged.sink.addError(e, s);
+      captureException(e, s);
+      rethrow;
+    }
+  }
+
+  Map<String, dynamic> getAuthByPassword(String password, [String session]) => {
+        'type': 'm.login.password',
+        'identifier': {
+          'type': 'm.id.user',
+          'user': client.userID,
+        },
+        'user': client.userID,
+        'password': password,
+        if (session != null) 'session': session,
+      };
+
+  void onJitsiCall(EventUpdate eventUpdate) {
+    final event = Event.fromJson(
+        eventUpdate.content, client.getRoomById(eventUpdate.roomID));
+    if (DateTime.now().millisecondsSinceEpoch -
+            event.originServerTs.millisecondsSinceEpoch >
+        1000 * 60 * 5) {
+      return;
+    }
+    final senderName = event.sender.calcDisplayname();
+    final senderAvatar = event.sender.avatarUrl;
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(L10n.of(context).videoCall),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              contentPadding: EdgeInsets.all(0),
+              leading: Avatar(senderAvatar, senderName),
+              title: Text(
+                senderName,
+                style: TextStyle(fontSize: 18),
+              ),
+              subtitle:
+                  event.room.isDirectChat ? null : Text(event.room.displayname),
+            ),
+            Divider(),
+            Row(
+              children: <Widget>[
+                Spacer(),
+                FloatingActionButton(
+                  backgroundColor: Colors.red,
+                  child: Icon(Icons.phone_missed),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                Spacer(),
+                FloatingActionButton(
+                  backgroundColor: Colors.green,
+                  child: Icon(Icons.phone),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    launch(event.body);
+                  },
+                ),
+                Spacer(),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+    return;
+  }
+
+  void _showWebNotification(EventUpdate eventUpdate) async {
+    if (webHasFocus && activeRoomId == eventUpdate.roomID) return;
+    final room = client.getRoomById(eventUpdate.roomID);
+    if (room.notificationCount == 0) return;
+    final event = Event.fromJson(eventUpdate.content, room);
+    final body = event.getLocalizedBody(
+      MatrixLocals(L10n.of(context)),
+      withSenderNamePrefix:
+          !room.isDirectChat || room.lastEvent.senderId == client.userID,
+    );
+    html.AudioElement()
+      ..src = 'assets/assets/sounds/notification.wav'
+      ..autoplay = true
+      ..load();
+    html.Notification(
+      room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+      body: body,
+      icon: event.sender.avatarUrl?.getThumbnail(client,
+              width: 64, height: 64, method: ThumbnailMethod.crop) ??
+          room.avatar?.getThumbnail(client,
+              width: 64, height: 64, method: ThumbnailMethod.crop),
+    );
   }
 
   List<UserStatus> get userStatuses {
@@ -357,18 +406,6 @@ class MatrixState extends State<Matrix> {
   }
 
   @override
-  void dispose() {
-    onRoomKeyRequestSub?.cancel();
-    onKeyVerificationRequestSub?.cancel();
-    onJitsiCallSub?.cancel();
-    onPresenceSub?.cancel();
-    onNotification?.cancel();
-    onFocusSub?.cancel();
-    onBlurSub?.cancel();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return _InheritedMatrix(
       data: this,
@@ -378,10 +415,10 @@ class MatrixState extends State<Matrix> {
 }
 
 class _InheritedMatrix extends InheritedWidget {
-  final MatrixState data;
-
   _InheritedMatrix({Key key, this.data, Widget child})
       : super(key: key, child: child);
+
+  final MatrixState data;
 
   @override
   bool updateShouldNotify(_InheritedMatrix old) {

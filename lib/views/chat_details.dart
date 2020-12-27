@@ -160,6 +160,9 @@ class _ChatDetailsState extends State<ChatDetails> {
     final actualMembersCount =
         widget.room.mInvitedMemberCount + widget.room.mJoinedMemberCount;
     final canRequestMoreMembers = members.length < actualMembersCount;
+   /*  print('members');
+    print(members.toString()); */
+
     return AdaptivePageLayout(
       primaryPage: FocusPage.SECOND,
       firstScaffold: ChatList(

@@ -44,12 +44,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Matrix(
-      clientName: 'FluffyChat $platform',
+      clientName: 'enia@Virtual $platform',
       child: Builder(
         builder: (BuildContext context) => ThemeSwitcherWidget(
           child: Builder(
             builder: (BuildContext context) => MaterialApp(
-              title: 'FluffyChat',
+              title: 'enia@virtual',
               builder: BotToastInit(),
               navigatorObservers: [BotToastNavigatorObserver()],
               theme: ThemeSwitcherWidget.of(context).themeData,
@@ -64,8 +64,41 @@ class App extends StatelessWidget {
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Scaffold(
-                      body: Center(
-                        child: CircularProgressIndicator(),
+                      backgroundColor: Theme.of(context).primaryColor,
+                      body: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.4,
+                            width: double.maxFinite,
+                            child: Hero(
+                              tag: 'loginBanner',
+                              child: Image.asset('assets/logo_enia_1025.png'),
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.16,
+                          ),
+                          Text(
+                            L10n.of(context).loading,
+                            style: TextStyle(color: Colors.white),
+                          ),
+
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                          ),
+                          CircularProgressIndicator(
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white)),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                          ),
+                          Text(
+                            Matrix.versionENIA,
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                        ],
                       ),
                     );
                   }

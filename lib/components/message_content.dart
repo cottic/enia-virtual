@@ -12,6 +12,7 @@ import '../utils/url_launcher.dart';
 import 'html_message.dart';
 import 'matrix.dart';
 import 'message_download_content.dart';
+import 'message_video_content.dart';
 
 class MessageContent extends StatelessWidget {
   final Event event;
@@ -38,6 +39,7 @@ class MessageContent extends StatelessWidget {
               color: textColor,
             );
           case MessageTypes.Video:
+            return MessageVideoContent(event, textColor);
           case MessageTypes.File:
             return MessageDownloadContent(event, textColor);
           case MessageTypes.Text:

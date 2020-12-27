@@ -12,9 +12,11 @@ final ThemeData lightTheme = ThemeData(
   primaryColorDark: Colors.white,
   primaryColorLight: Color(0xff121212),
   brightness: Brightness.light,
-  primaryColor: Color(0xFF5625BA),
+  // PRIMARY COLOR ENIA
+  primaryColor: Color(0xFF9283be),
+  accentColor: Color(0xffee3d8f),
   backgroundColor: Colors.white,
-  secondaryHeaderColor: Color(0xFFECECF2),
+  secondaryHeaderColor: Color(0xFFb0aac1),
   scaffoldBackgroundColor: Colors.white,
   snackBarTheme: SnackBarThemeData(
     behavior: kIsWeb ? SnackBarBehavior.floating : SnackBarBehavior.fixed,
@@ -29,6 +31,11 @@ final ThemeData lightTheme = ThemeData(
       borderRadius: BorderRadius.circular(8.0),
     ),
   ),
+  /* buttonTheme: ButtonThemeData(
+    //buttonColor: Colors.deepPurple,
+
+    textTheme: ButtonTextTheme.primary,
+  ), */
   appBarTheme: AppBarTheme(
     brightness: Brightness.light,
     color: Colors.white,

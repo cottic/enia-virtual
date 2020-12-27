@@ -37,7 +37,7 @@ class HtmlMessage extends StatelessWidget {
     return Html(
       data: renderHtml,
       defaultTextStyle: defaultTextStyle,
-      emoteSize: emoteSize,
+      //emoteSize: emoteSize,
       linkStyle: linkStyle ??
           themeData.textTheme.bodyText2.copyWith(
             color: themeData.accentColor,

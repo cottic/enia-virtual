@@ -6,10 +6,10 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: FluffyChat
+title: enia@virtual
 email: christian-pauly@posteo.de
-description: Chat with your friends.
-baseurl: "/fluffychat-flutter" # the subpath of your site, e.g. /blog
+description: enia@virtual
+baseurl: "/enia@virtual" # the subpath of your site, e.g. /blog
 url: "/" # the base hostname & protocol for your site
 gitlab_username:  christianpauly
 

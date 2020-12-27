@@ -1,6 +1,96 @@
 {
   "@@locale": "es",
   "@@last_modified": "2020-09-23 11:46:02.754339",
+  "resolutionIncompatible": "El acceso a las estadisticas de Monitoreo no es compatible con dispotivos móviles o pantallas de baja resolución. Se recomienda la versión web en https://plan-enia.web.app",
+  "@resolutionIncompatible": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInfoAvailable": "No hay informacion disponible",
+  "@noInfoAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "frequentMessages": "Mensajes Frecuentes",
+  "@frequentMessages": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "selectDashboard": "Seleccionar Tablero:",
+  "@selectDashboard": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "statsCentralTitle": "DASHBOARD ESTADISTICAS",
+  "@statsCentralTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "stats": "Estadisticas",
+  "@stats": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "credits": "Créditos",
+  "@credits": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "goBack": "VOLVER",
+  "@goBack": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "changePass": "Cambiar contraseña",
+  "@changePass": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pickAnswer": "Seleccione una respuesta:",
+  "@pickAnswer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "somethingWrong": "Algo salio mal, vuelva a intentarlo mas tarde.",
+  "@somethingWrong": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInternet": "Por favor conecte su dispositivo a internet y vuelva a intentarlo.",
+  "@noInternet": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "statsTitle": "Estadisticas",
+  "@statsTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mapsTitle": "Mapas",
+  "@mapsTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "formation": "Capacitación",
+  "@formation": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "documents": "Documentos",
+  "@documents": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "projectName": "enia@virtual",
+  "@projectName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "loading": "Iniciando...",
+  "@loading": {
+    "type": "text",
+    "placeholders": {}
+  },
   "about": "Acerca de",
   "@about": {
     "type": "text",
@@ -67,7 +157,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "archive": "Archivo",
+  "archive": "Historial",
   "@archive": {
     "type": "text",
     "placeholders": {}
@@ -323,7 +413,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "close": "Cerrar",
+  "close": "No",
   "@close": {
     "type": "text",
     "placeholders": {}
@@ -343,7 +433,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "connect": "Conectar",
+  "connect": "Ingresar",
   "@connect": {
     "type": "text",
     "placeholders": {}
@@ -544,7 +634,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "emptyChat": "Chat vacío",
+  "emptyChat": "Nuevo Chat",
   "@emptyChat": {
     "type": "text",
     "placeholders": {}
@@ -603,6 +693,11 @@
   },
   "fileSize": "Tamaño del archivo",
   "@fileSize": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "FluffyChat": "ENIA@Virtual",
+  "@FluffyChat": {
     "type": "text",
     "placeholders": {}
   },
@@ -1515,7 +1610,7 @@
       "username": {}
     }
   },
-  "username": "Nombre de usuario",
+  "username": "Nombre de usuaria/e/o",
   "@username": {
     "type": "text",
     "placeholders": {}

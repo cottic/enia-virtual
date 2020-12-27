@@ -7,11 +7,12 @@ import 'package:famedlysdk/famedlysdk.dart';
 import 'package:file_picker_cross/file_picker_cross.dart';
 import 'package:fluffychat/components/adaptive_page_layout.dart';
 import 'package:fluffychat/components/avatar.dart';
+import 'package:fluffychat/components/dialogs/frequent_message_dialog.dart';
+
 import 'package:fluffychat/components/chat_settings_popup_menu.dart';
 import 'package:fluffychat/components/connection_status_header.dart';
 import 'package:fluffychat/components/dialogs/recording_dialog.dart';
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
-import 'package:fluffychat/components/encryption_button.dart';
 import 'package:fluffychat/components/list_items/message.dart';
 import 'package:fluffychat/components/matrix.dart';
 import 'package:fluffychat/components/reply_content.dart';
@@ -32,6 +33,7 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import '../components/dialogs/send_file_dialog.dart';
 import '../components/input_bar.dart';
 import '../utils/matrix_file_extension.dart';
+
 import 'chat_details.dart';
 import 'chat_list.dart';
 
@@ -226,6 +228,22 @@ class _ChatState extends State<_Chat> {
     );
   }
 
+  void sendVideoAction(BuildContext context) async {
+    final result =
+        await FilePickerCross.importFromStorage(type: FileTypeCross.video);
+    if (result == null) return;
+    await showDialog(
+      context: context,
+      builder: (context) => SendFileDialog(
+        file: MatrixFile(
+          bytes: result.toUint8List(),
+          name: result.fileName,
+        ).detectFileType,
+        room: room,
+      ),
+    );
+  }
+
   void sendImageAction(BuildContext context) async {
     final result =
         await FilePickerCross.importFromStorage(type: FileTypeCross.image);
@@ -275,6 +293,25 @@ class _ChatState extends State<_Chat> {
             bytes: audioFile.readAsBytesSync(), name: audioFile.path),
       ),
     );
+  }
+
+  void frequentMessageAction(BuildContext context) async {
+    String result;
+
+    await showDialog(
+        context: context,
+        builder: (context) => FrequentMessageDialog(
+              onFinished: (r) => result = r,
+            ));
+    if (result == null) {
+      return;
+    } else {
+      // Asigns selected texto to controller
+      sendController.text = result;
+      // Activates keyboard after text select
+      FocusScope.of(context).requestFocus(inputFocus);
+    }
+    ;
   }
 
   String _getSelectedEventString(BuildContext context) {
@@ -427,6 +464,95 @@ class _ChatState extends State<_Chat> {
       );
     }
     matrix.activeRoomId = widget.id;
+/* 
+    print('entro CHECK VIDEO CALL  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+
+    // Participantes de la room actual
+    var roomPatrticipantsChat = room.getParticipants();
+
+    print('Participantes de la room actual');
+    print(roomPatrticipantsChat.toString());
+
+    print(roomPatrticipantsChat.elementAt(0).displayName.toString());
+    // print(roomPatrticipantsChat.elementAt(1).displayName.toString());
+
+    // Traer Room ENIA
+    var eniaRoom = client.getRoomById(Matrix.mainGroup);
+
+    // Participantes de la ENIA ROOM
+    var participantseniaRoom = eniaRoom.getParticipants();
+
+    print('Participantes de la ENIA ROOM');
+    print(participantseniaRoom.toString());
+
+/*     print('participantseniaRoom');
+    print(participantseniaRoom.elementAt(0).displayName.toString());
+    print(participantseniaRoom.elementAt(1).displayName.toString());
+
+    print(participantseniaRoom.elementAt(2).displayName.toString());
+    print(participantseniaRoom.elementAt(3).displayName.toString());
+
+    print(participantseniaRoom.elementAt(4).displayName.toString());
+    print(participantseniaRoom.elementAt(5).displayName.toString());
+
+    print(participantseniaRoom.elementAt(6).displayName.toString());
+    print(participantseniaRoom.elementAt(7).displayName.toString());
+
+    print(participantseniaRoom.elementAt(8).displayName.toString());
+    print(participantseniaRoom.elementAt(9).displayName.toString());
+
+    print(participantseniaRoom.elementAt(10).displayName.toString());
+    print(participantseniaRoom.elementAt(11).displayName.toString()); */
+
+    //var participantseniaRoomComparision =  participantseniaRoom.elementAt(index).id.contains(roomPatrticipantsChat.elementAt(index).id);
+
+    //print('participantseniaRoomComparision');
+    //print(participantseniaRoomComparision.toString());
+
+    var jonaChat = roomPatrticipantsChat.elementAt(0);
+    var jonaGrupoENia = participantseniaRoom.elementAt(4);
+
+    print('jonaChat');
+    print(jonaChat.displayName.toString());
+    print('jonaGrupoENia');
+    print(jonaGrupoENia.displayName.toString());
+
+    var isTheSameUser = jonaChat.id == jonaGrupoENia.id;
+
+    print('Es el mismo usuario?');
+    print(isTheSameUser.toString());
+
+/*     var estanLosIds = roomPatrticipantsChat
+        .where((User userChat) => participantseniaRoom
+            .where((User userEniaGroup) => userEniaGroup.id.contains(userChat.id))
+            ))
+        .map((obj) {
+      print('${obj.id}');
+      return obj;
+    }).toList(); */
+
+    var index;
+
+    List resultado;
+
+    for (index = 0; index <= participantseniaRoom.length - 1; index++) {
+      //print('participantseniaRoom For Loop Called $index Times');
+      //print(participantseniaRoom.elementAt(index).displayName);
+      var estanLosIds = roomPatrticipantsChat
+          .where((User userChat) =>
+              participantseniaRoom.elementAt(index).id.contains(userChat.id))
+          .map((userInBothLists) {
+        print('${userInBothLists.id}');
+        return userInBothLists;
+      });
+
+     // resultado.add(estanLosIds);
+    }
+
+    print('resultado');
+    print(resultado.toString());
+
+    print('SALIO CHECK VIDEO CALL XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'); */
 
     if (room.membership == Membership.invite) {
       SimpleDialogs(context).tryRequestWithLoadingDialog(room.join());
@@ -866,11 +992,17 @@ class _ChatState extends State<_Chat> {
                                         } else if (choice == 'image') {
                                           sendImageAction(context);
                                         }
+                                        if (choice == 'video') {
+                                          sendVideoAction(context);
+                                        }
                                         if (choice == 'camera') {
                                           openCameraAction(context);
                                         }
                                         if (choice == 'voice') {
                                           voiceMessageAction(context);
+                                        }
+                                        if (choice == 'frequent') {
+                                          frequentMessageAction(context);
                                         }
                                       },
                                       itemBuilder: (BuildContext context) =>
@@ -889,6 +1021,19 @@ class _ChatState extends State<_Chat> {
                                           ),
                                         ),
                                         PopupMenuItem<String>(
+                                          value: 'video',
+                                          child: ListTile(
+                                            leading: CircleAvatar(
+                                              backgroundColor: Colors.teal,
+                                              foregroundColor: Colors.white,
+                                              child: Icon(Icons.ondemand_video),
+                                            ),
+                                            title: Text(
+                                                L10n.of(context).sendVideo),
+                                            contentPadding: EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        PopupMenuItem<String>(
                                           value: 'image',
                                           child: ListTile(
                                             leading: CircleAvatar(
@@ -898,6 +1043,19 @@ class _ChatState extends State<_Chat> {
                                             ),
                                             title: Text(
                                                 L10n.of(context).sendImage),
+                                            contentPadding: EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        PopupMenuItem<String>(
+                                          value: 'frequent',
+                                          child: ListTile(
+                                            leading: CircleAvatar(
+                                              backgroundColor: Colors.amber,
+                                              foregroundColor: Colors.white,
+                                              child: Icon(Icons.textsms),
+                                            ),
+                                            title: Text(L10n.of(context)
+                                                .frequentMessages),
                                             contentPadding: EdgeInsets.all(0),
                                           ),
                                         ),
@@ -932,11 +1090,12 @@ class _ChatState extends State<_Chat> {
                                       ],
                                     ),
                                   ),
-                                Container(
+                                // ENIA dont allow to encrypt conversation in order to audit the program
+                                /* Container(
                                   height: 56,
                                   alignment: Alignment.center,
                                   child: EncryptionButton(room),
-                                ),
+                                ), */
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(

@@ -1,17 +1,21 @@
 import 'dart:math';
+import 'dart:io';
 
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
 import 'package:fluffychat/components/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:fluffychat/utils/app_route.dart';
-import 'package:fluffychat/utils/sentry_controller.dart';
-import 'package:fluffychat/views/sign_up.dart';
+// import 'package:fluffychat/utils/sentry_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
+
+import 'login.dart';
+import 'package:flutter/foundation.dart';
 
 class HomeserverPicker extends StatelessWidget {
-  Future<void> _setHomeserverAction(BuildContext context) async {
+  //Not need, because user cannot select a server
+  /*     Future<void> _setHomeserverAction(BuildContext context) async {
     final homeserver = await SimpleDialogs(context).enterText(
         titleText: L10n.of(context).enterYourHomeserver,
         hintText: AppConfig.defaultHomeserver,
@@ -20,11 +24,12 @@ class HomeserverPicker extends StatelessWidget {
     if (homeserver?.isEmpty ?? true) return;
     _checkHomeserverAction(homeserver, context);
   }
+*/
 
   void _checkHomeserverAction(String homeserver, BuildContext context) async {
-    if (await SentryController.getSentryStatus() == null || true) {
+    /* if (await SentryController.getSentryStatus() == null || true) {
       await SentryController.toggleSentryAction(context);
-    }
+    } */
 
     if (!homeserver.startsWith('https://')) {
       homeserver = 'https://$homeserver';
@@ -33,9 +38,11 @@ class HomeserverPicker extends StatelessWidget {
     final success = await SimpleDialogs(context).tryRequestWithLoadingDialog(
         Matrix.of(context).client.checkServer(homeserver));
     if (success != false) {
-      await Navigator.of(context).push(AppRoute(SignUp()));
+      await Navigator.of(context).push(AppRoute(Login()));
     }
   }
+
+  final String platform = kIsWeb ? 'Web' : Platform.operatingSystem;
 
   @override
   Widget build(BuildContext context) {
@@ -47,35 +54,22 @@ class HomeserverPicker extends StatelessWidget {
                   max((MediaQuery.of(context).size.width - 600) / 2, 0)),
           child: Column(
             children: <Widget>[
+              Spacer(flex: 1),
+
               Hero(
                 tag: 'loginBanner',
-                child: InkWell(
-                  onTap: () => showAboutDialog(
-                    context: context,
-                    children: [
-                      RaisedButton(
-                        child: Text(L10n.of(context).privacy),
-                        onPressed: () => launch(AppConfig.privacyUrl),
-                      )
-                    ],
-                    applicationIcon:
-                        Image.asset('assets/logo.png', width: 100, height: 100),
-                    applicationName: AppConfig.applicationName,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height * 0.7,
                   ),
-                  child: Image.asset('assets/fluffychat-banner.png'),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  L10n.of(context).welcomeText,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 22,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                    child: Image.asset('assets/logo_enia_1025.png'),
                   ),
                 ),
               ),
-              Spacer(),
+
+              Spacer(flex: 2),
               Hero(
                 tag: 'loginButton',
                 child: Container(
@@ -90,14 +84,17 @@ class HomeserverPicker extends StatelessWidget {
                     ),
                     child: Text(
                       L10n.of(context).connect.toUpperCase(),
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style:
+                          TextStyle(color: Theme.of(context).backgroundColor),
                     ),
                     onPressed: () => _checkHomeserverAction(
                         AppConfig.defaultHomeserver, context),
                   ),
                 ),
               ),
-              Padding(
+              //Not need, because user cannot select a server
+
+              /* Padding(
                 padding:
                     const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                 child: Text(
@@ -108,8 +105,8 @@ class HomeserverPicker extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-              ),
-              FlatButton(
+              ), */
+              /* FlatButton(
                 child: Text(
                   L10n.of(context).changeTheHomeserver,
                   style: TextStyle(
@@ -119,8 +116,12 @@ class HomeserverPicker extends StatelessWidget {
                   ),
                 ),
                 onPressed: () => _setHomeserverAction(context),
+              ), */
+
+              SizedBox(
+                //TODO: en la version web mobile, el espacio no deberia existir, solo en web desktop
+                height: kIsWeb ? 100 : 16,
               ),
-              SizedBox(height: 16),
             ],
           ),
         ),

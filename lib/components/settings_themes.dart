@@ -64,7 +64,8 @@ class ThemesSettingsState extends State<ThemesSettings> {
             });
           },
         ),
-        ListTile(
+        // Not available for ENIA
+        /* ListTile(
           title: Text(
             L10n.of(context).useAmoledTheme,
           ),
@@ -78,7 +79,7 @@ class ThemesSettingsState extends State<ThemesSettings> {
               });
             },
           ),
-        ),
+        ), */
       ],
     );
   }

@@ -3,18 +3,23 @@ import 'dart:io';
 
 import 'package:famedlysdk/famedlysdk.dart';
 import 'package:famedlysdk/matrix_api.dart';
-import 'package:fluffychat/components/avatar.dart';
+// import 'package:fluffychat/components/avatar.dart';
 import 'package:fluffychat/components/connection_status_header.dart';
 import 'package:fluffychat/components/dialogs/simple_dialogs.dart';
-import 'package:fluffychat/components/list_items/status_list_item.dart';
+// import 'package:fluffychat/components/list_items/status_list_item.dart';
 import 'package:fluffychat/components/list_items/public_room_list_item.dart';
+import 'package:fluffychat/components/list_items/enia_presence_list_item.dart';
+import 'package:fluffychat/components/list_items/private_room_list_item.dart';
+import 'package:fluffychat/stats_dashboard/dashboard_menu_screen.dart';
+import 'package:fluffychat/views/enia_menu.dart';
+import 'package:fluffychat/views/files_enia_menu.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/views/status_view.dart';
+// import 'package:fluffychat/views/status_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
-import 'package:share/share.dart';
+// import 'package:share/share.dart';
 
 import '../components/adaptive_page_layout.dart';
 import '../components/list_items/chat_list_item.dart';
@@ -23,9 +28,10 @@ import '../utils/app_route.dart';
 import '../utils/matrix_file_extension.dart';
 import '../utils/url_launcher.dart';
 import 'archive.dart';
+import 'formation_enia_menu.dart';
+import 'maps_enia_menu.dart';
 import 'homeserver_picker.dart';
-import 'new_group.dart';
-import 'new_private_chat.dart';
+// import 'new_private_chat.dart';
 import 'settings.dart';
 
 enum SelectMode { normal, share, select }
@@ -64,6 +70,16 @@ class _ChatListState extends State<ChatList> {
   String searchServer;
   final _selectedRoomIds = <String>{};
 
+  List<String> roomsJoined;
+  List<User> mainGroupList;
+
+  Room linkMainRoom;
+  bool resultMainLink = false;
+  Room secondLinkRoom;
+  bool resultSecondLink = false;
+  Room thirdLinkRoom;
+  bool resultThirdLink = false;
+
   final ScrollController _scrollController = ScrollController();
 
   void _toggleSelection(String roomId) =>
@@ -72,7 +88,17 @@ class _ChatListState extends State<ChatList> {
           : _selectedRoomIds.add(roomId));
 
   Future<void> waitForFirstSync(BuildContext context) async {
+    if (!resultSecondLink) {
+      resultSecondLink = await getSecondLink();
+    }
+    if (!resultThirdLink) {
+      resultThirdLink = await getThirdLink();
+    }
+    if (!resultMainLink) {
+      resultMainLink = await getMainGroup();
+    }
     var client = Matrix.of(context).client;
+
     if (client.prevBatch?.isEmpty ?? true) {
       await client.onFirstSync.stream.first;
     }
@@ -80,6 +106,72 @@ class _ChatListState extends State<ChatList> {
   }
 
   bool _scrolledToTop = true;
+
+  Future<bool> getMainGroup() async {
+    // print('Entro FIRST LINK');
+    var client = Matrix.of(context).client;
+
+    roomsJoined = await client.requestJoinedRooms();
+
+    var isMainGroupOnRooms = roomsJoined.contains(Matrix.mainGroup);
+
+    if (isMainGroupOnRooms) {
+      linkMainRoom = await client.getRoomById(Matrix.mainGroup);
+
+      List participantsMainGroup = await linkMainRoom.requestParticipants();
+
+      if (participantsMainGroup.isNotEmpty) {
+        var filteredMainGroupList = participantsMainGroup
+            .where((user) => user.id != client.userID)
+            .toList();
+
+        setState(() => mainGroupList = filteredMainGroupList);
+      }
+    } else {
+      setState(() => mainGroupList = null);
+    }
+    return true;
+  }
+
+  Future<bool> getSecondLink() async {
+    // print('Entro SECOND LINK');
+    var client = Matrix.of(context).client;
+
+    roomsJoined == null
+        ? roomsJoined = await client.requestJoinedRooms()
+        : null;
+
+    var isGroupOnRooms = roomsJoined.contains(Matrix.secondGroup);
+
+    if (isGroupOnRooms) {
+      var getSecondLinkRoom = await client.getRoomById(Matrix.secondGroup);
+      setState(() => secondLinkRoom = getSecondLinkRoom);
+    }
+
+    return true;
+  }
+
+  Future<bool> getThirdLink() async {
+    // print('Entro THIRD LINK');
+    var client = Matrix.of(context).client;
+
+    roomsJoined == null
+        ? roomsJoined = await client.requestJoinedRooms()
+        : null;
+
+    if (roomsJoined.isNotEmpty) {
+      var groupsJoinedLink = roomsJoined.firstWhere(
+          (roomId) => Matrix.thirdGroup.contains(roomId),
+          orElse: () => null);
+
+      if (groupsJoinedLink != null) {
+        var getThirdLinkRoom = await client.getRoomById(groupsJoinedLink);
+        setState(() => thirdLinkRoom = getThirdLinkRoom);
+      }
+    }
+
+    return true;
+  }
 
   @override
   void initState() {
@@ -132,6 +224,15 @@ class _ChatListState extends State<ChatList> {
     });
     _initReceiveSharingIntent();
     super.initState();
+  }
+
+  void logoutAction(BuildContext context) async {
+    if (await SimpleDialogs(context).askConfirmation() == false) {
+      return;
+    }
+    var matrix = Matrix.of(context);
+    await SimpleDialogs(context)
+        .tryRequestWithLoadingDialog(matrix.client.logout());
   }
 
   StreamSubscription _intentDataStreamSubscription;
@@ -198,7 +299,7 @@ class _ChatListState extends State<ChatList> {
     );
   }
 
-  void _setStatus(BuildContext context, {bool fromDrawer = false}) async {
+  /* void _setStatus(BuildContext context, {bool fromDrawer = false}) async {
     if (fromDrawer) Navigator.of(context).pop();
     final ownProfile = await SimpleDialogs(context)
         .tryRequestWithLoadingDialog(Matrix.of(context).client.ownProfile);
@@ -222,7 +323,7 @@ class _ChatListState extends State<ChatList> {
       );
     }
     return;
-  }
+  } */
 
   @override
   void dispose() {
@@ -299,14 +400,16 @@ class _ChatListState extends State<ChatList> {
                             child: ListView(
                               padding: EdgeInsets.zero,
                               children: <Widget>[
-                                ListTile(
+                                // Opcion Menu Establecer estado, no disponible en version 1
+                                /* ListTile(
                                   leading: Icon(Icons.edit),
                                   title: Text(L10n.of(context).setStatus),
                                   onTap: () =>
                                       _setStatus(context, fromDrawer: true),
                                 ),
-                                Divider(height: 1),
-                                ListTile(
+                                Divider(height: 1), */
+                                // Opcion Crear grupo y chat privado , no disponible en version 1
+                                /* ListTile(
                                   leading: Icon(Icons.people_outline),
                                   title: Text(L10n.of(context).createNewGroup),
                                   onTap: () => _drawerTapAction(NewGroupView()),
@@ -317,7 +420,52 @@ class _ChatListState extends State<ChatList> {
                                   onTap: () =>
                                       _drawerTapAction(NewPrivateChatView()),
                                 ),
+                                Divider(height: 1), */
+                                SizedBox(height: 20),
+                                ListTile(
+                                  leading: Image.asset(
+                                    'assets/logoSoloFondo.png',
+                                    width: 22,
+                                  ),
+                                  title: Text(L10n.of(context).projectName),
+                                  onTap: () => _drawerTapAction(
+                                    EniaMenuView(),
+                                  ),
+                                ),
                                 Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.folder),
+                                  title: Text(L10n.of(context).documents),
+                                  onTap: () => _drawerTapAction(
+                                    FilesEniaMenuView(),
+                                  ),
+                                ),
+                                Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.school),
+                                  title: Text(L10n.of(context).formation),
+                                  onTap: () => _drawerTapAction(
+                                    FormationEniaMenuView(),
+                                  ),
+                                ),
+                                Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.insert_chart),
+                                  title: Text(L10n.of(context).statsTitle),
+                                  onTap: () => _drawerTapAction(
+                                    StatsEniaMenuView(),
+                                  ),
+                                ),
+                                Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.map),
+                                  title: Text(L10n.of(context).mapsTitle),
+                                  onTap: () => _drawerTapAction(
+                                    MapsEniaMenuView(),
+                                  ),
+                                ),
+                                Divider(height: 1),
+
                                 ListTile(
                                   leading: Icon(Icons.archive),
                                   title: Text(L10n.of(context).archive),
@@ -325,6 +473,7 @@ class _ChatListState extends State<ChatList> {
                                     Archive(),
                                   ),
                                 ),
+                                Divider(height: 1),
                                 ListTile(
                                   leading: Icon(Icons.settings),
                                   title: Text(L10n.of(context).settings),
@@ -332,7 +481,8 @@ class _ChatListState extends State<ChatList> {
                                     SettingsView(),
                                   ),
                                 ),
-                                Divider(height: 1),
+                                // Invitar contactos, no disponible en version 1
+                                /* Divider(height: 1),
                                 ListTile(
                                   leading: Icon(Icons.share),
                                   title: Text(L10n.of(context).inviteContact),
@@ -342,6 +492,12 @@ class _ChatListState extends State<ChatList> {
                                         Matrix.of(context).client.userID,
                                         'https://matrix.to/#/${Matrix.of(context).client.userID}'));
                                   },
+                                ), */
+                                Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.exit_to_app),
+                                  title: Text(L10n.of(context).logout),
+                                  onTap: () => logoutAction(context),
                                 ),
                               ],
                             ),
@@ -420,7 +576,8 @@ class _ChatListState extends State<ChatList> {
                                 ),
                               ),
                   ),
-                  floatingActionButton:
+                  //This allows to create new chats and set Status, not available on version 1
+                  /*floatingActionButton:
                       (AdaptivePageLayout.columnMode(context) ||
                               selectMode != SelectMode.normal)
                           ? null
@@ -438,7 +595,7 @@ class _ChatListState extends State<ChatList> {
                                       Theme.of(context).secondaryHeaderColor,
                                   onPressed: () => _setStatus(context),
                                 ),
-                                SizedBox(height: 16.0),
+                                // SizedBox(height: 16.0),
                                 FloatingActionButton(
                                   child: Icon(Icons.add),
                                   backgroundColor:
@@ -448,9 +605,9 @@ class _ChatListState extends State<ChatList> {
                                           AppRoute.defaultRoute(
                                               context, NewPrivateChatView()),
                                           (r) => r.isFirst),
-                                ),
+                                ), 
                               ],
-                            ),
+                            ),*/
                   body: Column(
                     children: [
                       ConnectionStatusHeader(),
@@ -481,6 +638,24 @@ class _ChatListState extends State<ChatList> {
                                                 .contains(searchController.text
                                                         .toLowerCase() ??
                                                     '')));
+
+                                    //This allows to search in listGrupoENia
+                                    var mainGroupListSearch =
+                                        List<User>.from(mainGroupList);
+
+                                    if (mainGroupListSearch != null &&
+                                        mainGroupListSearch.isNotEmpty) {
+                                      mainGroupListSearch.removeWhere(
+                                        (User item) => (searchMode &&
+                                            !item.displayName
+                                                .toString()
+                                                .toLowerCase()
+                                                .contains(searchController.text
+                                                        .toLowerCase() ??
+                                                    '')),
+                                      );
+                                    }
+
                                     if (rooms.isEmpty &&
                                         (!searchMode ||
                                             publicRoomsResponse == null)) {
@@ -527,74 +702,65 @@ class _ChatListState extends State<ChatList> {
                                                     ),
                                                   )
                                                 : Container(),
-                                        itemCount: totalCount + 1,
+                                        itemCount: totalCount,
                                         itemBuilder:
                                             (BuildContext context, int i) {
                                           if (i == 0) {
-                                            final displayPresences =
-                                                Matrix.of(context)
-                                                        .userStatuses
-                                                        .isNotEmpty &&
-                                                    selectMode ==
-                                                        SelectMode.normal;
-                                            final displayShareStatus =
-                                                selectMode ==
-                                                        SelectMode.share &&
-                                                    Matrix.of(context)
-                                                                .shareContent[
-                                                            'msgtype'] ==
-                                                        'm.text';
                                             return Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 AnimatedContainer(
                                                   duration: Duration(
                                                       milliseconds: 300),
-                                                  height: displayPresences
-                                                      ? 78
-                                                      : displayShareStatus
-                                                          ? 56
-                                                          : 0,
-                                                  child: displayPresences
-                                                      ? ListView.builder(
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          itemCount:
-                                                              Matrix.of(context)
-                                                                  .userStatuses
-                                                                  .length,
-                                                          itemBuilder: (BuildContext
-                                                                      context,
-                                                                  int i) =>
-                                                              StatusListItem(Matrix
-                                                                      .of(context)
-                                                                  .userStatuses[i]),
-                                                        )
-                                                      : displayShareStatus
-                                                          ? ListTile(
-                                                              leading:
-                                                                  CircleAvatar(
-                                                                radius: Avatar
-                                                                        .defaultSize /
-                                                                    2,
-                                                                backgroundColor:
-                                                                    Theme.of(
-                                                                            context)
-                                                                        .secondaryHeaderColor,
-                                                                child: Icon(
-                                                                  Icons.edit,
-                                                                  color: Theme.of(
-                                                                          context)
-                                                                      .primaryColor,
-                                                                ),
-                                                              ),
-                                                              title: Text(L10n.of(
-                                                                      context)
-                                                                  .setStatus),
-                                                              onTap: () =>
-                                                                  _setStatus(
-                                                                      context))
-                                                          : null,
+                                                  height: 78,
+                                                  child: ListView.builder(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    itemCount:
+                                                        mainGroupListSearch
+                                                            .length,
+                                                    itemBuilder:
+                                                        (BuildContext context,
+                                                            int i) {
+                                                      if (i == 0) {
+                                                        return Row(
+                                                          children: <Widget>[
+                                                            searchMode
+                                                                ? Container()
+                                                                : Container(
+                                                                    child: PrivateRoomListItem(
+                                                                        linkMainRoom),
+                                                                  ),
+                                                            searchMode
+                                                                ? Container()
+                                                                : secondLinkRoom ==
+                                                                        null
+                                                                    ? Container()
+                                                                    : Container(
+                                                                        child: PrivateRoomListItem(
+                                                                            secondLinkRoom),
+                                                                      ),
+                                                            searchMode
+                                                                ? Container()
+                                                                : thirdLinkRoom ==
+                                                                        null
+                                                                    ? Container()
+                                                                    : Container(
+                                                                        child: PrivateRoomListItem(
+                                                                            thirdLinkRoom),
+                                                                      ),
+                                                            EniaPresenceListItem(
+                                                                mainGroupListSearch[
+                                                                    i]),
+                                                          ],
+                                                        );
+                                                      } else {
+                                                        return EniaPresenceListItem(
+                                                            mainGroupListSearch[
+                                                                i]);
+                                                      }
+                                                    },
+                                                  ),
                                                 ),
                                               ],
                                             );
