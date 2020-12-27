@@ -108,7 +108,7 @@ class _EniaMenuState extends State<EniaMenu> {
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'enia@virtual',
+                'Enia@virtual',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               /*  background:  
