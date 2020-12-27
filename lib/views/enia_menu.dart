@@ -102,7 +102,7 @@ class _EniaMenuState extends State<EniaMenu> {
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'enia@virtual',
+                'Enia@virtual',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               /*  background:  
@@ -121,8 +121,13 @@ class _EniaMenuState extends State<EniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                  'A partir de una mirada integral e intersectorial buscamos prevenir los embarazos no intencionales en la adolescencia. Los Ministerios Nacionales de Salud, de Desarrollo Social y de Educación, trabajamos en conjunto para garantizar los derechos de los y las adolescentes al acceso gratuito de métodos anticonceptivos, la educación sexual integral y asesorías en las escuelas, la consejería en salud sexual y reproductiva y actividades de promoción comunitarias.'),
+                  'Enia@virtual ofrece un medio de comunicación para la comunidad del Plan Enia y una modalidad de trabajo con énfasis en el fortalecimiento de las capacidades de sus agentes. Aquí encontrarás espacios para comunicarte con tus compañeras/os/es de las diferentes provincias y departamentos, podrás consultar documentos técnicos para llevar adelante tu tarea, participar en capacitaciones virtuales y hacer consultas a los tableros y mapas para analizar el desempeño del Plan en tu provincia, escuela, servicios de salud o espacio comunitario.'),
             ),
+            ListTile(
+              title: Text(
+                  'Además Enia@virtual ofrece a las/os/es asesoras/es del dispositivo de asesorías en salud integral en escuelas secundarias un medio de comunicación directa con las/os/es adolescentes que consultan.'),
+            ),
+            /*
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -148,7 +153,7 @@ class _EniaMenuState extends State<EniaMenu> {
             ListTile(
               title: Text(bullet +
                   ' Fortalecer políticas para la prevención del abuso, la violencia sexual y el acceso a la interrupción legal del embarazo según el marco normativo vigente.'),
-            ),
+            ), */
           ],
         ),
       ),

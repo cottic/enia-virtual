@@ -26,7 +26,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "stats": "Estadisticas",
+  "stats": "Tableros de monitoreo",
   "@stats": {
     "type": "text",
     "placeholders": {}
@@ -61,17 +61,17 @@
     "type": "text",
     "placeholders": {}
   },
-  "statsTitle": "Estadisticas",
+  "statsTitle": "Tableros de monitoreo",
   "@statsTitle": {
     "type": "text",
     "placeholders": {}
   },
-  "mapsTitle": "Mapas",
+  "mapsTitle": "Mapas de monitoreo",
   "@mapsTitle": {
     "type": "text",
     "placeholders": {}
   },
-  "formation": "Capacitación",
+  "formation": "Capacitaciones",
   "@formation": {
     "type": "text",
     "placeholders": {}
@@ -81,7 +81,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "projectName": "enia@virtual",
+  "projectName": "Enia@virtual",
   "@projectName": {
     "type": "text",
     "placeholders": {}
