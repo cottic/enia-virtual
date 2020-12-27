@@ -138,8 +138,8 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               onTap: () => launch(
                   'https://drive.google.com/file/d/1y-hX11hK0Pb5QmYvaE30yRv5oBs83cVr/view?usp=sharing'),
             ),
-            Divider(thickness: 1),
             ListTile(
+              trailing: Icon(Icons.ondemand_video),
               title: Text(
                 'Registros de las capacitaciones y webinarios realizados',
                 style: TextStyle(
