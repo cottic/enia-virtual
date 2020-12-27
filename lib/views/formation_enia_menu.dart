@@ -102,7 +102,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'MATERIALES EDUCATIVOS',
+                'Capacitaciones',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               /*  background:  
@@ -121,135 +121,77 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                'Educación sexual integral',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+                  'El Plan Enia apuesta al fortalecimiento de las capacidades de quienes lo componen. Podrás acceder aquí a los enlaces de ingreso a las capacitaciones virtuales (en curso); y a los programas y grabaciones de encuentros y webinarios.'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'El Embarazo No Intencional en la Adolescencia - 	Contenidos de Educación Sexual Integral '),
-              subtitle: Text('Propuestas para el aula - Nivel Secundario'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/el_embarazo_no_intencional_en_la_adolescencia.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Cuadernillo ESI para Educación Secundaria I'),
-              subtitle: Text('Contenidos y propuestas para el aula'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_i.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Cuadernillo ESI para Educación Secundaria II '),
-              subtitle: Text('Contenidos y propuestas para el aula'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_ii.pdf'),
-            ),
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                'Salud sexual y reproductiva',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Consejerías en Salud Sexual y Salud Reproductiva '),
+              title: Text('Curso virtual Plan Enia'),
               subtitle: Text(
-                  'Propuesta de Diseño, Organización e Implementación - Documento de trabajo'),
+                  'El curso del Plan Nacional de Prevención del Embarazo no Intencional en la Adolescencia tiene como propósito fortalecer la implementación del Plan a través de una apuesta al compromiso de la acción intersectorial con un enfoque de derechos y perspectiva de género.'),
               onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/consejeriasensaludsexualyreproductiva.pdf'),
+                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Curso-virtual-Plan-Enia.pdf'),
             ),
             ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Talleres en Salud Sexual y Salud Reproductiva '),
-              subtitle: Text('Manual "Experiencias para armar"'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/experienciasparaarmar.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Videos '),
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Protocolo para la atención integral de las personas con derecho a la interrupción legal del embarazo'),
               subtitle: Text(
-                  'Campaña prevención embarazo no intencional en la adolescencia'),
-              onTap: () => launch(
-                  'https://www.youtube.com/watch?v=Kb_FDhmV8Io&feature=youtu.be'),
+                  'Elaborado por la DNSSyR en base al ciclo "Encuentros de actualización profesional sobre interrupción legal del embarazo - 2020"'),
+              onTap: () =>
+                  launch('https://www.youtube.com/watch?v=LZEf3QtU1wI'),
             ),
-            Divider(thickness: 1),
             ListTile(
+              trailing: Icon(Icons.ondemand_video),
               title: Text(
-                'Asesorías en las escuelas',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Asesorías en Salud Integral '),
-              subtitle: Text('Estrategias y acciones'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/plan_enia_-_asesorias_en_salud_integral_en_las_escuelas_secundarias.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title:
-                  Text('Asesorías en Salud Integral para Escuela Secundaria '),
-              subtitle: Text('Lineamientos para la implementación'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/plan_enia_-asesorias_en_salud_integral_para_escuela_secundaria-_lineamiento.pdf'),
-            ),
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                'Derechos',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Guía sobre derechos de adolescentes para el acceso al sistema de salud '),
-              subtitle: Text('Lineamientos y normativas'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/guia_sobre_derechos_de_adolescentes_para_el_acceso_al_sistema_de_salud.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Derechos personalísimos de niñas, niños y adolescentes '),
+                  'Atención integral en la interrupción legal del embarazo'),
               subtitle: Text(
-                  'Acceso autónomo a la atención en salud integral, sexual y reproductiva'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/derechos_personalisimos_de_ninas_ninos_y_adolescentes.pdf'),
+                  'Elaborado por la DNSSyR en base al ciclo "Encuentros de actualización profesional sobre interrupción legal del embarazo - 2020"'),
+              onTap: () =>
+                  launch('https://www.youtube.com/watch?v=3Ljz6QB4G8M'),
             ),
             ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
+              trailing: Icon(Icons.ondemand_video),
               title: Text(
-                  'Protocolo para la atención integral de las personas con derecho a la interrupción legal del embarazo (Actualización 2019) '),
+                  'Uso y manejo de misoprostol para el aborto con medicamentos hasta las 12 semanas'),
               subtitle: Text(
-                  'Derechos de las personas y obligaciones del sistema de salud, abordaje del equipo de salud, procedimiento para realizar la interrupción del embarazo y anticoncepción post interrupción del embarazo.'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/protocolo_ile_2019-2a_edicion.pdf'),
+                  'Elaborado por la DNSSyR en base al ciclo "Encuentros de actualización profesional sobre interrupción legal del embarazo - 2020"'),
+              onTap: () =>
+                  launch('https://www.youtube.com/watch?v=jcvXbbP1wDw'),
             ),
             ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Métodos Anticonceptivos'),
-              subtitle: Text('Guía práctica para profesionales de la salud'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/metodos_anticonceptivos.pdf'),
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Implementación y manejo de la Aspiración Manual Endouterina AMEU'),
+              subtitle: Text(
+                  'Elaborado por la DNSSyR en base al ciclo "Encuentros de actualización profesional sobre interrupción legal del embarazo - 2020"'),
+              onTap: () =>
+                  launch('https://www.youtube.com/watch?v=RPKLMu72yIw'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text('Aborto en 13 semanas y más'),
+              subtitle: Text(
+                  'Elaborado por la DNSSyR en base al ciclo "Encuentros de actualización profesional sobre interrupción legal del embarazo - 2020"'),
+              onTap: () =>
+                  launch('https://www.youtube.com/watch?v=i44iOhXglUk'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Ruta crítica para las niñas y adolescentes embarazadas menores de 15 años'),
+              subtitle: Text(
+                  'Elaborado por la DNSSyR en base al ciclo "Encuentros de actualización profesional sobre interrupción legal del embarazo - 2020"'),
+              onTap: () =>
+                  launch('https://www.youtube.com/watch?v=LQobVCJkXjw'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Causal salud, de la teoría la práctica Claves para su implementación'),
+              subtitle: Text(
+                  'Elaborado por la DNSSyR en base al ciclo "Encuentros de actualización profesional sobre interrupción legal del embarazo - 2020"'),
+              onTap: () =>
+                  launch('https://www.youtube.com/watch?v=yOck9YXBF6Y'),
             ),
           ],
         ),
