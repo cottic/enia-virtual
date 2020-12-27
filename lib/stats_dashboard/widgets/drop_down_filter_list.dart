@@ -69,7 +69,8 @@ final List<DropDownItemsModel> dropdownItems = [
 
 List<DropdownMenuItem<DropDownItemsModel>> buildDropDownMenuItems(
     List listItems) {
-  List<DropdownMenuItem<DropDownItemsModel>> items = List();
+  // ignore: omit_local_variable_types
+  List<DropdownMenuItem<DropDownItemsModel>> items = [];
   for (DropDownItemsModel listItem in listItems) {
     items.add(
       DropdownMenuItem(

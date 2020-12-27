@@ -3,13 +3,11 @@ import 'dart:convert';
 import 'package:fluffychat/stats_dashboard/models/app_settings_model.dart';
 import 'package:fluffychat/stats_dashboard/widgets/card_chart_holder.dart';
 import 'package:fluffychat/stats_dashboard/widgets/drop_down_filter_list.dart';
-import 'package:fluffychat/stats_dashboard/widgets/filter_stats_widget.dart';
 import 'package:fluffychat/stats_dashboard/widgets/header_dashboard_widget.dart';
 import 'package:fluffychat/stats_dashboard/charts/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/stats_dashboard/charts/bar_chart_widget.dart';
-import 'package:fluffychat/stats_dashboard/charts/card_chart_widget.dart';
 import 'package:fluffychat/stats_dashboard/dashboard_menu_items.dart';
 import 'package:fluffychat/stats_dashboard/charts/line_chart_widget.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +17,9 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'charts/pie_sinlge_chart_widget.dart';
 import 'constants_dashboard.dart';
+import 'models/bar_chart_model.dart';
 import 'models/drop_down_item_model.dart';
+import 'widgets/filter_stats_widget.dart';
 
 class StatsEniaMenu02View extends StatelessWidget {
   @override
@@ -40,12 +40,20 @@ class StatsEniaMenu02 extends StatefulWidget {
 class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
   Board board = Board();
 
-  Chart cardChart = Chart();
+  Chart cardChart0 = Chart();
+  Chart cardChart1 = Chart();
+  Chart cardChart2 = Chart();
+  Chart cardChart3 = Chart();
+
   Chart barChart = Chart();
   Chart lineChart = Chart();
   Chart pieChart = Chart();
-
   Chart pieSingleChart = Chart();
+
+  BarChartInfo barChartInfo = BarChartInfo();
+
+  List barCharts;
+  List indicators;
 
   String initialDateFilter = '';
   DateTime initialSelectedDate;
@@ -67,13 +75,15 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
 
     var dashboard = await Dashboard.fromJson(appSettingsMap);
 
-    // await Future.delayed(Duration(seconds: 3));
-
     board = dashboard.boards[1];
-    cardChart = dashboard.boards[1].charts[0];
-    barChart = dashboard.boards[1].charts[1];
-    lineChart = dashboard.boards[1].charts[2];
-    pieChart = dashboard.boards[1].charts[3];
+    cardChart0 = dashboard.boards[1].charts[0];
+    cardChart1 = dashboard.boards[1].charts[1];
+    cardChart2 = dashboard.boards[1].charts[2];
+    cardChart3 = dashboard.boards[1].charts[3];
+    barChart = dashboard.boards[1].charts[4];
+    pieSingleChart = dashboard.boards[1].charts[5];
+    pieChart = dashboard.boards[1].charts[6];
+    lineChart = dashboard.boards[1].charts[7];
 
     return board;
   }
@@ -166,7 +176,6 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                           value: _selectedItem,
                           style: dropDownitem,
                           items: _dropdownMenuItems,
-                          //TODO: poner textos con LN10
                           hint: Text(
                             'Todas',
                             style: dropDownitem,
@@ -194,43 +203,43 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                             style: headerMain.copyWith(fontSize: 16.0),
                           ),
                         ),
-                        /* Row(
+                        Row(
                           children: [
                             CardChartHolder(
-                              title: cardChart.title,
-                              description: cardChart.description,
-                              icon: Icons.accessibility_new,
-                              chartUrl: cardChart.apiUrl +
+                              title: cardChart0.title,
+                              description: cardChart0.description,
+                              icon: cardChart0.mediaUrl,
+                              chartUrl: cardChart0.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
                                   provinciaFilter,
                               color: true,
                             ),
                             CardChartHolder(
-                              title: cardChart.title,
-                              description: cardChart.description,
-                              icon: Icons.accessibility_new,
-                              chartUrl: cardChart.apiUrl +
+                              title: cardChart1.title,
+                              description: cardChart1.description,
+                              icon: cardChart1.mediaUrl,
+                              chartUrl: cardChart1.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
                                   provinciaFilter,
                               color: false,
                             ),
                             CardChartHolder(
-                              title: cardChart.title,
-                              description: cardChart.description,
-                              icon: Icons.accessibility_new,
-                              chartUrl: cardChart.apiUrl +
+                              title: cardChart2.title,
+                              description: cardChart2.description,
+                              icon: cardChart2.mediaUrl,
+                              chartUrl: cardChart2.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
                                   provinciaFilter,
                               color: true,
                             ),
                             CardChartHolder(
-                              title: cardChart.title,
-                              description: cardChart.description,
-                              icon: Icons.accessibility_new,
-                              chartUrl: cardChart.apiUrl +
+                              title: cardChart3.title,
+                              description: cardChart3.description,
+                              icon: cardChart3.mediaUrl,
+                              chartUrl: cardChart3.apiUrl +
                                   initialDateFilter +
                                   endDateFilter +
                                   provinciaFilter,
@@ -262,6 +271,7 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                                           child: Text(
                                             barChart.title,
                                             overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
                                             style: mainTitleCharts,
                                           ),
                                         ),
@@ -270,7 +280,6 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                                               initialDateFilter +
                                               endDateFilter +
                                               provinciaFilter,
-                                          height: 240.0,
                                         ),
                                         Text(
                                           barChart.description,
@@ -294,14 +303,18 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                                     padding: const EdgeInsets.all(20.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          pieSingleChart.title,
-                                          style: mainTitleCharts,
+                                        Container(
+                                          //height: 50,
+                                          width: double.infinity,
+                                          child: Text(
+                                            pieSingleChart.title,
+                                            style: mainTitleCharts,
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                          ),
                                         ),
                                         PieSingleChartWidget(
                                           apiUrl: pieSingleChart.apiUrl +
@@ -337,14 +350,17 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                                     padding: const EdgeInsets.all(20.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          pieChart.title,
-                                          style: mainTitleCharts,
+                                        Container(
+                                          width: double.infinity,
+                                          child: Text(
+                                            pieChart.title,
+                                            style: mainTitleCharts,
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                          ),
                                         ),
                                         PieChartWidget(
                                           apiUrl: pieChart.apiUrl +
@@ -381,14 +397,14 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                                         Text(
                                           lineChart.title,
                                           style: mainTitleCharts,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
                                         ),
-                                        Center(
-                                          child: LineChartWidget(
-                                            apiUrl: lineChart.apiUrl +
-                                                initialDateFilter +
-                                                endDateFilter +
-                                                provinciaFilter,
-                                          ),
+                                        LineChartWidget(
+                                          apiUrl: lineChart.apiUrl +
+                                              initialDateFilter +
+                                              endDateFilter +
+                                              provinciaFilter,
                                         ),
                                         Text(
                                           lineChart.description,
@@ -404,7 +420,7 @@ class _StatsEniaMenu02State extends State<StatsEniaMenu02> {
                         ),
                         SizedBox(
                           height: 20.0,
-                        ), */
+                        ),
                       ],
                     ),
                   );

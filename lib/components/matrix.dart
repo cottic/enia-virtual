@@ -22,7 +22,6 @@ import '../utils/presence_extension.dart';
 import '../views/key_verification.dart';
 import '../utils/platform_infos.dart';
 import 'avatar.dart';
-import 'enia_client.dart';
 
 class Matrix extends StatefulWidget {
   static const String callNamespace = 'chat.fluffy.jitsi_call';
@@ -30,8 +29,6 @@ class Matrix extends StatefulWidget {
   // Here you set the Matrix server of the Chat
   static const String defaultHomeserver = 'matrix.codigoi.com.ar';
 
-  static const String getFrequentMessagesHttp =
-      'https://proyecto.codigoi.com.ar/appenia/mensajesfrecuentes.json';
 
   static const String mainGroup = '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar';
 
@@ -51,7 +48,7 @@ class Matrix extends StatefulWidget {
   ];
 
   //ENIA VERSION
-  static const String versionENIA = 'Versión 1.7.2';
+  static const String versionENIA = 'Versión 1.8.0';
 
   final Widget child;
 
@@ -81,9 +78,6 @@ class MatrixState extends State<Matrix> {
 
   String activeRoomId;
   Client client;
-
-  EniaClient clientEnia = EniaClient();
-
   String jitsiInstance = 'https://meet.jit.si/';
 
   StreamSubscription<html.Event> onBlurSub;
@@ -196,7 +190,6 @@ class MatrixState extends State<Matrix> {
       client = widget.client;
       client.connect();
     }
-    _initEniaConfig();
     if (store != null) {
       store
           .getItem('chat.fluffy.jitsi_instance')
@@ -228,12 +221,6 @@ class MatrixState extends State<Matrix> {
       });
     }
 
-/*         // Get the frequent messages for Plan ENIA
-    var frequentMessagesFromApi = await client.getFrequentMessagesInfo(Matrix.getFrequentMessagesHttp);
-        
-
-    // Store the frequent messages for Plan ENIA in Local Storage
-    store.setItem('frequentMessagesInfo', jsonEncode(frequentMessagesFromApi)); */
     super.initState();
   }
 
@@ -251,10 +238,7 @@ class MatrixState extends State<Matrix> {
     await storage.deleteItem(widget.clientName);
   }
 
-  void _initEniaConfig() async {
-    // Get the frequent messages for Plan ENIA
-    await clientEnia.getFrequentMessagesInfo(Matrix.getFrequentMessagesHttp);
-  }
+
 
   void _initWithStore() async {
     var initLoginState = client.onLoginStateChanged.stream.first;

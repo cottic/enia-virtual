@@ -34,17 +34,21 @@ class PieChartState extends State<PieChartWidget> {
 
     dataLeng = pieChartInfo.pieChartSections.length;
 
-    for (var pieChartSection in pieChartInfo.pieChartSections) {
-      final title = pieChartSection.title;
-      final value = pieChartSection.value;
-      final color = pieChartSection.color;
+    if (indicators.isEmpty) {
+      pieChartInfo = null;
+    } else {
+      for (var pieChartSection in pieChartInfo.pieChartSections) {
+        final title = pieChartSection.title;
+        final value = pieChartSection.value;
+        final color = pieChartSection.color;
 
-      final pieChartSectionWidget = PieChartSectionData(
-        color: HexColor(color),
-        value: value,
-        title: title,
-      );
-      pieDataList.add(pieChartSectionWidget);
+        final pieChartSectionWidget = PieChartSectionData(
+          color: HexColor(color),
+          value: value,
+          title: title,
+        );
+        pieDataList.add(pieChartSectionWidget);
+      }
     }
     return pieChartInfo;
   }
@@ -54,8 +58,12 @@ class PieChartState extends State<PieChartWidget> {
       dataLeng,
       (i) {
         final isTouched = i == touchedIndex;
+        // ignore: omit_local_variable_types
         final double fontSize = isTouched ? 18 : 16;
+        // if you dont declare, it fails
+        // ignore: omit_local_variable_types
         final double radius = isTouched ? 96 : 90;
+        // if you dont declare, it fails
         switch (i) {
           case 0:
             return PieChartSectionData(
@@ -206,7 +214,6 @@ class PieChartState extends State<PieChartWidget> {
     );
   }
 
-//TODO: probar reemplazar switch por FOR
   /*   List<PieChartSectionData> showingSections() {
 
 
@@ -300,7 +307,7 @@ class PieChartState extends State<PieChartWidget> {
                 );
               } else {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: Text(L10n.of(context).noInfoAvailable),
                 );
               }
             }

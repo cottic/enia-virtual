@@ -21,23 +21,23 @@ import 'models/bar_chart_model.dart';
 import 'models/drop_down_item_model.dart';
 import 'widgets/filter_stats_widget.dart';
 
-class StatsEniaMenu01View extends StatelessWidget {
+class StatsEniaMenu04View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptivePageLayout(
       primaryPage: FocusPage.SECOND,
       firstScaffold: DashboardMainMenu(),
-      secondScaffold: StatsEniaMenu01(),
+      secondScaffold: StatsEniaMenu04(),
     );
   }
 }
 
-class StatsEniaMenu01 extends StatefulWidget {
+class StatsEniaMenu04 extends StatefulWidget {
   @override
-  _StatsEniaMenu01State createState() => _StatsEniaMenu01State();
+  _StatsEniaMenu04State createState() => _StatsEniaMenu04State();
 }
 
-class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
+class _StatsEniaMenu04State extends State<StatsEniaMenu04> {
   Board board = Board();
 
   Chart cardChart0 = Chart();
@@ -75,15 +75,15 @@ class _StatsEniaMenu01State extends State<StatsEniaMenu01> {
 
     var dashboard = await Dashboard.fromJson(appSettingsMap);
 
-    board = dashboard.boards[0];
-    cardChart0 = dashboard.boards[0].charts[0];
-    cardChart1 = dashboard.boards[0].charts[1];
-    cardChart2 = dashboard.boards[0].charts[2];
-    cardChart3 = dashboard.boards[0].charts[3];
-    barChart = dashboard.boards[0].charts[4];
-    pieSingleChart = dashboard.boards[0].charts[5];
-    pieChart = dashboard.boards[0].charts[6];
-    lineChart = dashboard.boards[0].charts[7];
+    board = dashboard.boards[3];
+    cardChart0 = dashboard.boards[3].charts[0];
+    cardChart1 = dashboard.boards[3].charts[1];
+    cardChart2 = dashboard.boards[3].charts[2];
+    cardChart3 = dashboard.boards[3].charts[3];
+    barChart = dashboard.boards[3].charts[4];
+    pieSingleChart = dashboard.boards[3].charts[5];
+    pieChart = dashboard.boards[3].charts[6];
+    lineChart = dashboard.boards[3].charts[7];
 
     return board;
   }

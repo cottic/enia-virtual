@@ -37,12 +37,13 @@ class _LineChartWidgetState extends State<LineChartWidget> {
 
     indicators = lineChartInfo.indicatorsList;
 
-    if (lineChartInfo.lineBarsData != null &&
-        lineChartInfo.maxX > 1) {
+    if (lineChartInfo.lineBarsData != null && lineChartInfo.maxX > 1) {
       for (var lineBarsData in lineChartInfo.lineBarsData) {
         final isCurved = lineBarsData.isCurved;
         final color = lineBarsData.color;
+        // ignore: omit_local_variable_types
         final List<FlSpot> spotsList = [];
+        // if you dont declare, it fails
 
         for (var i = 0; i < lineBarsData.spots.length; i++) {
           final spotsItems = lineBarsData.spots;
@@ -131,7 +132,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
                 );
               } else {
                 return Center(
-                  child: Text('No hay informacion disponible'),
+                  child: Text(L10n.of(context).noInfoAvailable),
                 );
               }
             }
@@ -190,9 +191,9 @@ class _LineChartWidgetState extends State<LineChartWidget> {
           getTextStyles: (value) => bottomTitlesChart,
           margin: 10,
           rotateAngle: 45,
-          getTitles: (value) {
+          getTitles: (double value) {
             for (var i = 0; i < lineChartInfo.listTitlesX.length; i++) {
-              return lineChartInfo.listTitlesX[i];
+              return lineChartInfo.listTitlesX[value.toInt()];
             }
             return '';
           },

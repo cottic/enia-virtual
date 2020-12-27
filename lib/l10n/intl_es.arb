@@ -1,6 +1,16 @@
 {
   "@@locale": "es",
   "@@last_modified": "2020-09-23 11:46:02.754339",
+  "resolutionIncompatible": "El acceso a las estadisticas de Monitoreo no es compatible con dispotivos móviles o pantallas de baja resolución. Se recomienda la versión web en https://plan-enia.web.app",
+  "@resolutionIncompatible": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInfoAvailable": "No hay informacion disponible",
+  "@noInfoAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
   "frequentMessages": "Mensajes Frecuentes",
   "@frequentMessages": {
     "type": "text",
@@ -53,6 +63,11 @@
   },
   "statsTitle": "Estadisticas",
   "@statsTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mapsTitle": "Mapas",
+  "@mapsTitle": {
     "type": "text",
     "placeholders": {}
   },
