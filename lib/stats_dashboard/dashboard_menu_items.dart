@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:fluffychat/stats_dashboard/dashboard_01.dart';
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/views/chat_list.dart';
 
@@ -11,6 +10,8 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'models/app_settings_model.dart';
 import 'widgets/dashboard_menu_item_widget.dart';
+import 'dashboard_00.dart';
+import 'dashboard_01.dart';
 import 'dashboard_02.dart';
 import 'dashboard_03.dart';
 import 'dashboard_04.dart';
@@ -20,6 +21,7 @@ import 'dashboard_07.dart';
 import 'dashboard_08.dart';
 import 'dashboard_09.dart';
 import 'dashboard_10.dart';
+import 'dashboard_11.dart';
 
 class DashboardMainMenu extends StatefulWidget {
   @override
@@ -129,70 +131,84 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                                     title: dashboard.boards[0].name,
                                     subTitle: dashboard.boards[0].description,
                                     onTap: () => _drawerTapAction(
-                                      StatsEniaMenu01View(),
+                                      StatsEniaMenu00View(),
                                     ),
                                   ),
                                   DashboardMenuItem(
                                     title: dashboard.boards[1].name,
                                     subTitle: dashboard.boards[1].description,
                                     onTap: () => _drawerTapAction(
-                                      StatsEniaMenu02View(),
+                                      StatsEniaMenu01View(),
                                     ),
                                   ),
                                   DashboardMenuItem(
                                     title: dashboard.boards[2].name,
                                     subTitle: dashboard.boards[2].description,
                                     onTap: () => _drawerTapAction(
-                                      StatsEniaMenu03View(),
+                                      StatsEniaMenu02View(),
                                     ),
                                   ),
                                   DashboardMenuItem(
                                     title: dashboard.boards[3].name,
                                     subTitle: dashboard.boards[3].description,
                                     onTap: () => _drawerTapAction(
-                                      StatsEniaMenu04View(),
+                                      StatsEniaMenu03View(),
                                     ),
                                   ),
                                   DashboardMenuItem(
                                     title: dashboard.boards[4].name,
                                     subTitle: dashboard.boards[4].description,
                                     onTap: () => _drawerTapAction(
-                                      StatsEniaMenu05View(),
+                                      StatsEniaMenu04View(),
                                     ),
                                   ),
                                   DashboardMenuItem(
                                     title: dashboard.boards[5].name,
                                     subTitle: dashboard.boards[5].description,
                                     onTap: () => _drawerTapAction(
-                                      StatsEniaMenu06View(),
+                                      StatsEniaMenu05View(),
                                     ),
                                   ),
                                   DashboardMenuItem(
                                     title: dashboard.boards[6].name,
                                     subTitle: dashboard.boards[6].description,
                                     onTap: () => _drawerTapAction(
-                                      StatsEniaMenu07View(),
+                                      StatsEniaMenu06View(),
                                     ),
                                   ),
                                   DashboardMenuItem(
                                     title: dashboard.boards[7].name,
                                     subTitle: dashboard.boards[7].description,
                                     onTap: () => _drawerTapAction(
-                                      StatsEniaMenu08View(),
+                                      StatsEniaMenu07View(),
                                     ),
                                   ),
                                   DashboardMenuItem(
                                     title: dashboard.boards[8].name,
                                     subTitle: dashboard.boards[8].description,
                                     onTap: () => _drawerTapAction(
-                                      StatsEniaMenu09View(),
+                                      StatsEniaMenu08View(),
                                     ),
                                   ),
                                   DashboardMenuItem(
                                     title: dashboard.boards[9].name,
                                     subTitle: dashboard.boards[9].description,
                                     onTap: () => _drawerTapAction(
+                                      StatsEniaMenu09View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[10].name,
+                                    subTitle: dashboard.boards[10].description,
+                                    onTap: () => _drawerTapAction(
                                       StatsEniaMenu10View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[11].name,
+                                    subTitle: dashboard.boards[11].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu11View(),
                                     ),
                                   ),
                                 ],
@@ -200,7 +216,8 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                             )
                           : Expanded(
                               child: Center(
-                                  child: Text(L10n.of(context).resolutionIncompatible)),
+                                  child: Text(
+                                      L10n.of(context).resolutionIncompatible)),
                             ),
                       FlatButton.icon(
                         padding: EdgeInsets.all(20),
