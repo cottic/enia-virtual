@@ -129,7 +129,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               subtitle: Text(
                   'El curso del Plan Nacional de Prevención del Embarazo no Intencional en la Adolescencia tiene como propósito fortalecer la implementación del Plan a través de una apuesta al compromiso de la acción intersectorial con un enfoque de derechos y perspectiva de género.'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Curso-virtual-Plan-Enia.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Curso-virtual-Plan-Enia.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),

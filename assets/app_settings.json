@@ -18,9 +18,9 @@
           "media_url": "adolescente"
         },
         {
-          "title": "Estudiantes en ESI",
+          "title": "Estudiantes en ESI 2020",
           "type": "card",
-          "description": "Estudiantes en ESI",
+          "description": "Estudiantes en ESI 2020",
           "api_url": "d0c1",
           "media_url": "adolescente"
         },
@@ -247,7 +247,7 @@
     },
     {
       "name": "SSyR: Distribución de LARCs",
-      "description": "Desde Nación a depósitos de provincias ENIA. Desde depósitos provinciales a servicios de salud y distribución",
+      "description": "Desde Nación a depósitos de provincias ENIA. Desde depósitos provinciales a servicios de salud y distribución. Dispensa de LARCs total provincial",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -306,8 +306,8 @@
       ]
     },
     {
-      "name": "ESI: Estudiantes en actividades ESI-ENIA",
-      "description": "Estudianes que realizaron actividades de la cartilla ESI-ENIA",
+      "name": "ESI: Estudiantes en actividades ESI-ENIA 2020",
+      "description": "Estudiantes que realizaron actividades de la cartilla ESI-ENIA",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -412,7 +412,7 @@
           "api_url": "d6c5"
         },
         {
-          "title": "scuelas por cantidad capacitades",
+          "title": "Escuelas por cantidad capacitades",
           "type": "pie",
           "description": "Escuelas por cantidad de docentes capacitades: 1, 2, 3, 4 y 5+",
           "api_url": "d6c6"

@@ -139,7 +139,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Plan Nacional de Prevención del Embarazo no Intencional en la Adolescencia - 2020'),
               subtitle: Text('Año 2020'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Presentacion-base-ENIA-27-09-2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Presentacion-base-ENIA-27-09-2020.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -147,14 +147,14 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Plan Nacional de Prevención del Embarazo no Intencional en la Adolescencia - 2017/2019'),
               subtitle: Text('Año 2017/2019'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/documento_oficial_plan_2019.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/documento_oficial_plan_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Implementación del Plan Nacional ENIA'),
               subtitle: Text('Documento técnico Nº 2 / Julio 2018'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/implementacion_del_plan_nacional_enia_documento_tecnico_ndeg2_-_julio_2018_-_modalidad_de_intervencion_y_dispositivos.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/implementacion_del_plan_nacional_enia_documento_tecnico_ndeg2_-_julio_2018_-_modalidad_de_intervencion_y_dispositivos.pdf'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -166,21 +166,21 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                 ),
               ),
             ),
-            ListTile(
+/*             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text(
                   'Catálogo de documentos Plan Nacional Prevención del Embarazo no Intencional en la Adolescencia'),
               subtitle: Text('Marzo 2020'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/catalogo_de_documentos_del_plan_enia_0.pdf'),
-            ),
+                  'http://www.codigoi.com.ar/uploads/2020/12/catalogo_de_documentos_del_plan_enia_0.pdf'),
+            ), */
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text(
                   'Abusos sexuales y embarazo forzado hacia niñas, niños y adolescentes Argentina, América Latina y el Caribe'),
               subtitle: Text('Autoras: Silvia Chejter y Valeria Isla'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/abusos_sexuales_y_embarazo_forzado_hacia_ninas_ninos_y_adolescentes.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/abusos_sexuales_y_embarazo_forzado_hacia_ninas_ninos_y_adolescentes.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -189,14 +189,14 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               subtitle: Text(
                   'Lineamientos para su abordaje interinstitucional. Anexo'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/abusos_sexuales_y_embarazo_forzado._lineamientos._anexo.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/abusos_sexuales_y_embarazo_forzado._lineamientos._anexo.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('El Plan ENIA y la perspectiva de la discapacidad'),
               subtitle: Text('Documento técnico Nº 3 - Marzo 2019'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/el_plan_enia_y_la_perspectiva_de_la_discapacidad._documento_tecnico_no_3_-_marzo_2019.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/el_plan_enia_y_la_perspectiva_de_la_discapacidad._documento_tecnico_no_3_-_marzo_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -204,7 +204,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Las obstétricas en la salud sexual y reproductiva. Un agente estratégico'),
               subtitle: Text('Documento técnico Nº 4 - Marzo 2019'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/las_obstetricas_en_la_salud_sexual_y_reproductiva._un_agente_estrategico._documento_tecnico_no_4_-_marzo_2019.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/las_obstetricas_en_la_salud_sexual_y_reproductiva._un_agente_estrategico._documento_tecnico_no_4_-_marzo_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -212,7 +212,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'El embarazo y la maternidad en la adolescencia en la Argentina'),
               subtitle: Text('Documento técnico Nº 5 - Mayo 2019'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/el_embarazo_y_la_maternidad_en_la_adolescencia_en_la_argentina._documento_tecnico_no_5_-_mayo_2019.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/el_embarazo_y_la_maternidad_en_la_adolescencia_en_la_argentina._documento_tecnico_no_5_-_mayo_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -220,14 +220,14 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'A cceso a la justicia: abusos sexualesy embarazos forzados en niñasy adolescentes menores de 15 años'),
               subtitle: Text('Documento técnico Nº 6 - Noviembre 2019'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/acceso_a_la_justicia._abusos_sexuales_y_embarazos_forzados_en_menores_de_15._documento_tecnico_ndeg_6_-_noviembre_2019.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/acceso_a_la_justicia._abusos_sexuales_y_embarazos_forzados_en_menores_de_15._documento_tecnico_ndeg_6_-_noviembre_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Sistema de Monitoreo Plan ENIA'),
               subtitle: Text('Documento técnico Nº 7 - Noviembre 2019'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/sistema_de_monitoreo_plan_enia._documento_tecnico_no_7_-_noviembre_2019.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/sistema_de_monitoreo_plan_enia._documento_tecnico_no_7_-_noviembre_2019.pdf'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -246,7 +246,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               subtitle: Text(
                   'Hoja de ruta. Herramientas para orientar el trabajo de los equipos de salud.'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/atencion-embarazo-adolescente-21-9-2020_1.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/atencion-embarazo-adolescente-21-9-2020_1.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -255,7 +255,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               subtitle: Text(
                   'Anexo: Embarazo de alto riesgo obstétrico y psicosocial'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/anexo-hoja-ruta-atencion-embarazo-adolescente-21-9-2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/anexo-hoja-ruta-atencion-embarazo-adolescente-21-9-2020.pdf'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -272,28 +272,28 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               title: Text('Informe Bimestral de Monitoreo'),
               subtitle: Text('Julio - Agosto 2020'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Plan-Enia-Informe-bimestral-monitoreo-_-julio-agosto-2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Plan-Enia-Informe-bimestral-monitoreo-_-julio-agosto-2020.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Informe Bimestral de Monitoreo'),
               subtitle: Text('Mayo - Junio 2020'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Plan-Enia-Informe-bimestral-monitoreo_mayo-junio-2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Plan-Enia-Informe-bimestral-monitoreo_mayo-junio-2020.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Informe Bimestral de Monitoreo'),
               subtitle: Text('Abril - Mayo 2020'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Plan-Enia-Informe-bimestral-abril-mayo-2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Plan-Enia-Informe-bimestral-abril-mayo-2020.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Plan Enia. Recorrido, logros y desafíos'),
               subtitle: Text('Mayo 2020'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/plan_enia._recorrido_logros_y_desafios_mayo_2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/plan_enia._recorrido_logros_y_desafios_mayo_2020.pdf'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -310,85 +310,85 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               title: Text('Periódico'),
               subtitle: Text('Diciembre 2020'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-Diciembre-2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-Diciembre-2020.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico'),
+              subtitle: Text('Octubre 2020'),
+              onTap: () => launch(
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-octubre-2020.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico'),
+              subtitle: Text('Septiembre 2020'),
+              onTap: () => launch(
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-septiembre-2020.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico'),
+              subtitle: Text('Agosto 2020'),
+              onTap: () => launch(
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-agosto-2020.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Periódico'),
               subtitle: Text('Julio 2020'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-Julio-2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-Julio-2020.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico'),
+              subtitle: Text('Junio 2020'),
+              onTap: () => launch(
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-junio-2020.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico'),
+              subtitle: Text('Mayo 2020'),
+              onTap: () => launch(
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-mayo-2020.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Periódico'),
               subtitle: Text('Abril 2020'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-abril-2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-abril-2020.pdf'),
             ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Periódico'),
-              subtitle: Text('Agosto 2019'),
-              onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-Agosto-2019.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Periódico'),
-              subtitle: Text('Junio 2019'),
-              onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-Junio-2019.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Periódico'),
-              subtitle: Text('Mayo 2019'),
-              onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-mayo-2019.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Periódico'),
-              subtitle: Text('Marzo 2019'),
-              onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-marzo-2019.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Periódico'),
-              subtitle: Text('Febrero 2019'),
-              onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-Febrero-2019.pdf'),
-            ),
-            ListTile(
+            /* ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Periódico'),
               subtitle: Text('Enero 2019'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-Enero-2019.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-Enero-2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Periódico'),
               subtitle: Text('Noviembre 2018'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-Noviembre-2018.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-Noviembre-2018.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Periódico'),
               subtitle: Text('Octubre 2018'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-Octubre-2018.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-Octubre-2018.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Periódico'),
               subtitle: Text('Septiembre 2018'),
               onTap: () => launch(
-                  'http://enia.codigoi.com.ar/wp-content/uploads/2020/12/Periodico-Septiembre-2018.pdf'),
-            ),
+                  'http://www.codigoi.com.ar/uploads/2020/12/Periodico-Septiembre-2018.pdf'),
+            ), */
           ],
         ),
       ),
