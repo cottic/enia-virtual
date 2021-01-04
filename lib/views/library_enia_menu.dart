@@ -138,21 +138,21 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
                   'El Embarazo No Intencional en la Adolescencia - 	Contenidos de Educación Sexual Integral '),
               subtitle: Text('Propuestas para el aula - Nivel Secundario'),
               onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/el_embarazo_no_intencional_en_la_adolescencia.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2021/01/cuadernillo_esi_para_educacion_secundaria_i.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Cuadernillo ESI para Educación Secundaria I'),
               subtitle: Text('Contenidos y propuestas para el aula'),
               onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_i.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2021/01/cuadernillo_esi_para_educacion_secundaria_ii.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Cuadernillo ESI para Educación Secundaria II '),
               subtitle: Text('Contenidos y propuestas para el aula'),
               onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_ii.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2021/01/el_embarazo_no_intencional_en_la_adolescencia.pdf'),
             ),
             Divider(thickness: 1),
 /*             ListTile(
@@ -204,7 +204,7 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
               subtitle: Text(
                   'Hoja de ruta. Herramientas para orientar el trabajo de los equipos de salud.'),
               onTap: () => launch(
-                  'http://www.codigoi.com.ar/wp-content/uploads/2020/12/atencion-embarazo-adolescente-21-9-2020.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/atencion-embarazo-adolescente-21-9-2020.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -213,7 +213,7 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
               subtitle: Text(
                   'Acceso autónomo a la atención en salud integral, sexual y reproductiva'),
               onTap: () => launch(
-                  'http://www.codigoi.com.ar/wp-content/uploads/2020/12/derechos_personalisimos_de_ninas_ninos_y_adolescentes.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/derechos_personalisimos_de_ninas_ninos_y_adolescentes.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -221,7 +221,7 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
                   'Guía sobre derechos de adolescentes para el acceso al sistema de salud'),
               subtitle: Text('Salud + Adolescencia'),
               onTap: () => launch(
-                  'http://www.codigoi.com.ar/wp-content/uploads/2020/12/guia_sobre_derechos_de_adolescentes_para_el_acceso_al_sistema_de_salud.pdf'),
+                  'http://www.codigoi.com.ar/uploads/2020/12/guia_sobre_derechos_de_adolescentes_para_el_acceso_al_sistema_de_salud.pdf'),
             ),
             Divider(thickness: 1),
             ListTile(

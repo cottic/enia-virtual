@@ -648,9 +648,12 @@ class _ChatListState extends State<ChatList> {
                                                         .toLowerCase() ??
                                                     '')));
 
+                                    var mainGroupListSearch = null;
                                     //This allows to search in listGrupoENia
-                                    var mainGroupListSearch =
-                                        List<User>.from(mainGroupList);
+                                    if (mainGroupList != null) {
+                                      mainGroupListSearch =
+                                          List<User>.from(mainGroupList);
+                                    }
 
                                     if (mainGroupListSearch != null &&
                                         mainGroupListSearch.isNotEmpty) {
@@ -714,67 +717,69 @@ class _ChatListState extends State<ChatList> {
                                         itemCount: totalCount,
                                         itemBuilder:
                                             (BuildContext context, int i) {
-                                          if (i == 0) {
-                                            return Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                AnimatedContainer(
-                                                  duration: Duration(
-                                                      milliseconds: 300),
-                                                  height: 78,
-                                                  child: ListView.builder(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    itemCount:
-                                                        mainGroupListSearch
-                                                            .length,
-                                                    itemBuilder:
-                                                        (BuildContext context,
-                                                            int i) {
-                                                      if (i == 0) {
-                                                        return Row(
-                                                          children: <Widget>[
-                                                            searchMode
-                                                                ? Container()
-                                                                : Container(
-                                                                    child: PrivateRoomListItem(
-                                                                        linkMainRoom),
-                                                                  ),
-                                                            searchMode
-                                                                ? Container()
-                                                                : secondLinkRoom ==
-                                                                        null
-                                                                    ? Container()
-                                                                    : Container(
-                                                                        child: PrivateRoomListItem(
-                                                                            secondLinkRoom),
-                                                                      ),
-                                                            searchMode
-                                                                ? Container()
-                                                                : thirdLinkRoom ==
-                                                                        null
-                                                                    ? Container()
-                                                                    : Container(
-                                                                        child: PrivateRoomListItem(
-                                                                            thirdLinkRoom),
-                                                                      ),
-                                                            EniaPresenceListItem(
-                                                                mainGroupListSearch[
-                                                                    i]),
-                                                          ],
-                                                        );
-                                                      } else {
-                                                        return EniaPresenceListItem(
-                                                            mainGroupListSearch[
-                                                                i]);
-                                                      }
-                                                    },
+                                          if (mainGroupListSearch != null) {
+                                            if (i == 0) {
+                                              return Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  AnimatedContainer(
+                                                    duration: Duration(
+                                                        milliseconds: 300),
+                                                    height: 78,
+                                                    child: ListView.builder(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemCount:
+                                                          mainGroupListSearch
+                                                              .length,
+                                                      itemBuilder:
+                                                          (BuildContext context,
+                                                              int i) {
+                                                        if (i == 0) {
+                                                          return Row(
+                                                            children: <Widget>[
+                                                              searchMode
+                                                                  ? Container()
+                                                                  : Container(
+                                                                      child: PrivateRoomListItem(
+                                                                          linkMainRoom),
+                                                                    ),
+                                                              searchMode
+                                                                  ? Container()
+                                                                  : secondLinkRoom ==
+                                                                          null
+                                                                      ? Container()
+                                                                      : Container(
+                                                                          child:
+                                                                              PrivateRoomListItem(secondLinkRoom),
+                                                                        ),
+                                                              searchMode
+                                                                  ? Container()
+                                                                  : thirdLinkRoom ==
+                                                                          null
+                                                                      ? Container()
+                                                                      : Container(
+                                                                          child:
+                                                                              PrivateRoomListItem(thirdLinkRoom),
+                                                                        ),
+                                                              EniaPresenceListItem(
+                                                                  mainGroupListSearch[
+                                                                      i]),
+                                                            ],
+                                                          );
+                                                        } else {
+                                                          return EniaPresenceListItem(
+                                                              mainGroupListSearch[
+                                                                  i]);
+                                                        }
+                                                      },
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            );
+                                                ],
+                                              );
+                                            }
+                                            i--;
                                           }
-                                          i--;
                                           return i < rooms.length
                                               ? ChatListItem(
                                                   rooms[i],
