@@ -648,9 +648,12 @@ class _ChatListState extends State<ChatList> {
                                                         .toLowerCase() ??
                                                     '')));
 
+                                    var mainGroupListSearch = null;
                                     //This allows to search in listGrupoENia
-                                    var mainGroupListSearch =
-                                        List<User>.from(mainGroupList);
+                                    if (mainGroupList != null) {
+                                      mainGroupListSearch =
+                                          List<User>.from(mainGroupList);
+                                    }
 
                                     if (mainGroupListSearch != null &&
                                         mainGroupListSearch.isNotEmpty) {
@@ -781,11 +784,11 @@ class _ChatListState extends State<ChatList> {
                                                       }
                                                     },
                                                   ),
-                                                ),
-                                              ],
-                                            );
+                                                ],
+                                              );
+                                            }
+                                            i--;
                                           }
-                                          i--;
                                           return i < rooms.length
                                               ? ChatListItem(
                                                   rooms[i],
