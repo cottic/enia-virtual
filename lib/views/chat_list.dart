@@ -29,6 +29,7 @@ import '../utils/matrix_file_extension.dart';
 import '../utils/url_launcher.dart';
 import 'archive.dart';
 import 'formation_enia_menu.dart';
+import 'library_enia_menu.dart';
 import 'maps_enia_menu.dart';
 import 'homeserver_picker.dart';
 // import 'new_private_chat.dart';
@@ -446,6 +447,14 @@ class _ChatListState extends State<ChatList> {
                                   title: Text(L10n.of(context).formation),
                                   onTap: () => _drawerTapAction(
                                     FormationEniaMenuView(),
+                                  ),
+                                ),
+                                Divider(height: 1),
+                                ListTile(
+                                  leading: Icon(Icons.library_books),
+                                  title: Text(L10n.of(context).library),
+                                  onTap: () => _drawerTapAction(
+                                    LibraryEniaMenuView(),
                                   ),
                                 ),
                                 Divider(height: 1),

@@ -76,6 +76,11 @@
     "type": "text",
     "placeholders": {}
   },
+  "library": "Biblioteca",
+  "@library": {
+    "type": "text",
+    "placeholders": {}
+  },
   "documents": "Documentos",
   "@documents": {
     "type": "text",

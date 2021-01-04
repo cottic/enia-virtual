@@ -7,23 +7,23 @@ import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-class FormationEniaMenuView extends StatelessWidget {
+class LibraryEniaMenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptivePageLayout(
       primaryPage: FocusPage.SECOND,
       firstScaffold: ChatList(),
-      secondScaffold: FormationEniaMenu(),
+      secondScaffold: LibraryEniaMenu(),
     );
   }
 }
 
-class FormationEniaMenu extends StatefulWidget {
+class LibraryEniaMenu extends StatefulWidget {
   @override
-  _FormationEniaMenuState createState() => _FormationEniaMenuState();
+  _LibraryEniaMenuState createState() => _LibraryEniaMenuState();
 }
 
-class _FormationEniaMenuState extends State<FormationEniaMenu> {
+class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
   Future<dynamic> profileFuture;
   dynamic profile;
   Future<bool> crossSigningCachedFuture;
@@ -102,7 +102,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'Capacitaciones',
+                'Biblioteca',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               /*  background:  
@@ -121,7 +121,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                  'El Plan Enia apuesta al fortalecimiento de las capacidades de quienes lo componen. Podrás acceder aquí a los enlaces de ingreso a las capacitaciones virtuales (en curso); y a los programas y grabaciones de encuentros y webinarios.'),
+                  'Aquí encontrarás materiales para introducir o abordar las distintas temáticas relativas a las acciones de los/as/es agentes del Plan Enia, entre otras: educación sexual integral, salud sexual y salud reproductiva, derechos y salud adolescente. '),
             ),
             ListTile(
               title: Text(
@@ -155,9 +155,9 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
                   'https://www.argentina.gob.ar/sites/default/files/cuadernillo_esi_para_educacion_secundaria_ii.pdf'),
             ),
             Divider(thickness: 1),
-            ListTile(
+/*             ListTile(
               title: Text(
-                'Salud sexual y reproductiva',
+                'Salud Sexual y Salud Reproductiva',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -187,10 +187,10 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               onTap: () => launch(
                   'https://www.youtube.com/watch?v=Kb_FDhmV8Io&feature=youtu.be'),
             ),
-            Divider(thickness: 1),
+            Divider(thickness: 1), */
             ListTile(
               title: Text(
-                'Asesorías en las escuelas',
+                'Adolescencias, derechos y salud',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -199,23 +199,34 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Asesorías en Salud Integral '),
-              subtitle: Text('Estrategias y acciones'),
+              title: Text(
+                  'Atención de niñas y adolescentes menores de 15 años embarazadas'),
+              subtitle: Text(
+                  'Hoja de ruta. Herramientas para orientar el trabajo de los equipos de salud.'),
               onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/plan_enia_-_asesorias_en_salud_integral_en_las_escuelas_secundarias.pdf'),
+                  'http://www.codigoi.com.ar/wp-content/uploads/2020/12/atencion-embarazo-adolescente-21-9-2020.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
-              title:
-                  Text('Asesorías en Salud Integral para Escuela Secundaria '),
-              subtitle: Text('Lineamientos para la implementación'),
+              title: Text(
+                  'Derechos personalísimos de niñas, niños y adolescentes'),
+              subtitle: Text(
+                  'Acceso autónomo a la atención en salud integral, sexual y reproductiva'),
               onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/plan_enia_-asesorias_en_salud_integral_para_escuela_secundaria-_lineamiento.pdf'),
+                  'http://www.codigoi.com.ar/wp-content/uploads/2020/12/derechos_personalisimos_de_ninas_ninos_y_adolescentes.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Guía sobre derechos de adolescentes para el acceso al sistema de salud'),
+              subtitle: Text('Salud + Adolescencia'),
+              onTap: () => launch(
+                  'http://www.codigoi.com.ar/wp-content/uploads/2020/12/guia_sobre_derechos_de_adolescentes_para_el_acceso_al_sistema_de_salud.pdf'),
             ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                'Derechos',
+                'Prevención del Embarazo Forzado y Abuso Sexual ',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -223,6 +234,23 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               ),
             ),
             ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Abusos sexuales y embarazo forzado hacia niñas, niños y adolescentes Argentina, América Latina y el Caribe'),
+              subtitle: Text('Autoras: Silvia Chejter y Valeria Isla'),
+              onTap: () => launch(
+                  'http://www.codigoi.com.ar/uploads/2020/12/abusos_sexuales_y_embarazo_forzado_hacia_ninas_ninos_y_adolescentes.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Abusos Sexuales y Embarazo forzado en la niñez y adolescencia.'),
+              subtitle: Text(
+                  'Lineamientos para su abordaje interinstitucional. Anexo'),
+              onTap: () => launch(
+                  'http://www.codigoi.com.ar/uploads/2020/12/abusos_sexuales_y_embarazo_forzado._lineamientos._anexo.pdf'),
+            ),
+/*             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text(
                   'Guía sobre derechos de adolescentes para el acceso al sistema de salud '),
@@ -254,7 +282,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               subtitle: Text('Guía práctica para profesionales de la salud'),
               onTap: () => launch(
                   'https://www.argentina.gob.ar/sites/default/files/metodos_anticonceptivos.pdf'),
-            ),
+            ), */
           ],
         ),
       ),
