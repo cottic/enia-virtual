@@ -22,6 +22,9 @@ import 'dashboard_08.dart';
 import 'dashboard_09.dart';
 import 'dashboard_10.dart';
 import 'dashboard_11.dart';
+import 'dashboard_12.dart';
+import 'dashboard_13.dart';
+import 'dashboard_14.dart';
 
 class DashboardMainMenu extends StatefulWidget {
   @override
@@ -209,6 +212,27 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                                     subTitle: dashboard.boards[11].description,
                                     onTap: () => _drawerTapAction(
                                       StatsEniaMenu11View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[12].name,
+                                    subTitle: dashboard.boards[12].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu12View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[13].name,
+                                    subTitle: dashboard.boards[13].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu13View(),
+                                    ),
+                                  ),
+                                  DashboardMenuItem(
+                                    title: dashboard.boards[14].name,
+                                    subTitle: dashboard.boards[14].description,
+                                    onTap: () => _drawerTapAction(
+                                      StatsEniaMenu14View(),
                                     ),
                                   ),
                                 ],

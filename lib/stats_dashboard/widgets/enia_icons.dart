@@ -11,7 +11,7 @@
 ///      fonts:
 ///       - asset: fonts/EniaIcons.ttf
 ///
-/// 
+///
 ///
 import 'package:flutter/widgets.dart';
 
@@ -21,8 +21,42 @@ class EniaIcons {
   static const _kFontFam = 'EniaIcons';
   static const _kFontPkg = null;
 
-  static const IconData ninios = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData diu = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData implante = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData adolescente = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData adolescente =
+      IconData(0x4e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData ninios =
+      IconData(0x42, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData diu =
+      IconData(0x41, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData implante =
+      IconData(0x46, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mujer =
+      IconData(0x43, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mujermas =
+      IconData(0x44, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData adolescente2 =
+      IconData(0x45, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData enia1 =
+      IconData(0x4c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData enia2 =
+      IconData(0x4d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData escuela1 =
+      IconData(0x48, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData escuela2 =
+      IconData(0x49, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData escuelaap =
+      IconData(0x4a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData estudiantesbasico =
+      IconData(0x50, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData estudiantesorientado =
+      IconData(0x51, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData centrocomunitario =
+      IconData(0x49, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData docente =
+      IconData(0x4b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData escuela10 =
+      IconData(0x52, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData estudiante1 =
+      IconData(0x4f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData estudiantesgrupo =
+      IconData(0x53, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

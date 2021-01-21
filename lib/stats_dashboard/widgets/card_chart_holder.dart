@@ -117,6 +117,51 @@ IconData getIcon(String iconSelected) {
     case 'implante':
       return EniaIcons.implante;
       break;
+    case 'enia1':
+      return EniaIcons.enia1;
+      break;
+    case 'enia2':
+      return EniaIcons.enia2;
+      break;
+    case 'mujer':
+      return EniaIcons.mujer;
+      break;
+    case 'mujermas':
+      return EniaIcons.mujermas;
+      break;
+    case 'adolescente2':
+      return EniaIcons.adolescente2;
+      break;
+    case 'escuela1':
+      return EniaIcons.escuela1;
+      break;
+    case 'escuela2':
+      return EniaIcons.escuela2;
+      break;
+    case 'escuelaap':
+      return EniaIcons.escuelaap;
+      break;
+    case 'estudiantesbasico':
+      return EniaIcons.estudiantesbasico;
+      break;
+    case 'estudiantesorientado':
+      return EniaIcons.estudiantesorientado;
+      break;
+    case 'centrocomunitario':
+      return EniaIcons.centrocomunitario;
+      break;
+    case 'docente':
+      return EniaIcons.docente;
+      break;
+    case 'escuela10':
+      return EniaIcons.escuela10;
+      break;
+    case 'estudiante1':
+      return EniaIcons.estudiante1;
+      break;
+    case 'estudiantesgrupo':
+      return EniaIcons.estudiantesgrupo;
+      break;
     default:
       return Icons.local_hospital;
       break;
