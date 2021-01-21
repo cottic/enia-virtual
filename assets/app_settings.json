@@ -15,28 +15,28 @@
           "type": "card",
           "description": "Larcs dispensados",
           "api_url": "d0c0",
-          "media_url": "adolescente"
+          "media_url": "mujer"
         },
         {
           "title": "Estudiantes en ESI 2020",
           "type": "card",
           "description": "Estudiantes en ESI 2020",
           "api_url": "d0c1",
-          "media_url": "adolescente"
+          "media_url": "estudiante"
         },
         {
           "title": "Adolescentes asesorades",
           "type": "card",
           "description": "Adolescentes asesorades",
           "api_url": "d0c2",
-          "media_url": "adolescente"
+          "media_url": "ayuda"
         },
         {
           "title": "Agentes del plan fortalecides",
           "type": "card",
           "description": "Agentes del plan fortalecides",
           "api_url": "d0c3",
-          "media_url": "hospital"
+          "media_url": "enia1"
         },
         {
           "title": "Resultados por jurisdicción",
@@ -76,7 +76,7 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d1c0",
-          "media_url": "adolescente"
+          "media_url": "mujer"
         },
         {
           "title": "Subdérmicos",
@@ -136,7 +136,7 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d2c0",
-          "media_url": "adolescente"
+          "media_url": "mujer"
         },
         {
           "title": "Subdérmicos",
@@ -196,7 +196,7 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d3c0",
-          "media_url": "adolescente"
+          "media_url": "mujer"
         },
         {
           "title": "10 a 14 años",
@@ -217,7 +217,7 @@
           "type": "card",
           "description": "20 años o más",
           "api_url": "d3c3",
-          "media_url": "adolescente"
+          "media_url": "mujermas"
         },
         {
           "title": "Dispensa por grupo y jurisdicción",
@@ -270,7 +270,7 @@
           "type": "card",
           "description": "Dispensados",
           "api_url": "d4c2",
-          "media_url": "adolescente"
+          "media_url": "mujer"
         },
         {
           "title": "Efectores involucrados",
@@ -316,28 +316,28 @@
           "type": "card",
           "description": "Total estudiantes",
           "api_url": "d5c0",
-          "media_url": "adolescente"
+          "media_url": "mujer"
         },
         {
           "title": "En ciclo básico",
           "type": "card",
           "description": "En ciclo básico",
           "api_url": "d5c1",
-          "media_url": "adolescente"
+          "media_url": "estudiantesbasico"
         },
         {
           "title": "En ciclo orientado",
           "type": "card",
           "description": "En ciclo orientado",
           "api_url": "d5c2",
-          "media_url": "adolescente"
+          "media_url": "estudiantesorientado"
         },
         {
           "title": "Escuelas involucradas",
           "type": "card",
           "description": "Escuelas involucradas",
           "api_url": "d5c3",
-          "media_url": "escuela"
+          "media_url": "escuela1"
         },
         {
           "title": "Estudiantes por ciclo y jurisdicción",
@@ -376,28 +376,28 @@
           "type": "card",
           "description": "Docentes capacitades",
           "api_url": "d6c0",
-          "media_url": "medico"
+          "media_url": "docente"
         },
         {
           "title": "Escuelas con AP",
           "type": "card",
           "description": "Escuelas con AP",
           "api_url": "d6c1",
-          "media_url": "medico"
+          "media_url": "escuelaap"
         },
         {
           "title": "Escuelas involucradas",
           "type": "card",
           "description": "Escuelas involucradas",
           "api_url": "d6c2",
-          "media_url": "escuela"
+          "media_url": "escuela1"
         },
         {
           "title": "Escuelas con meta 10%",
           "type": "card",
           "description": "Escuelas con meta 10%",
           "api_url": "d6c3",
-          "media_url": "escuela"
+          "media_url": "escuela10"
         },
         {
           "title": "Docentes capacitades y escuelas involucradas por jurisdicción",
@@ -436,28 +436,28 @@
           "type": "card",
           "description": "En Escuelas",
           "api_url": "d7c0",
-          "media_url": "ayuda"
+          "media_url": "escuela1"
         },
         {
           "title": "En Servicios de Salud",
           "type": "card",
           "description": "En Servicios de Salud",
           "api_url": "d7c1",
-          "media_url": "escuela"
+          "media_url": "hospital"
         },
         {
           "title": "En Espacios comunitarios",
           "type": "card",
           "description": "En Espacios comunitarios",
           "api_url": "d7c2",
-          "media_url": "hospital"
+          "media_url": "centrocomunitario"
         },
         {
           "title": "En modalidad Virtual",
           "type": "card",
           "description": "En modalidad Virtual",
           "api_url": "d7c3",
-          "media_url": "edificio"
+          "media_url": "telefono"
         },
         {
           "title": "Asesorias por tipo de espacio y jurisdicción",
@@ -468,8 +468,8 @@
         {
           "title": "Total de asesorias",
           "type": "pieSingle",
-          "description": "",
-          "api_url": "Suma de todas las asesorias realizadas"
+          "description": "Suma de todas las asesorias realizadas",
+          "api_url": "d7c5"
         },
         {
           "title": "Asesorias por tipo de espacio",
@@ -503,21 +503,21 @@
           "type": "card",
           "description": "% Cobertura de la matrícula",
           "api_url": "d8c1",
-          "media_url": "adolescentes"
+          "media_url": "estudiantesgrupo"
         },
         {
           "title": "% de individuales",
           "type": "card",
           "description": "% de individuales",
           "api_url": "d8c2",
-          "media_url": "ayuda"
+          "media_url": "estudiante1"
         },
         {
           "title": "% de grupales",
           "type": "card",
           "description": "% de grupales",
           "api_url": "d8c3",
-          "media_url": "ayuda"
+          "media_url": "estudiantesgrupo"
         },
         {
           "title": "Adolescentes por tipo de espacio y por jurisdicción",
@@ -546,59 +546,59 @@
       ]
     },
     {
-      "name": "ASIE: Adolescentes por genero autopercibido",
-      "description": "A DEFINIR",
+      "name": "ASIE: Caracterización adolescentes asesorades",
+      "description": "Adolescentes por genero autopercibido, grupo etario y escolarización",
       "template": "normal",
       "filter": true,
       "charts": [
         {
-          "title": "A DEFINIR",
+          "title": "Mujeres",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "Mujeres",
           "api_url": "d9c0",
-          "media_url": "adolescentes"
+          "media_url": "mujer"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Varones",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "Varones",
           "api_url": "d9c1",
           "media_url": "adolescentes"
         },
         {
-          "title": "A DEFINIR",
+          "title": "MAYOR DESPUES DE...",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "MAYOR DESPUES DE...",
           "api_url": "d9c2",
           "media_url": "ayuda"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Otros generos",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "Otros generos",
           "api_url": "d9c3",
           "media_url": "ayuda"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Adolescentes por genero autopercibido, escolarización y por jurisdicción",
           "type": "bar",
-          "description": "",
+          "description": "Adolescentes por genero autopercibido, escolarización y por jurisdicciones provinciales y locales.",
           "api_url": "d9c4"
         },
         {
-          "title": "A DEFINIR",
+          "title": "% Adolescentes por fuera del sistema educativo",
           "type": "pieSingle",
-          "description": "",
+          "description": "Porcentaje de adolescentes asesorades por fuera del sistema educativo",
           "api_url": "d9c5"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Adolescentes por grupo etario",
           "type": "pie",
-          "description": "",
+          "description": "Adolescentes asesorades por grupo etario",
           "api_url": "d9c6"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Evolución mensual de adolescentes por genero autopercibido y escolarización",
           "type": "line",
           "description": "",
           "api_url": "d9c7"
@@ -606,59 +606,59 @@
       ]
     },
     {
-      "name": "ASIE: Adolescentes por grupo etario",
-      "description": "A DEFINIR",
+      "name": "ASIE: Motivos de asesoramiento",
+      "description": "Motivos de asesoramiento frecuentes",
       "template": "normal",
       "filter": true,
       "charts": [
         {
-          "title": "A DEFINIR",
+          "title": "% por Anticonpeción",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "% por Anticonpeción",
           "api_url": "d10c0",
           "media_url": "adolescentes"
         },
         {
-          "title": "A DEFINIR",
+          "title": "% mujeres por Anticoncepción",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "% mujeres por Anticoncepción",
           "api_url": "d10c1",
           "media_url": "adolescentes"
         },
         {
-          "title": "A DEFINIR",
+          "title": "% varones por Anticoncepción",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "% varones por Anticoncepción",
           "api_url": "d10c2",
           "media_url": "ayuda"
         },
         {
-          "title": "A DEFINIR",
+          "title": "% otres por Anticoncepción",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "% otres por Anticoncepción",
           "api_url": "d10c3",
           "media_url": "ayuda"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Motivos de asesoramiento",
           "type": "bar",
-          "description": "",
+          "description": "Motivos de asesoramiento",
           "api_url": "d10c4"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Aseramientos que demandan pronta intervención",
           "type": "pieSingle",
-          "description": "",
+          "description": "Porcentaje de adolescentes asesorades por fuera del sistema educativo",
           "api_url": "d10c5"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Pronta intervencion",
           "type": "pie",
-          "description": "",
+          "description": "Motivos de asesoramiento que demandan pronta intervencion",
           "api_url": "d10c6"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Evolución mensual de los principales motivos de asesoramiento",
           "type": "line",
           "description": "",
           "api_url": "d10c7"
@@ -666,62 +666,242 @@
       ]
     },
     {
-      "name": "ASIE: Motivos de asesoramiento",
-      "description": "A DEFINIR",
+      "name": "DBC: Dispositivos de asesorias",
+      "description": "Dispositvos de Asesorias en Salud Integral en Escuelas Secundarias",
       "template": "normal",
       "filter": true,
       "charts": [
         {
-          "title": "A DEFINIR",
+          "title": "En Escuelas",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "En Escuelas",
           "api_url": "d11c0",
-          "media_url": "adolescentes"
+          "media_url": "escuela1"
         },
         {
-          "title": "A DEFINIR",
+          "title": "En Servicios de Salud",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "En Servicios de Salud",
           "api_url": "d11c1",
-          "media_url": "adolescentes"
+          "media_url": "hospital"
         },
         {
-          "title": "A DEFINIR",
+          "title": "En Espacios comunitarios",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "En Espacios comunitarios",
           "api_url": "d11c2",
-          "media_url": "ayuda"
+          "media_url": "centrocomunitario"
         },
         {
-          "title": "A DEFINIR",
+          "title": "En modalidad Virtual",
           "type": "card",
-          "description": "A DEFINIR",
+          "description": "En modalidad Virtual",
           "api_url": "d11c3",
-          "media_url": "ayuda"
+          "media_url": "telefono"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Asesorias por tipo de espacio y jurisdicción",
           "type": "bar",
-          "description": "",
+          "description": "Asesorias por tipo de espacio y por jurisdicciones provinciales y locales.",
           "api_url": "d11c4"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Total de asesorias",
           "type": "pieSingle",
-          "description": "",
+          "description": "Suma de todas las asesorias realizadas",
           "api_url": "d11c5"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Asesorias por tipo de espacio",
           "type": "pie",
           "description": "",
           "api_url": "d11c6"
         },
         {
-          "title": "A DEFINIR",
+          "title": "Evolución mensual de asesorias por tipo de espacio",
           "type": "line",
           "description": "",
           "api_url": "d11c7"
+        }
+      ]
+    },
+    {
+      "name": "DBC: Adolescentes asesorades",
+      "description": "Adolescentes asesorades  en dispositivos de Salud Integral en Escuelas Secundarias",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "Adolescentes asesorades",
+          "type": "card",
+          "description": "Adolescentes asesorades",
+          "api_url": "d12c0",
+          "media_url": "adolescentes"
+        },
+        {
+          "title": "% Cobertura de la matrícula",
+          "type": "card",
+          "description": "% Cobertura de la matrícula",
+          "api_url": "d12c1",
+          "media_url": "estudiantesgrupo"
+        },
+        {
+          "title": "% de individuales",
+          "type": "card",
+          "description": "% de individuales",
+          "api_url": "d12c2",
+          "media_url": "estudiante1"
+        },
+        {
+          "title": "% de grupales",
+          "type": "card",
+          "description": "% de grupales",
+          "api_url": "d12c3",
+          "media_url": "estudiantesgrupo"
+        },
+        {
+          "title": "Adolescentes por tipo de espacio y por jurisdicción",
+          "type": "bar",
+          "description": "Adolescentes por tipo de espacio y por jurisdicciones provinciales y locales.",
+          "api_url": "d12c4"
+        },
+        {
+          "title": "% Adolescentes refenciades",
+          "type": "pieSingle",
+          "description": "Porcentaje de adolescentes referenciades sobre la matrícula",
+          "api_url": "d12c5"
+        },
+        {
+          "title": "Adolescentes por tipo de espacio",
+          "type": "pie",
+          "description": "",
+          "api_url": "d12c6"
+        },
+        {
+          "title": "Evolución mensual de adolescentes por tipo espacio",
+          "type": "line",
+          "description": "",
+          "api_url": "d12c7"
+        }
+      ]
+    },
+    {
+      "name": "DBC: Caracterización adolescentes asesorades",
+      "description": "Adolescentes por genero autopercibido, grupo etario y escolarización",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "Mujeres",
+          "type": "card",
+          "description": "Mujeres",
+          "api_url": "d13c0",
+          "media_url": "mujer"
+        },
+        {
+          "title": "Varones",
+          "type": "card",
+          "description": "Varones",
+          "api_url": "d13c1",
+          "media_url": "adolescentes"
+        },
+        {
+          "title": "MAYOR DESPUES DE...",
+          "type": "card",
+          "description": "MAYOR DESPUES DE...",
+          "api_url": "d13c2",
+          "media_url": "ayuda"
+        },
+        {
+          "title": "Otros generos",
+          "type": "card",
+          "description": "Otros generos",
+          "api_url": "d13c3",
+          "media_url": "ayuda"
+        },
+        {
+          "title": "Adolescentes por genero autopercibido, escolarización y por jurisdicción",
+          "type": "bar",
+          "description": "Adolescentes por genero autopercibido, escolarización y por jurisdicciones provinciales y locales.",
+          "api_url": "d13c4"
+        },
+        {
+          "title": "% Adolescentes por fuera del sistema educativo",
+          "type": "pieSingle",
+          "description": "Porcentaje de adolescentes asesorades por fuera del sistema educativo",
+          "api_url": "d13c5"
+        },
+        {
+          "title": "Adolescentes por grupo etario",
+          "type": "pie",
+          "description": "Adolescentes asesorades por grupo etario",
+          "api_url": "d13c6"
+        },
+        {
+          "title": "Evolución mensual de adolescentes por genero autopercibido y escolarización",
+          "type": "line",
+          "description": "",
+          "api_url": "d13c7"
+        }
+      ]
+    },
+    {
+      "name": "DBC: Motivos de asesoramiento",
+      "description": "Motivos de asesoramiento frecuentes",
+      "template": "normal",
+      "filter": true,
+      "charts": [
+        {
+          "title": "% por Anticonpeción",
+          "type": "card",
+          "description": "% por Anticonpeción",
+          "api_url": "d14c0",
+          "media_url": "adolescentes"
+        },
+        {
+          "title": "% mujeres por Anticoncepción",
+          "type": "card",
+          "description": "% mujeres por Anticoncepción",
+          "api_url": "d14c1",
+          "media_url": "adolescentes"
+        },
+        {
+          "title": "% varones por Anticoncepción",
+          "type": "card",
+          "description": "% varones por Anticoncepción",
+          "api_url": "d14c2",
+          "media_url": "ayuda"
+        },
+        {
+          "title": "% otres por Anticoncepción",
+          "type": "card",
+          "description": "% otres por Anticoncepción",
+          "api_url": "d14c3",
+          "media_url": "ayuda"
+        },
+        {
+          "title": "Motivos de asesoramiento",
+          "type": "bar",
+          "description": "Motivos de asesoramiento",
+          "api_url": "d14c4"
+        },
+        {
+          "title": "Aseramientos que demandan pronta intervención",
+          "type": "pieSingle",
+          "description": "Porcentaje de adolescentes asesorades por fuera del sistema educativo",
+          "api_url": "d14c5"
+        },
+        {
+          "title": "Pronta intervencion",
+          "type": "pie",
+          "description": "Motivos de asesoramiento que demandan pronta intervencion",
+          "api_url": "d14c6"
+        },
+        {
+          "title": "Evolución mensual de los principales motivos de asesoramiento",
+          "type": "line",
+          "description": "",
+          "api_url": "d14c7"
         }
       ]
     }
