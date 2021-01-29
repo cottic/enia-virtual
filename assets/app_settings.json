@@ -15,21 +15,21 @@
           "type": "card",
           "description": "Larcs dispensados",
           "api_url": "d0c0",
-          "media_url": "mujer"
+          "media_url": "implante"
         },
         {
           "title": "Estudiantes en ESI 2020",
           "type": "card",
           "description": "Estudiantes en ESI 2020",
           "api_url": "d0c1",
-          "media_url": "estudiante"
+          "media_url": "estudiante1"
         },
         {
           "title": "Adolescentes asesorades",
           "type": "card",
           "description": "Adolescentes asesorades",
           "api_url": "d0c2",
-          "media_url": "ayuda"
+          "media_url": "adolescente"
         },
         {
           "title": "Agentes del plan fortalecides",
@@ -57,7 +57,7 @@
           "api_url": "d0c6"
         },
         {
-          "title": "Evolución trimestral de los resultados",
+          "title": "Evolución mensual de los resultados",
           "type": "line",
           "description": "",
           "api_url": "d0c7"
@@ -76,7 +76,7 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d1c0",
-          "media_url": "mujer"
+          "media_url": "adolescente"
         },
         {
           "title": "Subdérmicos",
@@ -136,7 +136,7 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d2c0",
-          "media_url": "mujer"
+          "media_url": "adolescente"
         },
         {
           "title": "Subdérmicos",
@@ -196,7 +196,7 @@
           "type": "card",
           "description": "Total dispensados",
           "api_url": "d3c0",
-          "media_url": "mujer"
+          "media_url": "implante"
         },
         {
           "title": "10 a 14 años",
@@ -292,7 +292,7 @@
           "api_url": "d4c5"
         },
         {
-          "title": "Distribuidos segun método",
+          "title": "Distribuidos según método",
           "type": "pie",
           "description": "Distribución de LARCs desde Nación según tipo de método LARCs",
           "api_url": "d4c6"
@@ -414,7 +414,7 @@
         {
           "title": "Escuelas por cantidad capacitades",
           "type": "pie",
-          "description": "Escuelas por cantidad de docentes capacitades: 1, 2, 3, 4 y 5+",
+          "description": "Escuelas por cantidad de docentes capacitades: 1, 2, 3, 4, 5 a 9, 10+",
           "api_url": "d6c6"
         },
         {
@@ -496,14 +496,14 @@
           "type": "card",
           "description": "Adolescentes asesorades",
           "api_url": "d8c0",
-          "media_url": "adolescentes"
+          "media_url": "adolescente"
         },
         {
           "title": "% Cobertura de la matrícula",
           "type": "card",
           "description": "% Cobertura de la matrícula",
           "api_url": "d8c1",
-          "media_url": "estudiantesgrupo"
+          "media_url": "escuela1"
         },
         {
           "title": "% de individuales",
@@ -528,7 +528,7 @@
         {
           "title": "% Adolescentes refenciades",
           "type": "pieSingle",
-          "description": "Porcentaje de adolescentes referenciades sobre la matrícula",
+          "description": "Porcentaje de adolescentes referenciades sobre asesorades",
           "api_url": "d8c5"
         },
         {
@@ -563,21 +563,21 @@
           "type": "card",
           "description": "Varones",
           "api_url": "d9c1",
-          "media_url": "adolescentes"
+          "media_url": "hombre"
         },
         {
-          "title": "MAYOR DESPUES DE...",
+          "title": "Varones Trans",
           "type": "card",
-          "description": "MAYOR DESPUES DE...",
+          "description": "Varones Trans",
           "api_url": "d9c2",
-          "media_url": "ayuda"
+          "media_url": "trans"
         },
         {
           "title": "Otros generos",
           "type": "card",
           "description": "Otros generos",
           "api_url": "d9c3",
-          "media_url": "ayuda"
+          "media_url": "otros"
         },
         {
           "title": "Adolescentes por genero autopercibido, escolarización y por jurisdicción",
@@ -586,13 +586,13 @@
           "api_url": "d9c4"
         },
         {
-          "title": "% Adolescentes por fuera del sistema educativo",
+          "title": "% por fuera del sistema educativo",
           "type": "pieSingle",
           "description": "Porcentaje de adolescentes asesorades por fuera del sistema educativo",
           "api_url": "d9c5"
         },
         {
-          "title": "Adolescentes por grupo etario",
+          "title": "por grupo etario",
           "type": "pie",
           "description": "Adolescentes asesorades por grupo etario",
           "api_url": "d9c6"
@@ -616,28 +616,28 @@
           "type": "card",
           "description": "% por Anticonpeción",
           "api_url": "d10c0",
-          "media_url": "adolescentes"
+          "media_url": "anticoncepcion"
         },
         {
           "title": "% mujeres por Anticoncepción",
           "type": "card",
           "description": "% mujeres por Anticoncepción",
           "api_url": "d10c1",
-          "media_url": "adolescentes"
+          "media_url": "mujer"
         },
         {
           "title": "% varones por Anticoncepción",
           "type": "card",
           "description": "% varones por Anticoncepción",
           "api_url": "d10c2",
-          "media_url": "ayuda"
+          "media_url": "hombre"
         },
         {
           "title": "% otres por Anticoncepción",
           "type": "card",
           "description": "% otres por Anticoncepción",
           "api_url": "d10c3",
-          "media_url": "ayuda"
+          "media_url": "otros"
         },
         {
           "title": "Motivos de asesoramiento",
@@ -646,15 +646,15 @@
           "api_url": "d10c4"
         },
         {
-          "title": "Aseramientos que demandan pronta intervención",
+          "title": "Aseramientos para pronta intervención",
           "type": "pieSingle",
-          "description": "Porcentaje de adolescentes asesorades por fuera del sistema educativo",
+          "description": "% Aseramientos que demandan pronta intervención: abuso sexual, intento de suicidio, interrupción del embarazo y violencias",
           "api_url": "d10c5"
         },
         {
-          "title": "Pronta intervencion",
+          "title": "Pronta intervención",
           "type": "pie",
-          "description": "Motivos de asesoramiento que demandan pronta intervencion",
+          "description": "Motivos de asesoramiento que demandan pronta intervención: abuso sexual, intento de suicidio, interrupción del embarazo y violencias",
           "api_url": "d10c6"
         },
         {
@@ -727,7 +727,7 @@
     },
     {
       "name": "DBC: Adolescentes asesorades",
-      "description": "Adolescentes asesorades  en dispositivos de Salud Integral en Escuelas Secundarias",
+      "description": "Adolescentes asesorades en dispositivos de Salud Integral en Escuelas Secundarias",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -743,7 +743,7 @@
           "type": "card",
           "description": "% Cobertura de la matrícula",
           "api_url": "d12c1",
-          "media_url": "estudiantesgrupo"
+          "media_url": "escuela"
         },
         {
           "title": "% de individuales",
@@ -768,7 +768,7 @@
         {
           "title": "% Adolescentes refenciades",
           "type": "pieSingle",
-          "description": "Porcentaje de adolescentes referenciades sobre la matrícula",
+          "description": "Porcentaje de adolescentes referenciades sobre asesorades",
           "api_url": "d12c5"
         },
         {
@@ -803,21 +803,21 @@
           "type": "card",
           "description": "Varones",
           "api_url": "d13c1",
-          "media_url": "adolescentes"
+          "media_url": "hombre"
         },
         {
-          "title": "MAYOR DESPUES DE...",
+          "title": "Varones Trans",
           "type": "card",
-          "description": "MAYOR DESPUES DE...",
+          "description": "Varones Trans",
           "api_url": "d13c2",
-          "media_url": "ayuda"
+          "media_url": "trans"
         },
         {
           "title": "Otros generos",
           "type": "card",
           "description": "Otros generos",
           "api_url": "d13c3",
-          "media_url": "ayuda"
+          "media_url": "otros"
         },
         {
           "title": "Adolescentes por genero autopercibido, escolarización y por jurisdicción",
@@ -856,28 +856,28 @@
           "type": "card",
           "description": "% por Anticonpeción",
           "api_url": "d14c0",
-          "media_url": "adolescentes"
+          "media_url": "anticoncepcion"
         },
         {
           "title": "% mujeres por Anticoncepción",
           "type": "card",
           "description": "% mujeres por Anticoncepción",
           "api_url": "d14c1",
-          "media_url": "adolescentes"
+          "media_url": "mujer"
         },
         {
           "title": "% varones por Anticoncepción",
           "type": "card",
           "description": "% varones por Anticoncepción",
           "api_url": "d14c2",
-          "media_url": "ayuda"
+          "media_url": "hombre"
         },
         {
           "title": "% otres por Anticoncepción",
           "type": "card",
           "description": "% otres por Anticoncepción",
           "api_url": "d14c3",
-          "media_url": "ayuda"
+          "media_url": "otros"
         },
         {
           "title": "Motivos de asesoramiento",

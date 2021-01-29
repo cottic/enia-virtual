@@ -72,6 +72,18 @@ IconData getIcon(String iconSelected) {
     case 'embarazada':
       return Icons.pregnant_woman;
       break;
+    case 'anticoncepcion':
+      return Icons.block;
+      break;
+    case 'hombre':
+      return Icons.accessibility;
+      break;
+    case 'trans':
+      return Icons.title;
+      break;
+    case 'otros':
+      return Icons.panorama_fish_eye;
+      break;
     case 'edificio':
       return Icons.domain;
       break;
