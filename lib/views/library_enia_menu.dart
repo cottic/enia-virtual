@@ -7,23 +7,23 @@ import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-class FormationEniaMenuView extends StatelessWidget {
+class LibraryEniaMenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptivePageLayout(
       primaryPage: FocusPage.SECOND,
       firstScaffold: ChatList(),
-      secondScaffold: FormationEniaMenu(),
+      secondScaffold: LibraryEniaMenu(),
     );
   }
 }
 
-class FormationEniaMenu extends StatefulWidget {
+class LibraryEniaMenu extends StatefulWidget {
   @override
-  _FormationEniaMenuState createState() => _FormationEniaMenuState();
+  _LibraryEniaMenuState createState() => _LibraryEniaMenuState();
 }
 
-class _FormationEniaMenuState extends State<FormationEniaMenu> {
+class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
   Future<dynamic> profileFuture;
   dynamic profile;
   Future<bool> crossSigningCachedFuture;
@@ -102,7 +102,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'Capacitaciones',
+                'Biblioteca',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               /*  background:  
@@ -121,27 +121,12 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                'Un espacio para el fortalecimiento institucional. Todos los enlaces de ingreso: capacitaciones virtuales, webinarios y grabaciones de programas y encuentros de trabajo.',
+                'Materiales para abordar las temáticas relativas al Plan: educación sexual integral, salud sexual y salud reproductiva, derechos y salud adolescente.',
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.description),
-              title: Text('Capacitaciones en curso y en inscripción'),
-              subtitle: Text(''),
-              onTap: () => launch(
-                  'https://docs.google.com/document/d/1xQyxputekLdix4cM6Fu4GDXHyEgOoIeS5bes7llhzQo/edit?usp=sharing'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.description),
-              title: Text('Oferta de propuestas de capacitación'),
-              subtitle: Text(''),
-              onTap: () => launch(
-                  'https://drive.google.com/file/d/1y-hX11hK0Pb5QmYvaE30yRv5oBs83cVr/view?usp=sharing'),
-            ),
-            Divider(thickness: 1),
-            ListTile(
               title: Text(
-                'Registros de las capacitaciones y webinarios realizados',
+                'Educación sexual integral',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -151,11 +136,71 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text(
-                  'Curso del Plan Nacional de Prevención del Embarazo no intencional en la Adolescencia (ENIA)'),
-              subtitle: Text(''),
+                  'El Embarazo No Intencional en la Adolescencia - 	Contenidos de Educación Sexual Integral'),
+              subtitle: Text('Propuestas para el aula - Nivel Secundario'),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1shT3jaWGqRPYrDBIjyHDfzAdADx-RRJ3/view?usp=sharing'),
+                  'https://drive.google.com/file/d/1aPsgjFIlPcETvQ2E-DRu8bhk1Ra86OPl/view?usp=sharing'),
             ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Cuadernillo ESI para Educación Secundaria I'),
+              subtitle: Text('Contenidos y propuestas para el aula'),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1htgQZ1qhL9nipXspXcnXnOUL8Roamh6T/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Cuadernillo ESI para Educación Secundaria II '),
+              subtitle: Text('Contenidos y propuestas para el aula'),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/13tTxQHaEaiqC7ssC9iDZ59HQnqsgfW7k/view?usp=sharing'),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'Salud sexual y reproductiva',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'Adolescencias, derechos y salud',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Protocolo para la atención integral de las personas con derecho a la interrupción legal del embarazo (Actualización 2019) '),
+              subtitle: Text(
+                  'Derechos de las personas y obligaciones del sistema de salud, abordaje del equipo de salud, procedimiento para realizar la interrupción del embarazo y anticoncepción post interrupción del embarazo.'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/protocolo_ile_2019-2a_edicion.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Métodos Anticonceptivos'),
+              subtitle: Text('Guía práctica para profesionales de la salud'),
+              onTap: () => launch(
+                  'https://www.argentina.gob.ar/sites/default/files/metodos_anticonceptivos.pdf'),
+            ),
+            ListTile(
+              title: Text(
+                'Prevención del Embarazo Forzado y del Abuso Sexual contra NNYA',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Divider(thickness: 1),
           ],
         ),
       ),

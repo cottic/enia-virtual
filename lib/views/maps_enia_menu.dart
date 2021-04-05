@@ -102,7 +102,7 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'COLECCIÓN DE MAPAS',
+                'Mapas de monitoreo',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               /*  background:  
@@ -119,6 +119,54 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
         ],
         body: ListView(
           children: <Widget>[
+            ListTile(
+              title: Text(
+                'Mapas para disponibilizar y sistematizar los recursos y acciones del Plan. Una oportunidad para obtener diversas lecturas posibles y una representación sencilla, precisa y actualizada de la información disponible. ',
+              ),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'ABUSO SEXUAL Y EMBARAZO FORZADO EN NIÑAS Y ADOLESCENTES MENORES DE 15 AÑOS',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Dimensión Diagnóstica'),
+              subtitle: Text(
+                  'Presenta indicadores de la problemática de abuso sexual y embarazo forzado. Los datos por cada tipo de indicadores se visualizan por jurisdicción y se analizan en función de la media nacional.'),
+              onTap: () => launch(''),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Dimensión Normativa'),
+              subtitle: Text(
+                  'Se encuentra toda la información normativa relacionada con ASI por provincias y por instituciones involucradas en su abordaje.'),
+              onTap: () => launch(''),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Dimensión institucional'),
+              subtitle: Text(
+                  'Organismos del Estado georeferenciados con datos e información, involucrados en el abordaje de situaciones de abuso sexual y embarazo forzado de niñas y adolescentes.'),
+              onTap: () => launch(''),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'COLECCIÓN DE MAPAS DE MONITOREO',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Divider(thickness: 1),
             ListTile(
               title: Text(
                 'Dispositivo para el fortalecimiento de la oferta en Salud Sexual y Reproductiva',
@@ -202,6 +250,26 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               title: Text(
                 'Dispositivo para el fortalecimiento de la Educación Sexual integral (ESI)',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'Dispositivo de asesorías en Salud Integral en la Adolescencia',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'Dispositivo de asesorías en Salud Integral en la Adolescencia de base comunitaria',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,

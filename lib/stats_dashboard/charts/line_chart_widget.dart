@@ -206,7 +206,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
             if (value == 0) {
               return '0';
             }
-            return '${value.toInt()} LARCs';
+            return '${value.toInt()}';
           },
           interval: lineChartInfo.intervalY,
           margin: 8,
