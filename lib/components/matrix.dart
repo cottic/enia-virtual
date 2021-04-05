@@ -29,7 +29,6 @@ class Matrix extends StatefulWidget {
   // Here you set the Matrix server of the Chat
   static const String defaultHomeserver = 'matrix.codigoi.com.ar';
 
-
   static const String mainGroup = '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar';
 
   //in ENIA is HELP
@@ -48,7 +47,7 @@ class Matrix extends StatefulWidget {
   ];
 
   //ENIA VERSION
-  static const String versionENIA = 'Versión 1.8.0';
+  static const String versionENIA = 'Versión 1.9.0';
 
   final Widget child;
 
@@ -237,8 +236,6 @@ class MatrixState extends State<Matrix> {
     final storage = await getLocalStorage();
     await storage.deleteItem(widget.clientName);
   }
-
-
 
   void _initWithStore() async {
     var initLoginState = client.onLoginStateChanged.stream.first;
