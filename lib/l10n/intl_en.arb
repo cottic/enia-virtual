@@ -1287,7 +1287,7 @@
       "username": {}
     }
   },
-  "searchForAChat": "Search for a chat",
+  "searchForAChat": "Search for a contact or chat",
   "@searchForAChat": {
     "type": "text",
     "placeholders": {}

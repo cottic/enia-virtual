@@ -656,12 +656,21 @@ class _ChatListState extends State<ChatList> {
                                         mainGroupListSearch.isNotEmpty) {
                                       mainGroupListSearch.removeWhere(
                                         (User item) => (searchMode &&
-                                            !item.displayName
-                                                .toString()
-                                                .toLowerCase()
-                                                .contains(searchController.text
-                                                        .toLowerCase() ??
-                                                    '')),
+                                                !item.displayName
+                                                    .toString()
+                                                    .toLowerCase()
+                                                    .contains(searchController
+                                                            .text
+                                                            .toLowerCase() ??
+                                                        '') ||
+                                            searchMode &&
+                                                !item.id
+                                                    .toString()
+                                                    .toLowerCase()
+                                                    .contains(searchController
+                                                            .text
+                                                            .toLowerCase() ??
+                                                        '')),
                                       );
                                     }
 
