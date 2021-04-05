@@ -1103,7 +1103,7 @@ class _ChatState extends State<_Chat> {
                                     child: InputBar(
                                       room: room,
                                       minLines: 1,
-                                      maxLines: kIsWeb ? 1 : 8,
+                                      maxLines: kIsWeb ? 6 : 8,
                                       autofocus: !PlatformInfos.isMobile,
                                       keyboardType: !PlatformInfos.isMobile
                                           ? TextInputType.text
