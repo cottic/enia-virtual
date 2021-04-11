@@ -7,7 +7,7 @@ import 'dart:convert';
 class FrequentMessageDialog extends StatefulWidget {
   final Function onFinished;
 
-  const FrequentMessageDialog({this.onFinished, Key key}) : super(key: key);
+  FrequentMessageDialog({this.onFinished, Key key}) : super(key: key);
 
   @override
   _FrequentMessageDialogState createState() => _FrequentMessageDialogState();
@@ -15,6 +15,8 @@ class FrequentMessageDialog extends StatefulWidget {
 
 class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
   bool error = false;
+  bool get searchMode => searchController.text?.isNotEmpty ?? false;
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +40,11 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
                 );
               case ConnectionState.waiting:
                 return Center(
-                  child:CircularProgressIndicator(),
+                  child: CircularProgressIndicator(),
                 );
               case ConnectionState.active:
                 return Center(
-                  child:CircularProgressIndicator(),
+                  child: CircularProgressIndicator(),
                 );
               case ConnectionState.done:
                 if (snapshot.hasError) {
@@ -62,6 +64,35 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
                             style: Theme.of(context).textTheme.headline6,
                           ),
                         ),
+/*                         Container(
+                          height: 40,
+                          padding: EdgeInsets.only(right: 8),
+                          child: Material(
+                            color: Theme.of(context).secondaryHeaderColor,
+                            borderRadius: BorderRadius.circular(32),
+                            child: TextField(
+                              autocorrect: false,
+                              controller: searchController,
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                    top: 8,
+                                    bottom: 8,
+                                    left: 16,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(32),
+                                  ),
+                                  hintText: L10n.of(context).searchForAChat,
+                                  suffixIcon: IconButton(
+                                    icon: Icon(Icons.backspace),
+                                    onPressed: () => setState(() {
+                                      snapshot.data.retainWhere((element) =>
+                                          element.content.contains('d'));
+                                    }),
+                                  )),
+                            ),
+                          ),
+                        ), */
                         Expanded(
                             child: ListView.builder(
                           itemBuilder: (context, index) {

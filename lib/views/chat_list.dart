@@ -674,6 +674,7 @@ class _ChatListState extends State<ChatList> {
                                       );
                                     }
 
+                                    var e = 0;
                                     if (rooms.isEmpty &&
                                         (!searchMode ||
                                             publicRoomsResponse == null)) {
@@ -700,7 +701,7 @@ class _ChatListState extends State<ChatList> {
                                         (publicRoomsResponse?.chunk?.length ??
                                             0);
                                     final totalCount =
-                                        rooms.length + publicRoomsCount;
+                                        rooms.length + publicRoomsCount + 1;
                                     return ListView.separated(
                                         controller: _scrollController,
                                         separatorBuilder: (BuildContext context,
@@ -723,7 +724,8 @@ class _ChatListState extends State<ChatList> {
                                         itemCount: totalCount,
                                         itemBuilder:
                                             (BuildContext context, int i) {
-                                          if (i == 0) {
+                                          if (e == 0) {
+                                            e = 1;
                                             return Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
