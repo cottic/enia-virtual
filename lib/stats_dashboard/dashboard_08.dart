@@ -146,7 +146,8 @@ class _StatsEniaMenu08State extends State<StatsEniaMenu08> {
                               setState(() {
                                 initialSelected = true;
                                 initialSelectedDate = date;
-                                initialDateFilter = '&desde=${date.year}';
+                                initialDateFilter =
+                                    '&desde=' '${date.month}' '${date.year}';
                               });
                             }
                           });
