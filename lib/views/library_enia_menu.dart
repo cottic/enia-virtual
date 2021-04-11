@@ -156,9 +156,9 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
                   'https://drive.google.com/file/d/13tTxQHaEaiqC7ssC9iDZ59HQnqsgfW7k/view?usp=sharing'),
             ),
             Divider(thickness: 1),
-/*             ListTile(
+            ListTile(
               title: Text(
-                'Salud Sexual y Salud Reproductiva',
+                'Salud sexual y reproductiva',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,

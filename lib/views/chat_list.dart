@@ -784,11 +784,11 @@ class _ChatListState extends State<ChatList> {
                                                       }
                                                     },
                                                   ),
-                                                ],
-                                              );
-                                            }
-                                            i--;
+                                                )
+                                              ],
+                                            );
                                           }
+                                          i--;
                                           return i < rooms.length
                                               ? ChatListItem(
                                                   rooms[i],
