@@ -6,7 +6,7 @@
   "boards": [
     {
       "name": "Reporte de resultados",
-      "description": "Resultados de los dispositivos del Plan ENIA para informar a JGM, PNUD, otros",
+      "description": "Resultados de los dispositivos del Plan ENIA",
       "template": "normal",
       "filter": true,
       "charts": [

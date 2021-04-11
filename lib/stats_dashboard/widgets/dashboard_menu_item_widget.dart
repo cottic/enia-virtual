@@ -10,7 +10,7 @@ class DashboardMenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal:10, vertical: 5),
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: ListTile(
         leading: Icon(
           Icons.bar_chart,
@@ -21,11 +21,12 @@ class DashboardMenuItem extends StatelessWidget {
           title,
           style: Theme.of(context).textTheme.subtitle1.copyWith(
               color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.w600),
+              fontWeight: FontWeight.w600,
+              fontSize: 15),
         ),
         subtitle: Text(
           subTitle,
-          style: Theme.of(context).textTheme.caption,
+          style: Theme.of(context).textTheme.caption.copyWith(fontSize: 10),
         ),
         onTap: onTap,
       ),

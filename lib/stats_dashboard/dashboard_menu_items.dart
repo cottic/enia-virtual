@@ -121,9 +121,9 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                           ? Expanded(
                               child: ListView(
                                 children: [
-                                  SizedBox(height: 10),
+                                  SizedBox(height: 8),
                                   Padding(
-                                    padding: const EdgeInsets.all(20.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: Text(
                                       L10n.of(context).selectDashboard,
                                       style:

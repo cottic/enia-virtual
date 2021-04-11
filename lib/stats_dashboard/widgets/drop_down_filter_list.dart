@@ -12,7 +12,7 @@ final List<DropDownItemsModel> dropdownItems = [
   DropDownItemsModel(19, 'San Martin', false),
   DropDownItemsModel(20, 'Quilmes', false),
 
-  DropDownItemsModel(3, 'CABA', true),
+  // DropDownItemsModel(3, 'CABA', true),
 
   DropDownItemsModel(4, 'CATAMARCA', true),
   DropDownItemsModel(21, 'CATAMARCA Capital', false),
