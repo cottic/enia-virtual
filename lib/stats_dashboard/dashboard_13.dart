@@ -146,8 +146,10 @@ class _StatsEniaMenu13State extends State<StatsEniaMenu13> {
                               setState(() {
                                 initialSelected = true;
                                 initialSelectedDate = date;
-                                initialDateFilter =
-                                    '&desde=' '${date.month}' '${date.year}';
+                                initialDateFilter = '&desde='
+                                    '${date.month}'
+                                    '-'
+                                    '${date.year}';
                               });
                             }
                           });
@@ -166,8 +168,10 @@ class _StatsEniaMenu13State extends State<StatsEniaMenu13> {
                               setState(() {
                                 endSelected = true;
                                 endSelectedDate = date;
-                                endDateFilter =
-                                    '&hasta=' '${date.month}' '${date.year}';
+                                endDateFilter = '&hasta='
+                                    '${date.month}'
+                                    '-'
+                                    '${date.year}';
                               });
                             }
                           });

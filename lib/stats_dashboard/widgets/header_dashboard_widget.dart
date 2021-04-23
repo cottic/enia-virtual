@@ -48,6 +48,7 @@ class HeaderUniqueDashboard extends StatelessWidget {
                 ),
               ),
             ),
+
             /* SizedBox(
               height: 10,
             ), */

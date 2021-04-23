@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/views/chat_list.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -122,6 +123,11 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                               child: ListView(
                                 children: [
                                   SizedBox(height: 8),
+                                  ListTile(
+                                    trailing: Icon(Icons.info_outline_rounded),
+                                    onTap: () => launch(
+                                        'https://docs.google.com/document/d/1jeFmpHlHH47h5sXl3mK0QujMKpBalfjDm0UJFCdn9n0/edit?usp=sharing'),
+                                  ),
                                   Padding(
                                     padding: const EdgeInsets.all(10.0),
                                     child: Text(
