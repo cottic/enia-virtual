@@ -128,7 +128,7 @@ class _EniaMenuState extends State<EniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                  'Enia@virtual ofrece un medio de comunicación para la comunidad del Plan Enia y una modalidad de trabajo con énfasis en el fortalecimiento de las capacidades de sus agentes. Aquí encontrarás espacios para comunicarte con tus compañeras/os/es de las diferentes provincias y departamentos, podrás consultar documentos técnicos para llevar adelante tu tarea, participar en capacitaciones virtuales y hacer consultas a los tableros y mapas para analizar el desempeño del Plan en tu provincia, escuela, servicios de salud o espacio comunitario.'),
+                  'Enia@virtual ofrece un medio de comunicación para la comunidad del Plan Enia y una modalidad de trabajo con énfasis en el fortalecimiento de las capacidades de sus agentes. Aquí encontrarás espacios para comunicarte con tus compañeras/os/es de las diferentes provincias y departamentos, podrás consultar documentos técnicos para llevar adelante tu tarea, participar en capacitaciones virtuales y hacer consultas a los tableros y mapas para analizar el desempeño del Plan en tu provincia, escuela, servicio de salud o espacio comunitario.'),
             ),
             ListTile(
               title: Text(

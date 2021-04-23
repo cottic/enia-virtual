@@ -122,7 +122,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                  'Enia@virtual ofrece un medio de comunicación para la comunidad del Plan Enia y una modalidad de trabajo con énfasis en el fortalecimiento de las capacidades de sus agentes. Aquí encontrarás espacios para comunicarte con tus compañeras/os/es de las diferentes provincias y departamentos, podrás consultar documentos técnicos para llevar adelante tu tarea, participar en capacitaciones virtuales y hacer consultas a los tableros y mapas para analizar el desempeño del Plan en tu provincia, escuela, servicios de salud o espacio comunitario.'),
+                  'Lineamientos e información para una gestión basada en evidencia. Documentos sobre diseño, implementación, monitoreo y evaluación del Plan.'),
             ),
             ListTile(
               title: Text(
@@ -250,6 +250,13 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               subtitle: Text(''),
               onTap: () => launch(
                   'https://drive.google.com/file/d/1cmIP2Y_Rz4yMmYKLr2PF1Rzy2uF88SBG/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.folder),
+              title: Text('Reportes bimestrales en base a secuencias 0800'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/drive/folders/1ZMNssAgPkNmTE75tUgtHGAyf7URTglet?usp=sharing'),
             ),
             Divider(thickness: 1),
             ListTile(

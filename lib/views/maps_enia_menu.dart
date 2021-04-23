@@ -140,21 +140,24 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
               title: Text('Dimensión Diagnóstica'),
               subtitle: Text(
                   'Presenta indicadores de la problemática de abuso sexual y embarazo forzado. Los datos por cada tipo de indicadores se visualizan por jurisdicción y se analizan en función de la media nacional.'),
-              onTap: () => launch(''),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1OklHCaBYixCqCKUneN8SnqNJuUyVYcFY&usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text('Dimensión Normativa'),
               subtitle: Text(
                   'Se encuentra toda la información normativa relacionada con ASI por provincias y por instituciones involucradas en su abordaje.'),
-              onTap: () => launch(''),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1bsuvcx9qF9mP0IVjcEgn84yYOz-mUmnZ&usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text('Dimensión institucional'),
               subtitle: Text(
                   'Organismos del Estado georeferenciados con datos e información, involucrados en el abordaje de situaciones de abuso sexual y embarazo forzado de niñas y adolescentes.'),
-              onTap: () => launch(''),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1pzof-JzbQUF_Q0C5X-FoSZ7Hb6NskR12&usp=sharing'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -246,6 +249,20 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
               onTap: () => launch(
                   'https://google.com/maps/d/u/1/edit?mid=1z41QAfyZ4vzJCr0o3O2WnftwhC2s0h_w&usp=sharing'),
             ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Cantidad de casos de ILE por efector de salud'),
+              subtitle: Text('Casos de ILE por efector de salud'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1qEIXcKfxqNDnfq-AK33Sby7jlaoUAx69&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Embarazos no planificados en menores de 15 años'),
+              subtitle: Text('Embarazos no planificados en menores de 15 años'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=178QBtwVPqB72rQNBtzWrJxNuI8wwcZne&usp=sharing'),
+            ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -255,6 +272,46 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Escuelas bajo Plan y cobertura de escuelas y acompañantes pedagógicos en departamentos y provincias ENIA'),
+              subtitle: Text(
+                  'Escuelas con acompañante pedagógico ESI asignado/a: Provincias ENIA'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/edit?mid=1j_aiEGTrUYoPohEIRRIJzWfcS8sOdLpo&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Escuelas bajo Plan y cobertura de escuelas y acompañantes pedagógicos en departamentos y provincias ENIA'),
+              subtitle: Text(
+                  'Escuelas con acompañante pedagógico ESI asignado/a: Gran Buenos Aires'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1YPi6epqG1zVUKYMJ0C9Wmn-hViznAG48&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Caracterización del/la acompañante pedagógico/a, por escuela, departamentos ENIA'),
+              subtitle: Text('Datos AP por escuela - Departamentos ENIA'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1P10agW-xgdmSXjQ63v6ys66np9kt3kyH&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Matrícula de estudiantes y plantel docente, según ciclo, por departamento y por provincia'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1F2vC5kydQzmWJnsBzB4jDRcw6KdSFD9r&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Cantidad de estudiantes que recibieron actividades ESI-ENIA según provincia y departamento. Acumulado a Octubre 2020. Total Jurisdicciones ENIA'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/edit?mid=1Cn8Fzx6hzBf8Sq7LreC1EJwcqWyxui8q&usp=sharing'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -266,6 +323,34 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
                 ),
               ),
             ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Asesorías DIAJU según localización, por departamento y provincia'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=16iQ9d45yBdIKLbLat4-nW0fFBXVkMzSd&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Escuelas y servicios de salud con Asesorías en Salud Integral en la adolescencia (actualizado a octubre 2020)'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1ySWkQLpKipUZSu1tBlu2Xe4BmIlfTg-c&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Escuelas con/sin asesorías en salud integral en la adolescencia y caracterización asesor/a'),
+              subtitle: Text('Escuelas con/sin asesor/a DIAJU'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1Ur5z3Q207uk8Ri_KC7FFMWLVu6iIJE3J&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Porcentaje de alcance de adolescentes asesorades'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1v80oG1Xb1hUb8rXPxk4RVsRF624mQPVN&usp=sharing'),
+            ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
@@ -275,6 +360,28 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Cantidad de asesorías comunitarias y asesoramientos, por departamento y provincia'),
+              subtitle: Text('Escuelas con/sin asesor/a DIAJU'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1D9jo7KOQh9gjl5IMsk0VYSngA352zoEZ&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Espacios comunitarios DBC, según tipo'),
+              subtitle: Text('Espacios comunitarios DBC - Provincias ENIA'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1UjesJJNilyu6yu2HazXWiDtpFq5SeSKU&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Espacios comunitarios DBC, según tipo'),
+              subtitle: Text('Zoom en GBA: Espacios comunitarios DBC - GBA'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1Vwgj0JrFYXhKFA74SI70Xm0K9NTLZSv1&usp=sharing'),
             ),
           ],
         ),

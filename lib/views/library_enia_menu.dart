@@ -176,22 +176,6 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Protocolo para la atención integral de las personas con derecho a la interrupción legal del embarazo (Actualización 2019) '),
-              subtitle: Text(
-                  'Derechos de las personas y obligaciones del sistema de salud, abordaje del equipo de salud, procedimiento para realizar la interrupción del embarazo y anticoncepción post interrupción del embarazo.'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/protocolo_ile_2019-2a_edicion.pdf'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Métodos Anticonceptivos'),
-              subtitle: Text('Guía práctica para profesionales de la salud'),
-              onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/metodos_anticonceptivos.pdf'),
-            ),
-            ListTile(
               title: Text(
                 'Prevención del Embarazo Forzado y del Abuso Sexual contra NNYA',
                 style: TextStyle(
