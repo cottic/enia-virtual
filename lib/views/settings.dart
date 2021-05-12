@@ -593,11 +593,22 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/logoUnicef.png', width: 220,),
-                Image.asset('assets/logoMinSalud.png', width: 220,)
-
+                Image.asset(
+                  'assets/logosENIA-fila1.jpg',
+                  width: 316,
+                )
+              ],
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/logosENIA-fila2.jpg',
+                  width: 584,
+                )
               ],
             ),
           ],

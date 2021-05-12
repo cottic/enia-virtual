@@ -209,13 +209,18 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/logoUnicef.png',
-                    width: 120,
-                  ),
-                  SizedBox(width: 40),
+                    'assets/logosENIA-fila1.jpg',
+                    width: 316,
+                  )
+                ],
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   Image.asset(
-                    'assets/logoMinSalud.png',
-                    width: 120,
+                    'assets/logosENIA-fila2.jpg',
+                    width: 584,
                   )
                 ],
               ),
