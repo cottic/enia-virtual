@@ -6,14 +6,14 @@
   "boards": [
     {
       "name": "Reporte de resultados",
-      "description": "Resultados de los dispositivos del Plan ENIA",
+      "description": "Resultados de los dispositivos del Plan Enia",
       "template": "normal",
       "filter": true,
       "charts": [
         {
-          "title": "Larcs dispensados",
+          "title": "LARC dispensados",
           "type": "card",
-          "description": "Larcs dispensados",
+          "description": "LARC dispensados",
           "api_url": "d0c0",
           "media_url": "implante"
         },
@@ -45,15 +45,15 @@
           "api_url": "d0c4"
         },
         {
-          "title": "Intensidad del Plan ENIA",
+          "title": "Intensidad del Plan Enia",
           "type": "pieSingle",
-          "description": "Cumplimiento de coberturas previstas de adolescentes para: Dispensa de LARCs, Estudiantes en ESI y asesorades",
+          "description": "Cumplimiento de coberturas previstas de adolescentes para: Dispensa de LARC, Estudiantes en ESI y asesorades",
           "api_url": "d0c5"
         },
         {
           "title": "Adolescentes por dispositivo",
           "type": "pie",
-          "description": "Adolescentes cubiertos en las prestaciones de los dispositivos del Plan ENIA",
+          "description": "Adolescentes cubiertos en las prestaciones de los dispositivos del Plan Enia",
           "api_url": "d0c6"
         },
         {
@@ -66,8 +66,8 @@
       
     },
     {
-      "name": "SSyR: Dispensa de LARCs",
-      "description": "LARCs  (implantes subdérmicos y DIU) a población objetivo: 10 a 19 años",
+      "name": "SSR: Dispensa de LARC",
+      "description": "LARC (implantes subdérmicos y DIU) a población objetivo: 10 a 19 años",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -102,32 +102,32 @@
         {
           "title": "Dispensados por jurisdicción",
           "type": "bar",
-          "description": "Cantidad de LARCS dispensados por jurisdicciones provinciales y locales.",
+          "description": "Cantidad de LARC dispensados por jurisdicciones provinciales y locales.",
           "api_url": "d1c4"
         },
         {
           "title": "Cumplimiento de la meta",
           "type": "pieSingle",
-          "description": "Total de dispensados sobre la meta estimada 2018/20 de adolescentes a cubrir con LARCs",
+          "description": "Total de dispensados sobre la meta estimada 2018/20 de adolescentes a cubrir con LARC",
           "api_url": "d1c5"
         },
         {
           "title": "Dispensados por tipo de servicio",
           "type": "pie",
-          "description": "La categoria 'otro' incluye servicios móviles, programas itinerantes, CICs, equipos territoriales y programas provinciales de SSyR",
+          "description": "La categoria 'otro' incluye servicios móviles, programas itinerantes, CICs, equipos territoriales y programas provinciales de SSR",
           "api_url": "d1c6"
         },
         {
           "title": "Evolución mensual de la dispensa",
           "type": "line",
-          "description": "El circuito de reporte de LARCs funciona con un rezago de 3 meses.",
+          "description": "El circuito de reporte de LARC funciona con un rezago de 3 meses.",
           "api_url": "d1c7"
         }
       ]
     },
     {
-      "name": "SSyR: Dispensa en estrategia AIPE",
-      "description": "LARCS (implantes subdérmicos y DIU) a población objetivo: 10 a 19 años bajo estrategia AIPE (Anticoncepción Inmediata Port Evento obstétrico)",
+      "name": "SSR: Dispensa en estrategia AIPE",
+      "description": "LARC (implantes subdérmicos y DIU) a población objetivo: 10 a 19 años bajo estrategia AIPE (Anticoncepción Inmediata Port Evento obstétrico)",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -162,31 +162,31 @@
         {
           "title": "Dispensados por jurisdicción",
           "type": "bar",
-          "description": "Cantidad de LARCS dispensados por jurisdicciones provinciales y locales.",
+          "description": "Cantidad de LARC dispensados por jurisdicciones provinciales y locales.",
           "api_url": "d2c4"
         },
         {
           "title": "AIPE sobre dispensa",
           "type": "pieSingle",
-          "description": "Porcentaje de LARCS dispensados bajo estrategia AIPE sobre el total de la dispensa",
+          "description": "Porcentaje de LARC dispensados bajo estrategia AIPE sobre el total de la dispensa",
           "api_url": "d2c5"
         },
         {
           "title": "Dispensados por tipo de servicio",
           "type": "pie",
-          "description": "La categoria 'otro' incluye servicios móviles, programas itinerantes, CICs, equipos territoriales y programas provinciales de SSyR",
+          "description": "La categoria 'otro' incluye servicios móviles, programas itinerantes, CICs, equipos territoriales y programas provinciales de SSR",
           "api_url": "d2c6"
         },
         {
           "title": "Evolución mensual de la dispensa",
           "type": "line",
-          "description": "El circuito de reporte de LARCs funciona con un rezago de 3 meses.",
+          "description": "El circuito de reporte de LARC funciona con un rezago de 3 meses.",
           "api_url": "d2c7"
         }
       ]
     },
     {
-      "name": "SSyR: Dispensa por grupos etarios",
+      "name": "SSR: Dispensa por grupos etarios",
       "description": "Grupos de edad: 10-14 años, 15 a 19 años, 20 a 24 años, 25 años o más",
       "template": "normal",
       "filter": true,
@@ -222,32 +222,32 @@
         {
           "title": "Dispensa por grupo y jurisdicción",
           "type": "bar",
-          "description": "Cantidad de LARCS dispensados por grupo etario y jurisdicciones provinciales y locales.",
+          "description": "Cantidad de LARC dispensados por grupo etario y jurisdicciones provinciales y locales.",
           "api_url": "d3c4"
         },
         {
           "title": "Población objetivo sobre total",
           "type": "pieSingle",
-          "description": "Porcentaje de LARCS dispensados a la población objetivo (10 a 19 años) sobre el total de la dispensa.",
+          "description": "Porcentaje de LARC dispensados a la población objetivo (10 a 19 años) sobre el total de la dispensa.",
           "api_url": "d3c5"
         },
         {
           "title": "Dispensa por grupo",
           "type": "pie",
-          "description": "Porcentaje de dispensa de LARCS por grupo etario",
+          "description": "Porcentaje de dispensa de LARC por grupo etario",
           "api_url": "d3c6"
         },
         {
           "title": "Evolucion mensual de la dispensa por grupo",
           "type": "line",
-          "description": "El circuito de reporte de LARCs funciona con un rezago de 3 meses.",
+          "description": "El circuito de reporte de LARC funciona con un rezago de 3 meses.",
           "api_url": "d3c7"
         }
       ]
     },
     {
-      "name": "SSyR: Distribución de LARCs",
-      "description": "Desde Nación a depósitos de provincias ENIA. Desde depósitos provinciales a servicios de salud y distribución. Dispensa de LARCs total provincial",
+      "name": "SSR: Distribución de LARC",
+      "description": "Desde Nación a depósitos de provincias Enia. Desde depósitos provinciales a servicios de salud y distribución. Dispensa de LARC total provincial",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -280,21 +280,21 @@
           "media_url": "hospital"
         },
         {
-          "title": "Distribución y dispensa de LARCs por jurisdiscción",
+          "title": "Distribución y dispensa de LARC por jurisdiscción",
           "type": "bar",
-          "description": "Comparación entre la distribución desde Nación a depósitos provinciales, desde depósitos a servicios de Salud y la dispensa de LARCs",
+          "description": "Comparación entre la distribución desde Nación a depósitos provinciales, desde depósitos a servicios de Salud y la dispensa de LARC",
           "api_url": "d4c4"
         },
         {
           "title": "Dispensa sobre distribuido",
           "type": "pieSingle",
-          "description": "Porcentaje de LARCs dispensados sobre el total de distribuidos desde el nivel nacional",
+          "description": "Porcentaje de LARC dispensados sobre el total de distribuidos desde el nivel nacional",
           "api_url": "d4c5"
         },
         {
           "title": "Distribuidos según método",
           "type": "pie",
-          "description": "Distribución de LARCs desde Nación según tipo de método LARCs",
+          "description": "Distribución de LARC desde Nación según tipo de método LARC",
           "api_url": "d4c6"
         },
         {
@@ -306,8 +306,8 @@
       ]
     },
     {
-      "name": "ESI: Estudiantes en actividades ESI-ENIA 2020",
-      "description": "Estudiantes que realizaron actividades de la cartilla ESI-ENIA",
+      "name": "ESI: Estudiantes en actividades ESI-Enia 2020",
+      "description": "Estudiantes que realizaron actividades de la cartilla ESI-Enia",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -348,7 +348,7 @@
         {
           "title": "Cumplimiento de la meta",
           "type": "pieSingle",
-          "description": "Porcentaje de estudiantes de ciclo básico que realizaron actividades de la cartilla ESI-ENIA sobre el total de la matrícula.",
+          "description": "Porcentaje de estudiantes de ciclo básico que realizaron actividades de la cartilla ESI-Enia sobre el total de la matrícula.",
           "api_url": "d5c5"
         },
         {
@@ -366,8 +366,8 @@
       ]
     },
     {
-      "name": "ESI: Docentes capacitades en ESI-ENIA",
-      "description": "Docentes capacitades para la aplicación de la cartilla ESI-ENIA",
+      "name": "ESI: Docentes capacitades en ESI-Enia",
+      "description": "Docentes capacitades para la aplicación de la cartilla ESI-Enia",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -402,7 +402,7 @@
         {
           "title": "Docentes capacitades y escuelas involucradas por jurisdicción",
           "type": "bar",
-          "description": "Docentes capacitades y escuelas involucradas para la aplicación de la cartilla ESI-ENIA por jurisdicciones provinciales y locales.",
+          "description": "Docentes capacitades y escuelas involucradas para la aplicación de la cartilla ESI-Enia por jurisdicciones provinciales y locales.",
           "api_url": "d6c4"
         },
         {
@@ -420,7 +420,7 @@
         {
           "title": "Evolución mensual de capacitades y escuelas",
           "type": "line",
-          "description": "Evolución mensual de docentes capacitades y escuelas con docentes capacitades para la aplicación de la cartilla ESI-ENIA",
+          "description": "Evolución mensual de docentes capacitades y escuelas con docentes capacitades para la aplicación de la cartilla ESI-Enia",
           "api_url": "d6c7"
         }
       ]

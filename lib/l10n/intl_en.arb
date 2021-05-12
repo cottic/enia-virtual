@@ -71,7 +71,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "library": "Library",
+  "library": "Papers",
   "@library": {
     "type": "text",
     "placeholders": {}
@@ -81,7 +81,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "library": "Library",
+  "library": "Papers",
   "@library": {
     "type": "text",
     "placeholders": {}

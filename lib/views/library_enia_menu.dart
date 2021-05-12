@@ -102,7 +102,7 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'Biblioteca',
+                'Periódicos y Redes',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               /*  background:  
@@ -121,70 +121,100 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                'Materiales para abordar las temáticas relativas al Plan: educación sexual integral, salud sexual y salud reproductiva, derechos y salud adolescente.',
-              ),
-            ),
-            ListTile(
-              title: Text(
-                'Educación sexual integral',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
+                'Descripción: Información de interés para la comunidad Enia. Un espacio con las novedades e insumos para los equipos que conforman el Plan.',
               ),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text(
-                  'El Embarazo No Intencional en la Adolescencia - 	Contenidos de Educación Sexual Integral'),
-              subtitle: Text('Propuestas para el aula - Nivel Secundario'),
+                  'Guía de Fortalecimiento para los territorios digitales'),
+              subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1aPsgjFIlPcETvQ2E-DRu8bhk1Ra86OPl/view?usp=sharing'),
+                  'https://drive.google.com/file/d/1H8AKdyL8kYyqXttsUcoprbxTh7Qe6Iwk/view?usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Cuadernillo ESI para Educación Secundaria I'),
-              subtitle: Text('Contenidos y propuestas para el aula'),
+              title: Text('Periódico Plan Enia marzo 2021'),
+              subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1htgQZ1qhL9nipXspXcnXnOUL8Roamh6T/view?usp=sharing'),
+                  'https://drive.google.com/file/d/1lap_GLeSuGt_JWMRmKeNmQWL8h_MOYXT/view?usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Cuadernillo ESI para Educación Secundaria II '),
-              subtitle: Text('Contenidos y propuestas para el aula'),
+              title: Text('Periódico Plan Enia febrero 2021'),
+              subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/13tTxQHaEaiqC7ssC9iDZ59HQnqsgfW7k/view?usp=sharing'),
+                  'https://drive.google.com/file/d/1Bk7Zjb_ef1N_y7m_Ic7xXIzMbpYXV1JP/view?usp=sharing'),
             ),
-            Divider(thickness: 1),
+            /* -------------------------------------------- */
             ListTile(
-              title: Text(
-                'Salud sexual y reproductiva',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                'Adolescencias, derechos y salud',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia enero 2021'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1xqSS8iZ8tcLcJAS1yufqC52wGHp269EM/view?usp=sharing'),
             ),
             ListTile(
-              title: Text(
-                'Prevención del Embarazo Forzado y del Abuso Sexual contra NNYA',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia diciembre 2020'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1I9xC-e4BR3VGXHwQGC-Bj_gyB56s8dx-/view?usp=sharing'),
             ),
-            Divider(thickness: 1),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia noviembre 2020'),
+              subtitle: Text(''),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia octubre 2020'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1trsl-SjJMfdl6iLi0ZP10bk3XzGMR0PO/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia septiembre 2020'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1ICM3JsBB20Dy-vFcpit77MyYbgaWEo9I/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia agosto 2020'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1DI--C7gu-1-nrEdpxsb-WDgXVYesm8IB/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia julio 2020'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1tJbacOhCOqWNiv6e7m2blI7GTZ1W7lcK/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia junio 2020'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/17y88gmWT1kaK3hlRKMucfhKhtvtR0DO_/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia mayo 2020'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/13RNM5VLGW9wz8kA9HE6o9L0150COHUWc/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia abril 2020'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1pR98_6hwy1Srr8KMa7wjm-egTEY5TYlq/view?usp=sharing'),
+            ),
           ],
         ),
       ),

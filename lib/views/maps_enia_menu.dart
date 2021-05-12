@@ -147,7 +147,7 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
               trailing: Icon(Icons.map_outlined),
               title: Text('Dimensión Normativa'),
               subtitle: Text(
-                  'Se encuentra toda la información normativa relacionada con ASI por provincias y por instituciones involucradas en su abordaje.'),
+                  'Se encuentra toda la información normativa relacionada con Abuso Sexual hacia NNA por provincias y por instituciones involucradas en su abordaje.'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/u/1/edit?mid=1bsuvcx9qF9mP0IVjcEgn84yYOz-mUmnZ&usp=sharing'),
             ),
@@ -182,18 +182,18 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Cobertura de población, meta de colocación de DIU e implantes en departamentos y provincias ENIA'),
+                  'Cobertura de población, meta de colocación de DIU e implantes en departamentos y provincias Enia'),
               subtitle: Text(
-                  'Actualización: Trimestral. Fuente: INDEC - Equipo Monitoreo ENIA'),
+                  'Actualización: Trimestral. Fuente: INDEC - Equipo Monitoreo Enia'),
               onTap: () => launch(
                   'https://google.com/maps/d/u/2/edit?mid=17D_NffBP-k32zyu0w3EjSYGfPtv-W-VF&usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Nacidos vivos (de niñas y adolescentes menores de 20 años). Total país y departamentos ENIA. Año 2018'),
+                  'Nacidos vivos (de niñas y adolescentes menores de 20 años). Total país y departamentos Enia. Año 2018'),
               subtitle: Text(
-                  'Actualización: Trimestral. Fuente: DEIS (Ministerio de Salud) - Equipo Monitoreo ENIA'),
+                  'Actualización: Trimestral. Fuente: DEIS (Ministerio de Salud) - Equipo Monitoreo Enia'),
               onTap: () => launch(
                   'https://google.com/maps/d/u/1/edit?mid=1L3vZDKegEGgFbvP9qjiQxwv4GqHvJOp0&usp=sharing'),
             ),
@@ -202,14 +202,14 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
               title: Text(
                   'Servicios de salud públicos que entregan y/o colocan métodos anticonceptivos. Total país'),
               subtitle: Text(
-                  'Actualización: Trimestral. Fuente: Equipo Monitoreo ENIA'),
+                  'Actualización: Trimestral. Fuente: Equipo Monitoreo Enia'),
               onTap: () => launch(
                   'https://google.com/maps/d/edit?mid=1WCPiiNCItZDG32R4A2das-sIvZXS-W6t&usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Efectores de salud según tipo de servicio. Departamentos ENIA'),
+                  'Efectores de salud según tipo de servicio. Departamentos Enia'),
               subtitle: Text('Actualización: Trimestral. Fuente: DNSSR'),
               onTap: () => launch(
                   'https://google.com/maps/d/u/2/edit?mid=1o6iUDUXldZwGRNjKeEN1fDsZZ4QQ2gl5&usp=sharing'),
@@ -217,7 +217,7 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Efectores de salud públicos que dispensaron LARCs a menores de 20 años. Departamentos ENIA'),
+                  'Efectores de salud públicos que dispensaron LARC a menores de 20 años. Departamentos Enia'),
               subtitle: Text('Actualización: Trimestral. Fuente: DNSSR'),
               onTap: () => launch(
                   'https://google.com/maps/d/u/2/edit?mid=1bOHC-GNYgm7hMrwW8xDsngv8aOgSWD0D&usp=sharing'),
@@ -225,9 +225,9 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Dispensa de LARCs en departamentos ENIA. Total acumulado a abril 2020'),
+                  'Dispensa de LARC en departamentos Enia. Total acumulado a abril 2020'),
               subtitle: Text(
-                  'Actualización: Trimestral. Fuente: Equipo Monitoreo ENIA'),
+                  'Actualización: Trimestral. Fuente: Equipo Monitoreo Enia'),
               onTap: () => launch(
                   'https://google.com/maps/d/edit?mid=1JQpFr8IkPCGgH4NRxwfFKvNMbHjW1zQs&usp=sharing'),
             ),
@@ -236,7 +236,7 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
               title: Text(
                   'Servicios de salud públicos con personal capacitado bajo Plan, según temática'),
               subtitle: Text(
-                  'Actualización: Trimestral. Fuente: Equipo Monitoreo ENIA'),
+                  'Actualización: Trimestral. Fuente: Equipo Monitoreo Enia'),
               onTap: () => launch(
                   'https://google.com/maps/d/edit?mid=1yuoVS7n0Cw_DCDnbg1yBMGlvALU5J1eT&usp=sharing'),
             ),
@@ -245,17 +245,17 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
               title: Text(
                   'Caracterización de los servicios de salud públicos. Entrenamiento, consultas mensuales, personal e infraestructura'),
               subtitle: Text(
-                  'Actualización: Trimestral. Fuente: Equipo Monitoreo ENIA'),
+                  'Actualización: Trimestral. Fuente: Equipo Monitoreo Enia'),
               onTap: () => launch(
                   'https://google.com/maps/d/u/1/edit?mid=1z41QAfyZ4vzJCr0o3O2WnftwhC2s0h_w&usp=sharing'),
             ),
-            ListTile(
+            /* ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text('Cantidad de casos de ILE por efector de salud'),
               subtitle: Text('Casos de ILE por efector de salud'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/u/1/edit?mid=1qEIXcKfxqNDnfq-AK33Sby7jlaoUAx69&usp=sharing'),
-            ),
+            ), */
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text('Embarazos no planificados en menores de 15 años'),
@@ -276,16 +276,16 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Escuelas bajo Plan y cobertura de escuelas y acompañantes pedagógicos en departamentos y provincias ENIA'),
+                  'Escuelas bajo Plan y cobertura de escuelas y acompañantes pedagógicos en departamentos y provincias Enia'),
               subtitle: Text(
-                  'Escuelas con acompañante pedagógico ESI asignado/a: Provincias ENIA'),
+                  'Escuelas con acompañante pedagógico ESI asignado/a: Provincias Enia'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/edit?mid=1j_aiEGTrUYoPohEIRRIJzWfcS8sOdLpo&usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Escuelas bajo Plan y cobertura de escuelas y acompañantes pedagógicos en departamentos y provincias ENIA'),
+                  'Escuelas bajo Plan y cobertura de escuelas y acompañantes pedagógicos en departamentos y provincias Enia'),
               subtitle: Text(
                   'Escuelas con acompañante pedagógico ESI asignado/a: Gran Buenos Aires'),
               onTap: () => launch(
@@ -294,8 +294,8 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Caracterización del/la acompañante pedagógico/a, por escuela, departamentos ENIA'),
-              subtitle: Text('Datos AP por escuela - Departamentos ENIA'),
+                  'Caracterización del/la acompañante pedagógico/a, por escuela, departamentos Enia'),
+              subtitle: Text('Datos AP por escuela - Departamentos Enia'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/u/1/edit?mid=1P10agW-xgdmSXjQ63v6ys66np9kt3kyH&usp=sharing'),
             ),
@@ -309,7 +309,7 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Cantidad de estudiantes que recibieron actividades ESI-ENIA según provincia y departamento. Acumulado a Octubre 2020. Total Jurisdicciones ENIA'),
+                  'Cantidad de estudiantes que recibieron actividades ESI-Enia según provincia y departamento. Acumulado a Octubre 2020. Total Jurisdicciones Enia'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/edit?mid=1Cn8Fzx6hzBf8Sq7LreC1EJwcqWyxui8q&usp=sharing'),
             ),
@@ -372,7 +372,7 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text('Espacios comunitarios DBC, según tipo'),
-              subtitle: Text('Espacios comunitarios DBC - Provincias ENIA'),
+              subtitle: Text('Espacios comunitarios DBC - Provincias Enia'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/u/1/edit?mid=1UjesJJNilyu6yu2HazXWiDtpFq5SeSKU&usp=sharing'),
             ),
