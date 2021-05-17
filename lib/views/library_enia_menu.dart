@@ -165,6 +165,8 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Periódico Plan Enia noviembre 2020'),
               subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1gS5BC3yYU8nSdEirAp4sCn2yRbJWZ-oN/view?usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),

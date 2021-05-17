@@ -149,77 +149,9 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                'Registros de las capacitaciones y webinarios realizados',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text(
                 'Ciclo de Encuentros para un abordaje intersectorial de niñas y adolescentes menores de 15 años con embarazos forzados - 2020',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              subtitle: Text(
-                  'Nota aclaratoria: Al momento de producción de estos videos no se encontraba sancionada la ley 27.610 que regula el acceso a la Interrupción Voluntaria y Legal del Embarazo y la atención post aborto de las adolescentes, mujeres y personas con capacidad de gestar. A partir de esta ley se reconoce el derecho a la interrupción voluntaria del embarazo (IVE) hasta la semana 14 inclusive y se mantiene el derecho a la interrupción legal del embarazo (ILE) por las causales: peligro para la vida o la salud de la persona gestante y/o violación.'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.ondemand_video),
-              title: Text(
-                  '1.- Presentación Hoja de ruta de Atención de niñas y adolescentes menores de 15 embarazadas'),
-              subtitle: Text('Duración: 21:16 minutos'),
-              onTap: () =>
-                  launch('https://www.youtube.com/watch?v=kJiU4NUg8pE'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.ondemand_video),
-              title: Text(
-                  '2.- Experiencias de atención integral de niñas y adolescentes de menores de 15 años víctimas de abuso sexual y embarazo forzado, una mirada federal. Experiencias de Jujuy y Entre Ríos'),
-              subtitle: Text('Duración: 21:16 minutos'),
-              onTap: () => launch('https://youtu.be/qL2xlvasHgE'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.ondemand_video),
-              title: Text(
-                  '3.- Experiencias de atención integral de niñas y adolescentes de menores de 15 años víctimas de abuso sexual y embarazo forzado, una mirada federal. Experiencias de Mendoza y Chubut'),
-              subtitle: Text('Duración: 18:21 minutos'),
-              onTap: () => launch('https://youtu.be/UkQ6-E4lbkk'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.ondemand_video),
-              title: Text(
-                  '4.- Experiencias, herramientas y desafíos de la ESI para el abordaje de abusos sexuales y embarazos forzados en niñas y adolescentes menores de 15 años'),
-              subtitle: Text('Duración: 14 minutos'),
-              onTap: () => launch('https://youtu.be/drDA6HUjQm8'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.ondemand_video),
-              title: Text(
-                  '5.- La importancia del abordaje integral y el acceso a la justicia en casos de abusos sexuales y embarazos forzados'),
-              subtitle: Text('Duración: 15 minutos'),
-              onTap: () => launch('https://youtu.be/PHZSBtYxbCg'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.ondemand_video),
-              title: Text(
-                  '6.- Abusos sexuales y embarazos forzados. Caracterización y orientaciones para un abordaje con enfoque de género y generacional (Partes 1)'),
-              subtitle: Text('Duración: 15 minutos'),
-              onTap: () => launch('https://youtu.be/G0uYvimqxAE'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.ondemand_video),
-              title: Text(
-                  '6.- Abusos sexuales y embarazos forzados. Caracterización y orientaciones para un abordaje con enfoque de género y generacional (Partes 2)'),
-              subtitle: Text('Duración: 15 minutos'),
-              onTap: () => launch('https://youtu.be/l5rBQMpsiHs'),
-            ),
-            ListTile(
-              title: Text(
-                'Webinarios realizados en el marco del curso "Anticoncepción en las adolescencias" - 2020',
-                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -228,7 +160,67 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
-                  '1.- Webinario: Protocolo para la atención integral de personas con derecho a la ILE, con énfasis en la asistencia a NNyA'),
+                  'Presentación Hoja de ruta de Atención de niñas y adolescentes menores de 15 embarazadas'),
+              subtitle: Text('Duración: 21:16 minutos'),
+              onTap: () =>
+                  launch('https://www.youtube.com/watch?v=kJiU4NUg8pE'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Experiencias de atención integral de niñas y adolescentes de menores de 15 años víctimas de abuso sexual y embarazo forzado, una mirada federal. Experiencias de Jujuy y Entre Ríos'),
+              subtitle: Text('Duración: 21:16 minutos'),
+              onTap: () => launch('https://youtu.be/qL2xlvasHgE'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Experiencias de atención integral de niñas y adolescentes de menores de 15 años víctimas de abuso sexual y embarazo forzado, una mirada federal. Experiencias de Mendoza y Chubut'),
+              subtitle: Text('Duración: 18:21 minutos'),
+              onTap: () => launch('https://youtu.be/UkQ6-E4lbkk'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Experiencias, herramientas y desafíos de la ESI para el abordaje de abusos sexuales y embarazos forzados en niñas y adolescentes menores de 15 años'),
+              subtitle: Text('Duración: 14 minutos'),
+              onTap: () => launch('https://youtu.be/drDA6HUjQm8'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'La importancia del abordaje integral y el acceso a la justicia en casos de abusos sexuales y embarazos forzados'),
+              subtitle: Text('Duración: 15 minutos'),
+              onTap: () => launch('https://youtu.be/PHZSBtYxbCg'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Abusos sexuales y embarazos forzados. Caracterización y orientaciones para un abordaje con enfoque de género y generacional (Parte 1)'),
+              subtitle: Text('Duración: 15 minutos'),
+              onTap: () => launch('https://youtu.be/G0uYvimqxAE'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Abusos sexuales y embarazos forzados. Caracterización y orientaciones para un abordaje con enfoque de género y generacional (Parte 2)'),
+              subtitle: Text('Duración: 15 minutos'),
+              onTap: () => launch('https://youtu.be/l5rBQMpsiHs'),
+            ),
+            ListTile(
+              title: Text(
+                'Webinarios realizados en el marco del curso "Anticoncepción en las adolescencias" - 2020',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Text(''),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text(
+                  'Webinario: Protocolo para la atención integral de personas con derecho a la ILE, con énfasis en la asistencia a NNyA'),
               subtitle: Text('Duración: 1:01 horas'),
               onTap: () =>
                   launch('https://www.youtube.com/watch?v=ZJfqGXmp7to'),
@@ -236,7 +228,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
-                  '2.- Webinario: Respuestas y desafíos de las políticas frente al abuso sexual y embarazo forzado'),
+                  'Webinario: Respuestas y desafíos de las políticas frente al abuso sexual y embarazo forzado'),
               subtitle: Text('Duración: 1:45 horas'),
               onTap: () =>
                   launch('https://www.youtube.com/watch?v=yVUopxQEa0M'),
@@ -244,7 +236,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
-                  '3.- Webinario: Anticoncepción y modelo social de la discapacidad'),
+                  'Webinario: Anticoncepción y modelo social de la discapacidad'),
               subtitle: Text('Duración: 1:31 horas'),
               onTap: () =>
                   launch('https://www.youtube.com/watch?v=quQ1KhriWwM'),
@@ -252,15 +244,14 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
-                  '4.- Webinario: Fortalecimiento de la perspectiva de diversidad sexual y corporal en el modelo de atención en salud'),
+                  'Webinario: Fortalecimiento de la perspectiva de diversidad sexual y corporal en el modelo de atención en salud'),
               subtitle: Text('Duración: 1:24 Horas'),
               onTap: () =>
                   launch('https://www.youtube.com/watch?v=1eofLLleDbE'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
-              title:
-                  Text('5.- Webinario: Adolescencias, vínculos y violencias'),
+              title: Text('Webinario: Adolescencias, vínculos y violencias'),
               subtitle: Text('Duración: 1:24 Horas'),
               onTap: () =>
                   launch('https://www.youtube.com/watch?v=IKIvGorudbw'),
@@ -269,11 +260,11 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               title: Text(
                 'Encuentros de actualización profesional sobre Interrupción Legal del Embarazo - 2020',
                 style: TextStyle(
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              subtitle: Text(
-                  'Nota aclaratoria: Al momento de producción de estos videos no se encontraba sancionada la ley 27.610 que regula el acceso a la Interrupción Voluntaria y Legal del Embarazo y la atención post aborto de las adolescentes, mujeres y personas con capacidad de gestar. A partir de esta ley se reconoce el derecho a la interrupción voluntaria del embarazo (IVE) hasta la semana 14 inclusive y se mantiene el derecho a la interrupción legal del embarazo (ILE) por las causales: peligro para la vida o la salud de la persona gestante y/o violación.'),
+              subtitle: Text(''),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
