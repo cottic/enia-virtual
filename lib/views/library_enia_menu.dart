@@ -121,7 +121,7 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                'Descripción: Información de interés para la comunidad Enia. Un espacio con las novedades e insumos para los equipos que conforman el Plan.',
+                'Información de interés para la comunidad Enia. Un espacio con las novedades e insumos para los equipos que conforman el Plan.',
               ),
             ),
             ListTile(

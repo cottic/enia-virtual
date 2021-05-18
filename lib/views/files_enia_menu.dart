@@ -126,39 +126,6 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
             ),
             ListTile(
               title: Text(
-                'Documentos de diseño',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Plan Nacional de Prevención del Embarazo no Intencional en la Adolescencia - 2020'),
-              subtitle: Text(''),
-              onTap: () => launch(
-                  'https://drive.google.com/file/d/1wNtYVF0uVJYVxwlisXulrUxxCSyyyMbr/view?usp=sharing'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Plan Nacional de Prevención del Embarazo no Intencional en la Adolescencia - 2017/2019 '),
-              subtitle: Text(''),
-              onTap: () => launch(
-                  'https://drive.google.com/file/d/1skcAX7znWw2EHorqoIyzWZ2hp-xySlQ3/view?usp=sharing'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Implementación del Plan Nacional Enia'),
-              subtitle: Text(''),
-              onTap: () => launch(
-                  'https://drive.google.com/file/d/1qlpHurfXXgRV69M3myjo_gxoUKyND8zM/view?usp=sharing'),
-            ),
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
                 'Documentos técnicos y de apoyo a la gestión integral',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
@@ -299,14 +266,6 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               subtitle: Text(''),
               onTap: () => launch(
                   'https://drive.google.com/file/d/1Ov2qa8AfyHwcQZECaKY0qAmxWHEtAKcM/view?usp=sharing'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Proceso de instalación del dispositivo de Asesorías en Salud Integral en Escuelas Secundarias (ASIE).'),
-              subtitle: Text('Doc de apoyo a la gestión N°2'),
-              onTap: () => launch(
-                  'https://drive.google.com/file/d/1oznNBKnIHDmVNEBjC4VwxF-asqToV1g1/view?usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),

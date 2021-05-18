@@ -129,6 +129,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               title: Text(
                 'Conocé las propuestas de capacitación',
                 style: TextStyle(
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -137,10 +138,10 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
                   'https://drive.google.com/file/d/1xBvRQHT_39olEBT7P-EV5EuVzIiZ9jQD/view?usp=sharing'),
             ),
             ListTile(
-              trailing: Icon(Icons.description),
               title: Text(
                 'Te podés capacitar con estos videos',
                 style: TextStyle(
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
