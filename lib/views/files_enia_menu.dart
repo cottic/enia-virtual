@@ -139,14 +139,14 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Embarazos no intencionales en niñas y adolescentes en las escuelas. Propuesta de su abordaje desde la ESI, 2021'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1aO-FIP1aE8Yk6axIkKc-2qgkv0B277zP/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/documento_tecnico-n8.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Presentación Plan Enia 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1vxJDiv0spiMFunm0bEJqZeZ-rxbNdh35/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/presentacion-abreviada-plan-nacional-de-prevencion-del-embarazo-no-intencional-en-la'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -154,7 +154,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Proceso de instalación del dispositivo de Asesorías en Salud Integral en Escuelas Secundarias (ASIE), 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1LTVE8nKoe1kuBrbyFe_xFvlfVNCCikp2/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/apoyo-gestion-doc-n2-21-12.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -162,7 +162,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Abusos sexuales y embarazo forzado en la niñez y adolescencia. Lineamientos para su abordaje interinstitucional, 2019'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1P-V-t8OlaKqt0hjOasaRNlU1ZXL5iVbq/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/abusos_sexuales_y_embarazo_forzado._lineamientos._anexo.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -193,7 +193,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               title: Text('Plan Enia y la perspectiva de Discapacidad, 2019'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1lT5LTrluHA9Lq-zdiavD_9xzCGcF78-k/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/el_plan_enia_y_la_perspectiva_de_la_discapacidad._documento_tecnico_no_3_-_marzo_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -201,7 +201,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Las obstétricas en la salud sexual y reproductiva. Una agente estratégico. Disponibilidad, competencias y marco regulatorio, 2019'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/194s6o4Qgm9A6y_4w6Irti0BESNqJnMHv/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/las_obstetricas_en_la_salud_sexual_y_reproductiva._un_agente_estrategico._documento_tecnico_no_4_-_marzo_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -209,7 +209,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'El embarazo y la maternidad en la adolescencia en la argentina. Datos y hallazgos para orientar líneas de acción, 2019'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1DXchNajP9cxsA-uan2JWxdbMnr59q69Y/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/el_embarazo_y_la_maternidad_en_la_adolescencia_en_la_argentina._documento_tecnico_no_5_-_mayo_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -217,21 +217,21 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Acceso a la justicia: abusos sexuales y embarazos forzados en niñas y adolescentes menores de 15 años, 2019'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1H-s5F0d9qQHIBfAo9UCYEKkz8rEfbfeZ/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/acceso_a_la_justicia._abusos_sexuales_y_embarazos_forzados_en_menores_de_15._documento_tecnico_ndeg_6_-_noviembre_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Plan Enia, Recorrido, logros y desafíos, 2019'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1Fe6O-ld1LHIGU9H2rbWpTrdWnGqKAV2k/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/plan-enia-recorrido-logros-y-desafios'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Documento base Plan Enia 2017-2019'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1yd5oz0XFx1TTODyBh37dGY-eeS_guPnJ/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/documento-plan-nacional-de-prevencion-del-embarazo-no-intencional-en-la-adolescencia-2017'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -239,7 +239,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Modalidad de intervención y dispositivos Plan Enia, 2018'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1pQ6NmMjTE43PfTYKepGMPrg3PUZ2FwUC/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/implementacion_del_plan_nacional_enia_documento_tecnico_ndeg2_-_julio_2018_-_modalidad_de_intervencion_y_dispositivos.pdf'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -257,7 +257,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Ley 27610 IVE ILE Estándares legales. Nota técnica, 2021'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/17X9ypA5r5nsDzU43r6WKAZ6prUQumyh3/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/nota-tecnica-3-ley-27610-estandares-legales-para-la-atencion-de-la-interrupcion-del'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -265,14 +265,14 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Ley 27610 IVE ILE Aspectos médicos. Nota técnica, 2021.'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1Ov2qa8AfyHwcQZECaKY0qAmxWHEtAKcM/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/note-tecnica-4-ley-27610-atencion-integral-de-las-personas-con-derecho-la-interrupcion'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Interrupción del embarazo con medicamentos, 2021'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1sHoW7-q9uAmBSNhljpVvG5YKOCf71FD5/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/folleto-interrupcion-del-embarazo-con-medicamentos'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -280,7 +280,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Aspiración Manual Endouterina, AMEU. Nota técnica, 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1WISl56ziOsV9BQVFLkHNFWpznq0GwXeN/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/nota-tecnica-2-aspiracion-manual-endouterina-ameu'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -288,7 +288,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Anticoncepción Hormonal de Emergencia, AHE. Nota técnica, 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/19BU24cNyvElxl1himHEDoj6twxCLZem8/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/nota-tecnica-1-anticoncepcion-hormonal-de-emergencia'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -296,7 +296,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Recomendaciones para garantizar el acceso a las prestaciones en salud sexual y reproductiva en el contexto de pandemia de covid-19. Nota informativa, 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1UpCheFCCWtVZNMEYiyE1K415w0HaYF1o/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/nota-informativa-1-recomendaciones-para-garantizar-el-acceso-las-prestaciones-en-salud-0'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -304,7 +304,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Métodos anticonceptivos: acceso y recambio en el contexto de pandemia. Nota informativa, 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1nFIzA2lDOI5vCfu8xcYLuWhvwKEqK_PR/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/nota-informativa-2-metodos-anticonceptivos-acceso-y-recambio-en-el-contexto-de-pandemia'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -312,7 +312,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Métodos anticonceptivos: acceso y recambio en el contexto de pandemia. Novedades sobre el DIU con levonorgestrel. Nota informativa 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1fn34EvLrj12rZIp7br3cNNmLzxhmSD8J/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/nota-informativa-3-metodos-anticonceptivos-acceso-y-recambio-en-el-contexto-de-pandemia'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -320,7 +320,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Atención a niñas y adolescentes menores de 15 años. Nota informativa 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1aKNxZjxNGTiB4EAZ-PoRN1fch3pevp03/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/nota-informativa-4-atencion-ninas-y-adolescentes-menores-de-15-anos'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -337,7 +337,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               title: Text('Documento sobre monitoreo del Plan Enia, 2019'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1RiWnEDy7tK6cUs6az8pkrcsbNF_INZNs/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/sistema_de_monitoreo_plan_enia._documento_tecnico_no_7_-_noviembre_2019.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -345,7 +345,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Fondo de Población de Naciones Unidas, UNFPA. Consecuencias socioeconómicas del embarazo en la adolescencia en Argentina, 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1xTtCsTgRLmgTTSkVtLNnhphOHG6umFl0/view?usp=sharing'),
+                  'https://www.argentina.gob.ar/sites/default/files/estudios_tecnicos_-_consecuencias_socioeconomicas_del_embarazo_en_la_adolescencia_en_argentina.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -401,35 +401,35 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               title: Text('Plan Enia. Informe anual de monitoreo'),
               subtitle: Text('2020'),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1_OHa6FQOHbQ4Dg2Vwoc5CRh5TYqRHQp7/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/informe-anual-de-monitoreo-ano-2020'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Plan Enia. Informe de monitoreo'),
               subtitle: Text('Septiembre - Octubre 2020'),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1WTdOliDYLXwXmjss1VzPJH3zVNB1crgP/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/informe-bimestral-de-monitoreo-septiembre-octubre-2020'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Plan Enia. Informe de monitoreo'),
               subtitle: Text('Julio - Agosto 2020'),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1g1SkWPB0bBrr5PdAA6T6X-tReEh1Zm9A/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/informe-bimestral-de-monitoreo-julio-agosto-2020'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Plan Enia. Informe de monitoreo'),
               subtitle: Text('Mayo - Junio 2020'),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1XTc2AjEmUssWbwC52f4Jy-EPKnI4exIg/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/informe-bimestral-de-monitoreo-mayo-junio-2020'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text('Plan Enia. Informe de monitoreo'),
               subtitle: Text('Abril - Mayo 2020'),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1MSHSaL3YQADQzozfJgecmKKqftuYpzL3/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/informe-bimestral-de-monitoreo-abril-mayo-2020'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -447,7 +447,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Resolución Ministerio de Salud 1841/2020. Atención de niñas y adolescentes menores de 15 años embarazadas. Hoja de ruta: herramientas para orientar el trabajo de los equipos de salud. 2020'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1vvOlxcDK21v-fbN2T-SGbm9ktJUu2L-A/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/atencion-de-ninas-y-adolescentes-menores-de-15-anos-embarazadas-hoja-de-ruta'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -455,7 +455,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Anexo. Atención de NNA menores de 15 años embarazadas. Hoja de ruta'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/170XWpu8gkP0oVkdbUlO7ig7YWbiEM1cC/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/atencion-de-ninas-y-adolescentes-menores-de-15-anos-embarazadas-hoja-de-ruta-anexo'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -463,7 +463,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   'Protocolo para la atención integral de personas víctimas de violencia sexual, 2021'),
               subtitle: Text(''),
               onTap: () => launch(
-                  'https://drive.google.com/file/d/1kt74mzZtks2iSNjsmJxBqkETxAiQX0ma/view?usp=sharing'),
+                  'https://bancos.salud.gob.ar/recurso/protocolo-para-la-atencion-integral-de-personas-victimas-de-violaciones-sexuales'),
             ),
           ],
         ),

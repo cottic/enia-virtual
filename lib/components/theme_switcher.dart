@@ -9,8 +9,8 @@ enum Themes {
 }
 
 final ThemeData lightTheme = ThemeData(
-  primaryColorDark: Colors.white,
-  primaryColorLight: Color(0xff121212),
+  primaryColorDark: Color(0xffF7941E),
+  primaryColorLight: Color(0xffabaaaa),
   brightness: Brightness.light,
   // PRIMARY COLOR ENIA
   primaryColor: Color(0xFF9283be),
@@ -50,7 +50,7 @@ final ThemeData lightTheme = ThemeData(
 );
 
 final ThemeData darkTheme = ThemeData.dark().copyWith(
-  primaryColorDark: Color(0xff1B1B1B),
+  primaryColorDark: Color(0xffF7941E),
   primaryColorLight: Colors.white,
   primaryColor: Color(0xFF8966CF),
   errorColor: Color(0xFFCF6679),
@@ -85,7 +85,7 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
 );
 
 final ThemeData amoledTheme = ThemeData.dark().copyWith(
-  primaryColorDark: Color(0xff121212),
+  primaryColorDark: Color(0xffF7941E),
   primaryColorLight: Colors.white,
   primaryColor: Color(0xFF8966CF),
   errorColor: Color(0xFFCF6679),

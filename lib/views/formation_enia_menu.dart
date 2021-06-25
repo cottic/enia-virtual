@@ -137,6 +137,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               onTap: () => launch(
                   'https://drive.google.com/file/d/1xBvRQHT_39olEBT7P-EV5EuVzIiZ9jQD/view?usp=sharing'),
             ),
+            Divider(thickness: 1),
             ListTile(
               title: Text(
                 'Te podés capacitar con estos videos',
@@ -147,16 +148,15 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               ),
               subtitle: Text(''),
             ),
-            Divider(thickness: 1),
             ListTile(
               title: Text(
                 'Ciclo de Encuentros para un abordaje intersectorial de niñas y adolescentes menores de 15 años con embarazos forzados - 2020',
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).primaryColorDark,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              subtitle: Text(''),
+              contentPadding: EdgeInsets.fromLTRB(14.0, 8.0, 0.0, 0.0),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
@@ -212,11 +212,11 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               title: Text(
                 'Webinarios realizados en el marco del curso "Anticoncepción en las adolescencias" - 2020',
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).primaryColorDark,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              subtitle: Text(''),
+              contentPadding: EdgeInsets.fromLTRB(14.0, 8.0, 0.0, 0.0),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
@@ -261,11 +261,11 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               title: Text(
                 'Encuentros de actualización profesional sobre Interrupción Legal del Embarazo - 2020',
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).primaryColorDark,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              subtitle: Text(''),
+              contentPadding: EdgeInsets.fromLTRB(14.0, 8.0, 0.0, 0.0),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),

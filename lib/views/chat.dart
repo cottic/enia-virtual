@@ -1098,8 +1098,7 @@ class _ChatState extends State<_Chat> {
                                 ), */
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 4.0),
+                                    padding: const EdgeInsets.all(4.0),
                                     child: InputBar(
                                       room: room,
                                       minLines: 1,

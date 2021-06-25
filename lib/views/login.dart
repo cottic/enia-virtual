@@ -132,8 +132,12 @@ class _LoginState extends State<Login> {
               SizedBox(height: 20),
               ListTile(
                 leading: CircleAvatar(
+                  backgroundColor:
+                      Theme.of(context).brightness == Brightness.dark
+                          ? Color(0xff121212)
+                          : Colors.white,
                   child: Icon(Icons.account_box,
-                      color: Theme.of(context).primaryColor),
+                      color: Theme.of(context).primaryColorLight),
                 ),
                 title: TextField(
                   readOnly: loading,
@@ -154,8 +158,8 @@ class _LoginState extends State<Login> {
                       Theme.of(context).brightness == Brightness.dark
                           ? Color(0xff121212)
                           : Colors.white,
-                  child:
-                      Icon(Icons.lock, color: Theme.of(context).primaryColor),
+                  child: Icon(Icons.lock,
+                      color: Theme.of(context).primaryColorLight),
                 ),
                 title: TextField(
                   readOnly: loading,
@@ -184,7 +188,7 @@ class _LoginState extends State<Login> {
                   padding: EdgeInsets.symmetric(horizontal: 12),
                   child: RaisedButton(
                     elevation: 7,
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).primaryColorLight,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     ),
@@ -209,8 +213,8 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/logosENIA-fila1.jpg',
-                    width: 316,
+                    'assets/logosENIA-2021-1.jpg',
+                    width: 500,
                   )
                 ],
               ),
@@ -219,8 +223,8 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/logosENIA-fila2.jpg',
-                    width: 584,
+                    'assets/logosENIA-2021-2.jpg',
+                    width: 500,
                   )
                 ],
               ),

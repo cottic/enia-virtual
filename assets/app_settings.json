@@ -127,7 +127,7 @@
     },
     {
       "name": "SSR: Dispensa en estrategia AIPE",
-      "description": "LARC (implantes subdérmicos y DIU) a población objetivo: 10 a 19 años bajo estrategia AIPE (Anticoncepción Inmediata Port Evento obstétrico)",
+      "description": "LARC (implantes subdérmicos y DIU) a población objetivo: 10 a 19 años bajo estrategia AIPE (Anticoncepción Inmediata Post Evento obstétrico)",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -174,7 +174,7 @@
         {
           "title": "Dispensados por tipo de servicio",
           "type": "pie",
-          "description": "La categoria 'otro' incluye servicios móviles, programas itinerantes, CICs, equipos territoriales y programas provinciales de SSR",
+          "description": "La categoria 'otro' incluye servicios móviles, programas itinerantes, CIC, equipos territoriales y programas provinciales de SSR",
           "api_url": "d2c6"
         },
         {
@@ -426,8 +426,8 @@
       ]
     },
     {
-      "name": "ASIE: Dispositivos de asesorias",
-      "description": "Dispositvos de Asesorias en Salud Integral en Escuelas Secundarias",
+      "name": "ASIE: Dispositivos de Asesorías",
+      "description": "Dispositivos de Asesorías en Salud Integral en Escuelas Secundarias",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -453,32 +453,32 @@
           "media_url": "centrocomunitario"
         },
         {
-          "title": "En modalidad Virtual",
+          "title": "En modalidad virtual",
           "type": "card",
-          "description": "En modalidad Virtual",
+          "description": "En modalidad virtual",
           "api_url": "d7c3",
           "media_url": "telefono"
         },
         {
-          "title": "Asesorias por tipo de espacio y jurisdicción",
+          "title": "Asesorías por tipo de espacio y jurisdicción",
           "type": "bar",
-          "description": "Asesorias por tipo de espacio y por jurisdicciones provinciales y locales.",
+          "description": "Asesorías por tipo de espacio y por jurisdicciones provinciales y locales.",
           "api_url": "d7c4"
         },
         {
-          "title": "Total de asesorias",
+          "title": "Total de asesorías",
           "type": "pieSingle",
-          "description": "Suma de todas las asesorias realizadas",
+          "description": "Suma de todas las asesorías realizadas",
           "api_url": "d7c5"
         },
         {
-          "title": "Asesorias por tipo de espacio",
+          "title": "Asesorías por tipo de espacio",
           "type": "pie",
           "description": "",
           "api_url": "d7c6"
         },
         {
-          "title": "Evolución mensual de asesorias por tipo de espacio",
+          "title": "Evolución mensual de asesorías por tipo de espacio",
           "type": "line",
           "description": "",
           "api_url": "d7c7"
@@ -547,7 +547,7 @@
     },
     {
       "name": "ASIE: Caracterización adolescentes asesorades",
-      "description": "Adolescentes por genero autopercibido, grupo etario y escolarización",
+      "description": "Adolescentes por género autopercibido, grupo etario y escolarización",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -573,16 +573,16 @@
           "media_url": "trans"
         },
         {
-          "title": "Otros generos",
+          "title": "Otros géneros",
           "type": "card",
-          "description": "Otros generos",
+          "description": "Otros géneros",
           "api_url": "d9c3",
           "media_url": "otros"
         },
         {
-          "title": "Adolescentes por genero autopercibido, escolarización y por jurisdicción",
+          "title": "Adolescentes por género autopercibido, escolarización y por jurisdicción",
           "type": "bar",
-          "description": "Adolescentes por genero autopercibido, escolarización y por jurisdicciones provinciales y locales.",
+          "description": "Adolescentes por género autopercibido, escolarización y por jurisdicciones provinciales y locales.",
           "api_url": "d9c4"
         },
         {
@@ -598,7 +598,7 @@
           "api_url": "d9c6"
         },
         {
-          "title": "Evolución mensual de adolescentes por genero autopercibido y escolarización",
+          "title": "Evolución mensual de adolescentes por género autopercibido y escolarización",
           "type": "line",
           "description": "",
           "api_url": "d9c7"
@@ -666,8 +666,8 @@
       ]
     },
     {
-      "name": "DBC: Dispositivos de asesorias",
-      "description": "Dispositvos de Asesorias en Salud Integral en Escuelas Secundarias",
+      "name": "DBC: Dispositivos de asesorías",
+      "description": "Dispositivos de Asesorías en Espacios comunitarios",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -693,32 +693,32 @@
           "media_url": "centrocomunitario"
         },
         {
-          "title": "En modalidad Virtual",
+          "title": "En modalidad virtual",
           "type": "card",
-          "description": "En modalidad Virtual",
+          "description": "En modalidad virtual",
           "api_url": "d11c3",
           "media_url": "telefono"
         },
         {
-          "title": "Asesorias por tipo de espacio y jurisdicción",
+          "title": "Asesorías por tipo de espacio y jurisdicción",
           "type": "bar",
-          "description": "Asesorias por tipo de espacio y por jurisdicciones provinciales y locales.",
+          "description": "Asesorías por tipo de espacio y por jurisdicciones provinciales y locales.",
           "api_url": "d11c4"
         },
         {
-          "title": "Total de asesorias",
+          "title": "Total de asesorías",
           "type": "pieSingle",
-          "description": "Suma de todas las asesorias realizadas",
+          "description": "Suma de todas las asesorías realizadas",
           "api_url": "d11c5"
         },
         {
-          "title": "Asesorias por tipo de espacio",
+          "title": "Asesorías por tipo de espacio",
           "type": "pie",
           "description": "",
           "api_url": "d11c6"
         },
         {
-          "title": "Evolución mensual de asesorias por tipo de espacio",
+          "title": "Evolución mensual de asesorías por tipo de espacio",
           "type": "line",
           "description": "",
           "api_url": "d11c7"
@@ -727,7 +727,7 @@
     },
     {
       "name": "DBC: Adolescentes asesorades",
-      "description": "Adolescentes asesorades en dispositivos de Salud Integral en Escuelas Secundarias",
+      "description": "Adolescentes asesorades en dispositivos de base comunitaria",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -766,7 +766,7 @@
           "api_url": "d12c4"
         },
         {
-          "title": "% Adolescentes refenciades",
+          "title": "% adolescentes referenciades",
           "type": "pieSingle",
           "description": "Porcentaje de adolescentes referenciades sobre asesorades",
           "api_url": "d12c5"
@@ -787,7 +787,7 @@
     },
     {
       "name": "DBC: Caracterización adolescentes asesorades",
-      "description": "Adolescentes por genero autopercibido, grupo etario y escolarización",
+      "description": "Adolescentes por género autopercibido, grupo etario y escolarización",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -813,16 +813,16 @@
           "media_url": "trans"
         },
         {
-          "title": "Otros generos",
+          "title": "Otros géneros",
           "type": "card",
-          "description": "Otros generos",
+          "description": "Otros géneros",
           "api_url": "d13c3",
           "media_url": "otros"
         },
         {
-          "title": "Adolescentes por genero autopercibido, escolarización y por jurisdicción",
+          "title": "Adolescentes por género autopercibido, escolarización y por jurisdicción",
           "type": "bar",
-          "description": "Adolescentes por genero autopercibido, escolarización y por jurisdicciones provinciales y locales.",
+          "description": "Adolescentes por género autopercibido, escolarización y por jurisdicciones provinciales y locales.",
           "api_url": "d13c4"
         },
         {
@@ -838,7 +838,7 @@
           "api_url": "d13c6"
         },
         {
-          "title": "Evolución mensual de adolescentes por genero autopercibido y escolarización",
+          "title": "Evolución mensual de adolescentes por género autopercibido y escolarización",
           "type": "line",
           "description": "",
           "api_url": "d13c7"
@@ -886,15 +886,15 @@
           "api_url": "d14c4"
         },
         {
-          "title": "Aseramientos que demandan pronta intervención",
+          "title": "Asesoramientos que demandan pronta intervención",
           "type": "pieSingle",
           "description": "Porcentaje de adolescentes asesorades por fuera del sistema educativo",
           "api_url": "d14c5"
         },
         {
-          "title": "Pronta intervencion",
+          "title": "Pronta intervención",
           "type": "pie",
-          "description": "Motivos de asesoramiento que demandan pronta intervencion",
+          "description": "Motivos de asesoramiento que demandan pronta intervención",
           "api_url": "d14c6"
         },
         {

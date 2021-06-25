@@ -596,8 +596,8 @@ class _SettingsState extends State<Settings> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/logosENIA-fila1.jpg',
-                  width: 316,
+                  'assets/logosENIA-2021-1.jpg',
+                  width: 500,
                 )
               ],
             ),
@@ -606,8 +606,8 @@ class _SettingsState extends State<Settings> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/logosENIA-fila2.jpg',
-                  width: 584,
+                  'assets/logosENIA-2021-2.jpg',
+                  width: 500,
                 )
               ],
             ),

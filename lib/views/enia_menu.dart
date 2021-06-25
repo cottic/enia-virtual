@@ -103,7 +103,7 @@ class _EniaMenuState extends State<EniaMenu> {
             expandedHeight: 300.0,
             floating: true,
             pinned: true,
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Color(0xff32bbed),
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 'Enia@virtual',

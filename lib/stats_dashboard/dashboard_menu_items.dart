@@ -124,6 +124,12 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                                 children: [
                                   SizedBox(height: 8),
                                   ListTile(
+                                    title: Text(
+                                      'Para ajustar la visualización se recomienda usar el zoom del explorador',
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(fontSize: 10.0),
+                                    ),
                                     trailing: Icon(Icons.info_outline_rounded),
                                     onTap: () => launch(
                                         'https://docs.google.com/document/d/1jeFmpHlHH47h5sXl3mK0QujMKpBalfjDm0UJFCdn9n0/edit?usp=sharing'),
