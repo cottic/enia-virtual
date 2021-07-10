@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
+import '../components/content_banner.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -105,15 +106,15 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
                 'Periódicos y Redes',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
-              /*  background:  
-              ContentBanner(
-                profile?.avatarUrl,
-                
+              background: ContentBanner(
+                Uri.https('proyecto.codigoi.com.ar',
+                    'appenia/enia-assets/images/trama-mds.png'),
+
                 height: 300,
                 //defaultIcon: Icons.account_circle,
                 loading: profile == null,
                 //onEdit: () => setAvatarAction(context),
-              ), */
+              ),
             ),
           ),
         ],
@@ -122,6 +123,10 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
             ListTile(
               title: Text(
                 'Información de interés para la comunidad Enia. Un espacio con las novedades e insumos para los equipos que conforman el Plan.',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             ListTile(
@@ -131,6 +136,34 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
               subtitle: Text(''),
               onTap: () => launch(
                   'https://drive.google.com/file/d/1H8AKdyL8kYyqXttsUcoprbxTh7Qe6Iwk/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia Junio 2021 - 2'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mailchi.mp/319de75ccfc7/peridico-enia-junio-10924526?e=d49b8080e7'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia Junio 2021 - 1'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mailchi.mp/baf58ac5af29/peridico-enia-junio-2021?e=d49b8080e7'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia mayo 2021'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mcusercontent.com/3de47a5599b54218bf1a87e74/files/c183a6d9-67f9-ef3a-78c9-18381421a1cc/Perio_dico_Plan_Enia_mayo_2021_3_.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia abril 2021'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mcusercontent.com/3de47a5599b54218bf1a87e74/files/80c2c937-94f3-4d13-a3ce-31b761e0c80d/Perio_dico_Plan_Enia_abril_2021_.pdf'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),

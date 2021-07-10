@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 TextStyle mainTitleCharts = GoogleFonts.encodeSans(
-  textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 28.0),
+  textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0),
 );
 
 TextStyle headerMain = GoogleFonts.encodeSans(

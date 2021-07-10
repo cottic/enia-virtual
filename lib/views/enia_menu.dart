@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
+import '../components/content_banner.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -109,15 +110,15 @@ class _EniaMenuState extends State<EniaMenu> {
                 'Enia@virtual',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
-              /*  background:  
-              ContentBanner(
-                profile?.avatarUrl,
-                
+              background: ContentBanner(
+                Uri.https('proyecto.codigoi.com.ar',
+                    'appenia/enia-assets/images/trama-mds.png'),
+
                 height: 300,
                 //defaultIcon: Icons.account_circle,
                 loading: profile == null,
                 //onEdit: () => setAvatarAction(context),
-              ), */
+              ),
             ),
           ),
         ],

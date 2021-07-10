@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
+import '../components/content_banner.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -106,15 +107,15 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                 'Documentos',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
-              /*  background:  
-              ContentBanner(
-                profile?.avatarUrl,
-                
+              background: ContentBanner(
+                Uri.https('proyecto.codigoi.com.ar',
+                    'appenia/enia-assets/images/trama-mds.png'),
+
                 height: 300,
                 //defaultIcon: Icons.account_circle,
                 loading: profile == null,
                 //onEdit: () => setAvatarAction(context),
-              ), */
+              ),
             ),
           ),
         ],
@@ -122,7 +123,12 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                  'Lineamientos e información para una gestión basada en evidencia. Documentos sobre diseño, implementación, monitoreo y evaluación del Plan.'),
+                'Lineamientos e información para una gestión basada en evidencia. Documentos sobre diseño, implementación, monitoreo y evaluación del Plan.',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             ListTile(
               title: Text(
@@ -346,6 +352,13 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               subtitle: Text(''),
               onTap: () => launch(
                   'https://www.argentina.gob.ar/sites/default/files/estudios_tecnicos_-_consecuencias_socioeconomicas_del_embarazo_en_la_adolescencia_en_argentina.pdf'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Línea Salud Sexual 0800. '),
+              subtitle: Text('Reporte marzo-abril 2021'),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/12D9X7ux6-qsh8LICUGF-L10MPk-e_6It/view?usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),

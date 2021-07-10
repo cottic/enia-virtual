@@ -122,13 +122,12 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                           ? Expanded(
                               child: ListView(
                                 children: [
-                                  SizedBox(height: 8),
+                                  SizedBox(height: 16),
                                   ListTile(
                                     title: Text(
-                                      'Para ajustar la visualización se recomienda usar el zoom del explorador',
+                                      'Para una correcta visualización de los tableros, se recomienda ajustar el zoom del explorado',
                                       textAlign: TextAlign.center,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(fontSize: 10.0),
+                                      style: const TextStyle(fontSize: 12.0),
                                     ),
                                     trailing: Icon(Icons.info_outline_rounded),
                                     onTap: () => launch(

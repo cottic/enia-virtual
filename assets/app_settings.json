@@ -432,23 +432,23 @@
       "filter": true,
       "charts": [
         {
-          "title": "En Escuelas",
+          "title": "En escuelas",
           "type": "card",
-          "description": "En Escuelas",
+          "description": "En escuelas",
           "api_url": "d7c0",
           "media_url": "escuela1"
         },
         {
-          "title": "En Servicios de Salud",
+          "title": "En servicios de salud",
           "type": "card",
-          "description": "En Servicios de Salud",
+          "description": "En servicios de salud",
           "api_url": "d7c1",
           "media_url": "hospital"
         },
         {
-          "title": "En Espacios comunitarios",
+          "title": "En espacios comunitarios",
           "type": "card",
-          "description": "En Espacios comunitarios",
+          "description": "En espacios comunitarios",
           "api_url": "d7c2",
           "media_url": "centrocomunitario"
         },
@@ -646,9 +646,9 @@
           "api_url": "d10c4"
         },
         {
-          "title": "Aseramientos para pronta intervención",
+          "title": "Asesoramientos para pronta intervención",
           "type": "pieSingle",
-          "description": "% Aseramientos que demandan pronta intervención: abuso sexual, intento de suicidio, interrupción del embarazo y violencias",
+          "description": "% Asesoramientos que demandan pronta intervención: abuso sexual, intento de suicidio, interrupción del embarazo y violencias",
           "api_url": "d10c5"
         },
         {
@@ -672,23 +672,23 @@
       "filter": true,
       "charts": [
         {
-          "title": "En Escuelas",
+          "title": "En escuelas",
           "type": "card",
-          "description": "En Escuelas",
+          "description": "En escuelas",
           "api_url": "d11c0",
           "media_url": "escuela1"
         },
         {
-          "title": "En Servicios de Salud",
+          "title": "En servicios de Salud",
           "type": "card",
-          "description": "En Servicios de Salud",
+          "description": "En servicios de Salud",
           "api_url": "d11c1",
           "media_url": "hospital"
         },
         {
-          "title": "En Espacios comunitarios",
+          "title": "En espacios comunitarios",
           "type": "card",
-          "description": "En Espacios comunitarios",
+          "description": "En espacios comunitarios",
           "api_url": "d11c2",
           "media_url": "centrocomunitario"
         },
@@ -806,9 +806,9 @@
           "media_url": "hombre"
         },
         {
-          "title": "Varones Trans",
+          "title": "Varones trans",
           "type": "card",
-          "description": "Varones Trans",
+          "description": "Varones trans",
           "api_url": "d13c2",
           "media_url": "trans"
         },
@@ -852,9 +852,9 @@
       "filter": true,
       "charts": [
         {
-          "title": "% por Anticonpeción",
+          "title": "% por Anticoncepción",
           "type": "card",
-          "description": "% por Anticonpeción",
+          "description": "% por Anticoncepción",
           "api_url": "d14c0",
           "media_url": "anticoncepcion"
         },

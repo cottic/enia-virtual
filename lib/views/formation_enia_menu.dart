@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
+import '../components/content_banner.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -105,15 +106,15 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
                 'Capacitaciones',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
-              /*  background:  
-              ContentBanner(
-                profile?.avatarUrl,
-                
+              background: ContentBanner(
+                Uri.https('proyecto.codigoi.com.ar',
+                    'appenia/enia-assets/images/trama-mds.png'),
+
                 height: 300,
                 //defaultIcon: Icons.account_circle,
                 loading: profile == null,
                 //onEdit: () => setAvatarAction(context),
-              ), */
+              ),
             ),
           ),
         ],
@@ -122,12 +123,16 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             ListTile(
               title: Text(
                 'Un espacio para el fortalecimiento institucional. Todos los enlaces de ingreso: capacitaciones virtuales, webinarios y grabaciones de programas y encuentros de trabajo.',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             ListTile(
               trailing: Icon(Icons.description),
               title: Text(
-                'Conocé las propuestas de capacitación',
+                'Acceso a las propuestas de capacitación y a las grabaciones de webinarios y videos educativos',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -137,7 +142,6 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               onTap: () => launch(
                   'https://drive.google.com/file/d/1xBvRQHT_39olEBT7P-EV5EuVzIiZ9jQD/view?usp=sharing'),
             ),
-            Divider(thickness: 1),
             ListTile(
               title: Text(
                 'Te podés capacitar con estos videos',

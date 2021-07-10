@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
+import '../components/content_banner.dart';
 import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -105,15 +106,15 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
                 'Mapas de monitoreo',
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
-              /*  background:  
-              ContentBanner(
-                profile?.avatarUrl,
-                
+              background: ContentBanner(
+                Uri.https('proyecto.codigoi.com.ar',
+                    'appenia/enia-assets/images/trama-mds.png'),
+
                 height: 300,
                 //defaultIcon: Icons.account_circle,
                 loading: profile == null,
                 //onEdit: () => setAvatarAction(context),
-              ), */
+              ),
             ),
           ),
         ],
@@ -122,6 +123,10 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               title: Text(
                 'Mapas para disponibilizar y sistematizar los recursos y acciones del Plan. Una oportunidad para obtener diversas lecturas posibles y una representación sencilla, precisa y actualizada de la información disponible. ',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Divider(thickness: 1),
