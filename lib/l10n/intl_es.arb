@@ -51,7 +51,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "somethingWrong": "Algo salio mal, vuelva a intentarlo mas tarde.",
+  "somethingWrong": "En proceso de elaboración.",
   "@somethingWrong": {
     "type": "text",
     "placeholders": {}

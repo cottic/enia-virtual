@@ -18,9 +18,9 @@
           "media_url": "implante"
         },
         {
-          "title": "Estudiantes en ESI 2020",
+          "title": "Estudiantes en ESI",
           "type": "card",
-          "description": "Estudiantes en ESI 2020",
+          "description": "Estudiantes en ESI",
           "api_url": "d0c1",
           "media_url": "estudiante1"
         },
@@ -32,9 +32,9 @@
           "media_url": "adolescente"
         },
         {
-          "title": "Agentes del plan fortalecides",
+          "title": "Agentes capacitades",
           "type": "card",
-          "description": "Agentes del plan fortalecides",
+          "description": "Agentes capacitades",
           "api_url": "d0c3",
           "media_url": "enia1"
         },
@@ -45,9 +45,9 @@
           "api_url": "d0c4"
         },
         {
-          "title": "Intensidad del Plan Enia",
+          "title": "",
           "type": "pieSingle",
-          "description": "Cumplimiento de coberturas previstas de adolescentes para: Dispensa de LARC, Estudiantes en ESI y asesorades",
+          "description": "",
           "api_url": "d0c5"
         },
         {
@@ -106,13 +106,13 @@
           "api_url": "d1c4"
         },
         {
-          "title": "Cumplimiento de la meta",
+          "title": "",
           "type": "pieSingle",
-          "description": "Total de dispensados sobre la meta estimada 2018/20 de adolescentes a cubrir con LARC",
+          "description": "",
           "api_url": "d1c5"
         },
         {
-          "title": "Dispensados por tipo de servicio",
+          "title": "Dispensados por tipo de efector",
           "type": "pie",
           "description": "La categoria 'otro' incluye servicios móviles, programas itinerantes, CICs, equipos territoriales y programas provinciales de SSR",
           "api_url": "d1c6"
@@ -306,7 +306,7 @@
       ]
     },
     {
-      "name": "ESI: Estudiantes en actividades ESI-Enia 2020",
+      "name": "ESI: Estudiantes con actividades ESI Enia",
       "description": "Estudiantes que realizaron actividades de la cartilla ESI-Enia",
       "template": "normal",
       "filter": true,
@@ -346,9 +346,9 @@
           "api_url": "d5c4"
         },
         {
-          "title": "Cumplimiento de la meta",
+          "title": "",
           "type": "pieSingle",
-          "description": "Porcentaje de estudiantes de ciclo básico que realizaron actividades de la cartilla ESI-Enia sobre el total de la matrícula.",
+          "description": "",
           "api_url": "d5c5"
         },
         {
@@ -406,9 +406,9 @@
           "api_url": "d6c4"
         },
         {
-          "title": "Escuela con cumplimiento de meta",
+          "title": "",
           "type": "pieSingle",
-          "description": "Porcentaje de escuelas que cumplen con la meta de haber capacitado al 10% de su plantel docentes sobre el total de las escuelas bajo Plan",
+          "description": "",
           "api_url": "d6c5"
         },
         {
@@ -460,25 +460,25 @@
           "media_url": "telefono"
         },
         {
-          "title": "Asesorías por tipo de espacio y jurisdicción",
+          "title": "Asesorías por tipo de localización y jurisdicción",
           "type": "bar",
-          "description": "Asesorías por tipo de espacio y por jurisdicciones provinciales y locales.",
+          "description": "Asesorías por tipo de localización y por jurisdicciones provinciales y locales. El gráfico presenta la información del último mes de información presentado",
           "api_url": "d7c4"
         },
         {
           "title": "Total de asesorías",
           "type": "pieSingle",
-          "description": "Suma de todas las asesorías realizadas",
+          "description": "Suma de dispositivos de asesorías",
           "api_url": "d7c5"
         },
         {
-          "title": "Asesorías por tipo de espacio",
+          "title": "Asesorías por tipo de localización",
           "type": "pie",
           "description": "",
           "api_url": "d7c6"
         },
         {
-          "title": "Evolución mensual de asesorías por tipo de espacio",
+          "title": "Evolución mensual de asesorías por tipo de localización",
           "type": "line",
           "description": "",
           "api_url": "d7c7"
@@ -487,7 +487,7 @@
     },
     {
       "name": "ASIE: Adolescentes asesorades",
-      "description": "Adolescentes asesorades  en dispositivos de Salud Integral en Escuelas Secundarias",
+      "description": "Adolescentes asesorades en dispositivos de Salud Integral en Escuelas Secundarias",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -520,9 +520,9 @@
           "media_url": "estudiantesgrupo"
         },
         {
-          "title": "Adolescentes por tipo de espacio y por jurisdicción",
+          "title": "Adolescentes por tipo de localización y por jurisdicción",
           "type": "bar",
-          "description": "Adolescentes por tipo de espacio y por jurisdicciones provinciales y locales.",
+          "description": "Adolescentes por tipo de localización y por jurisdicciones provinciales y locales.",
           "api_url": "d8c4"
         },
         {
@@ -532,13 +532,13 @@
           "api_url": "d8c5"
         },
         {
-          "title": "Adolescentes por tipo de espacio",
+          "title": "Adolescentes por tipo de localización",
           "type": "pie",
           "description": "",
           "api_url": "d8c6"
         },
         {
-          "title": "Evolución mensual de adolescentes por tipo espacio",
+          "title": "Evolución mensual de adolescentes por tipo de localización",
           "type": "line",
           "description": "",
           "api_url": "d8c7"
@@ -580,15 +580,15 @@
           "media_url": "otros"
         },
         {
-          "title": "Adolescentes por género autopercibido, escolarización y por jurisdicción",
+          "title": "Adolescentes por género autopercibido y jurisdicción",
           "type": "bar",
-          "description": "Adolescentes por género autopercibido, escolarización y por jurisdicciones provinciales y locales.",
+          "description": "Adolescentes por género autopercibido y jurisdicciones provinciales y locales.",
           "api_url": "d9c4"
         },
         {
-          "title": "% por fuera del sistema educativo",
+          "title": "Adolescentes asesorades según escolarización",
           "type": "pieSingle",
-          "description": "Porcentaje de adolescentes asesorades por fuera del sistema educativo",
+          "description": "Porcentaje de adolescentes asesorades no escolarizades",
           "api_url": "d9c5"
         },
         {
@@ -598,7 +598,7 @@
           "api_url": "d9c6"
         },
         {
-          "title": "Evolución mensual de adolescentes por género autopercibido y escolarización",
+          "title": "Evolución mensual de adolescentes por género autopercibido",
           "type": "line",
           "description": "",
           "api_url": "d9c7"
@@ -652,13 +652,13 @@
           "api_url": "d10c5"
         },
         {
-          "title": "Pronta intervención",
+          "title": "Motivos que requirieron pronta intervención",
           "type": "pie",
           "description": "Motivos de asesoramiento que demandan pronta intervención: abuso sexual, intento de suicidio, interrupción del embarazo y violencias",
           "api_url": "d10c6"
         },
         {
-          "title": "Evolución mensual de los principales motivos de asesoramiento",
+          "title": "Evolución mensual motivos de asesoramientos agrupados",
           "type": "line",
           "description": "",
           "api_url": "d10c7"
@@ -700,9 +700,9 @@
           "media_url": "telefono"
         },
         {
-          "title": "Asesorías por tipo de espacio y jurisdicción",
+          "title": "Asesorías por tipo de localización y jurisdicción",
           "type": "bar",
-          "description": "Asesorías por tipo de espacio y por jurisdicciones provinciales y locales.",
+          "description": "Asesorías por tipo de localización y por jurisdicciones provinciales y locales.",
           "api_url": "d11c4"
         },
         {
@@ -712,13 +712,13 @@
           "api_url": "d11c5"
         },
         {
-          "title": "Asesorías por tipo de espacio",
+          "title": "Asesorías por tipo de localización",
           "type": "pie",
           "description": "",
           "api_url": "d11c6"
         },
         {
-          "title": "Evolución mensual de asesorías por tipo de espacio",
+          "title": "Evolución mensual de asesorías por tipo de localización",
           "type": "line",
           "description": "",
           "api_url": "d11c7"
@@ -727,7 +727,7 @@
     },
     {
       "name": "DBC: Adolescentes asesorades",
-      "description": "Adolescentes asesorades en dispositivos de base comunitaria",
+      "description": "Adolescentes asesorades en el Dispositivo de Base Comunitaria",
       "template": "normal",
       "filter": true,
       "charts": [
@@ -760,9 +760,9 @@
           "media_url": "estudiantesgrupo"
         },
         {
-          "title": "Adolescentes por tipo de espacio y por jurisdicción",
+          "title": "Adolescentes por tipo de localización y por jurisdicción",
           "type": "bar",
-          "description": "Adolescentes por tipo de espacio y por jurisdicciones provinciales y locales.",
+          "description": "Adolescentes por tipo de localización y por jurisdicciones provinciales y locales.",
           "api_url": "d12c4"
         },
         {
@@ -772,13 +772,13 @@
           "api_url": "d12c5"
         },
         {
-          "title": "Adolescentes por tipo de espacio",
+          "title": "Adolescentes por tipo de localización",
           "type": "pie",
           "description": "",
           "api_url": "d12c6"
         },
         {
-          "title": "Evolución mensual de adolescentes por tipo espacio",
+          "title": "Evolución mensual de adolescentes por tipo localización",
           "type": "line",
           "description": "",
           "api_url": "d12c7"
@@ -820,15 +820,15 @@
           "media_url": "otros"
         },
         {
-          "title": "Adolescentes por género autopercibido, escolarización y por jurisdicción",
+          "title": "Adolescentes por género autopercibido y por jurisdicción",
           "type": "bar",
-          "description": "Adolescentes por género autopercibido, escolarización y por jurisdicciones provinciales y locales.",
+          "description": "Adolescentes por género autopercibido y por jurisdicciones provinciales y locales.",
           "api_url": "d13c4"
         },
         {
-          "title": "% Adolescentes por fuera del sistema educativo",
+          "title": "% Adolescentes no escolarizados",
           "type": "pieSingle",
-          "description": "Porcentaje de adolescentes asesorades por fuera del sistema educativo",
+          "description": "Porcentaje de adolescentes asesorades no escolarizados",
           "api_url": "d13c5"
         },
         {
@@ -880,9 +880,9 @@
           "media_url": "otros"
         },
         {
-          "title": "Motivos de asesoramiento",
+          "title": "Motivos de asesoramientos agrupados",
           "type": "bar",
-          "description": "Motivos de asesoramiento",
+          "description": "Motivos de asesoramientos agrupados",
           "api_url": "d14c4"
         },
         {
@@ -892,13 +892,13 @@
           "api_url": "d14c5"
         },
         {
-          "title": "Pronta intervención",
+          "title": "Motivos que requirieron pronta intervención",
           "type": "pie",
           "description": "Motivos de asesoramiento que demandan pronta intervención",
           "api_url": "d14c6"
         },
         {
-          "title": "Evolución mensual de los principales motivos de asesoramiento",
+          "title": "Evolución mensual motivos de asesoramientos agrupados",
           "type": "line",
           "description": "",
           "api_url": "d14c7"
