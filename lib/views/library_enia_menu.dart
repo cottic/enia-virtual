@@ -108,7 +108,7 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
               ),
               background: ContentBanner(
                 Uri.https('proyecto.codigoi.com.ar',
-                    'appenia/enia-assets/images/trama-mds.png'),
+                    'appenia/enia-assets/images/trama-mds-lila.png'),
 
                 height: 300,
                 //defaultIcon: Icons.account_circle,
@@ -136,6 +136,35 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
               subtitle: Text(''),
               onTap: () => launch(
                   'https://drive.google.com/file/d/1H8AKdyL8kYyqXttsUcoprbxTh7Qe6Iwk/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Cambios que se ven y se sienten. Educación sexual integral para saber más sobre la pubertad'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://bancos.salud.gob.ar/recurso/cambios-que-se-ven-y-se-sienten-educacion-sexual-integral-para-saber-mas-sobre-la-pubertad'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia – agosto 2021'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mailchi.mp/acb2ed4db76c/peridico-enia-junio-10931842?e=9f003d8fd5'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia – Julio 2021 - 2'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mailchi.mp/447a55aab2b1/peridico-enia-junio-10929558?e=3cf9839e41'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia – Julio 2021 - 1'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mailchi.mp/88e8c7620f36/peridico-enia-junio-10927462?e=9f003d8fd5'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),

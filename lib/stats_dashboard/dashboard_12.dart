@@ -6,6 +6,9 @@ import 'package:fluffychat/stats_dashboard/widgets/drop_down_filter_list.dart';
 import 'package:fluffychat/stats_dashboard/widgets/header_dashboard_widget.dart';
 import 'package:fluffychat/stats_dashboard/charts/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:fluffychat/components/dialogs/notas_metodologicas12_dialog.dart';
 
 import 'package:fluffychat/stats_dashboard/charts/bar_chart_widget.dart';
 import 'package:fluffychat/stats_dashboard/dashboard_menu_items.dart';
@@ -88,6 +91,20 @@ class _StatsEniaMenu12State extends State<StatsEniaMenu12> {
     return board;
   }
 
+  void frequentMessageAction(BuildContext context) async {
+    String result;
+
+    await showDialog(
+        context: context,
+        builder: (context) => FrequentMessageDialog(
+              onFinished: (r) => result = r,
+            ));
+    if (result == null) {
+      return;
+    }
+    ;
+  }
+
   List<DropdownMenuItem<DropDownItemsModel>> _dropdownMenuItems;
 
   @override
@@ -138,7 +155,7 @@ class _StatsEniaMenu12State extends State<StatsEniaMenu12> {
                         onPressDateFrom: () {
                           showMonthPicker(
                             context: context,
-                            firstDate: DateTime(2014),
+                            firstDate: DateTime(2018),
                             lastDate: endSelectedDate ?? DateTime.now(),
                             initialDate: DateTime(2019),
                           ).then((date) {
@@ -160,7 +177,7 @@ class _StatsEniaMenu12State extends State<StatsEniaMenu12> {
                         onPressDateTo: () {
                           showMonthPicker(
                             context: context,
-                            firstDate: initialSelectedDate ?? DateTime(2014),
+                            firstDate: initialSelectedDate ?? DateTime(2018),
                             lastDate: DateTime.now(),
                             initialDate: DateTime.now(),
                           ).then((date) {
@@ -198,6 +215,21 @@ class _StatsEniaMenu12State extends State<StatsEniaMenu12> {
                     body: ListView(
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
                       children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 400.0),
+                          child: FlatButton.icon(
+                            padding: EdgeInsets.only(left: 200.0),
+                            label: Text(
+                              'Notas metodológicas',
+                            ),
+                            icon: FaIcon(
+                              FontAwesomeIcons.asterisk,
+                              color: Theme.of(context).primaryColor,
+                              size: 12,
+                            ),
+                            onPressed: () => frequentMessageAction(context),
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                             vertical: 10.0,

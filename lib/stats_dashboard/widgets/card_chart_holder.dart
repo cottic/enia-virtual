@@ -100,7 +100,7 @@ IconData getIcon(String iconSelected) {
       return Icons.medical_services;
       break;
     case 'hospital':
-      return Icons.local_hospital;
+      return EniaIcons.centrodesalud;
       break;
     case 'distribucion':
       return Icons.local_shipping;
@@ -174,8 +174,23 @@ IconData getIcon(String iconSelected) {
     case 'estudiantesgrupo':
       return EniaIcons.estudiantesgrupo;
       break;
+    case 'centrocomunitario2':
+      return EniaIcons.centrocomunitario2;
+      break;
+    case 'macs':
+      return EniaIcons.macs;
+      break;
+    case 'personasingenero':
+      return EniaIcons.personasingenero;
+      break;
+    case 'centrodesalud':
+      return EniaIcons.centrodesalud;
+      break;
+    case 'docentescapacitades':
+      return EniaIcons.docentescapacitades;
+      break;
     default:
-      return Icons.local_hospital;
+      return EniaIcons.centrodesalud;
       break;
   }
 }

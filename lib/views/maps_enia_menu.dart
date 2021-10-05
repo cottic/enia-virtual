@@ -108,7 +108,7 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
               ),
               background: ContentBanner(
                 Uri.https('proyecto.codigoi.com.ar',
-                    'appenia/enia-assets/images/trama-mds.png'),
+                    'appenia/enia-assets/images/trama-mds-lila.png'),
 
                 height: 300,
                 //defaultIcon: Icons.account_circle,
@@ -128,6 +128,35 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
+                'NACIDOS VIVOS Y EMBARAZOS NO INTENCIONALES DE ADOLESCENTES EN ARGENTINA',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Nacidos vivos de niñas y adolescentes menores de 20 años'),
+              subtitle: Text(
+                  'Provincias Enia y departamentos Enia. Año 2019. Fuente: Área monitoreo Plan Enia, DNSSR, SAS; en base a datos Estadísticas Vitales, DEIS. Ministerio de Salud de la Nación. Año 2019.'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/edit?mid=1gKrsipYYcvEwb6klDimvDpP46C6L2smV&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text(
+                  'Embarazos no planificados en menores de 15 años. Año 2018'),
+              subtitle: Text(
+                  'Fuente: Área monitoreo Plan Enia, DNSSR, SAS; en base a Sistema Informático Perinatal para la Gestión. DEIS y Ministerio de Salud de la Nación. Año 2018.'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/edit?mid=178QBtwVPqB72rQNBtzWrJxNuI8wwcZne&usp=sharing'),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -177,7 +206,7 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                'Dispositivo para el fortalecimiento de la oferta en Salud Sexual y Reproductiva',
+                'Dispositivo para el fortalecimiento de la oferta en salud sexual y reproductiva (SSR)',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -186,14 +215,21 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
-              title: Text(
-                  'Cobertura de población, meta de colocación de DIU e implantes en departamentos y provincias Enia'),
+              title: Text('Dispensa de LARC'),
               subtitle: Text(
-                  'Actualización: Trimestral. Fuente: INDEC - Equipo Monitoreo Enia'),
+                  'Dispensa de LARC - AIPE. Clasificación por grupos etarios (10 a 14 y 15 a 19). Provincias y departamentos Enia. Acumulado enero a diciembre 2020. Fuente: Área monitoreo Plan Enia, DNSSR, SAS, Ministerio de Salud de la Nación.'),
               onTap: () => launch(
-                  'https://google.com/maps/d/u/2/edit?mid=17D_NffBP-k32zyu0w3EjSYGfPtv-W-VF&usp=sharing'),
+                  'https://www.google.com/maps/d/edit?mid=1JQpFr8IkPCGgH4NRxwfFKvNMbHjW1zQs&usp=sharing'),
             ),
             ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Efectores de salud que dispensan y/o colocan LARC'),
+              subtitle: Text(
+                  'Total país. Actualización: diciembre 2020. Fuente: Área monitoreo Plan Enia, DNSSR, SAS, Ministerio de Salud de la Nación.'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/u/1/edit?mid=1FDpwbuEZuY9nPb5KEeviGlxFlH1OgiRq&usp=sharing'),
+            ),
+            /* ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
                   'Nacidos vivos (de niñas y adolescentes menores de 20 años). Total país y departamentos Enia. Año 2018'),
@@ -230,15 +266,6 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
-                  'Dispensa de LARC en departamentos Enia. Total acumulado a abril 2020'),
-              subtitle: Text(
-                  'Actualización: Trimestral. Fuente: Equipo Monitoreo Enia'),
-              onTap: () => launch(
-                  'https://google.com/maps/d/edit?mid=1JQpFr8IkPCGgH4NRxwfFKvNMbHjW1zQs&usp=sharing'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.map_outlined),
-              title: Text(
                   'Servicios de salud públicos con personal capacitado bajo Plan, según temática'),
               subtitle: Text(
                   'Actualización: Trimestral. Fuente: Equipo Monitoreo Enia'),
@@ -254,24 +281,24 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
               onTap: () => launch(
                   'https://google.com/maps/d/u/1/edit?mid=1z41QAfyZ4vzJCr0o3O2WnftwhC2s0h_w&usp=sharing'),
             ),
-            /* ListTile(
+            ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text('Cantidad de casos de ILE por efector de salud'),
               subtitle: Text('Casos de ILE por efector de salud'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/u/1/edit?mid=1qEIXcKfxqNDnfq-AK33Sby7jlaoUAx69&usp=sharing'),
-            ), */
+            ), 
             ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text('Embarazos no planificados en menores de 15 años'),
               subtitle: Text('Embarazos no planificados en menores de 15 años'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/u/1/edit?mid=178QBtwVPqB72rQNBtzWrJxNuI8wwcZne&usp=sharing'),
-            ),
+            ), */
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                'Dispositivo para el fortalecimiento de la Educación Sexual integral (ESI)',
+                'Dispositivo para el fortalecimiento de la educación sexual integral (ESI)',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -280,14 +307,29 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
-              title: Text(
-                  'Escuelas bajo Plan y cobertura de escuelas y acompañantes pedagógicos en departamentos y provincias Enia'),
+              title: Text('Estudiantes en actividades ESI-Enia'),
               subtitle: Text(
-                  'Escuelas con acompañante pedagógico ESI asignado/a: Provincias Enia'),
+                  'Provincias y departamentos Enia. Acumulado enero a diciembre 2020. Fuente: Área monitoreo Plan Enia, DNSSR, SAS, Ministerio de Salud de la Nación.'),
               onTap: () => launch(
-                  'https://www.google.com/maps/d/edit?mid=1j_aiEGTrUYoPohEIRRIJzWfcS8sOdLpo&usp=sharing'),
+                  'https://www.google.com/maps/d/edit?mid=1Cn8Fzx6hzBf8Sq7LreC1EJwcqWyxui8q&usp=sharing'),
             ),
             ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Docentes capacitades ESI-Enia'),
+              subtitle: Text(
+                  'Provincias y departamentos Enia. Acumulado enero a diciembre 2020. Fuente: Área monitoreo Plan Enia, DNSSR, SAS, Ministerio de Salud de la Nación.'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/edit?mid=1sSVFeWK6Yo5bD8R2Q5NdMgIe4iwD6PEB&usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.map_outlined),
+              title: Text('Matrícula de estudiantes por ciclo y docentes'),
+              subtitle: Text(
+                  'Provincias y departamentos Enia. Actualización: 2019 Fuente: Ministerio de Educación de la Nación.'),
+              onTap: () => launch(
+                  'https://www.google.com/maps/d/edit?mid=1F2vC5kydQzmWJnsBzB4jDRcw6KdSFD9r&usp=sharing'),
+            ),
+            /* ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text(
                   'Escuelas bajo Plan y cobertura de escuelas y acompañantes pedagógicos en departamentos y provincias Enia'),
@@ -317,11 +359,11 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
                   'Cantidad de estudiantes que recibieron actividades ESI-Enia según provincia y departamento. Acumulado a Octubre 2020. Total Jurisdicciones Enia'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/edit?mid=1Cn8Fzx6hzBf8Sq7LreC1EJwcqWyxui8q&usp=sharing'),
-            ),
+            ), */
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                'Dispositivo de asesorías en Salud Integral en la Adolescencia',
+                'Dispositivo de asesorías en salud integral en escuelas secundarias (ASIE)',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -330,36 +372,24 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
-              title: Text(
-                  'Asesorías DIAJU según localización, por departamento y provincia'),
+              title: Text('Dispositivos de asesorías'),
+              subtitle: Text(
+                  'Dispositivos de asesorías. Asesorías en escuelas y servicios de salud. Provincias y departamentos Enia. Acumulado enero a diciembre 2020. Fuente: Área monitoreo Plan Enia, DNSSR, SAS, Ministerio de Salud de la Nación.'),
               onTap: () => launch(
-                  'https://www.google.com/maps/d/u/1/edit?mid=16iQ9d45yBdIKLbLat4-nW0fFBXVkMzSd&usp=sharing'),
+                  'https://www.google.com/maps/d/edit?mid=16iQ9d45yBdIKLbLat4-nW0fFBXVkMzSd&usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
-              title: Text(
-                  'Escuelas y servicios de salud con Asesorías en Salud Integral en la adolescencia (actualizado a octubre 2020)'),
+              title: Text('Asesoramientos y adolescentes asesorades'),
+              subtitle: Text(
+                  'Cantidad de asesoramientos. Porcentaje de cobertura de adolescentes asesorades. Provincias y departamentos Enia. Acumulado enero a diciembre 2020. Fuente: Área monitoreo Plan Enia, DNSSR, SAS, Ministerio de Salud de la Nación.'),
               onTap: () => launch(
-                  'https://www.google.com/maps/d/u/1/edit?mid=1ySWkQLpKipUZSu1tBlu2Xe4BmIlfTg-c&usp=sharing'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.map_outlined),
-              title: Text(
-                  'Escuelas con/sin asesorías en salud integral en la adolescencia y caracterización asesor/a'),
-              subtitle: Text('Escuelas con/sin asesor/a DIAJU'),
-              onTap: () => launch(
-                  'https://www.google.com/maps/d/u/1/edit?mid=1Ur5z3Q207uk8Ri_KC7FFMWLVu6iIJE3J&usp=sharing'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.map_outlined),
-              title: Text('Porcentaje de alcance de adolescentes asesorades'),
-              onTap: () => launch(
-                  'https://www.google.com/maps/d/u/1/edit?mid=1v80oG1Xb1hUb8rXPxk4RVsRF624mQPVN&usp=sharing'),
+                  'https://www.google.com/maps/d/edit?mid=1v80oG1Xb1hUb8rXPxk4RVsRF624mQPVN&usp=sharing'),
             ),
             Divider(thickness: 1),
             ListTile(
               title: Text(
-                'Dispositivo de asesorías en Salud Integral en la Adolescencia de base comunitaria',
+                'Dispositivo de base comunitaria en salud integral en la adolescencia (DBC)',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -368,26 +398,27 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
-              title: Text(
-                  'Cantidad de asesorías comunitarias y asesoramientos, por departamento y provincia'),
-              subtitle: Text('Escuelas con/sin asesor/a DIAJU'),
+              title: Text('Dispositivos de asesorías.'),
+              subtitle: Text(
+                  'Provincias y departamentos Enia. Acumulado enero a diciembre 2020. Fuente: Área monitoreo Plan Enia, DNSSR, SAS, Ministerio de Salud de la Nación.'),
               onTap: () => launch(
-                  'https://www.google.com/maps/d/u/1/edit?mid=1D9jo7KOQh9gjl5IMsk0VYSngA352zoEZ&usp=sharing'),
+                  'https://www.google.com/maps/d/edit?mid=1UjesJJNilyu6yu2HazXWiDtpFq5SeSKU&usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.map_outlined),
-              title: Text('Espacios comunitarios DBC, según tipo'),
-              subtitle: Text('Espacios comunitarios DBC - Provincias Enia'),
+              title: Text('Asesoramientos y adolescentes asesorades.'),
+              subtitle: Text(
+                  'Provincias y departamentos Enia. Acumulado enero a diciembre 2020. Fuente: Área monitoreo Plan Enia, DNSSR, SAS, Ministerio de Salud de la Nación.'),
               onTap: () => launch(
-                  'https://www.google.com/maps/d/u/1/edit?mid=1UjesJJNilyu6yu2HazXWiDtpFq5SeSKU&usp=sharing'),
+                  'https://www.google.com/maps/d/edit?mid=1D9jo7KOQh9gjl5IMsk0VYSngA352zoEZ&usp=sharing'),
             ),
-            ListTile(
+            /* ListTile(
               trailing: Icon(Icons.map_outlined),
               title: Text('Espacios comunitarios DBC, según tipo'),
               subtitle: Text('Zoom en GBA: Espacios comunitarios DBC - GBA'),
               onTap: () => launch(
                   'https://www.google.com/maps/d/u/1/edit?mid=1Vwgj0JrFYXhKFA74SI70Xm0K9NTLZSv1&usp=sharing'),
-            ),
+            ), */
           ],
         ),
       ),

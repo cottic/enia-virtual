@@ -130,8 +130,6 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                                       style: const TextStyle(fontSize: 12.0),
                                     ),
                                     trailing: Icon(Icons.info_outline_rounded),
-                                    onTap: () => launch(
-                                        'https://docs.google.com/document/d/1jeFmpHlHH47h5sXl3mK0QujMKpBalfjDm0UJFCdn9n0/edit?usp=sharing'),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(10.0),
@@ -250,9 +248,13 @@ class _DashboardMainMenuState extends State<DashboardMainMenu> {
                               ),
                             )
                           : Expanded(
-                              child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Center(
                                   child: Text(
-                                      L10n.of(context).resolutionIncompatible)),
+                                      L10n.of(context).resolutionIncompatible),
+                                ),
+                              ),
                             ),
                       FlatButton.icon(
                         padding: EdgeInsets.all(20),

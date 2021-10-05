@@ -51,7 +51,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "somethingWrong": "En proceso de elaboración.",
+  "somethingWrong": "",
   "@somethingWrong": {
     "type": "text",
     "placeholders": {}
@@ -604,7 +604,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "editDisplayname": "Editar nombre visible",
+  "editDisplayname": "Nombre visible",
   "@editDisplayname": {
     "type": "text",
     "placeholders": {}

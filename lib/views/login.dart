@@ -214,7 +214,7 @@ class _LoginState extends State<Login> {
                 children: [
                   Image.asset(
                     'assets/logosENIA-2021-1.jpg',
-                    width: 500,
+                    width: 440,
                   )
                 ],
               ),
@@ -224,7 +224,7 @@ class _LoginState extends State<Login> {
                 children: [
                   Image.asset(
                     'assets/logosENIA-2021-2.jpg',
-                    width: 500,
+                    width: 440,
                   )
                 ],
               ),

@@ -108,7 +108,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               ),
               background: ContentBanner(
                 Uri.https('proyecto.codigoi.com.ar',
-                    'appenia/enia-assets/images/trama-mds.png'),
+                    'appenia/enia-assets/images/trama-mds-lila.png'),
 
                 height: 300,
                 //defaultIcon: Icons.account_circle,
@@ -122,7 +122,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
           children: <Widget>[
             ListTile(
               title: Text(
-                'Un espacio para el fortalecimiento institucional. Todos los enlaces de ingreso: capacitaciones virtuales, webinarios y grabaciones de programas y encuentros de trabajo.',
+                'Acceso a las propuestas de capacitación y a las grabaciones de webinarios y videos educativos.',
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
@@ -132,7 +132,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             ListTile(
               trailing: Icon(Icons.description),
               title: Text(
-                'Acceso a las propuestas de capacitación y a las grabaciones de webinarios y videos educativos',
+                'Conocé las propuestas de capacitación',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
@@ -154,6 +154,46 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
             ),
             ListTile(
               title: Text(
+                'Serie audiovisual para la formación en detección y abordaje del abuso sexual y el embarazo forzado en la niñez y adolescencia - 2021',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColorDark,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              contentPadding: EdgeInsets.fromLTRB(14.0, 8.0, 0.0, 0.0),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text('Detección temprana en salud'),
+              onTap: () => launch('https://youtu.be/Bq_N7qyV4wU'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text('Detección temprana en las escuelas'),
+              onTap: () => launch('https://youtu.be/ttUdfij5HCU'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text('La consejería en derechos'),
+              onTap: () => launch('https://youtu.be/g-H2N1sCLBA'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text('Hoja de ruta'),
+              onTap: () => launch('https://youtu.be/G9_w54X2Epo'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text('El rol del sistema de protección'),
+              onTap: () => launch('https://youtu.be/c6Xgej97JiY'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text('Aportes para su comprensión y abordaje'),
+              onTap: () => launch('https://youtu.be/r9Iresw0M8k'),
+            ),
+            ListTile(
+              title: Text(
                 'Ciclo de Encuentros para un abordaje intersectorial de niñas y adolescentes menores de 15 años con embarazos forzados - 2020',
                 style: TextStyle(
                   color: Theme.of(context).primaryColorDark,
@@ -167,52 +207,51 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               title: Text(
                   'Presentación Hoja de ruta de Atención de niñas y adolescentes menores de 15 embarazadas'),
               subtitle: Text('Duración: 21:16 minutos'),
-              onTap: () =>
-                  launch('https://www.youtube.com/watch?v=kJiU4NUg8pE'),
+              onTap: () => launch('https://youtu.be/rba_rWjE-b4'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Experiencias de atención integral de niñas y adolescentes de menores de 15 años víctimas de abuso sexual y embarazo forzado, una mirada federal. Experiencias de Jujuy y Entre Ríos'),
               subtitle: Text('Duración: 21:16 minutos'),
-              onTap: () => launch('https://youtu.be/qL2xlvasHgE'),
+              onTap: () => launch('https://youtu.be/EljwCJPkjWo'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Experiencias de atención integral de niñas y adolescentes de menores de 15 años víctimas de abuso sexual y embarazo forzado, una mirada federal. Experiencias de Mendoza y Chubut'),
               subtitle: Text('Duración: 18:21 minutos'),
-              onTap: () => launch('https://youtu.be/UkQ6-E4lbkk'),
+              onTap: () => launch('https://youtu.be/0AlQa8XO88U'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Experiencias, herramientas y desafíos de la ESI para el abordaje de abusos sexuales y embarazos forzados en niñas y adolescentes menores de 15 años'),
               subtitle: Text('Duración: 14 minutos'),
-              onTap: () => launch('https://youtu.be/drDA6HUjQm8'),
+              onTap: () => launch('https://youtu.be/I4eT9BiCD_0'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'La importancia del abordaje integral y el acceso a la justicia en casos de abusos sexuales y embarazos forzados'),
               subtitle: Text('Duración: 15 minutos'),
-              onTap: () => launch('https://youtu.be/PHZSBtYxbCg'),
+              onTap: () => launch('https://youtu.be/LrwgDdSHnn0'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Abusos sexuales y embarazos forzados. Caracterización y orientaciones para un abordaje con enfoque de género y generacional (Parte 1)'),
               subtitle: Text('Duración: 15 minutos'),
-              onTap: () => launch('https://youtu.be/G0uYvimqxAE'),
+              onTap: () => launch('https://youtu.be/CennNuTQtLs'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Abusos sexuales y embarazos forzados. Caracterización y orientaciones para un abordaje con enfoque de género y generacional (Parte 2)'),
               subtitle: Text('Duración: 15 minutos'),
-              onTap: () => launch('https://youtu.be/l5rBQMpsiHs'),
+              onTap: () => launch('https://youtu.be/-F4PjveyZOg'),
             ),
-            ListTile(
+            /* ListTile(
               title: Text(
                 'Webinarios realizados en el marco del curso "Anticoncepción en las adolescencias" - 2020',
                 style: TextStyle(
@@ -260,7 +299,7 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               subtitle: Text('Duración: 1:24 Horas'),
               onTap: () =>
                   launch('https://www.youtube.com/watch?v=IKIvGorudbw'),
-            ),
+            ), */
             ListTile(
               title: Text(
                 'Encuentros de actualización profesional sobre Interrupción Legal del Embarazo - 2020',
@@ -276,55 +315,48 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               title: Text(
                   'Causal salud, de la teoría la práctica Claves para su implementación'),
               subtitle: Text('Duración: 10 minutos'),
-              onTap: () =>
-                  launch('https://www.youtube.com/watch?v=yOck9YXBF6Y'),
+              onTap: () => launch('https://youtu.be/JySIzVDU6bk'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Ruta crítica para las niñas y adolescentes embarazadas menores de 15 años'),
               subtitle: Text('Duración: 10 minutos'),
-              onTap: () =>
-                  launch('https://www.youtube.com/watch?v=LQobVCJkXjw'),
+              onTap: () => launch('https://youtu.be/LM0e0yLM2AE'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text('Aborto en 13 semanas y más'),
               subtitle: Text('Duración: 10 minutos'),
-              onTap: () =>
-                  launch('https://www.youtube.com/watch?v=i44iOhXglUk'),
+              onTap: () => launch('https://youtu.be/BneNJSW7ZWA'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Implementación y manejo de la Aspiración Manual Endouterina AMEU'),
               subtitle: Text('Duración: 10 minutos'),
-              onTap: () =>
-                  launch('https://www.youtube.com/watch?v=RPKLMu72yIw'),
+              onTap: () => launch('https://youtu.be/gLS7QHlgamc'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Uso y manejo de misoprostol para el aborto con medicamentos hasta las 12 semanas'),
               subtitle: Text('Duración: 10 minutos'),
-              onTap: () =>
-                  launch('https://www.youtube.com/watch?v=jcvXbbP1wDw'),
+              onTap: () => launch('https://youtu.be/rs5g89gxjJU'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Atención integral en la interrupción legal del embarazo'),
               subtitle: Text('Duración: 10 minutos'),
-              onTap: () =>
-                  launch('https://www.youtube.com/watch?v=3Ljz6QB4G8M'),
+              onTap: () => launch('https://youtu.be/njsC2Qa95u4'),
             ),
             ListTile(
               trailing: Icon(Icons.ondemand_video),
               title: Text(
                   'Protocolo para la atención integral de las personas con derecho a la interrupción legal del embarazo'),
               subtitle: Text('Duración: 10 minutos'),
-              onTap: () =>
-                  launch('https://www.youtube.com/watch?v=LZEf3QtU1wI'),
+              onTap: () => launch('https://youtu.be/syJzbk3jnKg'),
             ),
           ],
         ),

@@ -22,7 +22,7 @@ class EniaIcons {
   static const _kFontPkg = null;
 
   static const IconData adolescente =
-      IconData(0x4e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+      IconData(0x59, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData ninios =
       IconData(0x42, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData diu =
@@ -40,23 +40,33 @@ class EniaIcons {
   static const IconData enia2 =
       IconData(0x4d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData escuela1 =
-      IconData(0x48, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+      IconData(0x5b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData escuela2 =
-      IconData(0x49, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+      IconData(0x5b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData escuelaap =
-      IconData(0x4a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+      IconData(0x5c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData estudiantesbasico =
       IconData(0x50, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData estudiantesorientado =
       IconData(0x51, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData centrocomunitario =
+  static const IconData centrocomunitario2 =
       IconData(0x49, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData docente =
       IconData(0x4b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData escuela10 =
-      IconData(0x52, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+      IconData(0x5d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData estudiante1 =
-      IconData(0x4f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+      IconData(0x5a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData estudiantesgrupo =
       IconData(0x53, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData macs =
+      IconData(0x55, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData centrocomunitario =
+      IconData(0x54, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData personasingenero =
+      IconData(0x56, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData centrodesalud =
+      IconData(0x58, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData docentescapacitades =
+      IconData(0x57, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

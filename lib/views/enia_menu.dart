@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'chat_list.dart';
 import '../components/adaptive_page_layout.dart';
@@ -131,6 +132,20 @@ class _EniaMenuState extends State<EniaMenu> {
             ListTile(
               title: Text(
                   'Además Enia@virtual ofrece a las/os/es asesoras/es del dispositivo de asesorías en salud integral en escuelas secundarias un medio de comunicación directa con las/os/es adolescentes que consultan.'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text('Video para equipos del Plan'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1qoGMiAEA3vT--fCHBWC2UDRkjbIZxzGr/view'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Guía técnica Enia@virtual'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1br2M6d7GAx6g8Eqf6R-6Wgj9nctZgDPU/view?usp=sharing'),
             ),
             SizedBox(height: 40),
           ],

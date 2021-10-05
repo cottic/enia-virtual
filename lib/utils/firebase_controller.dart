@@ -27,8 +27,8 @@ abstract class FirebaseController {
   static const String CHANNEL_NAME = 'plan ENIA';
   static const String CHANNEL_DESCRIPTION = 'Push notifications for FluffyChat';
   static const String APP_ID = 'ar.org.cottic.planenia';
-  
-  static const String GATEWAY_URL = 'https://matrix.codigoi.com.ar:7023';
+
+  static const String GATEWAY_URL = 'http://matrix.codigoi.com.ar:7023';
   static const String PUSHER_FORMAT = 'event_id_only';
 
   static Future<void> setupFirebase(

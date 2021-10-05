@@ -109,7 +109,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               ),
               background: ContentBanner(
                 Uri.https('proyecto.codigoi.com.ar',
-                    'appenia/enia-assets/images/trama-mds.png'),
+                    'appenia/enia-assets/images/trama-mds-lila.png'),
 
                 height: 300,
                 //defaultIcon: Icons.account_circle,
@@ -132,12 +132,70 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
             ),
             ListTile(
               title: Text(
+                'Protocolos y guías',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Protocolo para la atención integral de las personas con derecho a la interrupción voluntaria y legal del embarazo. Actualización 2021. Resolución Ministerio de Salud 1535/2021.'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://bancos.salud.gob.ar/recurso/protocolo-para-la-atencion-integral-de-las-personas-con-derecho-la-interrupcion-voluntaria'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Protocolo para la atención integral de personas víctimas de violaciones sexuales, Actualización 2021'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://bancos.salud.gob.ar/recurso/protocolo-para-la-atencion-integral-de-personas-victimas-de-violaciones-sexuales'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Atención de niñas y adolescentes menores de 15 años embarazadas. Hoja de ruta: herramientas para orientar el trabajo de los equipos de salud. 2020. Resolución Ministerio de Salud 1841/2020.'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://bancos.salud.gob.ar/recurso/atencion-de-ninas-y-adolescentes-menores-de-15-anos-embarazadas-hoja-de-ruta'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Anexo. Atención de NNA menores de 15 años embarazadas. Hoja de ruta'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://bancos.salud.gob.ar/recurso/atencion-de-ninas-y-adolescentes-menores-de-15-anos-embarazadas-hoja-de-ruta-anexo'),
+            ),
+            Divider(thickness: 1),
+            ListTile(
+              title: Text(
                 'Documentos técnicos y de apoyo a la gestión integral',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Impacto de la pandemia COVID-19 y respuestas adaptativas de los servicios de salud para garantizar los derechos de salud sexual y reproductiva'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://bancos.salud.gob.ar/recurso/impacto-de-la-pandemia-covid-19-y-respuestas-adaptativas-de-los-servicios-de-salud-para'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Consejería en derechos a niñas y adolescentes víctimas de abuso sexual y embarazo forzado. Reflexiones sobre sus especificidades. Dimensiones claves para su abordaje.'),
+              subtitle: Text('Enero 2021.'),
+              onTap: () => launch(
+                  'https://bancos.salud.gob.ar/recurso/consejeria-en-derechos-ninas-y-adolescentes-victimas-de-abuso-sexual-y-embarazo-forzado'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -165,10 +223,10 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text(
-                  'Abusos sexuales y embarazo forzado en la niñez y adolescencia. Lineamientos para su abordaje interinstitucional, 2019'),
-              subtitle: Text(''),
+                  'Abusos sexuales y embarazo forzado en la niñez y adolescencia. Lineamientos para su abordaje interinstitucional.'),
+              subtitle: Text('Actualización 2021.'),
               onTap: () => launch(
-                  'https://www.argentina.gob.ar/sites/default/files/abusos_sexuales_y_embarazo_forzado._lineamientos._anexo.pdf'),
+                  'https://bancos.salud.gob.ar/recurso/abusos-sexuales-y-embarazo-forzado-en-la-ninez-y-adolescencia-lineamientos-para-su-abordaje'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -282,9 +340,8 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Aspiración Manual Endouterina, AMEU. Nota técnica, 2020'),
-              subtitle: Text(''),
+              title: Text('Aspiración Manual Endouterina. AMEU.'),
+              subtitle: Text('Nota técnica 2021.'),
               onTap: () => launch(
                   'https://bancos.salud.gob.ar/recurso/nota-tecnica-2-aspiracion-manual-endouterina-ameu'),
             ),
@@ -337,6 +394,21 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Implementar IVE-ILE'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1H85OuSrudrTFAPBu9yihq8f_CKwBqQyG/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
+                  'Informe de gestión 2020  – Dirección Nacional de Salud Sexual y Reproductiva'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1FLp4sREG01lPZkGYP1o0eVrnKh8Sjz7v/view?usp=sharing'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
@@ -411,6 +483,13 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Plan Enia. Informe trimestral de monitoreo'),
+              subtitle: Text('Enero - Marzo 2021'),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/1xg44XvWQGINZPc4SPmDHiEE3SdVbx5_C/view'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
               title: Text('Plan Enia. Informe anual de monitoreo'),
               subtitle: Text('2020'),
               onTap: () => launch(
@@ -443,40 +522,6 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               subtitle: Text('Abril - Mayo 2020'),
               onTap: () => launch(
                   'https://bancos.salud.gob.ar/recurso/informe-bimestral-de-monitoreo-abril-mayo-2020'),
-            ),
-            Divider(thickness: 1),
-            ListTile(
-              title: Text(
-                'Protocolos y guías',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Resolución Ministerio de Salud 1841/2020. Atención de niñas y adolescentes menores de 15 años embarazadas. Hoja de ruta: herramientas para orientar el trabajo de los equipos de salud. 2020'),
-              subtitle: Text(''),
-              onTap: () => launch(
-                  'https://bancos.salud.gob.ar/recurso/atencion-de-ninas-y-adolescentes-menores-de-15-anos-embarazadas-hoja-de-ruta'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Anexo. Atención de NNA menores de 15 años embarazadas. Hoja de ruta'),
-              subtitle: Text(''),
-              onTap: () => launch(
-                  'https://bancos.salud.gob.ar/recurso/atencion-de-ninas-y-adolescentes-menores-de-15-anos-embarazadas-hoja-de-ruta-anexo'),
-            ),
-            ListTile(
-              trailing: Icon(Icons.picture_as_pdf),
-              title: Text(
-                  'Protocolo para la atención integral de personas víctimas de violencia sexual, 2021'),
-              subtitle: Text(''),
-              onTap: () => launch(
-                  'https://bancos.salud.gob.ar/recurso/protocolo-para-la-atencion-integral-de-personas-victimas-de-violaciones-sexuales'),
             ),
           ],
         ),

@@ -372,10 +372,9 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             ListTile(
-              trailing: Icon(Icons.edit),
+              trailing: Icon(Icons.person),
               title: Text(L10n.of(context).editDisplayname),
               subtitle: Text(profile?.displayname ?? client.userID.localpart),
-              onTap: () => setDisplaynameAction(context),
             ),
             Divider(thickness: 1),
             ListTile(
@@ -597,7 +596,7 @@ class _SettingsState extends State<Settings> {
               children: [
                 Image.asset(
                   'assets/logosENIA-2021-1.jpg',
-                  width: 500,
+                  width: 440,
                 )
               ],
             ),
@@ -607,7 +606,7 @@ class _SettingsState extends State<Settings> {
               children: [
                 Image.asset(
                   'assets/logosENIA-2021-2.jpg',
-                  width: 500,
+                  width: 440,
                 )
               ],
             ),
