@@ -1,5 +1,4 @@
 version: '3.3'
-
 services:
 
   nginx-proxy:
@@ -35,16 +34,20 @@ services:
     volumes:
       - ./synapse-data:/data
     environment:
-      VIRTUAL_HOST: matrix.codigoi.com.ar
+      VIRTUAL_HOST: NOMBREDEDOMINIO.COM
       VIRTUAL_PORT: 8008
-      LETSENCRYPT_HOST: matrix.codigoi.com.ar
-      LETSENCRYPT_EMAIL: soporte@codigoi.com.ar
+      LETSENCRYPT_HOST: NOMBREDEDOMINIO.COM
+      LETSENCRYPT_EMAIL: soporte@NOMBREDEDOMINIO.COM
 
-  synapse-admin:
-    image: awesometechnologies/synapse-admin
-    restart: always
-    ports:
-      - "8080:80"
+  mautrix-telegram:
+      container_name: mautrix-telegram
+      image: dock.mau.dev/tulir/mautrix-telegram:latest
+      restart: unless-stopped
+      ports:
+      - "29317:29317"
+      volumes:
+      - .:/data
+
 
 volumes:
   certs:
