@@ -191,7 +191,7 @@ CREATE TABLE `users` (
 cd famedly-push-gateway
 npm install
 
-Editar config.json and add the path to a valid ssl cert and add your Firebase admin key.
+Editar config.json y los detalles de los mensajes de famedlyPushGateway.js.
 
 Run it with
 ```
