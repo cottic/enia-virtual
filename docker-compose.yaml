@@ -51,7 +51,7 @@ services:
 
   mautrix-telegram:
       container_name: mautrix-telegram
-      image: dock.mau.dev/tulir/mautrix-telegram:latest
+      image: dock.mau.dev/tulir/mautrix-telegram:v0.7.0
       restart: unless-stopped
       ports:
       - "29317:29317"
