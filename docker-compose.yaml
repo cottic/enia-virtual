@@ -27,7 +27,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   synapse:
-    image: matrixdotorg/synapse
+    image: matrixdotorg/synapse:v1.45.1
     restart: always
     expose:
       - "8008"
@@ -38,6 +38,16 @@ services:
       VIRTUAL_PORT: 8008
       LETSENCRYPT_HOST: NOMBREDEDOMINIO.COM
       LETSENCRYPT_EMAIL: soporte@NOMBREDEDOMINIO.COM
+
+  postgres:
+    image: 'postgres:9.6.21'
+    restart: always
+    volumes:
+      - './postgres_data:/var/lib/postgresql/data'
+    environment:
+      - POSTGRES_PASSWORD=***
+    ports:
+      - '5432:5432'
 
   mautrix-telegram:
       container_name: mautrix-telegram

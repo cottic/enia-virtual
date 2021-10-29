@@ -22,7 +22,7 @@ version: "3.3"
 services:
   mautrix-telegram:
       container_name: mautrix-telegram
-      image: dock.mau.dev/tulir/mautrix-telegram:latest
+      image: dock.mau.dev/tulir/mautrix-telegram:v0.7.0
       restart: unless-stopped
       ports:
       - "29317:29317"
@@ -39,7 +39,7 @@ Despliegue:
 version: '3.3'
 services:
   maubot:
-    image: dock.mau.dev/maubot/maubot:latest
+    image: dock.mau.dev/maubot/maubot:169aece027246d46c1b29bcb7e76e74dd59d0609-standalone
     ports:
       - "29316:29316"
     volumes:
