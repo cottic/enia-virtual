@@ -92,9 +92,6 @@ class _ChatListState extends State<ChatList> {
     if (!resultSecondLink) {
       resultSecondLink = await getSecondLink();
     }
-    if (!resultThirdLink) {
-      resultThirdLink = await getThirdLink();
-    }
     if (!resultMainLink) {
       resultMainLink = await getMainGroup();
     }
@@ -147,28 +144,6 @@ class _ChatListState extends State<ChatList> {
     if (isGroupOnRooms) {
       var getSecondLinkRoom = await client.getRoomById(Matrix.secondGroup);
       setState(() => secondLinkRoom = getSecondLinkRoom);
-    }
-
-    return true;
-  }
-
-  Future<bool> getThirdLink() async {
-    // print('Entro THIRD LINK');
-    var client = Matrix.of(context).client;
-
-    roomsJoined == null
-        ? roomsJoined = await client.requestJoinedRooms()
-        : null;
-
-    if (roomsJoined.isNotEmpty) {
-      var groupsJoinedLink = roomsJoined.firstWhere(
-          (roomId) => Matrix.thirdGroup.contains(roomId),
-          orElse: () => null);
-
-      if (groupsJoinedLink != null) {
-        var getThirdLinkRoom = await client.getRoomById(groupsJoinedLink);
-        setState(() => thirdLinkRoom = getThirdLinkRoom);
-      }
     }
 
     return true;
@@ -762,15 +737,6 @@ class _ChatListState extends State<ChatList> {
                                                                     : Container(
                                                                         child: PrivateRoomListItem(
                                                                             secondLinkRoom),
-                                                                      ),
-                                                            searchMode
-                                                                ? Container()
-                                                                : thirdLinkRoom ==
-                                                                        null
-                                                                    ? Container()
-                                                                    : Container(
-                                                                        child: PrivateRoomListItem(
-                                                                            thirdLinkRoom),
                                                                       ),
                                                             EniaPresenceListItem(
                                                                 mainGroupListSearch[

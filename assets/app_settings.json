@@ -1,7 +1,7 @@
 {
   "name": "Estadisticas enia@virtual",
-  "api_base_url": "enia.codigoi.com.ar:8000/api",
-  "media_base_url": "enia.codigoi.com.ar:8000/media",
+  "api_base_url": "/api",
+  "media_base_url": "/media",
   "version": 1,
   "boards": [
     {

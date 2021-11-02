@@ -23,31 +23,19 @@ import '../views/key_verification.dart';
 import '../utils/platform_infos.dart';
 import 'avatar.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Matrix extends StatefulWidget {
   static const String callNamespace = 'chat.fluffy.jitsi_call';
 
   // Here you set the Matrix server of the Chat
-  static const String defaultHomeserver = 'matrix.codigoi.com.ar';
+  static String defaultHomeserver = dotenv.env['HOMESERVER'];
 
-  static const String mainGroup = '!HYkJsTHlawQWyzwLYK:matrix.codigoi.com.ar';
+  static String mainGroup = dotenv.env['MAINGROUP'];
 
-  //in ENIA is HELP
-  static const String secondGroup = '!POwBopuroioZAsSpNy:matrix.codigoi.com.ar';
+  static String secondGroup = dotenv.env['SECONDGROUP'];
 
-  //in ENIA is HELP
-  static const List<String> thirdGroup = [
-    '!qvcYgCfhjOdyDbUYjA:matrix.codigoi.com.ar',
-    '!BaWhhGGEEUVycuxsYL:matrix.codigoi.com.ar',
-    '!QcxKXftJGUepsZXEwf:matrix.codigoi.com.ar',
-    '!IRfvYJEEISOtmKCDbl:matrix.codigoi.com.ar',
-    '!vWcuZCGgFiLgACLaaQ:matrix.codigoi.com.ar',
-    '!avrkWsLgZOqVFLCOjL:matrix.codigoi.com.ar',
-    '!EPbitqVGxzEiXJNmUP:matrix.codigoi.com.ar',
-    '!hDRSwvGOzbWxSaBckL:matrix.codigoi.com.ar'
-  ];
-
-  //ENIA VERSION
-  static const String versionENIA = 'Versión 2.0.9 (29/9/2021)';
+  static String versionENIA = dotenv.env['VERSION'];
 
   final Widget child;
 

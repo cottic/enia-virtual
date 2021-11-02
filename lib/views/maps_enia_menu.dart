@@ -8,6 +8,8 @@ import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class MapsEniaMenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -92,6 +94,7 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
       if (mounted) setState(() => megolmBackupCached = c);
       return c;
     });
+    final _baseUrl = dotenv.env['APISERVER'];
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
@@ -107,9 +110,8 @@ class _MapsEniaMenuState extends State<MapsEniaMenu> {
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               background: ContentBanner(
-                Uri.https('proyecto.codigoi.com.ar',
-                    'appenia/enia-assets/images/trama-mds-lila.png'),
-
+                Uri.https(
+                    _baseUrl, 'appenia/enia-assets/images/trama-mds-lila.png'),
                 height: 300,
                 //defaultIcon: Icons.account_circle,
                 loading: profile == null,

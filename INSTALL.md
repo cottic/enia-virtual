@@ -196,7 +196,6 @@ Editar config.json y los detalles de los mensajes de famedlyPushGateway.js.
 Run it with
 ```
 node famedlyPushGateway.js
-```
 
 
 ### Cliente de mensajería
@@ -212,6 +211,16 @@ node famedlyPushGateway.js
  - APP IOS
    https://flutter.dev/docs/deployment/ios
 
+### ENV FILE
+
+
+```
+HOMESERVER='NOMBREDEDOMINIO.COM';
+APISERVER='NOMBREDEDOMINIO.COM';
+MAINGROUP='!HYkJsTHlawQWyzwLYK:NOMBREDEDOMINIO.COM';
+SECONDGROUP='!POwBopuroioZAsSpNy:NOMBREDEDOMINIO.COM';
+VERSION='Versión 2.0.10 (25/10/2021)';
+```
 
 ## Integración a redes de mensajería externa
 

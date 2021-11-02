@@ -16,6 +16,8 @@ import 'components/theme_switcher.dart';
 import 'utils/famedlysdk_store.dart';
 import 'views/chat_list.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 final sentry = SentryClient(dsn: '8591d0d863b646feb4f3dda7e5dcab38');
 
 void captureException(error, stackTrace) async {
@@ -30,7 +32,8 @@ void captureException(error, stackTrace) async {
   }
 }
 
-void main() {
+Future main() async {
+  await dotenv.load(fileName: '.env');
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   runZonedGuarded(
@@ -84,7 +87,6 @@ class App extends StatelessWidget {
                             L10n.of(context).loading,
                             style: TextStyle(color: Colors.white),
                           ),
-
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.05,
                           ),

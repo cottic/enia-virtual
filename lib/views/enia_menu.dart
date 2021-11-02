@@ -10,6 +10,8 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class EniaMenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -97,6 +99,7 @@ class _EniaMenuState extends State<EniaMenu> {
       if (mounted) setState(() => megolmBackupCached = c);
       return c;
     });
+    final _baseUrl = dotenv.env['APISERVER'];
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
@@ -112,8 +115,7 @@ class _EniaMenuState extends State<EniaMenu> {
                 style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               background: ContentBanner(
-                Uri.https('proyecto.codigoi.com.ar',
-                    'appenia/enia-assets/images/trama-mds.png'),
+                Uri.https(_baseUrl, 'appenia/enia-assets/images/trama-mds.png'),
 
                 height: 300,
                 //defaultIcon: Icons.account_circle,
