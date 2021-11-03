@@ -11,6 +11,8 @@ Procedimiento simplificado de configuración en base a:
 - copiar los archivos de configuración ([homeserver.enia.yaml](https://github.com/cottic/enia-virtual/blob/master/homeserver.enia.yaml), etc a /synapse-admin)
 - crear la base de datos y el usaurio en POSTGREST en refencia al archivo de configuración homeserver.yaml)
 
+Junto a la creación del matrix server se deben crear dos grupos especiales con un cliente MATRIX sobre el servidor. El grupo "enia" y el grupo "soporte". Los mismos luego, a traves de sus IDS, serán utilizados en el archivo .env del cliente de mensajeria. 
+
 > La base de datos PostgreSQL es de alta disponibilidad
 
 ### Bridge Telegram <--> Matrix
