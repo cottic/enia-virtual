@@ -8,7 +8,7 @@ Documentación: https://matrix.org/docs/spec/
 Despliegue: [docker-compose.yaml](https://github.com/cottic/enia-virtual/blob/master/docker-compose.yaml)
 
 Procedimiento simplificado de configuración en base a:
-- copiar los archivos de configuración (homeserver.yaml, etc a /synapse-admin)
+- copiar los archivos de configuración ([homeserver.enia.yaml](https://github.com/cottic/enia-virtual/blob/master/homeserver.enia.yaml), etc a /synapse-admin)
 - crear la base de datos y el usaurio en POSTGREST en refencia al archivo de configuración homeserver.yaml)
 
 > La base de datos PostgreSQL es de alta disponibilidad
