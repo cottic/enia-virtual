@@ -186,6 +186,14 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
               title: Text(
+                  'Pautas orientativas para la detección temprana e intervención en casos de abuso sexual y/o embarazo forzado de niñas/es/os y adolescentes menores de 15 años'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://bancos.salud.gob.ar/recurso/pautas-orientativas-para-la-deteccion-temprana-e-intervencion-en-casos-de-abuso-sexual-yo'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text(
                   'Impacto de la pandemia COVID-19 y respuestas adaptativas de los servicios de salud para garantizar los derechos de salud sexual y reproductiva'),
               subtitle: Text(''),
               onTap: () => launch(
@@ -241,7 +249,7 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Presentación Plan Enia 2020'),
+              title: Text('Presentación Plan Enia 2021'),
               subtitle: Text(''),
               onTap: () => launch(
                   'https://bancos.salud.gob.ar/recurso/presentacion-abreviada-plan-nacional-de-prevencion-del-embarazo-no-intencional-en-la'),
@@ -412,6 +420,13 @@ class _FilesEniaMenuState extends State<FilesEniaMenu> {
               subtitle: Text(''),
               onTap: () => launch(
                   'https://drive.google.com/file/d/1FLp4sREG01lPZkGYP1o0eVrnKh8Sjz7v/view?usp=sharing'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Línea Salud Sexual 0800. '),
+              subtitle: Text('Abril – junio'),
+              onTap: () => launch(
+                  'https://bancos.salud.gob.ar/recurso/reporte-bimestral-en-base-secuencias-del-0800-mayo-junio-2021-acceso-metodos'),
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),

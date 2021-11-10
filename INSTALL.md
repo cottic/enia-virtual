@@ -33,7 +33,7 @@ services:
 ```
 
 Procedimiento simplificado de configuración en base a:
-- Copar los archivos de configuracion (config.yaml y registration.yaml)
+- Copar los archivos de configuracion (([config.yaml](https://github.com/cottic/enia-virtual/blob/master/config.telegram.enia.yaml) y registration.yaml)
 
 ### Servicio de bot
 Despliegue:
@@ -93,6 +93,7 @@ Las instancias son la forma en que los plugins se vinculan a los clientes. Despu
 Se deben crear las siguientes instancias:
 @bot:matrix.codigoi.com.ar
 @enia:matrix.codigoi.com.ar
+
 
 ### API Tableros, API datos extra usaurios, Bridge WhatsApp y LOG
 PHP_VERSION=7.3

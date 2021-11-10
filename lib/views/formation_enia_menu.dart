@@ -195,6 +195,12 @@ class _FormationEniaMenuState extends State<FormationEniaMenu> {
               onTap: () => launch('https://youtu.be/r9Iresw0M8k'),
             ),
             ListTile(
+              trailing: Icon(Icons.ondemand_video),
+              title: Text('Material de apoyo para el trabajo con los videos'),
+              onTap: () => launch(
+                  'https://drive.google.com/file/d/10lGwpT1i0suCeyUBcjPv8Kz1MA-igAoq/view?usp=sharing'),
+            ),
+            ListTile(
               title: Text(
                 'Ciclo de Encuentros para un abordaje intersectorial de niñas y adolescentes menores de 15 años con embarazos forzados - 2020',
                 style: TextStyle(

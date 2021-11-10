@@ -149,7 +149,28 @@ class _LibraryEniaMenuState extends State<LibraryEniaMenu> {
             ),
             ListTile(
               trailing: Icon(Icons.picture_as_pdf),
-              title: Text('Periódico Plan Enia – agosto 2021'),
+              title: Text('Periódico Plan Enia – Septiembre I 2021'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mailchi.mp/714aa75536df/peridico-enia-junio-10936006?e=[UNIQID]'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia – Septiembre II 2021'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mailchi.mp/b5fece3c579b/peridico-enia-junio-10939242?e=[UNIQID]'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia – Octubre I 2021'),
+              subtitle: Text(''),
+              onTap: () => launch(
+                  'https://mailchi.mp/19f8721bbaa9/peridico-enia-junio-10941250?e=[UNIQID]'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf),
+              title: Text('Periódico Plan Enia – Agosto 2021'),
               subtitle: Text(''),
               onTap: () => launch(
                   'https://mailchi.mp/acb2ed4db76c/peridico-enia-junio-10931842?e=9f003d8fd5'),
