@@ -180,11 +180,19 @@ Ejecutar el archivo con la creación de la estructura [c1tableros_enia.sql](http
 ### Panel de administración de usuarios
 
 1. Requerimientos: git, yarn, nodejs
-2. Bajarse el cddigo: git clone https://github.com/cottic/synapse-admin.git
+2. Clonar el repositorio: git clone https://github.com/cottic/synapse-admin.git
 3. Ir al directorio: cd synapse-admin
-4. Bajarse las dependencias: yarn install
-5. Compilar la app: yarn build
-6. Copiar al directoria de publicación synapse-admin/build/
+4. Instalar dependencias las dependencias: yarn install
+5. Incluir el archivo .env
+6. Compilar la app: yarn build
+7. Copiar al directoria de publicación synapse-admin/build/
+
+### ENV FILE
+
+```
+REACT_APP_APISERVER='APISERVER'
+```
+
 
 **Repositorio:** https://github.com/cottic/synapse-admin
 
@@ -216,7 +224,6 @@ node famedlyPushGateway.js
    https://flutter.dev/docs/deployment/ios
 
 ### ENV FILE
-
 
 ```
 HOMESERVER='NOMBREDEDOMINIO.COM';
