@@ -173,6 +173,7 @@ CREATE TABLE `users` (
   `workcalendars` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ```
+Ejecutar el archivo con la creación de la estructura [c1tableros_enia.sql](https://github.com/cottic/enia-virtual/blob/master/c1tableros_enia.sql) 
 
 **Repositorio**: https://github.com/cottic/enia-api-tableros
 
