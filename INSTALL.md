@@ -2,7 +2,7 @@
 
 ## Sistema principal
 
-### Servidor de mensajeria instantánea MATRIX 
+### Servidor de mensajeria instantánea Synapse MATRIX 
 Documentación: https://matrix.org/docs/spec/
 
 Despliegue: [docker-compose.yaml](https://github.com/cottic/enia-virtual/blob/master/docker-compose.yaml)
@@ -11,9 +11,37 @@ Procedimiento simplificado de configuración en base a:
 - copiar los archivos de configuración ([homeserver.enia.yaml](https://github.com/cottic/enia-virtual/blob/master/homeserver.enia.yaml), etc a /synapse-admin)
 - crear la base de datos y el usaurio en POSTGREST en refencia al archivo de configuración homeserver.yaml)
 
-Junto a la creación del matrix server se deben crear dos grupos especiales con un cliente MATRIX sobre el servidor. El grupo "enia" y el grupo "soporte". Los mismos luego, a traves de sus IDS, serán utilizados en el archivo .env del cliente de mensajeria. 
 
 > La base de datos PostgreSQL es de alta disponibilidad
+
+#### Crear un usuario administrador
+
+Synapse viene con una herramienta CLI: register_new_matrix_user
+
+Acceder al comando dentro del contenedor ejecutando un shell interactivo: 
+```bash
+docker exec -it synapse sh.
+```
+Ejecutar 
+```bash
+register_new_matrix_user -c /data/homeserver.yaml https://HOMESERVER:8008 .
+```
+La herramienta le solicitará un nombre de usuario (enia), contraseña y definirlo como administrador. 
+
+```bash
+New user localpart: enia
+Password:
+Confirm password:
+Make admin [no]: yes
+Success!
+```
+
+Junto a la creación del matrix server se deben crear:
+- Dos grupos especiales. El grupo "enia" y el grupo "soporte". Los mismos, a traves de sus IDS, serán utilizados en el archivo .env del cliente de mensajeria. 
+- 1 usuario especial para el bot. El usuario "bot" 
+
+Cliente de MATRIX recomendado para la creación de los grupos: https://app.element.io/#/login
+La creación de los usuarios se recomienda a traves del panel de administración. Ambos accesibles con el usuario enia
 
 ### Bridge Telegram <--> Matrix
 Repositorio: https://github.com/mautrix/telegram
