@@ -50,7 +50,7 @@ services:
 Procedimiento simplificado de configuración en base a:
 - Copar los archivos de configuracion (config.yaml)
 
-Documentación: https://matrix.org/docs/projects/sdk/maubot/
+Documentación: https://matrix.org/docs/projects/bot/maubot
 
 Después de desplegar configurar maubot, ingresar en la interfaz de administración web a traves de http://NOMBREDEDOMINIO.COM:29316/_matrix/maubot.
 
