@@ -116,7 +116,7 @@ flutter:
     - assets/sounds/
     - assets/js/
     - assets/js/package/
-    - .env
+    - env
 
 
   fonts:

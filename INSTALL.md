@@ -37,7 +37,7 @@ Success!
 ```
 
 Junto a la creación del matrix server se deben crear:
-- Dos grupos especiales. El grupo "enia" y el grupo "soporte". Los mismos, a traves de sus IDS, serán utilizados en el archivo .env del cliente de mensajeria. 
+- Dos grupos especiales. El grupo "enia" y el grupo "soporte". Los mismos, a traves de sus IDS, serán utilizados en el archivo env del cliente de mensajeria. 
 - 1 usuario especial para el bot. El usuario "bot" 
 
 Cliente de MATRIX recomendado para la creación de los grupos: https://app.element.io/#/login
@@ -240,6 +240,8 @@ node famedlyPushGateway.js
 
 ### Cliente de mensajería
 **Repositorio:** https://github.com/cottic/enia-virtual
+
+En base a Flutter 1.2.4
 
 #### Despliegue del código en base a los proyectos en flutter:
  - WEB

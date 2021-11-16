@@ -33,7 +33,7 @@ void captureException(error, stackTrace) async {
 }
 
 Future main() async {
-  await dotenv.load(fileName: '.env');
+  await dotenv.load(fileName: 'env');
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   runZonedGuarded(
