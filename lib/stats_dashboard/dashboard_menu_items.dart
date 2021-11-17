@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:fluffychat/utils/app_route.dart';
 import 'package:fluffychat/views/chat_list.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

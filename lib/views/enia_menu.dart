@@ -8,8 +8,6 @@ import '../components/dialogs/simple_dialogs.dart';
 import '../components/matrix.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class EniaMenuView extends StatelessWidget {
@@ -36,8 +34,6 @@ class _EniaMenuState extends State<EniaMenu> {
   Future<bool> megolmBackupCachedFuture;
   bool megolmBackupCached;
   String bullet = '\u2022';
-
-  final _formKey = GlobalKey<FormBuilderState>();
 
   Future<void> requestSSSSCache(BuildContext context) async {
     final handle = Matrix.of(context).client.encryption.ssss.open();

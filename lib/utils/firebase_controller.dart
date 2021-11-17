@@ -14,11 +14,11 @@ import 'package:flutter_gen/gen_l10n/l10n_en.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
 
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import '../components/matrix.dart';
 import 'famedlysdk_store.dart';
 import 'matrix_locals.dart';
-
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 abstract class FirebaseController {
   static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
@@ -29,9 +29,9 @@ abstract class FirebaseController {
   static const String CHANNEL_NAME = 'plan ENIA';
   static const String CHANNEL_DESCRIPTION = 'Push notifications for FluffyChat';
   static const String APP_ID = 'ar.org.cottic.planenia';
-  static final String _baseUrl = dotenv.env['HOMESERVER'];
-
-  static final String GATEWAY_URL = 'http://$_baseUrl:7023';
+  // static final String _baseUrl = dotenv.env['HOMESERVER'];
+  static const String GATEWAY_URL = 'http://matrix.codigoi.com.ar:7023';
+  // static final String GATEWAY_URL = 'http://matrix.codigoi.com.ar:7023'; // v 2.0.13 si no fuciona compilar comentado la 2.014 cambiando el tipo de variable
   static const String PUSHER_FORMAT = 'event_id_only';
 
   static Future<void> setupFirebase(

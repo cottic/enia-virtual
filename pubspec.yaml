@@ -11,7 +11,7 @@ description: Chat with your friends.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.0.9+58
+version: 2.0.14+61
 
 environment:
   sdk: ">=2.10.0 <3.0.0"
@@ -67,6 +67,7 @@ dependencies:
   sqflite: ^1.1.7 # Still used to obtain the database location
   native_imaging:
     git:
+      publish_to: none
       url: https://gitlab.com/famedly/libraries/native_imaging.git
       ref: master
   flutter_blurhash: ^0.5.0

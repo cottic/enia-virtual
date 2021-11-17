@@ -623,6 +623,7 @@ class _ChatListState extends State<ChatList> {
                                                         .toLowerCase() ??
                                                     '')));
 
+                                    // ignore: avoid_init_to_null
                                     var mainGroupListSearch = null;
                                     //This allows to search in listGrupoENia
                                     if (mainGroupList != null) {

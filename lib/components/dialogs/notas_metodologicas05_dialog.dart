@@ -202,25 +202,6 @@ class _FrequentMessageDialogState extends State<FrequentMessageDialog> {
     );
   }
 
-  Widget _createItemRespuesta(
-      BuildContext context, FrequentMessagesInfo respuestaItem) {
-    return Card(
-      child: ListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        title: Text(
-          respuestaItem.tags,
-          style: Theme.of(context)
-              .textTheme
-              .caption
-              .copyWith(color: Theme.of(context).accentColor),
-        ),
-        subtitle: Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: Text(respuestaItem.content),
-        ),
-      ),
-    );
-  }
 }
 
 class ButtonCancel extends StatelessWidget {
